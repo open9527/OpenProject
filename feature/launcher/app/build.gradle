@@ -1,0 +1,10 @@
+apply {
+    from "${project.rootDir.path}/buildApp.gradle"
+}
+
+dependencies {
+    api project(gradle.getUnionPath(":feature:permission:pkg"))
+    api project(gradle.getUnionPath(":feature:okhttp:pkg"))
+    api project(gradle.getUnionPath(":feature:recycleview:pkg"))
+    api project(gradle.getUnionPath(":feature:wanandroid:pkg"))
+}

@@ -1,0 +1,47 @@
+rootProject.name = 'open9527'
+
+def modules = [
+        ':lib:page',
+        ':lib:dialog',
+        ':lib:permission',
+        ':lib:crash',
+        ':lib:recycleview',
+        ':lib:okhttp',
+        ':lib:glide',
+        ':lib:base',
+        ':lib:common',
+
+        ':feature:launcher:app',
+
+        ':feature:permission:export',
+        ':feature:permission:pkg',
+        ':feature:permission:app',
+
+        ':feature:okhttp:export',
+        ':feature:okhttp:pkg',
+        ':feature:okhttp:app',
+
+        ':feature:recycleview:export',
+        ':feature:recycleview:pkg',
+        ':feature:recycleview:app',
+
+        ':feature:wanandroid:export',
+        ':feature:wanandroid:pkg',
+        ':feature:wanandroid:app',
+
+
+]
+
+modules.each {
+    def unionPath = getUnionPath(it)
+    include unionPath
+    project(unionPath).projectDir = file(it.substring(1).replace(":", "/"))
+}
+
+
+static def getUnionPath(String path) {
+    return path.substring(0, path.lastIndexOf(":")) + ":" + path.substring(1).replace(":", "_")
+}
+
+gradle.ext.getUnionPath = this.&getUnionPath
+

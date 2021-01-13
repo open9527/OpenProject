@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="cell"
+            type="com.android.open9527.common.cell.CommonLineCell" />
+
+    </data>
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_10"
+        app:bindViewBgColor="@{cell.valueBgColor}"
+        app:bindViewHeight="@{cell.valueViewHeight}"
+        tools:background="@color/color_line_main" />
+</layout>

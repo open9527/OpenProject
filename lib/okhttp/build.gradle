@@ -1,0 +1,12 @@
+apply {
+    from "${project.rootDir.path}/buildLib.gradle"
+}
+
+dependencies {
+    api Config.depConfig.okhttp3
+    api Config.depConfig.androidx_lifecycle_common
+    api Config.depConfig.androidx_lifecycle_runtime
+}
+
+
+

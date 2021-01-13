@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="tabItem"
+            type="com.android.open9527.recycleview.export.bean.TabBean" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/offset_64"
+        tools:ignore="HardcodedText">
+
+<!--         app:bindIvColor="@{tabItem.defaultIconColor}"-->
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="@dimen/size_35"
+            android:layout_height="@dimen/size_35"
+            app:bindDrawableRadius="@{10}"
+
+            app:bindIvDrawable="@{tabItem.defaultDrawableIcon}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@color/bittersweet" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            app:bindText="@{tabItem.defaultText}"
+            app:bindTextColor="@{tabItem.defaultTextColor}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/iv_icon"
+            app:layout_constraintStart_toStartOf="@+id/iv_icon"
+            app:layout_constraintTop_toBottomOf="@+id/iv_icon"
+            tools:text="tabItem" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

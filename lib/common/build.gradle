@@ -1,0 +1,36 @@
+apply {
+    from "${project.rootDir.path}/buildLib.gradle"
+}
+
+android {
+    //支持dataBinding
+    dataBinding {
+        enabled true
+    }
+}
+
+dependencies {
+
+    api Config.depConfig.androidx_lifecycle_common_java8
+
+    api project(gradle.getUnionPath(":lib:base"))
+    api project(gradle.getUnionPath(":lib:dialog"))
+    api project(gradle.getUnionPath(":lib:crash"))
+    api project(gradle.getUnionPath(":lib:permission"))
+    api project(gradle.getUnionPath(":lib:recycleview"))
+
+    api project(gradle.getUnionPath(":lib:okhttp"))
+    api Config.depConfig.gson
+
+    api project(gradle.getUnionPath(":lib:glide"))
+    annotationProcessor Config.depConfig.glide_compiler
+
+    api Config.depConfig.androidx_material
+    api Config.depConfig.androidx_constraint
+
+    api Config.depConfig.utilcode
+    api Config.depConfig.smart_refresh_kernel
+    api Config.depConfig.smart_refresh_header_classics
+    api Config.depConfig.smart_refresh_footer_classics
+
+}

@@ -1,0 +1,13 @@
+apply {
+    from "${project.rootDir.path}/buildLib.gradle"
+}
+
+dependencies {
+    api Config.depConfig.okhttp3
+    api Config.depConfig.glide
+    api Config.depConfig.glide_transformations
+
+}
+
+
+

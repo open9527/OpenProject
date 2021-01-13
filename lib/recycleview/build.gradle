@@ -1,0 +1,17 @@
+apply {
+    from "${project.rootDir.path}/buildLib.gradle"
+}
+android {
+
+    //支持dataBinding
+    dataBinding {
+        enabled true
+    }
+
+}
+dependencies {
+    api Config.depConfig.androidx_recyclerview
+}
+
+
+

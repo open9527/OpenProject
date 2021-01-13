@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.android.open9527.LauncherViewMode" />
+
+        <variable
+            name="click"
+            type="com.android.open9527.LauncherActivity.ClickProxy" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:ignore="HardcodedText">
+
+        <Button
+            android:id="@+id/btn_okhttp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/size_40"
+            android:gravity="center"
+            android:text="OkHttp"
+            app:bindViewClick="@{click.onClickListener}" />
+
+        <Button
+            android:id="@+id/btn_permission"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Permission"
+            app:bindViewClick="@{click.onClickListener}" />
+
+        <Button
+            android:id="@+id/btn_recycleview"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Recycleview"
+            app:bindViewClick="@{click.onClickListener}" />
+
+        <Button
+            android:id="@+id/btn_wanandroid"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="WanAndroid"
+            app:bindViewClick="@{click.onClickListener}" />
+
+
+    </LinearLayout>
+</layout>

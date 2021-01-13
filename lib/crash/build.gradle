@@ -1,0 +1,10 @@
+apply {
+    from "${project.rootDir.path}/buildLib.gradle"
+}
+
+dependencies {
+    implementation Config.depConfig.androidx_appcompat
+}
+
+
+

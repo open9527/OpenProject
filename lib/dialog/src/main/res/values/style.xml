@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Style-->
+    <style name="BaseDialogStyle" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <!-- 模糊 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 边框 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 是否浮现在activity之上 (false会导致xml android:layout_height="wrap_content" 失效,键盘弹起必须true)-->
+        <item name="android:windowIsFloating">false</item>
+        <!--处理键盘-->
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+    </style>
+
+    <!---->
+    <style name="CustomDialog" parent="BaseDialogStyle">
+        <!-- 是否浮现在activity之上 (false会导致xml android:layout_height="wrap_content" 失效,键盘弹起必须true)-->
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
+
+    <style name="CustomBottomDialog" parent="BaseDialogStyle">
+        <item name="android:windowAnimationStyle">@style/SlideBottomDialogAnimationStyle</item>
+        <item name="android:gravity">bottom</item>
+    </style>
+
+    <style name="AdaptiveHeightDialog" parent="BaseDialogStyle">
+        <!-- 是否浮现在activity之上 (false会导致xml android:layout_height="wrap_content" 失效,键盘弹起必须true)-->
+        <item name="android:windowIsFloating">true</item>
+    </style>
+
+    <style name="CustomEditTextDialog" parent="AdaptiveHeightDialog">
+        <item name="android:windowAnimationStyle">@style/SlideInDialogAnimationStyle</item>
+        <item name="android:windowIsFloating">true</item>
+        <!--处理Dialog 外部点击消失时 键盘不消失-->
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="android:gravity">bottom</item>
+    </style>
+
+
+    <!--Animation-->
+    <style name="SlideBottomDialogAnimationStyle">
+        <item name="android:windowEnterAnimation">@anim/slide_bottom_in_200</item>
+        <item name="android:windowExitAnimation">@anim/slide_bottom_out_200</item>
+    </style>
+
+    <style name="SlideInDialogAnimationStyle" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_from_bottom</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_to_bottom</item>
+    </style>
+
+
+</resources>
