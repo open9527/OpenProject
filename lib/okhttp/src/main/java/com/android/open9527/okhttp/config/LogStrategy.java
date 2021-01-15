@@ -67,8 +67,7 @@ public final class LogStrategy implements ILogStrategy {
             if (lineNumber <= 0 || className.startsWith(OkHttpUtils.class.getPackage().getName())) {
                 continue;
             }
-
-            print("RequestCode = (" + element.getFileName() + ":" + lineNumber + ") ");
+            print("RequestClass = (" + element.getFileName() + ":" + lineNumber + ") ");
             break;
         }
     }

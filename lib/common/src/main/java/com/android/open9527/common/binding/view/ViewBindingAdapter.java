@@ -45,6 +45,19 @@ public class ViewBindingAdapter {
 
     }
 
+    @BindingAdapter(value = {"bindViewVisibility"}, requireAll = false)
+    public static void setBindingViewVisibility(View view, int visibility) {
+        if (view == null) return;
+        view.setVisibility(visibility);
+
+    }
+
+    @BindingAdapter(value = {"bindViewIsVisibility"}, requireAll = false)
+    public static void setBindingViewIsVisibility(View view, boolean isVisibility) {
+        if (view == null) return;
+        view.setVisibility(isVisibility ? View.VISIBLE : View.GONE);
+    }
+
 
     @BindingAdapter(value = {"bindViewHeight"}, requireAll = false)
     public static void setBindingViewHeight(View view, int viewHeight) {

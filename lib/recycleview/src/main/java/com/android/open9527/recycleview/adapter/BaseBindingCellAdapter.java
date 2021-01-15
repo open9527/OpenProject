@@ -5,6 +5,8 @@ import android.view.ViewGroup;
 
 import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
+import androidx.databinding.ObservableArrayList;
+import androidx.databinding.ObservableList;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -18,7 +20,7 @@ import java.util.List;
  **/
 public class BaseBindingCellAdapter<CELL extends BaseBindingCell> extends RecyclerView.Adapter<BaseBindingCellViewHolder> {
 
-    public List<CELL> mItems = new ArrayList<>();
+    private List<CELL> mItems = new ArrayList<>();
     private RecyclerView mRecyclerView;
 
     public BaseBindingCellAdapter() {
@@ -102,33 +104,61 @@ public class BaseBindingCellAdapter<CELL extends BaseBindingCell> extends Recycl
 
     /*----------------------------------------submit-------------------------------------------------------*/
 
-    private void setItems(@NonNull final List<CELL> items) {
-        mItems = items;
+    private void updateItems(@IntRange(from = 0) final int index, int itemCount, Object payload) {
+        notifyItemRangeChanged(index, itemCount, payload);
     }
 
     private void sortItems(@NonNull final Comparator<CELL> comparator) {
         Collections.sort(mItems, comparator);
     }
 
-    private void replaceItems(@NonNull final List<CELL> items) {
-        mItems.clear();
-        mItems.addAll(items);
+    private void setItems(@NonNull final List<CELL> items) {
+        this.mItems = items;
+        notifyDataSetChanged();
     }
 
-    private void updateItems(@IntRange(from = 0) final int index, int itemCount, Object payload) {
-        notifyItemRangeChanged(index, itemCount, payload);
-    }
-
-
-    public void submitItems(@NonNull final List<CELL> items) {
-        if (this.mItems == items) {
-            replaceItems(items);
-            Log.i("submitItems", "Refresh");
+    private void addItems(@NonNull final List<CELL> items) {
+        if (items.size() == 0) {
+            return;
+        }
+        if (this.mItems == null || this.mItems.size() == 0) {
+            setItems(items);
         } else {
-            int currentSize = mItems.size();
-            mItems.addAll(items);
-            updateItems(currentSize - 1, items.size(), items);
+
+            this.mItems.addAll(items);
+            notifyItemRangeInserted(this.mItems.size() - items.size(), items.size());
+        }
+    }
+
+
+    public void submitItems(@NonNull final List<CELL> items, boolean isRefresh) {
+        if (items.size() == 0) {
+            return;
+        }
+        if (this.mItems == null || this.mItems.size() == 0 || isRefresh) {
             Log.i("submitItems", "Add");
+            this.mItems = items;
+            notifyDataSetChanged();
+        } else {
+            Log.i("submitItems", "Update");
+            this.mItems = items;
+//            notifyItemRangeChanged(0, items.size(), items.size());
+            notifyItemRangeChanged(0, mItems.size(), mItems.size());
+        }
+    }
+
+    public void submitItems(@NonNull final ObservableList<CELL> items, boolean isRefresh) {
+        if (items.size() == 0) {
+            return;
+        }
+        mItems = items;
+        if (isRefresh) {
+            Log.i("submitItems", "Add");
+            notifyDataSetChanged();
+//            notifyItemRangeInserted(0, mItems.size());
+        } else {
+            Log.i("submitItems", "Update");
+            notifyItemRangeChanged(0, mItems.size(), mItems.size());
         }
     }
 }

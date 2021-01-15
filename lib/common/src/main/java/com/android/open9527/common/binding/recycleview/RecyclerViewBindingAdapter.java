@@ -1,22 +1,19 @@
 package com.android.open9527.common.binding.recycleview;
 
-import androidx.annotation.CheckResult;
-import androidx.annotation.Nullable;
 import androidx.databinding.BindingAdapter;
+import androidx.databinding.ObservableInt;
+import androidx.databinding.ObservableList;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import com.android.open9527.common.binding.refresh.IRefresh;
 import com.android.open9527.recycleview.RecycleViewUtils;
 import com.android.open9527.recycleview.adapter.BaseBindingCell;
 import com.android.open9527.recycleview.adapter.BaseBindingCellAdapter;
 import com.android.open9527.recycleview.layout_manager.WrapContentGridLayoutManager;
 import com.android.open9527.recycleview.layout_manager.WrapContentLinearLayoutManager;
 import com.android.open9527.recycleview.layout_manager.WrapContentStaggeredGridLayoutManager;
-import com.blankj.utilcode.util.LogUtils;
-import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 
 import java.util.List;
 
@@ -51,6 +48,7 @@ public class RecyclerViewBindingAdapter {
         if (!bindRvAnim) {
             //移除动画
             RecycleViewUtils.closeDefaultAnimator(recyclerView);
+            recyclerView.setItemAnimator(null);
         }
         recyclerView.setHasFixedSize(hasFixedSize);
         if (layoutManager != null) {
@@ -82,15 +80,20 @@ public class RecyclerViewBindingAdapter {
 
     }
 
-    @BindingAdapter(value = { "bindRvList"}, requireAll = false)
-    public static void setBindingRecycleViewData(RecyclerView recyclerView, List list) {
+    @BindingAdapter(value = {"bindRvList", "bindRvIsRefresh"}, requireAll = false)
+    public static void setBindingRecycleViewData(RecyclerView recyclerView, List list, boolean isRefresh) {
         if (recyclerView == null) return;
         if (recyclerView.getAdapter() != null) {
             RecyclerView.Adapter adapter = recyclerView.getAdapter();
-
             if (adapter instanceof BaseBindingCellAdapter) {
                 BaseBindingCellAdapter<BaseBindingCell> bindingCellAdapter = (BaseBindingCellAdapter) adapter;
-                bindingCellAdapter.submitItems(list);
+                if (list instanceof ObservableList) {
+                    bindingCellAdapter.submitItems((ObservableList)list,isRefresh);
+                }else {
+                    bindingCellAdapter.submitItems(list, isRefresh);
+                }
+
+
             }
 
         }

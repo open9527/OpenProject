@@ -5,7 +5,7 @@ import com.scwang.smart.refresh.layout.api.RefreshLayout;
 
 public interface IRefresh<T> {
 
-    default void loadComplete(RefreshLayout refreshLayout, T isRefresh) {
+    default void onRefresh(RefreshLayout refreshLayout, T isRefresh) {
 
     }
 

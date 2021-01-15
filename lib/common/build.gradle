@@ -33,4 +33,8 @@ dependencies {
     api Config.depConfig.smart_refresh_header_classics
     api Config.depConfig.smart_refresh_footer_classics
 
+    api Config.depConfig.persistent_cookie_jar
+    api Config.depConfig.banner_viewpager
+
+
 }

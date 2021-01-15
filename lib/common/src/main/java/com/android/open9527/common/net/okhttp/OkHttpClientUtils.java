@@ -2,6 +2,7 @@ package com.android.open9527.common.net.okhttp;
 
 import com.android.open9527.okhttp.OkHttpUtils;
 
+import java.net.Proxy;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -19,6 +20,7 @@ public final class OkHttpClientUtils {
             synchronized (OkHttpUtils.class) {
                 if (okHttpClient == null) {
                     okHttpClient = new OkHttpClient.Builder()
+                            .proxy(Proxy.NO_PROXY)
                             .connectTimeout(30, TimeUnit.SECONDS)
                             .readTimeout(30, TimeUnit.SECONDS)
                             .writeTimeout(30, TimeUnit.SECONDS)

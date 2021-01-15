@@ -11,12 +11,12 @@
 
     </data>
 
-    <TextView
+    <com.android.open9527.common.widget.StateSwitchTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="@dimen/size_10"
         android:textSize="@dimen/font_16"
-        app:bindText="@{cell.valueTitle}"
+        app:bindTextDefaultText="@{cell.valueTitle}"
         tools:text="无更多数据~" />
 </layout>

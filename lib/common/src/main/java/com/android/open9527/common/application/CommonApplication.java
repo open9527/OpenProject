@@ -2,19 +2,28 @@ package com.android.open9527.common.application;
 
 import com.android.open9527.base.application.BaseApplication;
 import com.android.open9527.common.BuildConfig;
-import com.android.open9527.common.initialize.intentservice.InitializeService;
 import com.android.open9527.common.net.data.RequestHandler;
+import com.android.open9527.common.net.okhttp.OkHttpClientUtils;
 import com.android.open9527.common.net.server.ReleaseServer;
 import com.android.open9527.common.net.server.TestServer;
 import com.android.open9527.crash.Crash;
 import com.android.open9527.crash.ExceptionHandler;
+import com.android.open9527.glide.GlideHeadInterceptor;
 import com.android.open9527.okhttp.HttpConfig;
-import com.android.open9527.okhttp.OkHttpClientUtils;
 import com.android.open9527.okhttp.config.IRequestInterceptor;
 import com.android.open9527.okhttp.config.IRequestServer;
 import com.android.open9527.okhttp.model.HttpHeaders;
 import com.android.open9527.okhttp.model.HttpParams;
 import com.blankj.utilcode.util.AppUtils;
+import com.franmontiel.persistentcookiejar.ClearableCookieJar;
+import com.franmontiel.persistentcookiejar.PersistentCookieJar;
+import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
+import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
+
+import java.net.Proxy;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
 
 /**
  * @author open_9527
@@ -67,7 +76,17 @@ public class CommonApplication extends BaseApplication {
         } else {
             server = new ReleaseServer();
         }
-        HttpConfig.with(OkHttpClientUtils.getClient())
+        ClearableCookieJar cookieJar =
+                new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(this));
+
+        OkHttpClient okHttpClient = OkHttpClientUtils.getClient().newBuilder()
+                .proxy(Proxy.NO_PROXY)
+                .cookieJar(cookieJar)
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .writeTimeout(30, TimeUnit.SECONDS)
+                .build();
+        HttpConfig.with(okHttpClient)
                 // 是否打印日志
                 .setLogEnabled(BuildConfig.DEBUG)
                 // 设置服务器配置

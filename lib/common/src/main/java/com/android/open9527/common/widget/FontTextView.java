@@ -5,15 +5,15 @@ import android.graphics.Typeface;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 
-
+/**
+ * @author open_9527
+ * Create at 2021/1/4
+ **/
 public class FontTextView extends AppCompatTextView {
 
-    private boolean fakeBold;
-    private String font;
 
     public FontTextView(Context context) {
         this(context, null);
@@ -25,15 +25,19 @@ public class FontTextView extends AppCompatTextView {
 
     public FontTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
+        if (isInEditMode()) {
+            return;
+        }
     }
 
-    private void init() {
-        setTypeface(font);
+    public void initFont(StateSwitchTextConfig stateSwitchConfig) {
+        setTypeface(stateSwitchConfig.getSelect() ? stateSwitchConfig.getSelectedTextFont() : stateSwitchConfig.getDefaultTextFont(),
+                stateSwitchConfig.getSelect() ? stateSwitchConfig.getSelectedFakeBoldText() : stateSwitchConfig.getDefaultFakeBoldText()
+        );
     }
 
 
-    public void setTypeface(String font) {
+    public void setTypeface(String font, boolean fakeBold) {
         if (!TextUtils.isEmpty(font)) {
             Typeface typeface = FontUtils.getTypeface(font, getContext());
             setIncludeFontPadding(false);
@@ -42,29 +46,4 @@ public class FontTextView extends AppCompatTextView {
         }
     }
 
-    /**
-     * 设置粗体
-     *
-     * @param fakeBold
-     */
-    public void setFakeBold(boolean fakeBold) {
-        this.fakeBold = fakeBold;
-    }
-
-    /**
-     * 设置指定字体
-     *
-     * @param font
-     */
-    public void setFont(@NonNull String font) {
-        this.font = font;
-    }
-
-    @Override
-    public String toString() {
-        return "FontTextView{" +
-                "fakeBold=" + fakeBold +
-                ", font='" + font + '\'' +
-                '}';
-    }
 }

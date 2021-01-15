@@ -1,32 +1,21 @@
 package com.android.open9527.common.widget;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatImageView;
+
 
 /**
  * @author open_9527
  * Create at 2021/1/4
  **/
-public class StateSwitchImageView extends LoadImageView {
+public class StateSwitchImageView extends AppCompatImageView {
     private static final String TAG = "StateSwitchImageView";
 
-
-    private boolean select;
-
-    private int defaultImageResId;
-    private int selectedImageResId;
-
-    private Drawable defaultImageDrawable;
-    private Drawable selectedImageDrawable;
-
-    private String defaultImageUrl;
-    private String selectedImageUrl;
+    private StateSwitchImageConfig mStateSwitchImageConfig;
 
     public StateSwitchImageView(@NonNull Context context) {
         this(context, null, 0);
@@ -38,84 +27,44 @@ public class StateSwitchImageView extends LoadImageView {
 
     public StateSwitchImageView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
+        if (isInEditMode()) {
+            return;
+        }
     }
 
-    private void init() {
+    public void init() {
+//        LogUtils.i(TAG, "StateSwitchImageConfig:" + mStateSwitchImageConfig.toString());
         setImageResId();
         setImageDrawable();
-        setImageUrl();
-        Log.i(TAG, toString());
     }
 
-    public void setSelect(boolean select) {
-        this.select = select;
 
-        setImageResId();
-        setImageDrawable();
-        setImageUrl();
-        Log.i(TAG, toString());
-    }
-
-    public void setDefaultImageResId(int defaultImageResId) {
-        this.defaultImageResId = defaultImageResId;
-    }
-
-    public void setSelectedImageResId(int selectedImageResId) {
-        this.selectedImageResId = selectedImageResId;
-    }
-
-    public void setDefaultImageDrawable(Drawable defaultImageDrawable) {
-        this.defaultImageDrawable = defaultImageDrawable;
-    }
-
-    public void setSelectedImageDrawable(Drawable selectedImageDrawable) {
-        this.selectedImageDrawable = selectedImageDrawable;
-    }
-
-    public void setDefaultImageUrl(String defaultImageUrl) {
-        this.defaultImageUrl = defaultImageUrl;
-    }
-
-    public void setSelectedImageUrl(String selectedImageUrl) {
-        this.selectedImageUrl = selectedImageUrl;
-    }
-
-    @Override
-    public String toString() {
-        return "StateSwitchImageView{" +
-                "select=" + select +
-                ", defaultImageResId=" + defaultImageResId +
-                ", selectedImageResId=" + selectedImageResId +
-                ", defaultImageDrawable=" + defaultImageDrawable +
-                ", selectedImageDrawable=" + selectedImageDrawable +
-                ", defaultImageUrl='" + defaultImageUrl + '\'' +
-                ", selectedImageUrl='" + selectedImageUrl + '\'' +
-                '}';
+    public void setStateSwitchImageConfig(StateSwitchImageConfig mStateSwitchImageConfig) {
+        this.mStateSwitchImageConfig = mStateSwitchImageConfig;
     }
 
     private void setImageResId() {
-        if (selectedImageResId > 0 || defaultImageResId > 0) {
-            setImageResource(select ? selectedImageResId : defaultImageResId);
+        if (mStateSwitchImageConfig.getDefaultImageResId() > 0 || mStateSwitchImageConfig.getSelectedImageResId() > 0) {
+            setImageResource(mStateSwitchImageConfig.getSelect() ? mStateSwitchImageConfig.getSelectedImageResId() : mStateSwitchImageConfig.getDefaultImageResId());
 
         }
-//        setImageDrawable(ContextCompat.getDrawable(getContext(), select ? selectedImageResId : defaultImageResId));
+//        setImageDrawable(ContextCompat.getDrawable(getContext(), mStateSwitchImageConfig.getSelect() ? mStateSwitchImageConfig.getSelectedImageResId() : mStateSwitchImageConfig.getDefaultImageResId()));
     }
 
     private void setImageDrawable() {
-        if (selectedImageDrawable != null || defaultImageDrawable != null) {
-            setImageDrawable(select ? selectedImageDrawable : defaultImageDrawable);
+        if (mStateSwitchImageConfig.getDefaultImageDrawable() != null || mStateSwitchImageConfig.getSelectedImageDrawable() != null) {
+            setImageDrawable(mStateSwitchImageConfig.getSelect() ? mStateSwitchImageConfig.getSelectedImageDrawable() : mStateSwitchImageConfig.getDefaultImageDrawable());
 
         }
 
     }
 
-    private void setImageUrl() {
-        if (TextUtils.isEmpty(selectedImageUrl) || TextUtils.isEmpty(defaultImageUrl)) {
-            return;
-        }
-        //TODO:
-    }
+//    private void setImageUrl() {
+//        if (TextUtils.isEmpty(selectedImageUrl) || TextUtils.isEmpty(defaultImageUrl)) {
+//            return;
+//        }
+//        //TODO:
+//    }
 
 
 }

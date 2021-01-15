@@ -57,7 +57,7 @@ public final class HttpConfig {
     /** 日志开关 */
     private boolean mLogEnabled = true;
     /** 日志 TAG */
-    private String mLogTag = "EasyHttp";
+    private String mLogTag = "OkHttpUtils";
 
     /** 重试次数 */
     private int mRetryCount;

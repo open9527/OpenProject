@@ -239,6 +239,11 @@ public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
         return this;
     }
 
+    public SpacesItemDecoration setFooterNoShowDivider(int footerNoShowSize) {
+        this.mFooterNoShowSize = footerNoShowSize;
+        return this;
+    }
+
     public SpacesItemDecoration setParam(int dividerColor, int dividerSpacing) {
         return setParam(dividerColor, dividerSpacing, 0, 0);
     }

@@ -15,23 +15,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
+        <com.android.open9527.common.widget.StateSwitchImageView
             android:id="@+id/iv_empty"
             android:layout_width="@dimen/size_160"
             android:layout_height="@dimen/size_160"
-            app:bindIvResId="@{cell.valueIcon}"
+            app:bindIvDefaultImageResId="@{cell.valueIcon}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/common_empty_icon" />
 
-        <TextView
+        <com.android.open9527.common.widget.StateSwitchTextView
             android:id="@+id/tv_empty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/font_14"
-            app:bindText="@{cell.valueHint}"
+            app:bindTextDefaultText="@{cell.valueHint}"
             app:layout_constraintEnd_toEndOf="@+id/iv_empty"
             app:layout_constraintStart_toStartOf="@+id/iv_empty"
             app:layout_constraintTop_toBottomOf="@+id/iv_empty"

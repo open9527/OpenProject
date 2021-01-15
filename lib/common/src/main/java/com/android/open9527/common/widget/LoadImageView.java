@@ -32,13 +32,14 @@ public class LoadImageView extends AppCompatImageView {
 
     public LoadImageView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
+        if (isInEditMode()) {
+            return;
+        }
     }
 
-    private void init() {
+    public void init() {
         if (gifImage) {
             loadGif();
-
         } else {
             loadImage();
 
@@ -53,13 +54,6 @@ public class LoadImageView extends AppCompatImageView {
         this.gifImage = gifImage;
     }
 
-    public void onLoad() {
-        if (gifImage) {
-            loadGif();
-        } else {
-            loadImage();
-        }
-    }
 
     private void loadImage() {
         if (imageLoadConfig != null) {

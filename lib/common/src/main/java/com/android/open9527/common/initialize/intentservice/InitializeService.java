@@ -12,10 +12,7 @@ import com.android.open9527.crash.Crash;
 import com.android.open9527.crash.ExceptionHandler;
 import com.android.open9527.okhttp.HttpConfig;
 import com.android.open9527.okhttp.OkHttpClientUtils;
-import com.android.open9527.okhttp.config.IRequestInterceptor;
 import com.android.open9527.okhttp.config.IRequestServer;
-import com.android.open9527.okhttp.model.HttpHeaders;
-import com.android.open9527.okhttp.model.HttpParams;
 import com.blankj.utilcode.util.AppUtils;
 
 /**

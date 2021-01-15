@@ -6,7 +6,6 @@ import com.android.feature.permission.pkg.PermissionActivity;
 import com.android.open9527.common.page.BaseCommonActivity;
 import com.android.open9527.page.DataBindingConfig;
 import com.android.open9527.pkg.OkHttpActivity;
-import com.android.open9527.recycleview.pkg.main.RecycleViewActivity;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.open9527.wanandroid.pkg.main.WanAndroidActivity;
 
@@ -39,9 +38,6 @@ public class LauncherActivity extends BaseCommonActivity {
 
                 } else if (view.getId() == R.id.btn_permission) {
                     ActivityUtils.startActivity(PermissionActivity.class);
-
-                } else if (view.getId() == R.id.btn_recycleview) {
-                    ActivityUtils.startActivity(RecycleViewActivity.class);
 
                 } else if (view.getId() == R.id.btn_wanandroid) {
                     ActivityUtils.startActivity(WanAndroidActivity.class);
