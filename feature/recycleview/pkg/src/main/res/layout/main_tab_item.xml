@@ -6,8 +6,16 @@
     <data>
 
         <variable
-            name="tabItem"
-            type="com.android.open9527.recycleview.export.bean.TabBean" />
+            name="defaultDrawableIcon"
+            type="android.graphics.drawable.Drawable" />
+
+        <variable
+            name="defaultText"
+            type="String" />
+
+        <variable
+            name="defaultTextColor"
+            type="Integer" />
 
     </data>
 
@@ -16,25 +24,22 @@
         android:layout_height="@dimen/offset_64"
         tools:ignore="HardcodedText">
 
-<!--         app:bindIvColor="@{tabItem.defaultIconColor}"-->
-        <ImageView
+        <com.android.open9527.common.widget.StateSwitchImageView
             android:id="@+id/iv_icon"
             android:layout_width="@dimen/size_35"
             android:layout_height="@dimen/size_35"
-            app:bindDrawableRadius="@{10}"
-
-            app:bindIvDrawable="@{tabItem.defaultDrawableIcon}"
+            app:bindIvDefaultImageDrawable="@{defaultDrawableIcon}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@color/bittersweet" />
 
-        <TextView
+        <com.android.open9527.common.widget.StateSwitchTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:singleLine="true"
-            app:bindText="@{tabItem.defaultText}"
-            app:bindTextColor="@{tabItem.defaultTextColor}"
+            app:bindTextDefaultText="@{defaultText}"
+            app:bindTextDefaultTextColor="@{defaultTextColor}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/iv_icon"
             app:layout_constraintStart_toStartOf="@+id/iv_icon"

@@ -2,6 +2,7 @@ package com.open9527.wanandroid.pkg.main.project;
 
 import com.android.open9527.common.binding.refresh.IRefresh;
 import com.android.open9527.common.page.BaseCommonFragment;
+import com.android.open9527.okhttp.OkHttpUtils;
 import com.android.open9527.page.DataBindingConfig;
 import com.android.open9527.recycleview.adapter.BaseBindingCellAdapter;
 import com.android.open9527.recycleview.decoration.SpacesItemDecoration;
@@ -16,7 +17,7 @@ import com.scwang.smart.refresh.layout.api.RefreshLayout;
  **/
 public class ProjectFragment extends BaseCommonFragment {
 
-    private int mPage = 1;
+    private int mPage = 0;
     private ProjectViewModel mViewModel;
 
     public static ProjectFragment newInstance() {
@@ -37,18 +38,31 @@ public class ProjectFragment extends BaseCommonFragment {
                 .addBindingParam(BR.adapter, new BaseBindingCellAdapter<>());
     }
 
+    @Override
+    public void initRequest() {
+        super.initRequest();
+        requestProject();
+    }
+
+    @Override
+    public void initEvent() {
+        super.initEvent();
+        mViewModel.projectRequest.getProjectLiveData().observe(getViewLifecycleOwner(), dataVoDataResult -> {
+            mViewModel.onCreateCells(mPage, dataVoDataResult.getResult().getDataList());
+
+        });
+    }
+
+    private void requestProject() {
+        mViewModel.projectRequest.requestProject(mPage, OkHttpUtils.get(this));
+    }
 
     public class ClickProxy {
         public IRefresh<Boolean> onRefreshListeners = new IRefresh<Boolean>() {
             @Override
-            public void loadComplete(RefreshLayout refreshLayout, Boolean isRefresh) {
-                if (isRefresh) {
-                    mPage = 1;
-                } else {
-                    mPage++;
-                }
-//                mViewModel.createCells(mPage);
-                refreshLayout.closeHeaderOrFooter();
+            public void onRefresh(RefreshLayout refreshLayout, Boolean isRefresh) {
+                mPage = (isRefresh ? 0 : ++mPage);
+                requestProject();
             }
         };
     }

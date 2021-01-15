@@ -14,8 +14,32 @@
             type="String" />
 
         <variable
+            name="selectedText"
+            type="String" />
+
+        <variable
             name="defaultTextColor"
             type="Integer" />
+
+        <variable
+            name="selectedTextColor"
+            type="Integer" />
+
+        <variable
+            name="drawableHigh"
+            type="Integer" />
+
+        <variable
+            name="drawableWidth"
+            type="Integer" />
+
+        <variable
+            name="drawablePadding"
+            type="Integer" />
+
+        <variable
+            name="select"
+            type="Boolean" />
 
     </data>
 
@@ -24,29 +48,54 @@
         android:layout_height="@dimen/offset_64"
         tools:ignore="HardcodedText">
 
-        <ImageView
-            android:id="@+id/iv_icon"
-            android:layout_width="@dimen/size_25"
-            android:layout_height="@dimen/size_25"
-            app:bindIvResId="@{defaultIcon}"
-            app:layout_constraintBottom_toTopOf="@+id/tv_title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@color/bittersweet" />
+        <!--        <ImageView-->
+        <!--            android:id="@+id/iv_icon"-->
+        <!--            android:layout_width="@dimen/size_25"-->
+        <!--            android:layout_height="@dimen/size_25"-->
+        <!--            app:bindIvResId="@{defaultIcon}"-->
+        <!--            app:layout_constraintBottom_toTopOf="@+id/tv_title"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"-->
+        <!--            tools:src="@color/bittersweet" />-->
 
-        <TextView
+        <!-- app:bindText="@{defaultText}"
+            app:bindTextColor="@{defaultTextColor}"-->
+
+        <!-- app:bindTextDefaultDrawableTop="@{defaultIcon}"
+            app:bindTextSelectedDrawableTop="@{defaultIcon}"-->
+        <com.android.open9527.common.widget.StateSwitchTextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:singleLine="true"
-            app:bindText="@{defaultText}"
-            app:bindTextColor="@{defaultTextColor}"
+            app:bindTextDefaultDrawableTop="@{defaultIcon}"
+            app:bindTextDefaultText="@{defaultText}"
+            app:bindTextDefaultTextColor="@{defaultTextColor}"
+            app:bindTextDrawableHigh="@{drawableHigh}"
+            app:bindTextDrawablePadding="@{10}"
+            app:bindTextDrawableWidth="@{drawableWidth}"
+            app:bindTextSelect="@{select}"
+            app:bindTextSelectedDrawableTop="@{defaultIcon}"
+            app:bindTextSelectedText="@{selectedText}"
+            app:bindTextSelectedTextColor="@{selectedTextColor}"
+            app:bindViewIsVisibility="@{!select}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/iv_icon"
-            app:layout_constraintStart_toStartOf="@+id/iv_icon"
-            app:layout_constraintTop_toBottomOf="@+id/iv_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="tabItem" />
+
+        <com.android.open9527.common.widget.StateSwitchImageView
+            android:layout_width="@dimen/size_30"
+            android:layout_height="@dimen/size_30"
+            app:bindIvDefaultImageResId="@{defaultIcon}"
+            app:bindViewIsVisibility="@{select}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,6 +18,10 @@ import com.open9527.wanandroid.pkg.bean.TabBean;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * @author open_9527
+ * Create at 2021/1/12
+ **/
 public class TabLayoutBindingAdapter {
 
     @BindingAdapter(value = {
@@ -42,7 +46,6 @@ public class TabLayoutBindingAdapter {
         if (viewPager != null) {
             viewPager.setOffscreenPageLimit(fragments.size());
             viewPager.setAdapter(new CommonFragmentPagerAdapter(fragmentManager, fragments));
-//            viewPager.setCurrentItem(defaultIndex);
             tabLayout.setupWithViewPager(viewPager);
             tabLayout.removeAllTabs();
             if (tabBeans != null && tabBeans.size() > 0) {
@@ -50,7 +53,13 @@ public class TabLayoutBindingAdapter {
                     final ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater.from(tabLayout.getContext()), tabItemLayout, null, false);
                     binding.setVariable(BR.defaultIcon, tabBeans.get(i).getDefaultIcon());
                     binding.setVariable(BR.defaultText, tabBeans.get(i).getDefaultText());
-                    binding.setVariable(BR.defaultTextColor, defaultIndex == i ? tabBeans.get(i).getSelectedTextColor() : tabBeans.get(i).getDefaultTextColor());
+                    binding.setVariable(BR.selectedText, "");
+                    binding.setVariable(BR.selectedTextColor, tabBeans.get(i).getSelectedTextColor());
+                    binding.setVariable(BR.defaultTextColor, tabBeans.get(i).getDefaultTextColor());
+                    binding.setVariable(BR.select, i == defaultIndex);
+                    binding.setVariable(BR.drawableWidth, i == defaultIndex ? 60 : 50);
+                    binding.setVariable(BR.drawableHigh, i == defaultIndex ? 60 : 50);
+                    binding.setVariable(BR.drawablePadding, i == defaultIndex ? 0 : 10);
                     TabLayout.Tab tab = tabLayout.newTab();
                     tab.setCustomView(binding.getRoot());
                     tab.setTag(i);
@@ -82,7 +91,12 @@ public class TabLayoutBindingAdapter {
     private static void setSelect(TabLayout.Tab tab, List<TabBean> tabBeans, boolean select) {
         ViewDataBinding binding = DataBindingUtil.getBinding(Objects.requireNonNull(tab.getCustomView()));
         assert binding != null;
-        binding.setVariable(BR.defaultTextColor, select ? tabBeans.get(tab.getPosition()).getSelectedTextColor() : tabBeans.get(tab.getPosition()).getDefaultTextColor());
+//        binding.setVariable(BR.defaultTextColor, select ? tabBeans.get(tab.getPosition()).getSelectedTextColor() : tabBeans.get(tab.getPosition()).getDefaultTextColor());
+//        binding.setVariable(BR.defaultIcon, tabBeans.get(tab.getPosition()).getDefaultIcon());
+//        binding.setVariable(BR.defaultText, tabBeans.get(tab.getPosition()).getDefaultText());
+//        binding.setVariable(BR.selectedTextColor, tabBeans.get(tab.getPosition()).getSelectedTextColor());
+//        binding.setVariable(BR.defaultTextColor, tabBeans.get(tab.getPosition()).getDefaultTextColor());
+        binding.setVariable(BR.select, select);
     }
 
 }

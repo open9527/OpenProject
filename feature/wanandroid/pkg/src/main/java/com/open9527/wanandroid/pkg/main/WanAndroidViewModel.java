@@ -1,7 +1,5 @@
 package com.open9527.wanandroid.pkg.main;
 
-import android.graphics.Color;
-
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ObservableField;
@@ -15,6 +13,7 @@ import com.open9527.wanandroid.pkg.bean.TabBean;
 import com.open9527.wanandroid.pkg.main.article.ArticleFragment;
 import com.open9527.wanandroid.pkg.main.project.ProjectFragment;
 import com.open9527.wanandroid.pkg.main.share.ShareFragment;
+import com.open9527.wanandroid.pkg.net.user.UserRequest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +30,8 @@ public class WanAndroidViewModel extends ViewModel {
     public final ObservableField<FragmentManager> valueFragmentManager = new ObservableField<>();
     public final ObservableInt valueDefaultIndex = new ObservableInt(1);
     public final ObservableInt valueItemLayout = new ObservableInt(R.layout.main_tab_item);
+
+    public final UserRequest userRequest = new UserRequest();
 
 
     public void initTab(@NonNull FragmentManager fragmentManager) {

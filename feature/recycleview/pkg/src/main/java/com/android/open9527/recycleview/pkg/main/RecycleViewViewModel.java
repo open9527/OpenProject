@@ -11,11 +11,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModel;
 
 import com.android.open9527.common.binding.drawables.GradientDrawableUtils;
-import com.android.open9527.common.cell.CommonEmptyCell;
-import com.android.open9527.common.cell.CommonLineCell;
-import com.android.open9527.common.cell.CommonNoMoreDataCell;
-import com.android.open9527.recycleview.adapter.BaseBindingCell;
-import com.android.open9527.recycleview.export.bean.TabBean;
+import com.android.open9527.recycleview.pkg.bean.MainTabBean;
 import com.android.open9527.recycleview.pkg.main.content.MainFragment;
 import com.android.open9527.recycleview.pkg.R;
 import com.blankj.utilcode.util.SizeUtils;
@@ -32,7 +28,7 @@ public class RecycleViewViewModel extends ViewModel {
 
     public final ObservableField<String> valueTitle = new ObservableField<>("主页");
 
-    public final ObservableArrayList<TabBean> valueTabList = new ObservableArrayList<>();
+    public final ObservableArrayList<MainTabBean> valueTabList = new ObservableArrayList<>();
     public final ObservableArrayList<Fragment> valueFragments = new ObservableArrayList<>();
     public final ObservableField<FragmentManager> valueFragmentManager = new ObservableField<>();
     public final ObservableField<TabLayout.OnTabSelectedListener> valueTabSelectedListener = new ObservableField<>();
@@ -51,12 +47,12 @@ public class RecycleViewViewModel extends ViewModel {
 
     private void createTabList() {
         valueTabList.clear();
-        List<TabBean> tabList = new ArrayList<TabBean>() {{
-            add(new TabBean("tab001", R.color.light_black, R.color.colorAccent, GradientDrawableUtils.createDrawableOval(Color.GREEN, SizeUtils.dp2px(35))));
-            add(new TabBean("tab002", R.color.light_black, R.color.colorAccent, GradientDrawableUtils.createDrawableOval(Color.GREEN, SizeUtils.dp2px(35))));
-            add(new TabBean("tab003", R.color.light_black, R.color.colorAccent, GradientDrawableUtils.createDrawableOval(Color.GREEN, SizeUtils.dp2px(35))));
-            add(new TabBean("tab004", R.color.light_black, R.color.colorAccent, GradientDrawableUtils.createDrawableOval(Color.GREEN, SizeUtils.dp2px(35))));
-            add(new TabBean("tab005", R.color.light_black, R.color.colorAccent, GradientDrawableUtils.createDrawableOval(Color.GREEN, SizeUtils.dp2px(35))));
+        List<MainTabBean> tabList = new ArrayList<MainTabBean>() {{
+            add(new MainTabBean("tab001", R.color.light_black, R.color.colorAccent, GradientDrawableUtils.createDrawableOval(Color.GREEN, SizeUtils.dp2px(35))));
+            add(new MainTabBean("tab002", R.color.light_black, R.color.colorAccent, GradientDrawableUtils.createDrawableOval(Color.GREEN, SizeUtils.dp2px(35))));
+            add(new MainTabBean("tab003", R.color.light_black, R.color.colorAccent, GradientDrawableUtils.createDrawableOval(Color.GREEN, SizeUtils.dp2px(35))));
+            add(new MainTabBean("tab004", R.color.light_black, R.color.colorAccent, GradientDrawableUtils.createDrawableOval(Color.GREEN, SizeUtils.dp2px(35))));
+            add(new MainTabBean("tab005", R.color.light_black, R.color.colorAccent, GradientDrawableUtils.createDrawableOval(Color.GREEN, SizeUtils.dp2px(35))));
         }};
         valueTabList.addAll(tabList);
     }

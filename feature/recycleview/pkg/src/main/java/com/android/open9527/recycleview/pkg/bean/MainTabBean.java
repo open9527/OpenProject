@@ -1,4 +1,4 @@
-package com.android.open9527.recycleview.export.bean;
+package com.android.open9527.recycleview.pkg.bean;
 
 import android.graphics.drawable.Drawable;
 
@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author open_9527
  * Create at 2021/1/11
  **/
-public class TabBean implements Serializable {
+public class MainTabBean implements Serializable {
 
     //标题
     private String defaultText;
@@ -36,7 +36,7 @@ public class TabBean implements Serializable {
     private Drawable defaultDrawableBg;
     private Drawable selectedDrawableBg;
 
-    public TabBean(String defaultText, int defaultTextColor, int defaultIconColor, Drawable defaultDrawableIcon) {
+    public MainTabBean(String defaultText, int defaultTextColor, int defaultIconColor, Drawable defaultDrawableIcon) {
         this.defaultText = defaultText;
         this.defaultTextColor = defaultTextColor;
         this.defaultIconColor = defaultIconColor;

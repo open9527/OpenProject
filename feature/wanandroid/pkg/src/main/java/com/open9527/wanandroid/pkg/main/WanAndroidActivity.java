@@ -33,4 +33,15 @@ public class WanAndroidActivity extends BaseCommonActivity {
         mViewModel.initTab(getSupportFragmentManager());
     }
 
+    @Override
+    public void initRequest() {
+//        mViewModel.userRequest.requestLoginApi("open_9527", "", OkHttpUtils.post(this));
+    }
+
+    @Override
+    public void initEvent() {
+        mViewModel.userRequest.getLoginLiveData().observe(this, objectDataResult -> {
+
+        });
+    }
 }

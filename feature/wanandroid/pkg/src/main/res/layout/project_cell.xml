@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.open9527.wanandroid.pkg.R" />
+
+        <variable
+            name="cell"
+            type="com.open9527.wanandroid.pkg.cell.ProjectCell" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/size_10">
+
+        <com.android.open9527.common.widget.StateSwitchTextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:bindTextDefaultText="@{cell.valueTitle}"
+            app:bindTextDefaultTextColor="@{R.color.color_text_main}"
+            app:bindTextDefaultTextSize="@{16}"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Kotlin 协程中，关于 runBlocking， launch ，withContext ，async，doAsync 之间的简单区别Kotlin "
+            tools:textColor="@color/color_text_main"
+            tools:textSize="@dimen/font_16" />
+
+        <com.android.open9527.common.widget.LoadImageView
+            android:id="@+id/iv_pic"
+            android:layout_width="200dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/size_10"
+            app:bindIvHeight="@{400}"
+            app:bindIvUrl="@{cell.valueImageUrl}"
+            app:bindIvWidth="@{300}"
+            app:layout_constraintDimensionRatio="3:4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+
+        <com.android.open9527.common.widget.StateSwitchTextView
+            android:id="@+id/tv_share_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_15"
+            app:bindTextDefaultText="@{cell.valueShareUser}"
+            app:bindTextDefaultTextColor="@{R.color.color_text_sub}"
+            app:bindTextDefaultTextSize="@{14}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_pic"
+            tools:text="分享人:2333"
+            tools:textColor="@color/color_text_sub"
+            tools:textSize="@dimen/font_14" />
+
+        <com.android.open9527.common.widget.StateSwitchTextView
+            android:id="@+id/tv_share_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_15"
+            app:bindTextDefaultText="@{cell.valueNiceShareDate}"
+            app:bindTextDefaultTextColor="@{R.color.color_text_sub}"
+            app:bindTextDefaultTextSize="@{14}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_pic"
+            tools:text="13小时前"
+            tools:textColor="@color/color_text_sub"
+            tools:textSize="@dimen/font_14" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

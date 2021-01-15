@@ -67,7 +67,7 @@ public class MainFragment extends BaseCommonFragment {
     public class ClickProxy {
         public IRefresh<Boolean> onRefreshListeners = new IRefresh<Boolean>() {
             @Override
-            public void loadComplete(RefreshLayout refreshLayout, Boolean isRefresh) {
+            public void onRefresh(RefreshLayout refreshLayout, Boolean isRefresh) {
                 if (isRefresh) {
                     mPage = 1;
                 } else {

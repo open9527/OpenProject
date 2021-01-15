@@ -17,14 +17,14 @@
         android:padding="@dimen/size_15"
         tools:ignore="HardcodedText">
 
-        <TextView
+        <com.android.open9527.common.widget.StateSwitchTextView
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:singleLine="true"
             android:textSize="@dimen/font_16"
-            app:bindText="@{cell.valueTitle}"
+            app:bindTextDefaultText="@{cell.valueTitle}"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="23333" />
 
