@@ -21,10 +21,6 @@ def modules = [
         ':feature:okhttp:pkg',
         ':feature:okhttp:app',
 
-        ':feature:recycleview:export',
-        ':feature:recycleview:pkg',
-        ':feature:recycleview:app',
-
         ':feature:wanandroid:export',
         ':feature:wanandroid:pkg',
         ':feature:wanandroid:app',
