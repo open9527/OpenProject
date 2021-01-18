@@ -11,6 +11,7 @@ import com.android.open9527.recycleview.adapter.BaseBindingCellViewHolder;
 import com.blankj.utilcode.util.ToastUtils;
 import com.open9527.wanandroid.pkg.BR;
 import com.open9527.wanandroid.pkg.R;
+import com.open9527.wanandroid.pkg.main.h5.H5Activity;
 import com.open9527.wanandroid.pkg.net.ContentVo;
 
 /**
@@ -46,6 +47,7 @@ public class ShareContentTextCell extends BaseBindingCell<ShareContentTextCell> 
 
     @Override
     public void onCellClick(View view, ShareContentTextCell shareContentTextCell) {
-        ToastUtils.showShort(shareContentTextCell.valueLink.get());
+
+        H5Activity.startH5(shareContentTextCell.valueLink.get(),shareContentTextCell.valueTitle.get());
     }
 }

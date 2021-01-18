@@ -7,6 +7,7 @@ import com.blankj.utilcode.util.ColorUtils;
 import com.blankj.utilcode.util.SizeUtils;
 import com.open9527.wanandroid.pkg.R;
 import com.open9527.wanandroid.pkg.databinding.BannerItemBinding;
+import com.open9527.wanandroid.pkg.main.h5.H5Activity;
 import com.open9527.wanandroid.pkg.net.BannerVo;
 import com.zhpan.bannerview.BannerViewPager;
 import com.zhpan.bannerview.BaseBannerAdapter;
@@ -34,7 +35,7 @@ public class BannerBindingAdapter {
                     .setIndicatorSliderColor(ColorUtils.getColor(R.color.color_bg_white), ColorUtils.getColor(R.color.color_bg_white))
                     .setIndicatorStyle(IndicatorStyle.ROUND_RECT)
                     .setOnPageClickListener((clickedView, position) -> {
-
+                        H5Activity.startH5(contentVoList.get(position).getLink(), contentVoList.get(position).getTitle());
                     })
                     .create();
         }

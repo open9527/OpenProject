@@ -8,58 +8,40 @@
             name="vm"
             type="com.open9527.wanandroid.pkg.main.project.ProjectViewModel" />
 
-        <variable
-            name="click"
-            type="com.open9527.wanandroid.pkg.main.project.ProjectFragment.ClickProxy" />
 
-        <variable
-            name="adapter"
-            type="androidx.recyclerview.widget.RecyclerView.Adapter" />
-
-        <variable
-            name="layoutManager"
-            type="androidx.recyclerview.widget.LinearLayoutManager" />
-
-        <variable
-            name="itemDecoration"
-            type="androidx.recyclerview.widget.RecyclerView.ItemDecoration" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-        <com.scwang.smart.refresh.layout.SmartRefreshLayout
-            android:id="@+id/refresh_layout"
+        <com.open9527.wanandroid.pkg.widget.ProjectTabLayout
+            android:id="@+id/tab_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:bindRefreshCloseHeaderOrFooter="@{vm.valueCloseHeaderOrFooter}"
-            app:bindRefreshListener="@{click.onRefreshListeners}"
-            app:bindRefreshNoMoreData="@{vm.valueNoMoreData}">
+            android:layout_height="@dimen/size_48"
+            app:bindTabLayoutDefaultIndex="@{vm.valueDefaultIndex}"
+            app:bindTabLayoutFragmentList="@{vm.valueFragments}"
+            app:bindTabLayoutFragmentManager="@{vm.valueFragmentManager}"
+            app:bindTabLayoutTabBeanData="@{vm.valueTabList}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tabGravity="center"
+            app:tabIndicatorHeight="0dp"
+            app:tabMaxWidth="0dp"
+            app:tabMinWidth="0dp"
+            app:tabMode="scrollable"
+            app:tabRippleColor="@android:color/transparent" />
 
-            <com.scwang.smart.refresh.header.ClassicsHeader
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_1"
+            android:background="@color/color_line_main"
+            app:layout_constraintBottom_toBottomOf="@+id/tab_layout" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:overScrollMode="never"
-                android:scrollbars="none"
-                app:bindRvAdapter="@{adapter}"
-                app:bindRvAnim="@{false}"
-                app:bindRvIsRefresh="@{vm.valueIsRefresh}"
-                app:bindRvItemDecoration="@{itemDecoration}"
-                app:bindRvLayoutManager="@{layoutManager}"
-                app:bindRvList="@{vm.valueCells}" />
-
-            <com.scwang.smart.refresh.footer.ClassicsFooter
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
-
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/project_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tab_layout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

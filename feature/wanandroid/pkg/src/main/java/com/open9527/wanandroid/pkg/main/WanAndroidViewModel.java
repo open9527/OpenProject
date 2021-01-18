@@ -15,50 +15,32 @@ import com.open9527.wanandroid.pkg.main.project.ProjectFragment;
 import com.open9527.wanandroid.pkg.main.share.ShareFragment;
 import com.open9527.wanandroid.pkg.net.user.UserRequest;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @author open_9527
  * Create at 2021/1/12
  **/
 public class WanAndroidViewModel extends ViewModel {
 
-
     public final ObservableArrayList<TabBean> valueTabList = new ObservableArrayList<>();
     public final ObservableArrayList<Fragment> valueFragments = new ObservableArrayList<>();
     public final ObservableField<FragmentManager> valueFragmentManager = new ObservableField<>();
     public final ObservableInt valueDefaultIndex = new ObservableInt(1);
-    public final ObservableInt valueItemLayout = new ObservableInt(R.layout.main_tab_item);
 
     public final UserRequest userRequest = new UserRequest();
 
 
     public void initTab(@NonNull FragmentManager fragmentManager) {
-        createTabList();
-        createFragments();
-        valueFragmentManager.set(fragmentManager);
-    }
 
-
-    private void createTabList() {
         valueTabList.clear();
-        List<TabBean> tabList = new ArrayList<TabBean>() {{
-            add(new TabBean("project", R.color.color_text_sub, R.color.color_text_secondary, R.drawable.project_tab_icon));
-            add(new TabBean("article", R.color.color_text_sub, R.color.color_text_secondary, R.drawable.article_tab_icon));
-            add(new TabBean("share", R.color.color_text_sub, R.color.color_text_secondary, R.drawable.share_tab_icon));
-        }};
-        valueTabList.addAll(tabList);
-    }
+        valueTabList.add(new TabBean("project", R.drawable.project_tab_icon));
+        valueTabList.add(new TabBean("article", R.drawable.article_tab_icon));
+        valueTabList.add(new TabBean("share", R.drawable.share_tab_icon));
 
-    private void createFragments() {
         valueFragments.clear();
-        List<Fragment> tabList = new ArrayList<Fragment>() {{
-            add(ProjectFragment.newInstance());
-            add(ArticleFragment.newInstance());
-            add(ShareFragment.newInstance());
-        }};
-        valueFragments.addAll(tabList);
+        valueFragments.add(ProjectFragment.newInstance());
+        valueFragments.add(ArticleFragment.newInstance());
+        valueFragments.add(ShareFragment.newInstance());
 
+        valueFragmentManager.set(fragmentManager);
     }
 }

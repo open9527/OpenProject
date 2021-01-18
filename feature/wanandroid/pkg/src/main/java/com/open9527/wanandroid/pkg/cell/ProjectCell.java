@@ -10,6 +10,7 @@ import com.android.open9527.recycleview.adapter.BaseBindingCell;
 import com.android.open9527.recycleview.adapter.BaseBindingCellViewHolder;
 import com.open9527.wanandroid.pkg.BR;
 import com.open9527.wanandroid.pkg.R;
+import com.open9527.wanandroid.pkg.main.h5.H5Activity;
 import com.open9527.wanandroid.pkg.net.ContentVo;
 
 /**
@@ -46,6 +47,6 @@ public class ProjectCell extends BaseBindingCell<ProjectCell> {
 
     @Override
     public void onCellClick(View view, ProjectCell projectCell) {
-
+        H5Activity.startH5(projectCell.valueLink.get(),projectCell.valueTitle.get());
     }
 }

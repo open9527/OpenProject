@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 
 import com.android.open9527.common.page.BaseCommonActivity;
 import com.android.open9527.page.DataBindingConfig;
+import com.blankj.utilcode.util.AppUtils;
 import com.open9527.wanandroid.pkg.BR;
 import com.open9527.wanandroid.pkg.R;
 
@@ -33,15 +34,15 @@ public class WanAndroidActivity extends BaseCommonActivity {
         mViewModel.initTab(getSupportFragmentManager());
     }
 
-    @Override
-    public void initRequest() {
-//        mViewModel.userRequest.requestLoginApi("open_9527", "", OkHttpUtils.post(this));
-    }
+    private long exitTime;
 
     @Override
-    public void initEvent() {
-        mViewModel.userRequest.getLoginLiveData().observe(this, objectDataResult -> {
-
-        });
+    public void onBackPressed() {
+        if ((System.currentTimeMillis() - exitTime) > 2000) {
+            showShortToast("再按一次退出程序");
+            exitTime = System.currentTimeMillis();
+        } else {
+            AppUtils.exitApp();
+        }
     }
 }

@@ -25,8 +25,7 @@ public class LauncherActivity extends BaseCommonActivity {
     @Override
     protected DataBindingConfig getDataBindingConfig() {
         return new DataBindingConfig(R.layout.launcher_activity, BR.vm, mViewModel)
-                .addBindingParam(BR.click, new ClickProxy())
-                ;
+                .addBindingParam(BR.click, new ClickProxy()) ;
     }
 
     public static class ClickProxy {

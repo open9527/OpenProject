@@ -1,6 +1,7 @@
 package com.android.open9527.common.page;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -40,6 +41,10 @@ public abstract class BaseCommonActivity extends BaseActivity implements ICommon
         initEvent();
         initRequest();
     }
+
+
+
+
 
     protected void showLongToast(String text) {
         ToastUtils.showLong(text);

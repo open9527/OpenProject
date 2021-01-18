@@ -28,14 +28,13 @@
             android:background="@color/color_line_main"
             app:layout_constraintTop_toTopOf="@+id/tab_layout" />
 
-        <com.google.android.material.tabs.TabLayout
+        <com.open9527.wanandroid.pkg.widget.MainTabLayout
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_48"
             app:bindTabLayoutDefaultIndex="@{vm.valueDefaultIndex}"
             app:bindTabLayoutFragmentList="@{vm.valueFragments}"
             app:bindTabLayoutFragmentManager="@{vm.valueFragmentManager}"
-            app:bindTabLayoutItemLayout="@{vm.valueItemLayout}"
             app:bindTabLayoutTabBeanData="@{vm.valueTabList}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:tabIndicatorHeight="0dp"

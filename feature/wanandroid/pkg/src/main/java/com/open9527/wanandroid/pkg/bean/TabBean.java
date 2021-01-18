@@ -22,12 +22,18 @@ public class TabBean implements Serializable {
 
     }
 
-    public TabBean(String defaultText, int defaultTextColor, int selectedTextColor, int defaultIcon) {
+    public TabBean(String defaultText) {
         this.defaultText = defaultText;
-        this.defaultTextColor = defaultTextColor;
-        this.selectedTextColor = selectedTextColor;
+    }
+
+    public TabBean(String defaultText, int defaultIcon) {
+        this.defaultText = defaultText;
         this.defaultIcon = defaultIcon;
     }
+
+
+
+
 
     public String getDefaultText() {
         return defaultText;

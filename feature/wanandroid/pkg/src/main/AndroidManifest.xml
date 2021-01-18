@@ -8,5 +8,11 @@
             android:label="WanAndroid"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".main.h5.H5Activity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="H5Activity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
     </application>
 </manifest>

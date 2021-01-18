@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="com.open9527.wanandroid.pkg.R" />
+
         <variable
             name="defaultIcon"
             type="Integer" />
@@ -16,14 +18,6 @@
         <variable
             name="selectedText"
             type="String" />
-
-        <variable
-            name="defaultTextColor"
-            type="Integer" />
-
-        <variable
-            name="selectedTextColor"
-            type="Integer" />
 
         <variable
             name="drawableHigh"
@@ -48,22 +42,6 @@
         android:layout_height="@dimen/offset_64"
         tools:ignore="HardcodedText">
 
-        <!--        <ImageView-->
-        <!--            android:id="@+id/iv_icon"-->
-        <!--            android:layout_width="@dimen/size_25"-->
-        <!--            android:layout_height="@dimen/size_25"-->
-        <!--            app:bindIvResId="@{defaultIcon}"-->
-        <!--            app:layout_constraintBottom_toTopOf="@+id/tv_title"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toTopOf="parent"-->
-        <!--            tools:src="@color/bittersweet" />-->
-
-        <!-- app:bindText="@{defaultText}"
-            app:bindTextColor="@{defaultTextColor}"-->
-
-        <!-- app:bindTextDefaultDrawableTop="@{defaultIcon}"
-            app:bindTextSelectedDrawableTop="@{defaultIcon}"-->
         <com.android.open9527.common.widget.StateSwitchTextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
@@ -72,14 +50,14 @@
             android:singleLine="true"
             app:bindTextDefaultDrawableTop="@{defaultIcon}"
             app:bindTextDefaultText="@{defaultText}"
-            app:bindTextDefaultTextColor="@{defaultTextColor}"
+            app:bindTextDefaultTextColor="@{R.color.color_text_sub}"
             app:bindTextDrawableHigh="@{drawableHigh}"
             app:bindTextDrawablePadding="@{10}"
             app:bindTextDrawableWidth="@{drawableWidth}"
             app:bindTextSelect="@{select}"
             app:bindTextSelectedDrawableTop="@{defaultIcon}"
             app:bindTextSelectedText="@{selectedText}"
-            app:bindTextSelectedTextColor="@{selectedTextColor}"
+            app:bindTextSelectedTextColor="@{R.color.color_text_secondary}"
             app:bindViewIsVisibility="@{!select}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

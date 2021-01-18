@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
@@ -15,6 +16,9 @@ import androidx.annotation.RequiresApi;
 import androidx.databinding.BindingAdapter;
 
 import com.blankj.utilcode.util.Utils;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 
 public class WebViewBindingAdapter {
 
@@ -52,7 +56,17 @@ public class WebViewBindingAdapter {
     public static void setBindH5Url(WebView webView, String url) {
         if (webView == null) return;
         if (TextUtils.isEmpty(url)) return;
-        webView.setWebViewClient(new WebViewClient());
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                Log.i("WebViewClient", url);
+                if (url.startsWith("http://") || url.startsWith("https://")) {
+                    return super.shouldOverrideUrlLoading(view, url);
+                }
+                return true;
+            }
+
+        });
         webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);

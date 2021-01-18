@@ -16,7 +16,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/size_10">
+        android:padding="@dimen/size_10"
+        app:bindViewClick="@{v->cell.onCellClick(v,cell)}">
 
         <com.android.open9527.common.widget.StateSwitchTextView
             android:id="@+id/tv_title"
