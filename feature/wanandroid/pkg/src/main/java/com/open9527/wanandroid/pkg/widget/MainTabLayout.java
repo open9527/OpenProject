@@ -40,7 +40,7 @@ public class MainTabLayout extends TabLayout {
     }
 
     public void init(@NonNull FragmentManager fragmentManager, @NonNull List<Fragment> fragmentList, int defaultIndex, List<TabBean> tabBeans) {
-        ViewPager viewPager = getRootView().findViewById(R.id.view_pager);
+        ViewPager viewPager = getRootView().findViewById(R.id.main_view_pager);
         if (viewPager != null) {
             viewPager.setOffscreenPageLimit(fragmentList.size());
             viewPager.setAdapter(new CommonFragmentPagerAdapter(fragmentManager, fragmentList));
@@ -51,7 +51,6 @@ public class MainTabLayout extends TabLayout {
                     final ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.main_tab_item, null, false);
                     binding.setVariable(BR.defaultIcon, tabBeans.get(i).getDefaultIcon());
                     binding.setVariable(BR.defaultText, tabBeans.get(i).getDefaultText());
-                    binding.setVariable(BR.selectedText, tabBeans.get(i).getDefaultText());
                     binding.setVariable(BR.select, i == defaultIndex);
                     binding.setVariable(BR.drawableWidth, i == defaultIndex ? 60 : 50);
                     binding.setVariable(BR.drawableHigh, i == defaultIndex ? 60 : 50);

@@ -18,6 +18,7 @@ dependencies {
     api project(gradle.getUnionPath(":lib:crash"))
     api project(gradle.getUnionPath(":lib:permission"))
     api project(gradle.getUnionPath(":lib:recycleview"))
+    api project(gradle.getUnionPath(":lib:titlebar"))
 
     api project(gradle.getUnionPath(":lib:okhttp"))
     api Config.depConfig.gson

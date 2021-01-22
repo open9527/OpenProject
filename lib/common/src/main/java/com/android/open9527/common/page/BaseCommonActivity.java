@@ -31,7 +31,7 @@ public abstract class BaseCommonActivity extends BaseActivity implements ICommon
 
     @Override
     public void initStatusBar() {
-        BarUtils.setStatusBarColor(this, Color.TRANSPARENT);
+        BarUtils.transparentStatusBar(this);
         BarUtils.setStatusBarLightMode(this, true);
     }
 

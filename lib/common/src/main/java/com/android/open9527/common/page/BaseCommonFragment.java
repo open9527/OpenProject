@@ -65,6 +65,7 @@ public abstract class BaseCommonFragment extends BaseFragment implements ICommon
     @Override
     public void onResume() {
         super.onResume();
+        initStatusBar();
         if (isFirstLoad) {
             initRequest();
             isFirstLoad = false;

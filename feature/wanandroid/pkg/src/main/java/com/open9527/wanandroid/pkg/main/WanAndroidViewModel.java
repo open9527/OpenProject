@@ -2,6 +2,7 @@ package com.open9527.wanandroid.pkg.main;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableArrayList;
+import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableInt;
 import androidx.fragment.app.Fragment;
@@ -20,6 +21,8 @@ import com.open9527.wanandroid.pkg.net.user.UserRequest;
  * Create at 2021/1/12
  **/
 public class WanAndroidViewModel extends ViewModel {
+
+
 
     public final ObservableArrayList<TabBean> valueTabList = new ObservableArrayList<>();
     public final ObservableArrayList<Fragment> valueFragments = new ObservableArrayList<>();

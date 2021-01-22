@@ -46,10 +46,10 @@ public class StateSwitchTextView extends FontTextView {
     }
 
     private void setTextImage() {
+        setDrawableBounds();
         if (mStateSwitchConfig.getDrawablePadding() >= 0) {
             setCompoundDrawablePadding(mStateSwitchConfig.getDrawablePadding());
         }
-        setDrawableBounds();
     }
 
     private void setText() {

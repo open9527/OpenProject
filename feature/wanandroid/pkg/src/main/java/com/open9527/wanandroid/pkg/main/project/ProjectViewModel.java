@@ -1,7 +1,12 @@
 package com.open9527.wanandroid.pkg.main.project;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableArrayList;
+import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableInt;
 import androidx.fragment.app.Fragment;
@@ -23,6 +28,9 @@ import java.util.List;
 public class ProjectViewModel extends ViewModel {
 
     public final ObservableField<String> valueTitle = new ObservableField<>("Project");
+    public final ObservableField<Drawable> valueTitleBarBg = new ObservableField<>(new ColorDrawable(Color.WHITE));
+
+
 
     public final ObservableArrayList<TabBean> valueTabList = new ObservableArrayList<>();
     public final ObservableArrayList<Fragment> valueFragments = new ObservableArrayList<>();

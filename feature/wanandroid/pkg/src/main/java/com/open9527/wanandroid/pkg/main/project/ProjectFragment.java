@@ -3,6 +3,8 @@ package com.open9527.wanandroid.pkg.main.project;
 import com.android.open9527.common.page.BaseCommonFragment;
 import com.android.open9527.okhttp.OkHttpUtils;
 import com.android.open9527.page.DataBindingConfig;
+import com.blankj.utilcode.util.BarUtils;
+import com.blankj.utilcode.util.LogUtils;
 import com.open9527.wanandroid.pkg.BR;
 import com.open9527.wanandroid.pkg.R;
 
@@ -12,35 +14,38 @@ import com.open9527.wanandroid.pkg.R;
  **/
 public class ProjectFragment extends BaseCommonFragment {
 
-
     private ProjectViewModel mViewModel;
 
     public static ProjectFragment newInstance() {
         return new ProjectFragment();
     }
 
+
     @Override
     protected void initViewModel() {
         mViewModel = getFragmentScopeViewModel(ProjectViewModel.class);
+
     }
 
     @Override
     protected DataBindingConfig getDataBindingConfig() {
         return new DataBindingConfig(R.layout.project_fragment, BR.vm, mViewModel);
-
     }
+
 
     @Override
     public void initRequest() {
         super.initRequest();
         requestProjectTree();
+        LogUtils.i(TAG, "getStatusBarHeight: " + BarUtils.getStatusBarHeight());
+        LogUtils.i(TAG, "getNavBarHeight: " + BarUtils.getNavBarHeight());
     }
 
     @Override
     public void initEvent() {
         super.initEvent();
         mViewModel.projectRequest.getProjectTreeLiveData().observe(getViewLifecycleOwner(), listDataResult -> {
-            mViewModel.initTab(getChildFragmentManager(),listDataResult.getResult());
+            mViewModel.initTab(getChildFragmentManager(), listDataResult.getResult());
         });
 
     }

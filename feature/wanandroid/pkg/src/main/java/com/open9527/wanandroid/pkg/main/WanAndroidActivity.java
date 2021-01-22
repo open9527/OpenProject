@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import com.android.open9527.common.page.BaseCommonActivity;
 import com.android.open9527.page.DataBindingConfig;
 import com.blankj.utilcode.util.AppUtils;
+import com.blankj.utilcode.util.BarUtils;
 import com.open9527.wanandroid.pkg.BR;
 import com.open9527.wanandroid.pkg.R;
 

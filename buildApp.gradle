@@ -93,7 +93,7 @@ def configApkName() {
             def artifact = variant.getPackageApplicationProvider().get()
             artifact.outputDirectory = new File("${rootDir.path}/apk")
             artifact.outputScope.apkDatas.forEach { apkData ->
-                apkData.outputFileName = "util" + suffix +
+                apkData.outputFileName = "open9527" + suffix +
                         (variant.flavorName == "" ? "" : ("_" + variant.flavorName)) +
                         "_" + variant.versionName.replace(".", "_") +
                         "_" + variant.buildType.name +

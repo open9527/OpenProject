@@ -10,6 +10,7 @@ def modules = [
         ':lib:glide',
         ':lib:base',
         ':lib:common',
+        ':lib:titlebar',
 
         ':feature:launcher:app',
 
@@ -40,4 +41,3 @@ static def getUnionPath(String path) {
 }
 
 gradle.ext.getUnionPath = this.&getUnionPath
-

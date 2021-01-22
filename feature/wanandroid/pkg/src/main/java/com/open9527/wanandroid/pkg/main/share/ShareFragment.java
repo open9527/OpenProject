@@ -1,5 +1,6 @@
 package com.open9527.wanandroid.pkg.main.share;
 
+
 import com.android.open9527.common.binding.refresh.IRefresh;
 import com.android.open9527.common.page.BaseCommonFragment;
 import com.android.open9527.okhttp.OkHttpUtils;
@@ -11,6 +12,7 @@ import com.android.open9527.recycleview.layout_manager.WrapContentLinearLayoutMa
 import com.blankj.utilcode.util.LogUtils;
 import com.open9527.wanandroid.pkg.BR;
 import com.open9527.wanandroid.pkg.R;
+import com.open9527.wanandroid.pkg.main.WanAndroidViewModel;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 
 import okhttp3.Call;
@@ -28,6 +30,7 @@ public class ShareFragment extends BaseCommonFragment implements OnHttpListener 
         return new ShareFragment();
     }
 
+
     @Override
     protected void initViewModel() {
         mViewModel = getFragmentScopeViewModel(ShareViewModel.class);
@@ -41,6 +44,8 @@ public class ShareFragment extends BaseCommonFragment implements OnHttpListener 
                 .addBindingParam(BR.itemDecoration, new SpacesItemDecoration(mActivity).setFooterNoShowDivider(1).setParam(R.color.color_line_main, 10))
                 .addBindingParam(BR.adapter, new BaseBindingCellAdapter<>());
     }
+
+
 
     @Override
     public void initRequest() {

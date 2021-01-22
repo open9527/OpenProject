@@ -1,5 +1,6 @@
 package com.open9527.wanandroid.pkg.main.article;
 
+
 import com.android.open9527.common.binding.refresh.IRefresh;
 import com.android.open9527.common.page.BaseCommonFragment;
 import com.android.open9527.okhttp.OkHttpUtils;
@@ -25,6 +26,7 @@ public class ArticleFragment extends BaseCommonFragment implements OnHttpListene
         return new ArticleFragment();
     }
 
+
     @Override
     protected void initViewModel() {
         mViewModel = getFragmentScopeViewModel(ArticleViewModel.class);
@@ -38,6 +40,7 @@ public class ArticleFragment extends BaseCommonFragment implements OnHttpListene
                 .addBindingParam(BR.itemDecoration, new SpacesItemDecoration(mActivity).setParam(R.color.color_line_main, 10))
                 .addBindingParam(BR.adapter, new BaseBindingCellAdapter<>());
     }
+
 
     @Override
     public void initRequest() {
