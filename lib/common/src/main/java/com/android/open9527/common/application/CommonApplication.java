@@ -1,8 +1,14 @@
 package com.android.open9527.common.application;
 
+import android.content.ComponentCallbacks2;
+import android.content.res.Configuration;
+
+import androidx.annotation.NonNull;
+
 import com.android.open9527.base.application.BaseApplication;
 import com.android.open9527.common.BuildConfig;
 import com.android.open9527.common.net.data.RequestHandler;
+import com.android.open9527.common.net.glide.ImageLoadUtils;
 import com.android.open9527.common.net.okhttp.OkHttpClientUtils;
 import com.android.open9527.common.net.server.ReleaseServer;
 import com.android.open9527.common.net.server.TestServer;
@@ -15,6 +21,7 @@ import com.android.open9527.okhttp.config.IRequestServer;
 import com.android.open9527.okhttp.model.HttpHeaders;
 import com.android.open9527.okhttp.model.HttpParams;
 import com.blankj.utilcode.util.AppUtils;
+import com.blankj.utilcode.util.LogUtils;
 import com.franmontiel.persistentcookiejar.ClearableCookieJar;
 import com.franmontiel.persistentcookiejar.PersistentCookieJar;
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
@@ -41,6 +48,37 @@ public class CommonApplication extends BaseApplication {
 //        InitializeService.start(this);
 //        initCrash();
         initOkHttp();
+        registerGlide();
+    }
+
+    private void registerGlide() {
+        //Glide低内存优化操作
+        registerComponentCallbacks(new ComponentCallbacks2() {
+            @Override
+            public void onTrimMemory(int level) {
+                //HOME键退出应用程序
+                //程序在内存清理的时候执行
+                if (level == TRIM_MEMORY_UI_HIDDEN) {
+                    ImageLoadUtils.clearMemory(getApplicationContext());
+                }
+                ImageLoadUtils.trimMemory(getApplicationContext(), level);
+
+//                LogUtils.i("registerGlide", "onTrimMemory:" + level);
+            }
+
+            @Override
+            public void onConfigurationChanged(@NonNull Configuration newConfig) {
+
+            }
+
+            @Override
+            public void onLowMemory() {
+                //低内存的时候执行
+                ImageLoadUtils.clearMemory(getApplicationContext());
+//                LogUtils.i("registerGlide", "onLowMemory:");
+            }
+        });
+
     }
 
     private void initCrash() {

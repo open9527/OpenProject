@@ -26,10 +26,13 @@ def modules = [
         ':feature:wanandroid:pkg',
         ':feature:wanandroid:app',
 
-
         ':feature:image:export',
         ':feature:image:pkg',
         ':feature:image:app',
+
+        ':feature:annotation:export',
+        ':feature:annotation:pkg',
+        ':feature:annotation:app',
 
 
 ]

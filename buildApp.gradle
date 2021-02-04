@@ -58,9 +58,11 @@ android {
 
 def getSuffix() {
 //    GLog.d("getSuffix:", project.path)
+//    GLog.d("getSuffix1:", project.path.substring(project.path.lastIndexOf(":"), project.path.length()).replace(":feature", ""))
 //    if (project.path == ":feature:launcher:app") return ""
     if (project.path == ":feature:launcher:feature_launcher_app") return ""
-    return project.path.replace(":", "_").substring("_feature".length(), project.path.length() - "_app".length())
+//    return project.path.replace(":", "_").substring("_feature".length(), project.path.length() - "_app".length())
+    return project.path.substring(project.path.lastIndexOf(":"), project.path.length()).replace(":feature", "")
 }
 
 

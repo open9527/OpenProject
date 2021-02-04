@@ -5,7 +5,7 @@
         <activity
             android:name=".load.ImageActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="ImageActivity"
+            android:label="Image"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
         <activity

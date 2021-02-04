@@ -194,7 +194,7 @@ public abstract class BaseRequest<T extends BaseRequest> {
                 } else {
                     key = field.getName();
                     // 如果是内部类则会出现一个字段名为 this$0 的外部类对象，会导致无限递归，这里要忽略掉，如果使用静态内部类则不会出现这个问题
-                    // 和规避 Kotlin 自动生成的伴生对象：https://github.com/getActivity/EasyHttp/issues/15
+                    // 和规避 Kotlin 自动生成的伴生对象
                     if (key.matches("this\\$\\d+") || "Companion".equals(key)) {
                         continue;
                     }

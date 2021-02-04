@@ -7,4 +7,5 @@ dependencies {
     api project(gradle.getUnionPath(":feature:okhttp:pkg"))
     api project(gradle.getUnionPath(":feature:wanandroid:pkg"))
     api project(gradle.getUnionPath(":feature:image:pkg"))
+    api project(gradle.getUnionPath(":feature:annotation:pkg"))
 }

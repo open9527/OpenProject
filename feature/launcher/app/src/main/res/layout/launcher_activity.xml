@@ -58,5 +58,14 @@
             android:gravity="center"
             android:text="image"
             app:bindViewClick="@{click.onClickListener}" />
+
+        <Button
+            android:id="@+id/btn_annotation"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="annotation"
+            app:bindViewClick="@{click.onClickListener}" />
     </LinearLayout>
 </layout>

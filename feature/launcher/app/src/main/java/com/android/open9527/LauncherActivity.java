@@ -30,21 +30,23 @@ public class LauncherActivity extends BaseCommonActivity {
     }
 
     public static class ClickProxy {
-        public View.OnClickListener onClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (view.getId() == R.id.btn_okhttp) {
-                    ActivityUtils.startActivity(OkHttpActivity.class);
+        public View.OnClickListener onClickListener = view -> {
+            if (view.getId() == R.id.btn_okhttp) {
+                ActivityUtils.startActivity(OkHttpActivity.class);
 
-                } else if (view.getId() == R.id.btn_permission) {
-                    ActivityUtils.startActivity(PermissionActivity.class);
+            } else if (view.getId() == R.id.btn_permission) {
+                ActivityUtils.startActivity(PermissionActivity.class);
 
-                } else if (view.getId() == R.id.btn_wanandroid) {
-                    ActivityUtils.startActivity(WanAndroidActivity.class);
+            } else if (view.getId() == R.id.btn_wanandroid) {
+                ActivityUtils.startActivity(WanAndroidActivity.class);
 
-                } else if (view.getId() == R.id.btn_image) {
-                    ActivityUtils.startActivity(ImageActivity.class);
-                }
+            } else if (view.getId() == R.id.btn_image) {
+                ActivityUtils.startActivity(ImageActivity.class);
+
+            } else if (view.getId() == R.id.btn_annotation) {
+                ActivityUtils.startActivity(ContentViewActivity.class);
+
+
             }
         };
     }

@@ -146,11 +146,18 @@ public final class ImageLoadUtils {
         GlideApp.with(imageView).clear(imageView);
     }
 
-    public static void clear(@NonNull Context context) {
+    public static void clearDiskCache(@NonNull Context context) {
         //ByIo
         GlideApp.get(context).clearDiskCache();
-        //runOnUiThread
-//        GlideApp.get(context).clearMemory();
     }
+
+    public static void clearMemory(@NonNull Context context){
+        GlideApp.get(context).clearMemory();
+    }
+
+  public static void trimMemory(@NonNull Context context, int level){
+        GlideApp.get(context).trimMemory(level);
+    }
+
 
 }
