@@ -102,7 +102,7 @@ public abstract class BaseBindingCell<CELL extends BaseBindingCell> implements I
 
     /*----------------------------------------operate-------------------------------------------------------*/
 
-//    public List<CELL> getItems() {
+    //    public List<CELL> getItems() {
 //        if (getAdapter() == null) return new ArrayList<>();
 //        return getAdapter().getItems();
 //    }
@@ -112,12 +112,11 @@ public abstract class BaseBindingCell<CELL extends BaseBindingCell> implements I
 //        return getAdapter().getItemCount();
 //    }
 //
-//    @SuppressWarnings("unchecked")
-//    public int getIndex() {
-//        if (getAdapter() == null) return -1;
-//        return getAdapter().getItems().indexOf((CELL) this);
-//    }
-
+    @SuppressWarnings("unchecked")
+    public int getIndex() {
+        if (getAdapter() == null) return -1;
+        return getAdapter().getItems().indexOf((CELL) this);
+    }
 
 
     /*----------------------------------------Click-------------------------------------------------------*/

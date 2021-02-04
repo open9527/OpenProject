@@ -27,6 +27,11 @@ def modules = [
         ':feature:wanandroid:app',
 
 
+        ':feature:image:export',
+        ':feature:image:pkg',
+        ':feature:image:app',
+
+
 ]
 
 modules.each {
@@ -41,3 +46,4 @@ static def getUnionPath(String path) {
 }
 
 gradle.ext.getUnionPath = this.&getUnionPath
+

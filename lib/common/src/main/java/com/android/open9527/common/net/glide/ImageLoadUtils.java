@@ -1,7 +1,9 @@
 package com.android.open9527.common.net.glide;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Bitmap;
+import android.view.View;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -52,18 +54,17 @@ public final class ImageLoadUtils {
         //是否只加载缓存图片
         requestOptions.onlyRetrieveFromCache(imageLoadConfig.getOnlyRetrieveFromCache());
 
-        //配置图片圆角
-        if (imageLoadConfig.getRadius() > 0 && imageLoadConfig.getCornerType() != null) {
-            requestOptions.apply(getBitmapTransform(imageLoadConfig.getRadius(), 0, imageLoadConfig.getCornerType()));
-        }
         //配置图片宽高(px)
         if (imageLoadConfig.getWidth() > 0 && imageLoadConfig.getHeight() > 0) {
             requestOptions.override(imageLoadConfig.getWidth(), imageLoadConfig.getHeight());
         }
-
+        //配置图片圆角
+        if (imageLoadConfig.getRadius() > 0 && imageLoadConfig.getCornerType() != null) {
+            requestOptions.apply(getBitmapTransform(imageLoadConfig.getRadius(), 0, imageLoadConfig.getCornerType()));
+        }
         GlideApp.with(imageLoadConfig.getImageView())
                 .asBitmap()
-                .load(imageLoadConfig.getUrl())
+                .load(imageLoadConfig.getUri() == null ? imageLoadConfig.getUrl() : imageLoadConfig.getUri())
                 .apply(requestOptions)
                 .into(new GlideBitmapImageViewTarget(imageLoadConfig.getImageView(), imageLoadConfig.getCallBack()));
     }
@@ -132,18 +133,24 @@ public final class ImageLoadUtils {
                 new RoundedCornersTransformation(radius, margin, cornerType));
     }
 
-    public static void resumeLoad(@NonNull ImageView imageView) {
-        GlideApp.with(imageView).resumeRequests();
+
+    public static void resumeLoad(@NonNull View view) {
+        GlideApp.with(view).resumeRequests();
     }
 
+    public static void pauseLoad(@NonNull View view) {
+        GlideApp.with(view).pauseRequests();
+    }
 
     public static void clearImageView(@NonNull ImageView imageView) {
         GlideApp.with(imageView).clear(imageView);
     }
 
-
-    public static void pauseLoad(@NonNull ImageView imageView) {
-        GlideApp.with(imageView).pauseRequests();
+    public static void clear(@NonNull Context context) {
+        //ByIo
+        GlideApp.get(context).clearDiskCache();
+        //runOnUiThread
+//        GlideApp.get(context).clearMemory();
     }
 
 }

@@ -1,4 +1,4 @@
-package com.open9527.wanandroid.pkg.bean;
+package com.android.open9527.common.bundle;
 
 import java.io.Serializable;
 

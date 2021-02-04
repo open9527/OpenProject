@@ -7,6 +7,8 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 
 import com.android.open9527.common.binding.refresh.IRefresh;
+import com.android.open9527.common.bundle.BaseBundleData;
+import com.android.open9527.common.bundle.BundleUtils;
 import com.android.open9527.common.page.BaseCommonFragment;
 import com.android.open9527.okhttp.OkHttpUtils;
 import com.android.open9527.page.DataBindingConfig;
@@ -15,8 +17,6 @@ import com.android.open9527.recycleview.decoration.SpacesItemDecoration;
 import com.android.open9527.recycleview.layout_manager.WrapContentLinearLayoutManager;
 import com.open9527.wanandroid.pkg.BR;
 import com.open9527.wanandroid.pkg.R;
-import com.open9527.wanandroid.pkg.bean.BaseBundleData;
-import com.open9527.wanandroid.pkg.bean.BundleCreate;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 
 /**
@@ -33,7 +33,7 @@ public class ProjectContentFragment extends BaseCommonFragment {
 
     public static ProjectContentFragment newInstance(String cId, String title) {
         ProjectContentFragment fragment = new ProjectContentFragment();
-        fragment.setArguments(BundleCreate.create(new BundleData(cId, title)));
+        fragment.setArguments(BundleUtils.create(new BundleData(cId, title)));
         return fragment;
     }
 
@@ -55,7 +55,8 @@ public class ProjectContentFragment extends BaseCommonFragment {
     @Override
     public void initView(@Nullable Bundle bundle) {
         super.initView(bundle);
-        mBundleData = getBundleData();
+//        mBundleData =  getBundleData();
+        mBundleData = BundleUtils.getBundleData(bundle);
         mViewModel.valueTitle.set(mBundleData.getTitle());
     }
 
@@ -113,6 +114,7 @@ public class ProjectContentFragment extends BaseCommonFragment {
         if (bundle == null) {
             return null;
         }
+
         return (T) bundle.getSerializable(BaseBundleData.BUNDLE_NAME);
     }
 }

@@ -1,6 +1,7 @@
 package com.open9527.wanandroid.pkg.main.h5;
 
-import com.open9527.wanandroid.pkg.bean.BaseBundleData;
+
+import com.android.open9527.common.bundle.BaseBundleData;
 
 /**
  * @author open_9527

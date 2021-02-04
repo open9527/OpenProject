@@ -30,7 +30,7 @@
             app:bindTextDefaultTextSize="@{14}"
             app:bindTextSelect="@{select}"
             app:bindTextSelectedText="@{title}"
-            app:bindTextSelectedTextColor="@{R.color.color_text_black}"
+            app:bindTextSelectedTextColor="@{R.color.color_text_white}"
             app:bindTextSelectedTextSize="@{16}"
             tools:text="tabItem" />
 

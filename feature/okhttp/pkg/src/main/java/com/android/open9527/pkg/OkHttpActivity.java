@@ -1,5 +1,6 @@
 package com.android.open9527.pkg;
 
+import android.media.MediaScannerConnection;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
@@ -108,9 +109,7 @@ public class OkHttpActivity extends BaseCommonActivity implements OnHttpListener
 
             } else if (view.getId() == R.id.btn_main_download) {
                 PermissionsManage.with(mActivity)
-                        // 不适配 Android 11 可以这样写
-                        //.permission(Permission.Group.STORAGE)
-                        // 适配 Android 11 需要这样写，这里无需再写 Permission.Group.STORAGE
+                        // 适配 Android 11
                         .permission(Permission.MANAGE_EXTERNAL_STORAGE)
                         .request(new OnPermissionCallback() {
 
@@ -224,10 +223,21 @@ public class OkHttpActivity extends BaseCommonActivity implements OnHttpListener
     }
 
     private void onDownloadRequest() {
+        String url = "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=alexander-london-mJaD10XeD7w-unsplash.jpg";
+        String fileName = url.substring(url.lastIndexOf("-") + 1);
+        //系统相册目录
+        String Pictures = Environment.getExternalStorageDirectory()
+                //系统图片
+                + File.separator + Environment.DIRECTORY_PICTURES
+                //系统下载
+//                + File.separator + Environment.DIRECTORY_DOWNLOADS
+                //可创建文件夹
+                + File.separator + "Open9527" + File.separator;
+
         OkHttpUtils.download(this)
                 .method(HttpMethod.GET)
-                .file(new File(Environment.getExternalStorageDirectory(), "unsplash.jpg"))
-                .url("https://images.unsplash.com/photo-1495360010541-f48722b34f7d?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=alexander-london-mJaD10XeD7w-unsplash.jpg")
+                .file(new File(new File(Pictures), fileName))
+                .url(url)
 //                .md5("")//md5校验
                 .listener(new OnDownloadListener() {
 
@@ -247,7 +257,11 @@ public class OkHttpActivity extends BaseCommonActivity implements OnHttpListener
                         ToastUtils.showShort("下载完成：" + file.getPath());
                         mFilePath = file.getPath();
 //                        LogUtils.i(TAG, "progress-->" + file.getPath());
-//                        installApk(MainActivity.this, file);
+
+                        //更新在相册中显示
+                        MediaScannerConnection.scanFile(mActivity, new String[]{file.getAbsolutePath()}, new String[]{"image/*"}, (path, uri) -> {
+                            LogUtils.i(TAG, "scanFile-->" + file.getPath());
+                        });
                     }
 
                     @Override

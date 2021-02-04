@@ -72,6 +72,11 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="LauncherActivity"
             android:launchMode="singleTop" />
+        <activity
+            android:name=".image.ImageActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="ImageActivity"
+            android:launchMode="singleTop" />
 
     </application>
 

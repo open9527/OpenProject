@@ -2,6 +2,7 @@ package com.android.open9527.titlebar;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -13,6 +14,8 @@ import android.widget.TextView;
  **/
 public class TitleBar extends FrameLayout implements View.OnClickListener,
         View.OnLayoutChangeListener {
+
+    private static final String TAG = "TitleBar";
 
     private TitleBarConfig mTitleBarConfig;
 
@@ -39,6 +42,7 @@ public class TitleBar extends FrameLayout implements View.OnClickListener,
     }
 
     public void init() {
+        Log.i(TAG, "init-->" + mTitleBarConfig.toString());
         if (mTitleBarConfig.getTitleBarInitialize() == null) {
             mTitleBarConfig.setTitleBarInitialize(new LightBarInitialize(mTitleBarConfig));
         }
@@ -62,6 +66,10 @@ public class TitleBar extends FrameLayout implements View.OnClickListener,
         addView(mLineView, 3);
 
         addOnLayoutChangeListener(this);
+
+        mTitleView.setOnClickListener(this);
+        mLeftView.setOnClickListener(this);
+        mRightView.setOnClickListener(this);
 
     }
 

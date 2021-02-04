@@ -1,47 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="com.open9527.wanandroid.pkg.R" />
 
         <variable
             name="vm"
             type="com.open9527.wanandroid.pkg.main.project.ProjectViewModel" />
 
+        <variable
+            name="addMarginTop"
+            type="androidx.databinding.ObservableBoolean" />
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <com.open9527.wanandroid.pkg.widget.ProjectTabLayout
-            android:id="@+id/tab_layout"
+        <View
+            android:id="@+id/view_status_bar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:bindViewBgDrawable="@{vm.valueTitleBarBg}"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.android.open9527.titlebar.TitleBar
+            android:id="@+id/title_bar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_48"
-            app:bindTabLayoutDefaultIndex="@{vm.valueDefaultIndex}"
-            app:bindTabLayoutFragmentList="@{vm.valueFragments}"
-            app:bindTabLayoutFragmentManager="@{vm.valueFragmentManager}"
-            app:bindTabLayoutTabBeanData="@{vm.valueTabList}"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tabGravity="center"
-            app:tabIndicatorHeight="0dp"
-            app:tabMaxWidth="0dp"
-            app:tabMinWidth="0dp"
-            app:tabMode="scrollable"
-            app:tabRippleColor="@android:color/transparent" />
+            app:bindTitleBarDrawableBg="@{vm.valueTitleBarBg}"
+            app:bindTitleBarStatusBarViewId="@{R.id.view_status_bar}"
+            tools:layout_height="?android:attr/actionBarSize">
+
+            <!--app:tabIndicatorFullWidth="true"-->
+            <!--app:tabIndicator="@drawable/layer_list_tab_indicator"
+                app:tabIndicatorColor="@color/pinkRose"-->
+            <com.open9527.wanandroid.pkg.widget.ProjectTabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_48"
+                app:bindTabLayoutDefaultIndex="@{vm.valueDefaultIndex}"
+                app:bindTabLayoutFragmentList="@{vm.valueFragments}"
+                app:bindTabLayoutFragmentManager="@{vm.valueFragmentManager}"
+                app:bindTabLayoutTabBeanData="@{vm.valueTabList}"
+                app:tabGravity="center"
+                app:tabIndicatorGravity="center"
+                app:tabMaxWidth="0dp"
+                app:tabMinWidth="0dp"
+                app:tabMode="scrollable"
+                app:tabContentStart="@dimen/size_10"
+                app:tabRippleColor="@android:color/transparent" />
+
+        </com.android.open9527.titlebar.TitleBar>
+
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_1"
-            android:background="@color/color_line_main"
-            app:layout_constraintBottom_toBottomOf="@+id/tab_layout" />
+            android:background="@color/color_line_main" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/project_view_pager"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tab_layout" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_bar" />
+    </LinearLayout>
 </layout>

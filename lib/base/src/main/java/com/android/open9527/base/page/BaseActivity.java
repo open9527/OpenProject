@@ -26,14 +26,14 @@ public abstract class BaseActivity extends DataBindingActivity {
     private ViewModelProvider mActivityProvider;
     private ViewModelProvider mApplicationProvider;
 
-    protected <T extends ViewModel> T getActivityScopeViewModel(@NonNull Class<T> modelClass) {
+    public  <T extends ViewModel> T getActivityScopeViewModel(@NonNull Class<T> modelClass) {
         if (mActivityProvider == null) {
             mActivityProvider = new ViewModelProvider(this);
         }
         return mActivityProvider.get(modelClass);
     }
 
-    protected <T extends ViewModel> T getApplicationScopeViewModel(@NonNull Class<T> modelClass) {
+    public <T extends ViewModel> T getApplicationScopeViewModel(@NonNull Class<T> modelClass) {
         if (mApplicationProvider == null) {
             mApplicationProvider = new ViewModelProvider((BaseApplication) this.getApplicationContext(),
                     getAppFactory(this));

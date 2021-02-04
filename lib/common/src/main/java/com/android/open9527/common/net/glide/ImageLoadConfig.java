@@ -1,6 +1,7 @@
 package com.android.open9527.common.net.glide;
 
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -25,6 +26,11 @@ public final class ImageLoadConfig  {
      * 图片url
      */
     private String url;
+
+    /**
+     * 图片uri
+     */
+    private Uri uri;
 
     /**
      * 图片圆角
@@ -90,6 +96,11 @@ public final class ImageLoadConfig  {
 
     public ImageLoadConfig setUrl(String url) {
         this.url = url;
+        return this;
+    }
+
+    public ImageLoadConfig setUri(Uri uri) {
+        this.uri = uri;
         return this;
     }
 
@@ -164,6 +175,10 @@ public final class ImageLoadConfig  {
 
     public String getUrl() {
         return url;
+    }
+
+    public Uri getUri() {
+        return uri;
     }
 
     public int getRadius() {

@@ -16,10 +16,6 @@
             type="String" />
 
         <variable
-            name="selectedText"
-            type="String" />
-
-        <variable
             name="drawableHigh"
             type="Integer" />
 
@@ -56,7 +52,7 @@
             app:bindTextDrawableWidth="@{drawableWidth}"
             app:bindTextSelect="@{select}"
             app:bindTextSelectedDrawableTop="@{defaultIcon}"
-            app:bindTextSelectedText="@{selectedText}"
+            app:bindTextSelectedText="@{defaultText}"
             app:bindTextSelectedTextColor="@{R.color.color_text_secondary}"
             app:bindViewIsVisibility="@{!select}"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="com.open9527.wanandroid.pkg.R" />
 
         <variable
             name="vm"
@@ -11,6 +14,10 @@
         <variable
             name="click"
             type="com.open9527.wanandroid.pkg.main.article.ArticleFragment.ClickProxy" />
+
+        <variable
+            name="addMarginTop"
+            type="androidx.databinding.ObservableBoolean" />
 
         <variable
             name="adapter"
@@ -25,9 +32,27 @@
             type="androidx.recyclerview.widget.RecyclerView.ItemDecoration" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/view_status_bar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:bindViewBgDrawable="@{vm.valueTitleBarBg}" />
+
+        <com.android.open9527.titlebar.TitleBar
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_48"
+            app:bindTitleBarDrawableBg="@{vm.valueTitleBarBg}"
+            app:bindTitleBarStatusBarViewId="@{R.id.view_status_bar}"
+            app:bindTitleBarTitleText="@{vm.valueTitle}"
+            app:bindTitleBarTitleTextColor="@{R.color.color_text_main}"
+            app:bindTitleBarTitleTextSize="@{16}"
+            tools:layout_height="?android:attr/actionBarSize" />
 
 
         <com.scwang.smart.refresh.layout.SmartRefreshLayout
@@ -61,5 +86,5 @@
 
         </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </layout>

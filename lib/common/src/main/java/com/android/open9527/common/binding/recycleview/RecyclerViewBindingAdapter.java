@@ -14,6 +14,7 @@ import com.android.open9527.recycleview.adapter.BaseBindingCellAdapter;
 import com.android.open9527.recycleview.layout_manager.WrapContentGridLayoutManager;
 import com.android.open9527.recycleview.layout_manager.WrapContentLinearLayoutManager;
 import com.android.open9527.recycleview.layout_manager.WrapContentStaggeredGridLayoutManager;
+import com.android.open9527.recycleview.scroll.RecycleViewScrollListener;
 
 import java.util.List;
 
@@ -88,8 +89,8 @@ public class RecyclerViewBindingAdapter {
             if (adapter instanceof BaseBindingCellAdapter) {
                 BaseBindingCellAdapter<BaseBindingCell> bindingCellAdapter = (BaseBindingCellAdapter) adapter;
                 if (list instanceof ObservableList) {
-                    bindingCellAdapter.submitItems((ObservableList)list,isRefresh);
-                }else {
+                    bindingCellAdapter.submitItems((ObservableList) list, isRefresh);
+                } else {
                     bindingCellAdapter.submitItems(list, isRefresh);
                 }
 
@@ -97,6 +98,12 @@ public class RecyclerViewBindingAdapter {
             }
 
         }
+    }
+
+    @BindingAdapter(value = {"bindRvScrollListener"}, requireAll = false)
+    public static void setBindingRecycleViewData(RecyclerView recyclerView, RecycleViewScrollListener scrollListener) {
+        if (recyclerView == null || scrollListener == null) return;
+        recyclerView.addOnScrollListener(scrollListener);
     }
 
 

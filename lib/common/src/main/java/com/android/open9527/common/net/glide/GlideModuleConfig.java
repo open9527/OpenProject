@@ -92,12 +92,15 @@ public class GlideModuleConfig extends AppGlideModule {
 //                .writeTimeout(30, TimeUnit.SECONDS)
 //                .build();
         OkHttpClient okHttpClient = OkHttpClientUtils.getClient().newBuilder()
-                .addInterceptor(new GlideHeadInterceptor())
-                .connectTimeout(30, TimeUnit.SECONDS)
-                .readTimeout(30, TimeUnit.SECONDS)
-                .writeTimeout(30, TimeUnit.SECONDS)
+//                .addInterceptor(new GlideHeadInterceptor())
+                .connectTimeout(10, TimeUnit.SECONDS)
+                .readTimeout(10, TimeUnit.SECONDS)
+                .writeTimeout(10, TimeUnit.SECONDS)
                 .build();
         registry.replace(GlideUrl.class, InputStream.class, new OkHttpLoader.Factory(okHttpClient));
+
+        //Hack to fix Glide outputting tons of log spam with ExifInterface errors
+//        registry.imageHeaderParsers.removeAll { it is ExifInterfaceImageHeaderParser }
     }
 
     @Override

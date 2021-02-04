@@ -1,0 +1,15 @@
+apply {
+    from "${project.rootDir.path}/buildLib.gradle"
+}
+android {
+    //支持dataBinding
+    dataBinding {
+        enabled true
+    }
+}
+
+dependencies {
+    api project(gradle.getUnionPath(":feature:image:export"))
+
+    api Config.depConfig.photo_view
+}

@@ -62,7 +62,6 @@ public class LightBarInitialize extends BaseInitialize {
     @Override
     public TextView getRightView(Context context) {
         TextView rightView = super.getRightView(context);
-
         if (mTitleBarConfig.getRightDrawable() != null) {
             rightView.setCompoundDrawablesWithIntrinsicBounds(null, null, mTitleBarConfig.getRightDrawable(), null);
             rightView.setCompoundDrawablePadding((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, rightView.getResources().getDisplayMetrics()));

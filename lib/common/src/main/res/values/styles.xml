@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/color_bg_white</item>
         <item name="colorPrimaryDark">@color/color_bg_black</item>
         <item name="colorAccent">@color/color_app_theme</item>
+<!--        <item name="android:windowContentTransitions">true</item>-->
         <!--android 10暗黑模式-->
         <item name="android:forceDarkAllowed" tools:ignore="NewApi">true</item>
 <!--        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>-->

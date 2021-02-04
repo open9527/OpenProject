@@ -298,4 +298,37 @@ public final class TitleBarConfig {
     public OnTitleBarListener getTitleBarListener() {
         return titleBarListener;
     }
+
+    @Override
+    public String toString() {
+        return "TitleBarConfig{" +
+                "leftText='" + leftText + '\'' +
+                ", leftTextSize=" + leftTextSize +
+                ", leftTextColor=" + leftTextColor +
+                ", leftDrawable=" + leftDrawable +
+                ", leftDrawableWidth=" + leftDrawableWidth +
+                ", leftDrawableHigh=" + leftDrawableHigh +
+                ", leftDrawablePadding=" + leftDrawablePadding +
+                ", titleText='" + titleText + '\'' +
+                ", titleTextSize=" + titleTextSize +
+                ", titleTextColor=" + titleTextColor +
+                ", titleDrawable=" + titleDrawable +
+                ", titleDrawableWidth=" + titleDrawableWidth +
+                ", titleDrawableHigh=" + titleDrawableHigh +
+                ", titleDrawablePadding=" + titleDrawablePadding +
+                ", rightText='" + rightText + '\'' +
+                ", rightTextSize=" + rightTextSize +
+                ", rightTextColor=" + rightTextColor +
+                ", rightDrawable=" + rightDrawable +
+                ", rightDrawableWidth=" + rightDrawableWidth +
+                ", rightDrawableHigh=" + rightDrawableHigh +
+                ", rightDrawablePadding=" + rightDrawablePadding +
+                ", lineVisibility=" + lineVisibility +
+                ", lineBg=" + lineBg +
+                ", lineBgHigh=" + lineBgHigh +
+                ", titleBarBgDrawable=" + titleBarBgDrawable +
+                ", titleBarInitialize=" + titleBarInitialize +
+                ", titleBarListener=" + titleBarListener +
+                '}';
+    }
 }

@@ -4,6 +4,7 @@ import android.view.View;
 
 import com.android.feature.permission.pkg.PermissionActivity;
 import com.android.open9527.common.page.BaseCommonActivity;
+import com.android.open9527.image.pkg.load.ImageActivity;
 import com.android.open9527.page.DataBindingConfig;
 import com.android.open9527.pkg.OkHttpActivity;
 import com.blankj.utilcode.util.ActivityUtils;
@@ -25,7 +26,7 @@ public class LauncherActivity extends BaseCommonActivity {
     @Override
     protected DataBindingConfig getDataBindingConfig() {
         return new DataBindingConfig(R.layout.launcher_activity, BR.vm, mViewModel)
-                .addBindingParam(BR.click, new ClickProxy()) ;
+                .addBindingParam(BR.click, new ClickProxy());
     }
 
     public static class ClickProxy {
@@ -41,6 +42,8 @@ public class LauncherActivity extends BaseCommonActivity {
                 } else if (view.getId() == R.id.btn_wanandroid) {
                     ActivityUtils.startActivity(WanAndroidActivity.class);
 
+                } else if (view.getId() == R.id.btn_image) {
+                    ActivityUtils.startActivity(ImageActivity.class);
                 }
             }
         };

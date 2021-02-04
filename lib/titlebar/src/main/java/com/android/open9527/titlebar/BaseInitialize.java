@@ -21,6 +21,7 @@ public abstract class BaseInitialize implements TitleBarInitialize {
     @Override
     public TextView getLeftView(Context context) {
         TextView leftView = createTextView(context);
+        leftView.setPadding((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, leftView.getResources().getDisplayMetrics()), 0, 0, 0);
         leftView.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT, Gravity.START));
         leftView.setGravity(Gravity.CENTER_VERTICAL);
         leftView.setFocusable(true);
@@ -52,6 +53,7 @@ public abstract class BaseInitialize implements TitleBarInitialize {
     @Override
     public TextView getRightView(Context context) {
         TextView rightView = createTextView(context);
+        rightView.setPadding(0, 0, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, rightView.getResources().getDisplayMetrics()), 0);
         rightView.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT, Gravity.END));
         rightView.setGravity(Gravity.CENTER_VERTICAL);
         rightView.setFocusable(true);
@@ -79,7 +81,6 @@ public abstract class BaseInitialize implements TitleBarInitialize {
     public int getVerticalPadding(Context context) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 14, context.getResources().getDisplayMetrics());
     }
-
 
 
     private TextView createTextView(Context context) {

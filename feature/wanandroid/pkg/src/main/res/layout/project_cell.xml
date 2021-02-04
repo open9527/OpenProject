@@ -33,13 +33,13 @@
 
         <com.android.open9527.common.widget.LoadImageView
             android:id="@+id/iv_pic"
-            android:layout_width="200dp"
+            android:layout_width="150dp"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/size_10"
             app:bindIvHeight="@{400}"
             app:bindIvUrl="@{cell.valueImageUrl}"
-            app:bindIvWidth="@{300}"
-            app:layout_constraintDimensionRatio="3:4"
+            app:bindIvWidth="@{225}"
+            app:layout_constraintDimensionRatio="9:16"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 

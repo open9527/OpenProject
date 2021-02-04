@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="com.open9527.wanandroid.pkg.R" />
 
         <variable
             name="vm"
@@ -11,6 +14,7 @@
         <variable
             name="click"
             type="com.open9527.wanandroid.pkg.main.share.ShareFragment.ClickProxy" />
+
 
         <variable
             name="adapter"
@@ -25,10 +29,28 @@
             type="androidx.recyclerview.widget.RecyclerView.ItemDecoration" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
+        <com.android.open9527.titlebar.TitleBar
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:bindTitleBarDrawableBg="@{vm.valueTitleBarBg}"
+            tools:background="@color/color_text_black"
+            app:bindTitleBarTitleText="@{vm.valueTitle}"
+            app:bindTitleBarTitleTextColor="@{R.color.color_text_main}"
+            app:bindTitleBarTitleTextSize="@{16}"
+            tools:layout_height="?android:attr/actionBarSize">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@color/pinkRose" />
+
+        </com.android.open9527.titlebar.TitleBar>
 
         <com.scwang.smart.refresh.layout.SmartRefreshLayout
             android:id="@+id/refresh_layout"
@@ -53,7 +75,7 @@
                 app:bindRvIsRefresh="@{vm.valueIsRefresh}"
                 app:bindRvItemDecoration="@{itemDecoration}"
                 app:bindRvLayoutManager="@{layoutManager}"
-                app:bindRvList="@{vm.valueCells}"/>
+                app:bindRvList="@{vm.valueCells}" />
 
             <com.scwang.smart.refresh.footer.ClassicsFooter
                 android:layout_width="match_parent"
@@ -61,5 +83,5 @@
 
         </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </layout>
