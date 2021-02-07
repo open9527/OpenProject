@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.open9527.wanandroid.pkg.R" />
+
+        <variable
+            name="vm"
+            type="com.open9527.wanandroid.pkg.main.article.ArticleViewModel" />
+
+        <variable
+            name="click"
+            type="com.open9527.wanandroid.pkg.main.article.ArticleFragment.ClickProxy" />
+
+        <variable
+            name="addMarginTop"
+            type="androidx.databinding.ObservableBoolean" />
+
+        <variable
+            name="adapter"
+            type="androidx.recyclerview.widget.RecyclerView.Adapter" />
+
+        <variable
+            name="layoutManager"
+            type="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <variable
+            name="itemDecoration"
+            type="androidx.recyclerview.widget.RecyclerView.ItemDecoration" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/view_status_bar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:bindViewBgDrawable="@{vm.valueTitleBarBg}" />
+
+        <com.android.open9527.titlebar.TitleBar
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_48"
+            app:bindTitleBarDrawableBg="@{vm.valueTitleBarBg}"
+            app:bindTitleBarStatusBarViewId="@{R.id.view_status_bar}"
+            app:bindTitleBarTitleText="@{vm.valueTitle}"
+            app:bindTitleBarTitleTextColor="@{R.color.color_text_main}"
+            app:bindTitleBarTitleTextSize="@{16}"
+            tools:layout_height="?android:attr/actionBarSize" />
+
+
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:bindRefreshCloseHeaderOrFooter="@{vm.valueCloseHeaderOrFooter}"
+            app:bindRefreshListener="@{click.onRefreshListeners}"
+            app:bindRefreshNoMoreData="@{vm.valueNoMoreData}">
+
+            <com.scwang.smart.refresh.header.ClassicsHeader
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                app:bindRvAdapter="@{adapter}"
+                app:bindRvAnim="@{false}"
+                app:bindRvIsRefresh="@{vm.valueIsRefresh}"
+                app:bindRvItemDecoration="@{itemDecoration}"
+                app:bindRvLayoutManager="@{layoutManager}"
+                app:bindRvList="@{vm.valueCells}" />
+
+            <com.scwang.smart.refresh.footer.ClassicsFooter
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+    </LinearLayout>
+</layout>

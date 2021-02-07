@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.android.open9527.pkg.OkHttpViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:ignore="HardcodedText">
+
+        <LinearLayout
+            android:id="@+id/rg_language_languages"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <Button
+                android:id="@+id/btn_main_get"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Get 请求" />
+
+            <Button
+                android:id="@+id/btn_main_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Post 请求" />
+
+            <Button
+                android:id="@+id/btn_main_exec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="同步请求" />
+
+            <Button
+                android:id="@+id/btn_main_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="上传文件" />
+
+            <Button
+                android:id="@+id/btn_main_download"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="下载文件" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

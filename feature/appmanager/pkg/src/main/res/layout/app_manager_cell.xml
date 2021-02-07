@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.android.appmanager.pkg.R" />
+
+        <variable
+            name="cell"
+            type="com.android.appmanager.pkg.AppManagerCell" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bindViewClick="@{v->cell.onCellClick(v,cell)}"
+        app:bindViewLongClick="@{v->cell.onCellLongClick(v,cell)}">
+
+        <com.android.open9527.common.widget.StateSwitchImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="@dimen/size_80"
+            android:layout_height="@dimen/size_80"
+            android:layout_marginStart="@dimen/size_15"
+            app:bindIvDefaultImageDrawable="@{cell.valueImageDrawable}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.android.open9527.common.widget.StateSwitchTextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_15"
+            android:layout_marginTop="@dimen/size_15"
+            android:layout_marginEnd="@dimen/size_15"
+            android:ellipsize="marquee"
+            android:focusableInTouchMode="true"
+            android:singleLine="true"
+            app:bindTextDefaultText="@{cell.valueTitle}"
+            app:bindTextDefaultTextColor="@{R.color.color_text_main}"
+            app:bindTextDefaultTextSize="@{16}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_icon"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="2333"
+            tools:textColor="@color/color_text_main"
+            tools:textSize="@dimen/font_16" />
+
+        <com.android.open9527.common.widget.StateSwitchTextView
+            android:id="@+id/tv_pkg_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/size_15"
+            android:layout_marginTop="@dimen/size_4"
+            android:ellipsize="marquee"
+            android:focusableInTouchMode="true"
+            android:singleLine="true"
+            app:bindTextDefaultText="@{cell.valuePkgName}"
+            app:bindTextDefaultTextColor="@{R.color.color_text_sub}"
+            app:bindTextDefaultTextSize="@{14}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_icon"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            tools:text="com.android.appmanager.pkg"
+            tools:textColor="@color/color_text_sub"
+            tools:textSize="@dimen/font_14" />
+
+        <com.android.open9527.common.widget.StateSwitchTextView
+            android:id="@+id/tv_version_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/size_15"
+            android:layout_marginTop="@dimen/size_4"
+            android:ellipsize="marquee"
+            android:focusableInTouchMode="true"
+            android:singleLine="true"
+            app:bindTextDefaultText="@{cell.valueVersionName}"
+            app:bindTextDefaultTextColor="@{R.color.color_text_sub}"
+            app:bindTextDefaultTextSize="@{14}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_icon"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pkg_name"
+            tools:text="1.0.0"
+            tools:textColor="@color/color_text_sub"
+            tools:textSize="@dimen/font_14" />
+
+        <com.android.open9527.common.widget.StateSwitchTextView
+            android:id="@+id/tv_version_code"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/size_15"
+            android:layout_marginTop="@dimen/size_4"
+            android:layout_marginBottom="@dimen/size_15"
+            android:ellipsize="marquee"
+            android:focusableInTouchMode="true"
+            android:singleLine="true"
+            app:bindTextDefaultText="@{cell.valueVersionCode}"
+            app:bindTextDefaultTextColor="@{R.color.color_text_sub}"
+            app:bindTextDefaultTextSize="@{14}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_icon"
+            app:layout_constraintTop_toBottomOf="@+id/tv_version_name"
+            tools:text="100"
+            tools:textColor="@color/color_text_sub"
+            tools:textSize="@dimen/font_14" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

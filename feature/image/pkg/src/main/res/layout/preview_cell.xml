@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="cell"
+            type="com.android.open9527.image.pkg.preview.PreviewCell" />
+
+    </data>
+
+    <com.android.open9527.image.pkg.preview.LoadPhotoView
+        android:id="@+id/iv_pic"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_bg_black"
+        android:transitionName="@{cell.valueImageUrl}"
+        app:bindIvSkipMemoryCache="@{false}"
+        app:bindIvUrl="@{cell.valueImageUrl}"
+        app:bindPhotoViewClick="@{v->cell.onCellClick(v,cell)}"
+        app:bindPhotoViewLongClick="@{v->cell.onCellLongClick(v,cell)}"
+        tools:bindIvHeight="@{450}"
+        tools:bindIvWidth="@{800}"
+        tools:layout_constraintDimensionRatio="16:9" />
+
+</layout>

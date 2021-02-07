@@ -1,0 +1,29 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.android.open9527.image.pkg">
+
+    <application>
+        <activity
+            android:name=".load.ImageActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".preview.PreviewActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="PreviewActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".preview.Preview2Activity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="Preview2Activity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".gallery.GalleryActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="Preview2Activity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+    </application>
+</manifest>

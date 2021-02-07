@@ -1,0 +1,17 @@
+apply {
+    from "${project.rootDir.path}/buildLib.gradle"
+}
+
+
+android {
+    //支持dataBinding
+    dataBinding {
+        enabled true
+    }
+}
+
+dependencies {
+
+    api  project(gradle.getUnionPath(":feature:permission:export"))
+
+}
