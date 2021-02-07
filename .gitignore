@@ -11,3 +11,4 @@ local.properties
 /mavenLocal
 /reports
 */reports
+*/__api__.json

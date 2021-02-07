@@ -7,10 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.feature.permission.export.PermissionApi;
-import com.android.feature.permission.export.PermissionParam;
-import com.android.feature.permission.export.PermissionResult;
-import com.android.open9527.common.callback.ICommonCallBack;
 import com.android.open9527.common.net.glide.ImageLoadUtils;
 import com.android.open9527.common.page.BaseCommonActivity;
 import com.android.open9527.image.pkg.BR;
@@ -27,7 +23,6 @@ import com.android.open9527.recycleview.layout_manager.WrapContentGridLayoutMana
 import com.android.open9527.recycleview.scroll.RecycleViewScrollListener;
 import com.android.open9527.recycleview.scroll.RecycleViewScrollListener.IScrollListener;
 import com.android.open9527.titlebar.OnTitleBarListener;
-import com.blankj.utilcode.util.ApiUtils;
 import com.blankj.utilcode.util.LogUtils;
 
 /**
@@ -92,11 +87,11 @@ public class ImageActivity extends BaseCommonActivity {
 
         @Override
         public void onRightClick(View v) {
-//            GalleryActivity.start();
+            GalleryActivity.start();
 //            ApiUtils.getApi(PermissionApi.class).startPermission(new PermissionParam(" Permission", "Param"));
 
-            PermissionResult param = ApiUtils.getApi(PermissionApi.class).startPermissionForResult(new PermissionParam(" Permission", "Param"));
-            LogUtils.i(TAG, "param:" + param.toString());
+//            PermissionResult param = ApiUtils.getApi(PermissionApi.class).startPermissionForResult(new PermissionParam(" Permission", "Param"));
+//            LogUtils.i(TAG, "param:" + param.toString());
 
 //            iCommonCallBack = ApiUtils.getApi(PermissionApi.class).startPermissionCallBack(new PermissionParam(" Permission", "Param"));
 

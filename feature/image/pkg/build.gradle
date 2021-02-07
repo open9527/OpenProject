@@ -12,5 +12,5 @@ dependencies {
     api project(gradle.getUnionPath(":feature:image:export"))
     api Config.depConfig.photo_view
 
-    implementation project(gradle.getUnionPath(":feature:permission:export"))
+//    implementation project(gradle.getUnionPath(":feature:permission:export"))
 }
