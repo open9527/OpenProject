@@ -1,5 +1,7 @@
+//GLog.d(project.toString() + " -> lib")
 apply {
     plugin "com.android.library"
+
 }
 
 android {

@@ -1,6 +1,11 @@
+//GLog.d(project.toString() + " -> app")
 apply {
     plugin "com.android.application"
+    plugin "com.blankj.api"
 }
+
+configSigning()
+configApkName()
 
 android {
     compileSdkVersion Config.compileSdkVersion
@@ -11,17 +16,46 @@ android {
         applicationId Config.applicationId + suffix
         targetSdkVersion Config.targetSdkVersion
         multiDexEnabled true
+
+        // 仅保留中文语种的资源
+        resConfigs 'zh'
+
+        // 仅保留 xxhdpi 图片资源（目前主流分辨率 1920 * 1080）
+        resConfig 'xxhdpi'
+
+        // 仅保留两种架构的 so 库，根据 Bugly 统计得出
+        ndk {
+            // armeabi：万金油架构平台（占用率：0%）
+            // armeabi-v7a：曾经主流的架构平台（占用率：10%）
+            // arm64-v8a：目前主流架构平台（占用率：90%）
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
+        }
     }
 
     buildTypes {
         debug {
+            debuggable true
+            jniDebuggable true
+            // 移除无用的资源文件
+            shrinkResources false
+            // ZipAlign 优化
+            zipAlignEnabled false
+            // 设置混淆
             minifyEnabled false
+
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            applicationIdSuffix ".debug"
             resValue "string", "app_name", Config.appName + suffix + ".debug"
 
         }
+
         release {
+            debuggable false
+            jniDebuggable false
+            // 移除无用的资源文件
+            shrinkResources true
+            // ZipAlign 优化
+            zipAlignEnabled true
+            // 设置混淆
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             resValue "string", "app_name", Config.appName + suffix
@@ -31,6 +65,7 @@ android {
     packagingOptions {
         exclude 'META-INF/*'
     }
+
 
     dexOptions {
         preDexLibraries true
@@ -57,12 +92,15 @@ android {
 //}
 
 def getSuffix() {
-//    GLog.d("getSuffix:", project.path)
+    GLog.d("getSuffix:", project.path)
+    GLog.d("getSuffixName:", project.name)
 //    GLog.d("getSuffix1:", project.path.substring(project.path.lastIndexOf(":"), project.path.length()).replace(":feature", ""))
-//    if (project.path == ":feature:launcher:app") return ""
     if (project.path == ":feature:launcher:feature_launcher_app") return ""
-//    return project.path.replace(":", "_").substring("_feature".length(), project.path.length() - "_app".length())
-    return project.path.substring(project.path.lastIndexOf(":"), project.path.length()).replace(":feature", "")
+
+    //project.path= :feature:launcher:feature_annotation_app
+    //project.name= feature_annotation_app
+    return project.path.replace(":", "_").substring(":feature".length(), project.path.length() - ":app".length())
+//    return project.name.replace(" feature_", "");
 }
 
 
@@ -71,7 +109,7 @@ def configSigning() {
     File signPropertiesFile = file("${rootDir.path}/sign/keystore.properties")
     if (!signPropertiesFile.exists()) return
 
-    GLog.d("${project.toString()} sign start...")
+//    GLog.d("${project.toString()} sign start...")
     project.android {
         Properties properties = new Properties()
         properties.load(new FileInputStream(signPropertiesFile))
@@ -85,7 +123,7 @@ def configSigning() {
         }
         buildTypes.release.signingConfig signingConfigs.release
     }
-    GLog.d("${project.toString()} sign end...")
+//    GLog.d("${project.toString()} sign end...")
 }
 
 

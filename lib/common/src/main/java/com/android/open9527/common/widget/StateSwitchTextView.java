@@ -54,6 +54,7 @@ public class StateSwitchTextView extends FontTextView {
 
     private void setText() {
         setText(mStateSwitchConfig.getSelect() ? mStateSwitchConfig.getSelectedText() : mStateSwitchConfig.getDefaultText());
+//        setCustomText(mStateSwitchConfig.getSelect() ? mStateSwitchConfig.getSelectedText() : mStateSwitchConfig.getDefaultText());
 
         if (mStateSwitchConfig.getSelectedTextColor() > 0 || mStateSwitchConfig.getDefaultTextColor() > 0) {
             setTextColor(ContextCompat.getColor(getContext(), mStateSwitchConfig.getSelect() ? mStateSwitchConfig.getSelectedTextColor() : mStateSwitchConfig.getDefaultTextColor()));

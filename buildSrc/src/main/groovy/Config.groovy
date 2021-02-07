@@ -22,6 +22,7 @@ class Config {
 
     static depConfig = [
             plugin_gradle                  : "com.android.tools.build:gradle:$gradlePluginVersion",
+            api_gradle_plugin              : "com.blankj:api-gradle-plugin:1.5",
 
             androidx_appcompat             : "androidx.appcompat:appcompat:1.2.0",
             androidx_material              : "com.google.android.material:material:1.2.1",
