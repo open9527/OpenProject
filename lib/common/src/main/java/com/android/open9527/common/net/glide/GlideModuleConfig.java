@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 
 import com.android.open9527.common.R;
 import com.android.open9527.common.net.okhttp.OkHttpClientUtils;
-import com.android.open9527.glide.GlideHeadInterceptor;
 import com.android.open9527.glide.OkHttpLoader;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
@@ -75,7 +74,7 @@ public class GlideModuleConfig extends AppGlideModule {
         // 设置默认的加载占位图和加载出错图
         builder.setDefaultRequestOptions(new RequestOptions()
 //                .fallback()
-                .placeholder(R.drawable.common_image_loading)
+                .placeholder(R.drawable.common_image_placeholder)
                 .error(R.drawable.common_image_load_err));
     }
 

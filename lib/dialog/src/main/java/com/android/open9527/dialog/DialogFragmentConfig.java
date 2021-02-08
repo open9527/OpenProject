@@ -27,7 +27,7 @@ public final class DialogFragmentConfig {
     /*dimAmount #FLAG_DIM_BEHIND */
     private float dimAmount = 0.5f;
 
-    private QuickViewProvider quickViewProvider;
+    private IQuickView quickViewProvider;
 
     public DialogFragmentConfig() {
 
@@ -83,7 +83,7 @@ public final class DialogFragmentConfig {
         return this;
     }
 
-    public DialogFragmentConfig quickViewProvider(QuickViewProvider quickViewProvider) {
+    public DialogFragmentConfig quickViewProvider(IQuickView quickViewProvider) {
         this.quickViewProvider = quickViewProvider;
         return this;
     }
@@ -128,7 +128,7 @@ public final class DialogFragmentConfig {
         return dimAmount;
     }
 
-    public QuickViewProvider getQuickViewProvider() {
+    public IQuickView getQuickViewProvider() {
         return quickViewProvider;
     }
 }

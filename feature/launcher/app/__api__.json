@@ -1,7 +1,0 @@
-{
-  "ApiUtilsClass": "com.blankj.utilcode.util.ApiUtils",
-  "implApis": {
-    "com/android/feature/permission/export/PermissionApi": "{ implApiClass: com/android/feature/permission/pkg/impl/PermissionImpl, isMock: false }"
-  },
-  "noImplApis": []
-}

@@ -33,7 +33,7 @@ class Config {
             androidx_cardview              : "androidx.cardview:cardview:$androidxVersion",
             androidx_multidex              : "androidx.multidex:multidex:2.0.0",
 
-            utilcode                       : "com.blankj:utilcodex:1.30.4",
+            utilcode                       : "com.blankj:utilcodex:1.30.5",
 
             okhttp3                        : "com.squareup.okhttp3:okhttp:$okHttp3",
             gson                           : 'com.google.code.gson:gson:2.8.6',

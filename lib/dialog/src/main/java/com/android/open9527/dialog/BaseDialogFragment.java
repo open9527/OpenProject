@@ -20,14 +20,13 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
 
-
-public abstract class BaseDialogFragment extends DialogFragment implements DialogViewProvider {
+public abstract class BaseDialogFragment extends DialogFragment implements IDialogView {
 
     protected final String TAG = getClass().getSimpleName();
 
     protected FragmentActivity mActivity;
 
-    public BaseDialogFragment(Context context) {
+    public BaseDialogFragment(@NonNull Context context) {
         this.mActivity = getFragmentActivity(context);
     }
 
@@ -37,6 +36,7 @@ public abstract class BaseDialogFragment extends DialogFragment implements Dialo
         Dialog mDialog = getDialog();
         if (mDialog != null) {
             Window window = mDialog.getWindow();
+            assert window != null;
             setWindowStyle(window);
         }
     }
@@ -81,13 +81,13 @@ public abstract class BaseDialogFragment extends DialogFragment implements Dialo
     }
 
     @Override
-    public void onCancel(DialogInterface dialog) {
+    public void onCancel(@NonNull DialogInterface dialog) {
         super.onCancel(dialog);
         onCancel(this);
     }
 
     @Override
-    public void onDismiss(DialogInterface dialog) {
+    public void onDismiss(@NonNull DialogInterface dialog) {
         super.onDismiss(dialog);
         onDismiss(this);
     }
@@ -95,12 +95,9 @@ public abstract class BaseDialogFragment extends DialogFragment implements Dialo
     @Override
     public void dismiss() {
         closeSoftInput(getDialog());
-        Utils.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                if (Utils.isActivityAlive(mActivity)) {
-                    BaseDialogFragment.super.dismissAllowingStateLoss();
-                }
+        Utils.runOnUiThread(() -> {
+            if (Utils.isActivityAlive(mActivity)) {
+                BaseDialogFragment.super.dismissAllowingStateLoss();
             }
         });
     }

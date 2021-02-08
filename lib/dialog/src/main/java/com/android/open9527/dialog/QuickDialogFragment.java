@@ -5,6 +5,9 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import androidx.annotation.NonNull;
+
+import java.util.Objects;
 
 
 public class QuickDialogFragment extends BaseDialogFragment {
@@ -28,7 +31,7 @@ public class QuickDialogFragment extends BaseDialogFragment {
     }
 
     @Override
-    public void setWindowStyle(Window window) {
+    public void setWindowStyle(@NonNull Window window) {
         WindowManager.LayoutParams attributes = window.getAttributes();
         attributes.gravity = dialogFragmentConfig.getGravity();
         attributes.width = dialogFragmentConfig.getWidth();
@@ -39,12 +42,12 @@ public class QuickDialogFragment extends BaseDialogFragment {
     }
 
     @Override
-    public void initView(BaseDialogFragment dialog, View contentView) {
-        QuickViewProvider quickViewProvider = dialogFragmentConfig.getQuickViewProvider();
+    public void initView(@NonNull BaseDialogFragment dialog,@NonNull View contentView) {
+        IQuickView quickViewProvider = dialogFragmentConfig.getQuickViewProvider();
         if (quickViewProvider != null) {
             quickViewProvider.viewHolder(dialog, contentView);
         }
         setCancelable(dialogFragmentConfig.getCancelable());
-        getDialog().setCanceledOnTouchOutside(dialogFragmentConfig.getCanceledOnTouchOutside());
+        Objects.requireNonNull(getDialog()).setCanceledOnTouchOutside(dialogFragmentConfig.getCanceledOnTouchOutside());
     }
 }

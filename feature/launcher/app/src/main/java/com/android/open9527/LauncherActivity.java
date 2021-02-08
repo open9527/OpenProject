@@ -3,17 +3,12 @@ package com.android.open9527;
 import android.view.View;
 
 import com.android.appmanager.pkg.AppManagerActivity;
-import com.android.feature.permission.export.PermissionApi;
-import com.android.feature.permission.export.PermissionParam;
-import com.android.feature.permission.export.PermissionResult;
 import com.android.feature.permission.pkg.PermissionActivity;
-import com.android.feature.permission.pkg.impl.PermissionImpl;
 import com.android.open9527.common.page.BaseCommonActivity;
 import com.android.open9527.image.pkg.load.ImageActivity;
 import com.android.open9527.page.DataBindingConfig;
 import com.android.open9527.pkg.OkHttpActivity;
 import com.blankj.utilcode.util.ActivityUtils;
-import com.blankj.utilcode.util.ApiUtils;
 import com.open9527.wanandroid.pkg.main.WanAndroidActivity;
 
 /**

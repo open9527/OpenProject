@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="dialog"
+            type="com.android.open9527.common.dialog.CommonLoadDialog" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="@dimen/size_80"
+        android:layout_height="@dimen/size_80"
+        android:background="@color/color_translucent"
+        android:gravity="center">
+
+        <ProgressBar
+            android:indeterminateBehavior="repeat"
+            android:layout_width="@dimen/size_40"
+            android:layout_height="@dimen/size_40"
+            android:indeterminateDrawable="@drawable/common_pb_loading" />
+
+
+    </LinearLayout>
+</layout>

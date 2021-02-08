@@ -1,17 +1,17 @@
 package com.android.open9527.image.pkg.load;
 
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.core.view.ViewCompat;
 import androidx.databinding.ObservableField;
 
+import com.android.open9527.common.net.glide.ImageCallBack;
 import com.android.open9527.image.pkg.BR;
 import com.android.open9527.image.pkg.R;
 import com.android.open9527.recycleview.adapter.BaseBindingCell;
 import com.android.open9527.recycleview.adapter.BaseBindingCellViewHolder;
-
 
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
@@ -56,4 +56,22 @@ public class ImageCell extends BaseBindingCell<ImageCell> {
     public interface ICellClick {
         void onCellClick(View view, int index);
     }
+
+    public ImageCallBack imageCallBack =new ImageCallBack() {
+        @Override
+        public void onStart() {
+
+        }
+
+        @Override
+        public void onStop() {
+
+        }
+
+        @Override
+        public void onResourceReady(@NonNull Bitmap resource) {
+
+        }
+    };
+
 }

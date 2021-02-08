@@ -31,5 +31,19 @@
             app:layout_constraintDimensionRatio="16:9"
             app:layout_constraintTop_toTopOf="parent" />
 
+
+
+<!--        <ProgressBar-->
+<!--            android:id="@+id/pb_loading"-->
+<!--            android:layout_width="@dimen/size_40"-->
+<!--            android:layout_height="@dimen/size_40"-->
+<!--            android:indeterminateBehavior="repeat"-->
+<!--            android:indeterminateDrawable="@drawable/common_image_loading"-->
+<!--            android:visibility="visible"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/iv_pic"-->
+<!--            app:layout_constraintEnd_toEndOf="@+id/iv_pic"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/iv_pic"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/iv_pic" />-->
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -61,7 +61,7 @@ public class ImageActivity extends BaseCommonActivity {
 
     @Override
     public void initRequest() {
-        mViewModel.valueTitle.set(getTitle().toString());
+//        mViewModel.valueTitle.set(getTitle().toString());
         mViewModel.valueICellClick.set(iCellClick);
         mViewModel.getImageUrl("json/image.json");
 //        mViewModel.getImageUrl("json/image_imageslim.json");

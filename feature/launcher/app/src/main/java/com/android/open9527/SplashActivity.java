@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.annotation.pkg.annotation.eg.ContentView;
 import com.blankj.utilcode.util.BarUtils;
 
 /**
@@ -31,6 +30,11 @@ public class SplashActivity extends AppCompatActivity {
 //            finish();
 //        }, 5000);
 
+
+    }
+
+    @Override
+    public void onBackPressed() {
 
     }
 }

@@ -1,6 +1,7 @@
 package com.android.appmanager.pkg;
 
 import com.android.open9527.common.binding.refresh.IRefresh;
+import com.android.open9527.common.dialog.CommonLoadDialog;
 import com.android.open9527.common.page.BaseCommonActivity;
 import com.android.open9527.page.DataBindingConfig;
 import com.android.open9527.recycleview.adapter.BaseBindingCellAdapter;
@@ -36,6 +37,7 @@ public class AppManagerActivity extends BaseCommonActivity {
 
     @Override
     public void initRequest() {
+        createLoadDialog().show();
         requestAppsInfo();
     }
 
@@ -49,6 +51,7 @@ public class AppManagerActivity extends BaseCommonActivity {
             @Override
             public void onSuccess(List<AppUtils.AppInfo> result) {
                 mViewModel.initData(result);
+                createLoadDialog().dismiss();
             }
         });
     }
@@ -67,4 +70,13 @@ public class AppManagerActivity extends BaseCommonActivity {
         };
     }
 
+
+    private CommonLoadDialog mCommonLoadDialog;
+
+    private CommonLoadDialog createLoadDialog() {
+        if (mCommonLoadDialog == null) {
+            mCommonLoadDialog = CommonLoadDialog.newInstance(this);
+        }
+        return mCommonLoadDialog;
+    }
 }

@@ -40,7 +40,7 @@ public class AppManagerCell extends BaseBindingCell<AppManagerCell> {
 
     @Override
     public void onCellClick(View view, AppManagerCell appManagerCell) {
-        ToastUtils.showShort("长按复制app信息");
+        AppUtils.launchAppDetailsSettings(appManagerCell.valuePkgName.get());
     }
 
     @Override
@@ -53,11 +53,11 @@ public class AppManagerCell extends BaseBindingCell<AppManagerCell> {
 //        LogUtils.i(TAG, "获取应用签名的的 SHA256 值" + AppUtils.getAppSignaturesSHA256(valuePkgName.get()));
 //        LogUtils.i(TAG, "获取应用签名的的 MD5 值" + AppUtils.getAppSignaturesMD5(valuePkgName.get()));
         String stringBuilder =
-                "app名称:" + valueTitle.get() + "\r\n"
-                        + "app包名:" + valuePkgName.get() + "\r\n"
-                        + "app签名的SHA1 值:" + AppUtils.getAppSignaturesSHA1(valuePkgName.get()) + "\r\n"
-                        + "app签名的SHA256 值:" + AppUtils.getAppSignaturesSHA256(valuePkgName.get()) + "\r\n"
-                        + "app签名的MD5 值:" + AppUtils.getAppSignaturesMD5(valuePkgName.get()) + "\r\n";
+                "app名称: " + valueTitle.get() + "\r\n"
+                        + "app包名: " + valuePkgName.get() + "\r\n"
+                        + "app签名的SHA1 值: " + AppUtils.getAppSignaturesSHA1(valuePkgName.get()) + "\r\n"
+                        + "app签名的SHA256 值: " + AppUtils.getAppSignaturesSHA256(valuePkgName.get()) + "\r\n"
+                        + "app签名的MD5 值: " + AppUtils.getAppSignaturesMD5(valuePkgName.get()) + "\r\n";
         ClipboardUtils.copyText(stringBuilder);
         ToastUtils.showShort("复制成功!");
         return true;

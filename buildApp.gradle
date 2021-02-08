@@ -92,15 +92,10 @@ android {
 //}
 
 def getSuffix() {
-    GLog.d("getSuffix:", project.path)
-    GLog.d("getSuffixName:", project.name)
-//    GLog.d("getSuffix1:", project.path.substring(project.path.lastIndexOf(":"), project.path.length()).replace(":feature", ""))
+    
     if (project.path == ":feature:launcher:feature_launcher_app") return ""
 
-    //project.path= :feature:launcher:feature_annotation_app
-    //project.name= feature_annotation_app
     return project.path.replace(":", "_").substring(":feature".length(), project.path.length() - ":app".length())
-//    return project.name.replace(" feature_", "");
 }
 
 
