@@ -41,7 +41,7 @@ public class ShareFragment extends BaseCommonFragment implements OnHttpListener 
         return new DataBindingConfig(R.layout.share_fragment, BR.vm, mViewModel)
                 .addBindingParam(BR.click, new ClickProxy())
                 .addBindingParam(BR.layoutManager, new WrapContentLinearLayoutManager(mActivity))
-                .addBindingParam(BR.itemDecoration, new SpacesItemDecoration(mActivity).setFooterNoShowDivider(1).setParam(R.color.color_line_main, 10))
+                .addBindingParam(BR.itemDecoration, new SpacesItemDecoration(mActivity).setFooterNoShowDivider(1).setParam(R.color.common_line_color, 10))
                 .addBindingParam(BR.adapter, new BaseBindingCellAdapter<>());
     }
 

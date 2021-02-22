@@ -32,7 +32,7 @@ public class BannerBindingAdapter {
                     .setIndicatorSliderRadius(SizeUtils.dp2px(4))
                     .setIndicatorSliderWidth(SizeUtils.dp2px(4), SizeUtils.dp2px(8))
                     .setIndicatorHeight(SizeUtils.dp2px(4))
-                    .setIndicatorSliderColor(ColorUtils.getColor(R.color.color_bg_white), ColorUtils.getColor(R.color.color_bg_white))
+                    .setIndicatorSliderColor(ColorUtils.getColor(R.color.white), ColorUtils.getColor(R.color.white))
                     .setIndicatorStyle(IndicatorStyle.ROUND_RECT)
                     .setOnPageClickListener((clickedView, position) -> {
                         H5Activity.startH5(contentVoList.get(position).getLink(), contentVoList.get(position).getTitle());

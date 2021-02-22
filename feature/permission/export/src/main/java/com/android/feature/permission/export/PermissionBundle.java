@@ -6,11 +6,11 @@ import com.android.open9527.common.bundle.BaseBundleData;
  * @author open_9527
  * Create at 2021/2/7
  **/
-public class PermissionParam extends BaseBundleData {
+public class PermissionBundle extends BaseBundleData {
     private String name;
     private String type;
 
-    public PermissionParam(String name, String type) {
+    public PermissionBundle(String name, String type) {
         this.name = name;
         this.type = type;
     }

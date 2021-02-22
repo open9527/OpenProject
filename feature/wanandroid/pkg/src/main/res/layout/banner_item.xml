@@ -34,19 +34,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:alpha="0.4"
-            android:background="@color/color_bg_black"
+            android:background="@color/black"
             android:ellipsize="end"
             android:gravity="center"
             android:maxLines="1"
             android:padding="@dimen/size_10"
             app:bindTextDefaultText="@{title}"
-            app:bindTextDefaultTextColor="@{R.color.color_text_white}"
+            app:bindTextDefaultTextColor="@{R.color.white}"
             app:bindTextDefaultTextSize="@{16}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="疫情8大疑问，专家一次解答疫情8大疑问"
-            tools:textColor="@color/color_text_white"
+            tools:textColor="@color/white"
             tools:textSize="@dimen/font_16" />
 
 

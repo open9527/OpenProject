@@ -62,7 +62,7 @@ public class ProjectTabLayout extends TabLayout {
 //                View tabStripView = getChildAt(0);
 //                tabStripView.setBackground(new TabIndicatorDrawable(tabStripView, R.color.color_text_black));//设置背景 添加自定义下划线
                 setSelectedTabIndicator(getContext().getDrawable(R.drawable.layer_list_tab_indicator));
-                setSelectedTabIndicatorColor(ContextCompat.getColor(getContext(), R.color.aqua));
+                setSelectedTabIndicatorColor(ContextCompat.getColor(getContext(), R.color.gold));
 
                 Objects.requireNonNull(getTabAt(defaultIndex)).select();
 

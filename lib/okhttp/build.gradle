@@ -1,6 +1,4 @@
-apply {
-    from "${project.rootDir.path}/buildLib.gradle"
-}
+
 
 dependencies {
     api Config.depConfig.okhttp3

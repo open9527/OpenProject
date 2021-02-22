@@ -40,13 +40,13 @@
             android:focusableInTouchMode="true"
             android:singleLine="true"
             app:bindTextDefaultText="@{cell.valueTitle}"
-            app:bindTextDefaultTextColor="@{R.color.color_text_main}"
+            app:bindTextDefaultTextColor="@{R.color.common_text_color}"
             app:bindTextDefaultTextSize="@{16}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_icon"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="2333"
-            tools:textColor="@color/color_text_main"
+            tools:textColor="@color/common_text_color"
             tools:textSize="@dimen/font_16" />
 
         <com.android.open9527.common.widget.StateSwitchTextView
@@ -59,13 +59,13 @@
             android:focusableInTouchMode="true"
             android:singleLine="true"
             app:bindTextDefaultText="@{cell.valuePkgName}"
-            app:bindTextDefaultTextColor="@{R.color.color_text_sub}"
+            app:bindTextDefaultTextColor="@{R.color.common_text_sub_color}"
             app:bindTextDefaultTextSize="@{14}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_icon"
             app:layout_constraintTop_toBottomOf="@+id/tv_title"
             tools:text="com.android.appmanager.pkg"
-            tools:textColor="@color/color_text_sub"
+            tools:textColor="@color/common_text_sub_color"
             tools:textSize="@dimen/font_14" />
 
         <com.android.open9527.common.widget.StateSwitchTextView
@@ -78,13 +78,13 @@
             android:focusableInTouchMode="true"
             android:singleLine="true"
             app:bindTextDefaultText="@{cell.valueVersionName}"
-            app:bindTextDefaultTextColor="@{R.color.color_text_sub}"
+            app:bindTextDefaultTextColor="@{R.color.common_text_sub_color}"
             app:bindTextDefaultTextSize="@{14}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_icon"
             app:layout_constraintTop_toBottomOf="@+id/tv_pkg_name"
             tools:text="1.0.0"
-            tools:textColor="@color/color_text_sub"
+            tools:textColor="@color/common_text_sub_color"
             tools:textSize="@dimen/font_14" />
 
         <com.android.open9527.common.widget.StateSwitchTextView
@@ -98,14 +98,14 @@
             android:focusableInTouchMode="true"
             android:singleLine="true"
             app:bindTextDefaultText="@{cell.valueVersionCode}"
-            app:bindTextDefaultTextColor="@{R.color.color_text_sub}"
+            app:bindTextDefaultTextColor="@{R.color.common_text_sub_color}"
             app:bindTextDefaultTextSize="@{14}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_icon"
             app:layout_constraintTop_toBottomOf="@+id/tv_version_name"
             tools:text="100"
-            tools:textColor="@color/color_text_sub"
+            tools:textColor="@color/common_text_sub_color"
             tools:textSize="@dimen/font_14" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,7 @@ package com.android.feature.permission.pkg.impl;
 import androidx.annotation.NonNull;
 
 import com.android.feature.permission.export.PermissionApi;
-import com.android.feature.permission.export.PermissionParam;
+import com.android.feature.permission.export.PermissionBundle;
 import com.android.feature.permission.export.PermissionResult;
 import com.android.feature.permission.pkg.PermissionActivity;
 import com.android.open9527.common.callback.ICommonCallBack;
@@ -18,18 +18,18 @@ import com.blankj.utilcode.util.LogUtils;
 @ApiUtils.Api
 public class PermissionImpl extends PermissionApi {
     @Override
-    public void startPermission(@NonNull PermissionParam param) {
+    public void startPermission(@NonNull PermissionBundle param) {
         PermissionActivity.start(param);
     }
 
     @Override
-    public PermissionResult startPermissionForResult(@NonNull PermissionParam param) {
+    public PermissionResult startPermissionForResult(@NonNull PermissionBundle param) {
         PermissionActivity.start(param);
         return new PermissionResult("9527", "2333");
     }
 
     @Override
-    public ICommonCallBack startPermissionCallBack(@NonNull PermissionParam param) {
+    public ICommonCallBack startPermissionCallBack(@NonNull PermissionBundle param) {
         PermissionActivity.start(param);
         return new ICommonCallBack() {
             @Override

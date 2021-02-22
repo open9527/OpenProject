@@ -11,12 +11,12 @@ import com.blankj.utilcode.util.ApiUtils;
  **/
 public abstract class PermissionApi extends ApiUtils.BaseApi {
 
-    public abstract void startPermission(@NonNull PermissionParam param);
+    public abstract void startPermission(@NonNull PermissionBundle param);
 
-    public abstract PermissionResult startPermissionForResult(@NonNull PermissionParam param);
+    public abstract PermissionResult startPermissionForResult(@NonNull PermissionBundle param);
 
 
-    public abstract ICommonCallBack startPermissionCallBack(@NonNull PermissionParam param);
+    public abstract ICommonCallBack startPermissionCallBack(@NonNull PermissionBundle param);
 
 
 }

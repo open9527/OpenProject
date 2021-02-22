@@ -7,7 +7,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.android.feature.permission.export.PermissionParam;
+import com.android.feature.permission.export.PermissionBundle;
 import com.android.open9527.common.bundle.BundleUtils;
 import com.android.open9527.common.page.BaseCommonActivity;
 import com.android.open9527.page.DataBindingConfig;
@@ -35,7 +35,8 @@ public class PermissionActivity extends BaseCommonActivity {
 
     @Override
     protected DataBindingConfig getDataBindingConfig() {
-        return new DataBindingConfig(R.layout.permission_activity, BR.vm, mViewModel);
+        return new DataBindingConfig(R.layout.permission_activity, BR.vm, mViewModel)
+                .addBindingParam(BR.click, new ClickProxy());
     }
 
     @Override
@@ -43,19 +44,10 @@ public class PermissionActivity extends BaseCommonActivity {
         LogUtils.i(TAG, "initView");
         super.initView(bundle);
 
-        PermissionParam permissionParam = BundleUtils.getBundleData(bundle);
-        if (permissionParam!=null){
-            LogUtils.i(TAG, "permissionParam:" + permissionParam.toString());
-        }
-        findViewById(R.id.btn_main_request_1).setOnClickListener(clickListener);
-        findViewById(R.id.btn_main_request_2).setOnClickListener(clickListener);
-        findViewById(R.id.btn_main_request_3).setOnClickListener(clickListener);
-        findViewById(R.id.btn_main_request_4).setOnClickListener(clickListener);
-        findViewById(R.id.btn_main_request_5).setOnClickListener(clickListener);
-        findViewById(R.id.btn_main_request_6).setOnClickListener(clickListener);
-        findViewById(R.id.btn_main_request_7).setOnClickListener(clickListener);
-        findViewById(R.id.btn_main_request_8).setOnClickListener(clickListener);
-        findViewById(R.id.btn_main_app_details).setOnClickListener(clickListener);
+//        PermissionBundle permissionBundle = BundleUtils.getBundleData(bundle);
+//        if (permissionBundle == null) {
+//            throw new IllegalArgumentException("permissionBundle is null");
+//        }
     }
 
 
@@ -70,37 +62,39 @@ public class PermissionActivity extends BaseCommonActivity {
     }
 
 
-    public View.OnClickListener clickListener = view -> {
-        if (view.getId() == R.id.btn_main_request_1) {
-            requestCamera();
+    public  class ClickProxy {
+        public View.OnClickListener onClickListener = view -> {
+            if (view.getId() == R.id.btn_main_request_1) {
+                requestCamera();
 
-        } else if (view.getId() == R.id.btn_main_request_2) {
-            requestAudio();
+            } else if (view.getId() == R.id.btn_main_request_2) {
+                requestAudio();
 
-        } else if (view.getId() == R.id.btn_main_request_3) {
-            requestLocation();
+            } else if (view.getId() == R.id.btn_main_request_3) {
+                requestLocation();
 
-        } else if (view.getId() == R.id.btn_main_request_4) {
-            requestStorage(view);
+            } else if (view.getId() == R.id.btn_main_request_4) {
+                requestStorage(view);
 
-        } else if (view.getId() == R.id.btn_main_request_5) {
-            requestInstallPackages();
+            } else if (view.getId() == R.id.btn_main_request_5) {
+                requestInstallPackages();
 
-        } else if (view.getId() == R.id.btn_main_request_6) {
-            requestSystemAlertWindow();
+            } else if (view.getId() == R.id.btn_main_request_6) {
+                requestSystemAlertWindow();
 
-        } else if (view.getId() == R.id.btn_main_request_7) {
-            requestNotificationService();
+            } else if (view.getId() == R.id.btn_main_request_7) {
+                requestNotificationService();
 
-        } else if (view.getId() == R.id.btn_main_request_8) {
-            requestWriteSettings();
+            } else if (view.getId() == R.id.btn_main_request_8) {
+                requestWriteSettings();
 
-        } else if (view.getId() == R.id.btn_main_app_details) {
-            PermissionsManage.startApplicationDetails(this);
+            } else if (view.getId() == R.id.btn_main_app_details) {
+                PermissionsManage.startApplicationDetails(mActivity);
 
-        }
-    };
+            }
+        };
 
+    }
 
     private void requestCamera() {
         PermissionsManage.with(this)
@@ -299,7 +293,7 @@ public class PermissionActivity extends BaseCommonActivity {
 
     }
 
-    public static void start(@NonNull PermissionParam param) {
+    public static void start(@NonNull PermissionBundle param) {
         ActivityUtils.startActivity(BundleUtils.create(param), PermissionActivity.class);
     }
 

@@ -1,6 +1,5 @@
 package com.open9527.wanandroid.pkg.main.h5;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -35,15 +34,16 @@ public class H5Activity extends BaseCommonActivity {
     public void initView(@Nullable Bundle bundle) {
         super.initView(bundle);
         H5Bundle h5Bundle = BundleUtils.getBundleData(bundle);
+        if (h5Bundle == null) {
+            throw new IllegalArgumentException("H5Bundle is null");
+        }
         mViewModel.valueH5Url.set(h5Bundle.getUrl());
         mViewModel.valueTitle.set(h5Bundle.getTitle());
-
     }
 
     public static void startH5(@NonNull String url, String title) {
         ActivityUtils.startActivity(BundleUtils.create(new H5Bundle(url, title)), H5Activity.class);
     }
-
 
 
 }

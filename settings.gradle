@@ -1,56 +1,8 @@
-def modules = [
-        ':lib:page',
-        ':lib:dialog',
-        ':lib:permission',
-        ':lib:crash',
-        ':lib:recycleview',
-        ':lib:okhttp',
-        ':lib:glide',
-        ':lib:base',
-        ':lib:common',
-        ':lib:titlebar',
 
-        ':feature:launcher:app',
-//
-        ':feature:permission:export',
-        ':feature:permission:pkg',
-        ':feature:permission:app',
-
-        ':feature:okhttp:export',
-        ':feature:okhttp:pkg',
-        ':feature:okhttp:app',
-
-        ':feature:wanandroid:export',
-        ':feature:wanandroid:pkg',
-        ':feature:wanandroid:app',
-
-        ':feature:image:export',
-        ':feature:image:pkg',
-        ':feature:image:app',
-
-        ':feature:annotation:export',
-        ':feature:annotation:pkg',
-        ':feature:annotation:app',
-
-        ':feature:appmanager:export',
-        ':feature:appmanager:pkg',
-        ':feature:appmanager:app',
-
-]
-//GLog.d("setting.gradle")
-
-//ConfigUtils.addBuildListener(gradle)
-
-modules.each {
-    def unionPath = getUnionPath(it)
-    include unionPath
-    project(unionPath).projectDir = file(it.substring(1).replace(":", "/"))
-}
+ConfigUtils.addBuildListener(gradle)
 
 static def getUnionPath(String path) {
     return ":" + path.substring(1).replace(":", "_")
 }
-
-
 gradle.ext.getUnionPath = this.&getUnionPath
 

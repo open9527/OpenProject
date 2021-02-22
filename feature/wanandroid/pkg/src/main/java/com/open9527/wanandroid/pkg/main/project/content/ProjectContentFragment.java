@@ -47,7 +47,7 @@ public class ProjectContentFragment extends BaseCommonFragment {
         return new DataBindingConfig(R.layout.project_content_fragment, BR.vm, mViewModel)
                 .addBindingParam(BR.click, new ClickProxy())
                 .addBindingParam(BR.layoutManager, new WrapContentLinearLayoutManager(mActivity))
-                .addBindingParam(BR.itemDecoration, new SpacesItemDecoration(mActivity).setParam(R.color.color_line_main, 10))
+                .addBindingParam(BR.itemDecoration, new SpacesItemDecoration(mActivity).setParam(R.color.common_line_color, 10))
                 .addBindingParam(BR.adapter, new BaseBindingCellAdapter<>());
 
     }
@@ -57,6 +57,9 @@ public class ProjectContentFragment extends BaseCommonFragment {
         super.initView(bundle);
 //        mBundleData =  getBundleData();
         mBundleData = BundleUtils.getBundleData(bundle);
+        if (mBundleData == null) {
+            throw new IllegalArgumentException("mBundleData is null");
+        }
         mViewModel.valueTitle.set(mBundleData.getTitle());
     }
 

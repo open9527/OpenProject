@@ -1,97 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimaryOrigin">#3F51B5</color>
-    <color name="colorPrimaryDarkOrigin">#303F9F</color>
-    <color name="colorAccentOrigin">#FF4081</color>
+    <!--    <color name="colorPrimaryOrigin">#3F51B5</color>-->
+    <!--    <color name="colorPrimaryDarkOrigin">#303F9F</color>-->
+    <!--    <color name="colorAccentOrigin">#FF4081</color>-->
 
-    <color name="colorPrimary">#34A48E</color>
-    <color name="colorPrimaryHalfTrans">#8034A48E</color>
-    <color name="colorPrimaryDark">#245C50</color>
-    <color name="colorAccent">#FF73A3</color>
-    <color name="colorAccentHalfTrans">#80245C50</color>
+    <!--    <color name="colorPrimary">#34A48E</color>-->
+    <!--    <color name="colorPrimaryHalfTrans">#8034A48E</color>-->
+    <!--    <color name="colorPrimaryDark">#245C50</color>-->
+    <!--    <color name="colorAccent">#FF73A3</color>-->
+    <!--    <color name="colorAccentHalfTrans">#80245C50</color>-->
 
-    <color name="white">#FFFFFF</color>
-    <color name="light_black">#191919</color>
+    <!--    <color name="light_black">#191919</color>-->
 
-    <color name="rainbow_red">#bf0c43</color>
-    <color name="rainbow_yellow">#f9ba15</color>
-    <color name="rainbow_green">#8eac00</color>
-    <color name="rainbow_blue">#127a97</color>
-    <color name="rainbow_purple">#452b72</color>
+    <!--    <color name="rainbow_red">#bf0c43</color>-->
+    <!--    <color name="rainbow_yellow">#f9ba15</color>-->
+    <!--    <color name="rainbow_green">#8eac00</color>-->
+    <!--    <color name="rainbow_blue">#127a97</color>-->
+    <!--    <color name="rainbow_purple">#452b72</color>-->
 
-    <integer-array name="rainbow">
-        <item>@color/rainbow_red</item>
-        <item>@color/rainbow_yellow</item>
-        <item>@color/rainbow_green</item>
-        <item>@color/rainbow_blue</item>
-        <item>@color/rainbow_purple</item>
-    </integer-array>
-
-
-    <!--beautiful color-->
-    <color name="grapefruit">#ED5565</color>
-    <color name="grapefruitDark">#DA4453</color>
-
-    <color name="bittersweet">#FC6E51</color>
-    <color name="bittersweetDark">#E9573F</color>
-
-    <color name="sunflower">#FFCE54</color>
-    <color name="sunflowerDark">#F6BB42</color>
-
-    <color name="grass">#A0D468</color>
-    <color name="grassDark">#8CC152</color>
-
-    <color name="mint">#48CFAD</color>
-    <color name="mintDark">#37BC9B</color>
-
-    <color name="loveGreen">#62C554</color>
-    <color name="loveGreenDark">#479841</color>
-
-    <color name="aqua">#4FC1E9</color>
-    <color name="aquaDark">#3BAFDA</color>
-
-    <color name="blueJeans">#5D9CEC</color>
-    <color name="blueJeansDark">#4A89DC</color>
-
-    <color name="lavander">#AC92EC</color>
-    <color name="lavanderDark">#967ADC</color>
-
-    <color name="pinkRose">#EC87C0</color>
-    <color name="pinkRoseDark">#D770AD</color>
-
-    <color name="lightGray">#F5F7FA</color>
-    <color name="lightGrayDark">#E6E9ED</color>
-
-    <color name="mediumGray">#CCD1D9</color>
-    <color name="mediumGrayDark">#AAB2BD</color>
-
-    <color name="darkGray">#656D78</color>
-    <color name="darkGrayDark">#434A54</color>
+    <!--    <integer-array name="rainbow">-->
+    <!--        <item>@color/rainbow_red</item>-->
+    <!--        <item>@color/rainbow_yellow</item>-->
+    <!--        <item>@color/rainbow_green</item>-->
+    <!--        <item>@color/rainbow_blue</item>-->
+    <!--        <item>@color/rainbow_purple</item>-->
+    <!--    </integer-array>-->
 
 
-    <!--主色调-->
-    <color name="color_app_theme">#fff</color>
-    <color name="color_app_main">#fff</color>
-    <color name="color_app_secondary">#fff</color>
+    <!--    &lt;!&ndash;beautiful color&ndash;&gt;-->
+    <!--    <color name="grapefruit">#ED5565</color>-->
+    <!--    <color name="grapefruitDark">#DA4453</color>-->
 
-    <!--主背景色-->
-    <color name="color_bg_white">#fff</color>
-    <color name="color_bg_black">#000</color>
-    <color name="color_bg_main">#fff</color>
-    <color name="color_bg_secondary">#f2f2f2</color>
+    <!--    <color name="bittersweet">#FC6E51</color>-->
+    <!--    <color name="bittersweetDark">#E9573F</color>-->
 
-    <!--透明色-->
-    <color name="color_transparent">#00000000</color>
-    <color name="color_translucent">#80000000</color>
+    <!--    <color name="sunflower">#FFCE54</color>-->
+    <!--    <color name="sunflowerDark">#F6BB42</color>-->
 
-    <!--文本色-->
-    <color name="color_text_white">#fff</color>
-    <color name="color_text_black">#000</color>
-    <color name="color_text_main">#000</color>
-    <color name="color_text_secondary">#333</color>
-    <color name="color_text_sub">#666</color>
-    <color name="color_text_hint">#999</color>
+    <!--    <color name="grass">#A0D468</color>-->
+    <!--    <color name="grassDark">#8CC152</color>-->
 
-    <!--分割线-->
-    <color name="color_line_main">#eee</color>
+    <!--    <color name="mint">#48CFAD</color>-->
+    <!--    <color name="mintDark">#37BC9B</color>-->
+
+    <!--    <color name="loveGreen">#62C554</color>-->
+    <!--    <color name="loveGreenDark">#479841</color>-->
+
+    <!--    <color name="aqua">#4FC1E9</color>-->
+    <!--    <color name="aquaDark">#3BAFDA</color>-->
+
+    <!--    <color name="blueJeans">#5D9CEC</color>-->
+    <!--    <color name="blueJeansDark">#4A89DC</color>-->
+
+    <!--    <color name="lavander">#AC92EC</color>-->
+    <!--    <color name="lavanderDark">#967ADC</color>-->
+
+    <!--    <color name="pinkRose">#EC87C0</color>-->
+    <!--    <color name="pinkRoseDark">#D770AD</color>-->
+
+    <!--    <color name="lightGray">#F5F7FA</color>-->
+    <!--    <color name="lightGrayDark">#E6E9ED</color>-->
+
+    <!--    <color name="mediumGray">#CCD1D9</color>-->
+    <!--    <color name="mediumGrayDark">#AAB2BD</color>-->
+
+    <!--    <color name="darkGray">#656D78</color>-->
+    <!--    <color name="darkGrayDark">#434A54</color>-->
+
+
+    <!--    &lt;!&ndash;主色调&ndash;&gt;-->
+    <!--    <color name="color_app_theme">#fff</color>-->
+    <!--    <color name="color_app_main">#fff</color>-->
+    <!--    <color name="color_app_secondary">#fff</color>-->
+
+    <!--    &lt;!&ndash;主背景色&ndash;&gt;-->
+    <!--    <color name="color_bg_white">#fff</color>-->
+    <!--    <color name="color_bg_black">#000</color>-->
+    <!--    <color name="color_bg_main">#fff</color>-->
+    <!--    <color name="color_bg_secondary">#f2f2f2</color>-->
+
+    <!--    &lt;!&ndash;透明色&ndash;&gt;-->
+    <!--    <color name="color_transparent">#00000000</color>-->
+    <!--    <color name="color_translucent">#80000000</color>-->
+
+    <!--    &lt;!&ndash;文本色&ndash;&gt;-->
+    <!--    <color name="color_text_white">#fff</color>-->
+    <!--    <color name="color_text_black">#000</color>-->
+    <!--    <color name="color_text_main">#000</color>-->
+    <!--    <color name="color_text_secondary">#333</color>-->
+    <!--    <color name="color_text_sub">#666</color>-->
+    <!--    <color name="color_text_hint">#999</color>-->
+
+    <!--    &lt;!&ndash;分割线&ndash;&gt;-->
+    <!--    <color name="color_line_main">#eee</color>-->
+
+
+    <!-- 透明色 -->
+    <color name="transparent">#00000000</color>
+    <color name="translucent">#80000000</color>
+
+    <!-- 白色 -->
+    <color name="white">#FFFFFFFF</color>
+    <!-- 黑色 -->
+    <color name="black">#FF000000</color>
+    <!-- 灰色 -->
+    <color name="gray">#FF808080</color>
+    <!-- 红色 -->
+    <color name="red">#FFFF0000</color>
+    <!-- 金色 -->
+    <color name="gold">#FFFFD700</color>
+    <!-- 黄色 -->
+    <color name="yellow">#FFFFFF00</color>
+    <!-- 绿色 -->
+    <color name="green">#FF008000</color>
+    <!-- 蓝色 -->
+    <color name="blue">#FF0000FF</color>
+    <!-- 紫色 -->
+    <color name="purple">#FF800080</color>
+    <!-- 粉色 -->
+    <color name="pink">#FFFFC0CB</color>
+    <!-- 橙色 -->
+    <color name="orange">#FFFFA500</color>
+
+    <!--common-->
+    <color name="common_primary_color">@color/white</color>
+    <color name="common_primary_dark_color">@color/black</color>
+    <color name="common_accent_color">#5A8DDF</color>
+    <color name="common_window_background_color">#F4F4F4</color>
+    <color name="common_text_color">#333333</color>
+    <color name="common_text_sub_color">#666666</color>
+    <color name="common_text_hint_color">#999999</color>
+
+    <!-- 按钮按压时的颜色 -->
+    <color name="common_button_pressed_color">#AA5A8DDF</color>
+    <!-- 按钮禁用时的颜色 -->
+    <color name="common_button_disable_color">#BBBBBB</color>
+    <!-- 分割线的颜色 -->
+    <color name="common_line_color">#ECECEC</color>
+
+
+    <!--请以 模块 + 含义 + color 来命名，例如：login_button_pressed_color,login_button_disable_color -->
+
 </resources>

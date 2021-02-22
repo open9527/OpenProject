@@ -13,7 +13,7 @@
     <LinearLayout
         android:layout_width="@dimen/size_80"
         android:layout_height="@dimen/size_80"
-        android:background="@color/color_translucent"
+        android:background="@color/translucent"
         android:gravity="center">
 
         <ProgressBar

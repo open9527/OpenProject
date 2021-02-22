@@ -11,4 +11,11 @@ local.properties
 /mavenLocal
 /reports
 */reports
-*/__api__.json
+.apk
+/feature/launcher/app/__api__.json
+/feature/annotation/app/__api__.json
+/feature/appmanager/app/__api__.json
+/feature/image/app/__api__.json
+/feature/okhttp/app/__api__.json
+/feature/permission/app/__api__.json
+/feature/wanandroid/app/__api__.json

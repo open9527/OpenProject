@@ -31,7 +31,7 @@ public class AppManagerActivity extends BaseCommonActivity {
         return new DataBindingConfig(R.layout.app_manager_activity, BR.vm, mViewModel)
                 .addBindingParam(BR.click, new ClickProxy())
                 .addBindingParam(BR.layoutManager, new WrapContentLinearLayoutManager(mActivity))
-                .addBindingParam(BR.itemDecoration, new SpacesItemDecoration(mActivity).setParam(R.color.color_line_main, 10))
+                .addBindingParam(BR.itemDecoration, new SpacesItemDecoration(mActivity).setParam(R.color.common_line_color, 10))
                 .addBindingParam(BR.adapter, new BaseBindingCellAdapter<>());
     }
 

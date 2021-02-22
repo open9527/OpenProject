@@ -2,12 +2,14 @@ package com.android.open9527.common.bundle;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
+
 
 /**
  * @author open_9527
  * Create at 2021/1/18
  **/
-public class BundleUtils {
+public final class BundleUtils {
 
     public static Bundle create(BaseBundleData baseBundleData) {
         Bundle bundle = new Bundle();
@@ -16,8 +18,10 @@ public class BundleUtils {
     }
 
     @SuppressWarnings("unchecked")
-    public static <T extends BaseBundleData> T getBundleData(Bundle bundle) {
-        if (bundle == null) return null;
+    public static <T extends BaseBundleData> T getBundleData(@Nullable Bundle bundle) {
+        if (bundle == null) {
+            throw new IllegalArgumentException("Bundle is null");
+        }
         return (T) bundle.getSerializable(BaseBundleData.BUNDLE_NAME);
     }
 

@@ -9,6 +9,7 @@
     <dimen name="spacing_24">24dp</dimen>
     <dimen name="spacing_128">128dp</dimen>
 
+    <dimen name="size_0">0px</dimen>
     <dimen name="size_1">1dp</dimen>
     <dimen name="size_2">2dp</dimen>
     <dimen name="size_4">4dp</dimen>

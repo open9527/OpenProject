@@ -66,13 +66,13 @@ public class Preview2Activity extends BaseCommonActivity {
         super.initView(bundle);
         bundleData = BundleUtils.getBundleData(bundle);
         mViewModel.valueICellClick.set(iCellClick);
-        if (bundleData != null) {
-            mViewModel.initData(bundleData.getList());
-            mViewModel.valuePageIndex.set(bundleData.getIndex());
-            mViewModel.valueTransitionName.set(bundleData.getList().get(bundleData.getIndex()).toString());
-        } else {
-            LogUtils.i(TAG, "bundleData is  null !");
+        if (bundleData == null) {
+            throw new IllegalArgumentException("bundleData is null");
         }
+        mViewModel.initData(bundleData.getList());
+        mViewModel.valuePageIndex.set(bundleData.getIndex());
+        mViewModel.valueTransitionName.set(bundleData.getList().get(bundleData.getIndex()).toString());
+
         mViewModel.valueTitle.set(getTitle().toString());
         mEnterSharedElementCallback = SharedElementUtils.createEnterSharedElementCallback(this, findViewById(R.id.photo_view_pager));
     }

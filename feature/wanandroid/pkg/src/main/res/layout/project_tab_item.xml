@@ -26,11 +26,11 @@
             android:layout_height="match_parent"
             android:gravity="center"
             app:bindTextDefaultText="@{title}"
-            app:bindTextDefaultTextColor="@{R.color.color_text_sub}"
+            app:bindTextDefaultTextColor="@{R.color.common_text_sub_color}"
             app:bindTextDefaultTextSize="@{14}"
             app:bindTextSelect="@{select}"
             app:bindTextSelectedText="@{title}"
-            app:bindTextSelectedTextColor="@{R.color.color_text_white}"
+            app:bindTextSelectedTextColor="@{R.color.white}"
             app:bindTextSelectedTextSize="@{16}"
             tools:text="tabItem" />
 

@@ -27,7 +27,7 @@ public class TabIndicatorDrawable extends Drawable {
     public TabIndicatorDrawable(View view) {
         this.view = view;
         this.paint = new Paint();
-        paint.setColor(view.getContext().getResources().getColor(R.color.color_app_main));
+        paint.setColor(view.getContext().getResources().getColor(R.color.common_accent_color));
     }
 
     public TabIndicatorDrawable(View view, int color) {

@@ -7,7 +7,7 @@ import com.android.open9527.common.bundle.BaseBundleData;
  * @author open_9527
  * Create at 2021/1/18
  **/
-public class H5Bundle extends BaseBundleData {
+public final class H5Bundle extends BaseBundleData {
     private String url;
     private String title;
 

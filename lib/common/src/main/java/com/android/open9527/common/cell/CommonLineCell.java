@@ -12,7 +12,7 @@ import com.blankj.utilcode.util.SizeUtils;
 
 public class CommonLineCell extends BaseBindingCell<CommonLineCell> {
 
-    public final ObservableInt valueBgColor = new ObservableInt(R.color.color_line_main);
+    public final ObservableInt valueBgColor = new ObservableInt(R.color.common_line_color);
     public final ObservableInt valueViewHeight = new ObservableInt(SizeUtils.dp2px(10));
 
     public CommonLineCell() {

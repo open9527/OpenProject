@@ -15,7 +15,7 @@
         android:id="@+id/iv_pic"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/color_bg_black"
+        android:background="@color/black"
         android:transitionName="@{cell.valueImageUrl}"
         app:bindIvSkipMemoryCache="@{false}"
         app:bindIvUrl="@{cell.valueImageUrl}"

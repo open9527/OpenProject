@@ -1,6 +1,3 @@
-apply {
-    from "${project.rootDir.path}/buildApp.gradle"
-}
 
 dependencies {
     api project(gradle.getUnionPath(":feature:permission:pkg"))

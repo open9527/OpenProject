@@ -1,6 +1,4 @@
-apply {
-    from "${project.rootDir.path}/buildLib.gradle"
-}
+
 
 android {
     //支持dataBinding

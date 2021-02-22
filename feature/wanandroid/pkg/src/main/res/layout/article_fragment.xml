@@ -50,7 +50,7 @@
             app:bindTitleBarDrawableBg="@{vm.valueTitleBarBg}"
             app:bindTitleBarStatusBarViewId="@{R.id.view_status_bar}"
             app:bindTitleBarTitleText="@{vm.valueTitle}"
-            app:bindTitleBarTitleTextColor="@{R.color.color_text_main}"
+            app:bindTitleBarTitleTextColor="@{R.color.common_text_sub_color}"
             app:bindTitleBarTitleTextSize="@{16}"
             tools:layout_height="?android:attr/actionBarSize" />
 

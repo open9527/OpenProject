@@ -46,7 +46,6 @@ public class CommonLoadDialog extends BaseDialogFragment {
         setCancelable(true);
         Objects.requireNonNull(getDialog()).setCanceledOnTouchOutside(false);
         DataBindingUtil.getBinding(contentView);
-
     }
 
     @Override

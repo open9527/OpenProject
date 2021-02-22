@@ -3,9 +3,9 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/color_bg_white</item>
-        <item name="colorPrimaryDark">@color/color_bg_black</item>
-        <item name="colorAccent">@color/color_app_theme</item>
+        <item name="colorPrimary">@color/common_primary_color</item>
+        <item name="colorPrimaryDark">@color/common_primary_dark_color</item>
+        <item name="colorAccent">@color/common_accent_color</item>
 <!--        <item name="android:windowContentTransitions">true</item>-->
         <!--android 10暗黑模式-->
         <item name="android:forceDarkAllowed" tools:ignore="NewApi">true</item>

@@ -37,7 +37,7 @@ public class ArticleFragment extends BaseCommonFragment implements OnHttpListene
         return new DataBindingConfig(R.layout.article_fragment, BR.vm, mViewModel)
                 .addBindingParam(BR.click, new ClickProxy())
                 .addBindingParam(BR.layoutManager, new WrapContentLinearLayoutManager(mActivity))
-                .addBindingParam(BR.itemDecoration, new SpacesItemDecoration(mActivity).setParam(R.color.color_line_main, 10))
+                .addBindingParam(BR.itemDecoration, new SpacesItemDecoration(mActivity).setParam(R.color.common_line_color, 10))
                 .addBindingParam(BR.adapter, new BaseBindingCellAdapter<>());
     }
 
