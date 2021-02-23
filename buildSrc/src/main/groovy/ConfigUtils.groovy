@@ -108,6 +108,10 @@ class ConfigUtils {
             ':feature:appmanager:pkg',
             ':feature:appmanager:app',
 
+            ':feature:webview:export',
+            ':feature:webview:pkg',
+            ':feature:webview:app',
+
     ]
 
     private static includeModule(Settings settings) {

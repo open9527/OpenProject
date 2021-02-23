@@ -4,7 +4,7 @@ import android.view.View;
 
 import com.android.appmanager.pkg.AppManagerActivity;
 import com.android.feature.permission.pkg.PermissionActivity;
-import com.android.open9527.common.callback.SharedViewModel;
+import com.android.feature.webview.pkg.WebViewActivity;
 import com.android.open9527.common.page.BaseCommonActivity;
 import com.android.open9527.image.pkg.load.ImageActivity;
 import com.android.open9527.page.DataBindingConfig;
@@ -20,12 +20,10 @@ import com.open9527.wanandroid.pkg.main.WanAndroidActivity;
 public class LauncherActivity extends BaseCommonActivity {
 
     private LauncherViewMode mViewModel;
-    private SharedViewModel mSharedViewModel;
 
     @Override
     protected void initViewModel() {
         mViewModel = getActivityScopeViewModel(LauncherViewMode.class);
-        mSharedViewModel = getApplicationScopeViewModel(SharedViewModel.class);
     }
 
     @Override
@@ -36,8 +34,7 @@ public class LauncherActivity extends BaseCommonActivity {
 
     @Override
     public void initEvent() {
-//        mSharedViewModel.getStartImageModel().observeInActivity(this, s ->
-//                GalleryActivity.start());
+
     }
 
     public static class ClickProxy {
@@ -61,6 +58,10 @@ public class LauncherActivity extends BaseCommonActivity {
 
             } else if (view.getId() == R.id.btn_appmanager) {
                 ActivityUtils.startActivity(AppManagerActivity.class);
+
+
+            }else if (view.getId() == R.id.btn_webview) {
+                ActivityUtils.startActivity(WebViewActivity.class);
 
 
             }

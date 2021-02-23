@@ -6,6 +6,7 @@ dependencies {
     api project(gradle.getUnionPath(":feature:image:pkg"))
     api project(gradle.getUnionPath(":feature:annotation:pkg"))
     api project(gradle.getUnionPath(":feature:appmanager:pkg"))
+    api project(gradle.getUnionPath(":feature:webview:pkg"))
 
 //    debugImplementation 'com.didichuxing.doraemonkit:dokitx:3.3.5'
 //    releaseImplementation 'com.didichuxing.doraemonkit:dokitx-no-op:3.3.5'

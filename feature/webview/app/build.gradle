@@ -1,0 +1,6 @@
+
+
+
+dependencies {
+    api  project(gradle.getUnionPath(":feature:webview:pkg"))
+}

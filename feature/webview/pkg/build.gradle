@@ -1,0 +1,12 @@
+
+android {
+    //支持dataBinding
+    dataBinding {
+        enabled true
+    }
+}
+
+dependencies {
+    api  project(gradle.getUnionPath(":feature:webview:export"))
+
+}

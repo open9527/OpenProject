@@ -62,7 +62,7 @@ public class PermissionActivity extends BaseCommonActivity {
     }
 
 
-    public  class ClickProxy {
+    public class ClickProxy {
         public View.OnClickListener onClickListener = view -> {
             if (view.getId() == R.id.btn_main_request_1) {
                 requestCamera();

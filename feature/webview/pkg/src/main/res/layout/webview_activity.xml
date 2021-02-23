@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.android.feature.webview.pkg.R" />
+
+        <variable
+            name="vm"
+            type="com.android.feature.webview.pkg.WebViewViewModel" />
+
+        <variable
+            name="click"
+            type="com.android.feature.webview.pkg.WebViewActivity.ClickProxy" />
+
+        <variable
+            name="titleBarListener"
+            type="com.android.open9527.titlebar.OnTitleBarListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:ignore="HardcodedText">
+
+        <View
+            android:id="@+id/view_status_bar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:bindViewBgDrawable="@{vm.valueTitleBarBg}" />
+
+        <com.android.open9527.titlebar.TitleBar
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_48"
+            app:bindTitleBarDrawableBg="@{vm.valueTitleBarBg}"
+            app:bindTitleBarLeftText="@{vm.valueLeft}"
+            app:bindTitleBarLeftTextColor="@{R.color.common_text_sub_color}"
+            app:bindTitleBarLeftTextSize="@{14}"
+            app:bindTitleBarListener="@{titleBarListener}"
+            app:bindTitleBarRightText="@{vm.valueRight}"
+            app:bindTitleBarRightTextColor="@{R.color.common_text_sub_color}"
+            app:bindTitleBarRightTextSize="@{14}"
+            app:bindTitleBarStatusBarViewId="@{R.id.view_status_bar}"
+            app:bindTitleBarTitleText="@{vm.valueTitle}"
+            app:bindTitleBarTitleTextColor="@{R.color.common_text_color}"
+            app:bindTitleBarTitleTextSize="@{16}"
+            tools:layout_height="?android:attr/actionBarSize" />
+
+        <ProgressBar
+            android:id="@+id/pb_web_progress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_4"
+            android:progressDrawable="@drawable/progress_gradient_bg"
+            app:bindViewVisibility="@{vm.valueWebPbVisibility}"
+            tools:visibility="visible" />
+
+        <!--  app:srlPrimaryColor="#444444"-->
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srlEnableLoadMore="true"
+            app:srlEnablePreviewInEditMode="false"
+            app:bindRefreshCloseHeaderOrFooter="@{vm.valueCloseHeaderOrFooter}"
+            app:bindRefreshListener="@{click.onRefreshListeners}"
+            app:bindRefreshNoMoreData="@{vm.valueNoMoreData}">
+
+            <com.scwang.smart.refresh.header.ClassicsHeader
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.android.feature.webview.pkg.BrowserView
+                android:id="@+id/browser_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+    </LinearLayout>
+</layout>
