@@ -83,7 +83,11 @@ class ConfigUtils {
 
             ':feature:launcher:app',
             ':feature:mock',
-//
+            //方便copy
+            ':feature:copy:export',
+            ':feature:copy:pkg',
+            ':feature:copy:app',
+
             ':feature:permission:export',
             ':feature:permission:pkg',
             ':feature:permission:app',
@@ -111,6 +115,7 @@ class ConfigUtils {
             ':feature:webview:export',
             ':feature:webview:pkg',
             ':feature:webview:app',
+
 
     ]
 
