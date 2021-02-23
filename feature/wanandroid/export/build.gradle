@@ -2,7 +2,8 @@
 
 
 dependencies {
-    api project(gradle.getUnionPath(":lib:common"))
+//    api project(gradle.getUnionPath(":lib:common"))
+    api project(gradle.getUnionPath(":feature:image:export"))
     api Config.depConfig.gson
 
 }

@@ -82,6 +82,7 @@ class ConfigUtils {
             ':lib:titlebar',
 
             ':feature:launcher:app',
+            ':feature:mock',
 //
             ':feature:permission:export',
             ':feature:permission:pkg',

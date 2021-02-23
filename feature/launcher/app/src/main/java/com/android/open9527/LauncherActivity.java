@@ -4,11 +4,13 @@ import android.view.View;
 
 import com.android.appmanager.pkg.AppManagerActivity;
 import com.android.feature.permission.pkg.PermissionActivity;
+import com.android.open9527.common.callback.SharedViewModel;
 import com.android.open9527.common.page.BaseCommonActivity;
 import com.android.open9527.image.pkg.load.ImageActivity;
 import com.android.open9527.page.DataBindingConfig;
 import com.android.open9527.pkg.OkHttpActivity;
 import com.blankj.utilcode.util.ActivityUtils;
+import com.blankj.utilcode.util.AppUtils;
 import com.open9527.wanandroid.pkg.main.WanAndroidActivity;
 
 /**
@@ -18,16 +20,24 @@ import com.open9527.wanandroid.pkg.main.WanAndroidActivity;
 public class LauncherActivity extends BaseCommonActivity {
 
     private LauncherViewMode mViewModel;
+    private SharedViewModel mSharedViewModel;
 
     @Override
     protected void initViewModel() {
         mViewModel = getActivityScopeViewModel(LauncherViewMode.class);
+        mSharedViewModel = getApplicationScopeViewModel(SharedViewModel.class);
     }
 
     @Override
     protected DataBindingConfig getDataBindingConfig() {
         return new DataBindingConfig(R.layout.launcher_activity, BR.vm, mViewModel)
                 .addBindingParam(BR.click, new ClickProxy());
+    }
+
+    @Override
+    public void initEvent() {
+//        mSharedViewModel.getStartImageModel().observeInActivity(this, s ->
+//                GalleryActivity.start());
     }
 
     public static class ClickProxy {
@@ -57,4 +67,16 @@ public class LauncherActivity extends BaseCommonActivity {
         };
     }
 
+
+    private long exitTime;
+
+    @Override
+    public void onBackPressed() {
+        if ((System.currentTimeMillis() - exitTime) > 2000) {
+            showShortToast("再按一次退出程序");
+            exitTime = System.currentTimeMillis();
+        } else {
+            AppUtils.exitApp();
+        }
+    }
 }

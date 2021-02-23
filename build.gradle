@@ -21,6 +21,7 @@ allprojects {
         jcenter()
         maven { url "https://jitpack.io" }
     }
+    buildDir = new File(rootDir, "gradle-build/${path.replaceAll(':', '/')}")
 }
 
 task clean(type: Delete) {

@@ -3,4 +3,5 @@
 
 dependencies {
     api  project(gradle.getUnionPath(":feature:wanandroid:pkg"))
+    api  project(gradle.getUnionPath(":feature:mock"))
 }

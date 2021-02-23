@@ -24,7 +24,7 @@ public class ProjectCell extends BaseBindingCell<ProjectCell> {
     private final ObservableField<String> valueLink = new ObservableField<>();
     public final ObservableField<String> valueShareUser = new ObservableField<>();
     public final ObservableField<String> valueNiceShareDate = new ObservableField<>();
-
+    public final ObservableField<ICellClick> valueICellClick = new ObservableField<>();
 
     public ProjectCell(ContentVo contentVo) {
         super(R.layout.project_cell);
@@ -47,6 +47,17 @@ public class ProjectCell extends BaseBindingCell<ProjectCell> {
 
     @Override
     public void onCellClick(View view, ProjectCell projectCell) {
-        H5Activity.startH5(projectCell.valueLink.get(),projectCell.valueTitle.get());
+        if (view.getId() == R.id.iv_pic) {
+            if (valueICellClick.get() != null) {
+                valueICellClick.get().onCellClick(view, projectCell.valueImageUrl.get());
+            }
+
+        } else {
+            H5Activity.startH5(projectCell.valueLink.get(), projectCell.valueTitle.get());
+        }
+    }
+
+    public interface ICellClick {
+        void onCellClick(View view, String url);
     }
 }

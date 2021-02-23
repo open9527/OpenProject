@@ -30,6 +30,9 @@ public class ProjectContentViewModel extends ViewModel {
     public final ObservableBoolean valueNoMoreData = new ObservableBoolean(false);
     public final ObservableArrayList<BaseBindingCell> valueCells = new ObservableArrayList<>();
 
+    public final ObservableField<ProjectCell.ICellClick> valueICellClick = new ObservableField<>();
+
+
     public final ProjectRequest projectRequest = new ProjectRequest();
 
 
@@ -40,7 +43,9 @@ public class ProjectContentViewModel extends ViewModel {
         if (CollectionUtils.isNotEmpty(contentVos)) {
             for (ContentVo contentVo : contentVos) {
                 if (contentVo == null) continue;
-                valueCells.add(new ProjectCell(contentVo));
+                ProjectCell projectCell=   new ProjectCell(contentVo);
+                projectCell.valueICellClick.set(valueICellClick.get());
+                valueCells.add(projectCell);
             }
             valueNoMoreData.set(false);
         } else {

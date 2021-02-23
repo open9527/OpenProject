@@ -1,7 +1,5 @@
 package com.open9527.wanandroid.pkg.main.project.content;
 
-import android.content.Intent;
-import android.os.BaseBundle;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -9,14 +7,19 @@ import androidx.annotation.Nullable;
 import com.android.open9527.common.binding.refresh.IRefresh;
 import com.android.open9527.common.bundle.BaseBundleData;
 import com.android.open9527.common.bundle.BundleUtils;
+import com.android.open9527.common.callback.SharedViewModel;
 import com.android.open9527.common.page.BaseCommonFragment;
+import com.android.open9527.image.export.api.ImageApi;
+import com.android.open9527.image.export.api.ImageBundle;
 import com.android.open9527.okhttp.OkHttpUtils;
 import com.android.open9527.page.DataBindingConfig;
 import com.android.open9527.recycleview.adapter.BaseBindingCellAdapter;
 import com.android.open9527.recycleview.decoration.SpacesItemDecoration;
 import com.android.open9527.recycleview.layout_manager.WrapContentLinearLayoutManager;
+import com.blankj.utilcode.util.ApiUtils;
 import com.open9527.wanandroid.pkg.BR;
 import com.open9527.wanandroid.pkg.R;
+import com.open9527.wanandroid.pkg.cell.ProjectCell;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 
 /**
@@ -28,6 +31,7 @@ public class ProjectContentFragment extends BaseCommonFragment {
     private int mPage = 0;
 
     private ProjectContentViewModel mViewModel;
+    private SharedViewModel mSharedViewModel;
     private BundleData mBundleData;
 
 
@@ -40,6 +44,7 @@ public class ProjectContentFragment extends BaseCommonFragment {
     @Override
     protected void initViewModel() {
         mViewModel = getFragmentScopeViewModel(ProjectContentViewModel.class);
+        mSharedViewModel = getApplicationScopeViewModel(SharedViewModel.class);
     }
 
     @Override
@@ -60,6 +65,7 @@ public class ProjectContentFragment extends BaseCommonFragment {
         if (mBundleData == null) {
             throw new IllegalArgumentException("mBundleData is null");
         }
+        mViewModel.valueICellClick.set(iCellClick);
         mViewModel.valueTitle.set(mBundleData.getTitle());
     }
 
@@ -79,7 +85,7 @@ public class ProjectContentFragment extends BaseCommonFragment {
     }
 
     private void requestProject() {
-        mViewModel.projectRequest.requestProject(mPage,mBundleData.getId(), OkHttpUtils.get(this));
+        mViewModel.projectRequest.requestProject(mPage, mBundleData.getId(), OkHttpUtils.get(this));
     }
 
     private static class BundleData extends BaseBundleData {
@@ -111,13 +117,9 @@ public class ProjectContentFragment extends BaseCommonFragment {
         };
     }
 
+    public ProjectCell.ICellClick iCellClick = (view, url) -> {
+//        mSharedViewModel.onStartImageModel(url);
+        ApiUtils.getApi(ImageApi.class).startImage(new ImageBundle(url, url));
+    };
 
-    public <T extends BaseBundleData> T getBundleData() {
-        Bundle bundle = getArguments();
-        if (bundle == null) {
-            return null;
-        }
-
-        return (T) bundle.getSerializable(BaseBundleData.BUNDLE_NAME);
-    }
 }
