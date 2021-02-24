@@ -24,6 +24,7 @@ import androidx.appcompat.view.ContextThemeWrapper;
 
 import com.android.feature.webview.pkg.gson.ApiUtils;
 import com.android.feature.webview.pkg.gson.MessageVo;
+import com.android.open9527.common.action.HandlerAction;
 import com.blankj.utilcode.util.EncodeUtils;
 import com.blankj.utilcode.util.GsonUtils;
 import com.blankj.utilcode.util.LogUtils;
@@ -41,7 +42,7 @@ import java.util.Map;
  * eg:基于 WebView 封装
  **/
 
-public final class BrowserView extends WebView {
+public final class BrowserView extends WebView  {
     private static final String TAG = "BrowserView";
 
 
@@ -234,8 +235,8 @@ public final class BrowserView extends WebView {
             if (scheme != null) {
                 scheme = scheme.toLowerCase();
             }
-
-            if (url.startsWith(BridgeUtil.RMT_RETURN_DATA)) { // 如果是返回数据
+            // 如果是返回数据
+            if (url.startsWith(BridgeUtil.RMT_RETURN_DATA)) {
 //                LogUtils.i(TAG, "RMT_RETURN_DATA: " + url);
                 handlerReturnData(EncodeUtils.urlDecode(url));
 
@@ -267,11 +268,6 @@ public final class BrowserView extends WebView {
          */
         @Override
         public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
-//            new HintDialog.Builder(mWebView.getContext())
-//                    .setIcon(HintDialog.ICON_WARNING)
-//                    .setMessage(message)
-//                    .addOnDismissListener(dialog -> result.confirm())
-//                    .show();
             return true;
         }
 
@@ -280,22 +276,7 @@ public final class BrowserView extends WebView {
          */
         @Override
         public boolean onJsConfirm(WebView view, String url, String message, JsResult result) {
-//            new MessageDialog.Builder(mWebView.getContext())
-//                    .setMessage(message)
-//                    .setCancelable(false)
-//                    .setListener(new MessageDialog.OnListener() {
-//
-//                        @Override
-//                        public void onConfirm(BaseDialog dialog) {
-//                            result.confirm();
-//                        }
-//
-//                        @Override
-//                        public void onCancel(BaseDialog dialog) {
-//                            result.cancel();
-//                        }
-//                    })
-//                    .show();
+
             return true;
         }
 
@@ -304,22 +285,7 @@ public final class BrowserView extends WebView {
          */
         @Override
         public boolean onJsPrompt(WebView view, String url, String message, String defaultValue, JsPromptResult result) {
-//            new InputDialog.Builder(mWebView.getContext())
-//                    .setContent(defaultValue)
-//                    .setHint(message)
-//                    .setListener(new InputDialog.OnListener() {
-//
-//                        @Override
-//                        public void onConfirm(BaseDialog dialog, String content) {
-//                            result.confirm(content);
-//                        }
-//
-//                        @Override
-//                        public void onCancel(BaseDialog dialog) {
-//                            result.cancel();
-//                        }
-//                    })
-//                    .show();
+
             return true;
         }
 
@@ -332,34 +298,6 @@ public final class BrowserView extends WebView {
         @TargetApi(Build.VERSION_CODES.LOLLIPOP)
         @Override
         public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> callback, FileChooserParams params) {
-//            Activity activity = mWebView.getActivity();
-//
-//
-//            if (activity instanceof BaseActivity) {
-//                XXPermissions.with(activity)
-//                        .permission(Permission.Group.STORAGE)
-//                        .request(new OnPermission() {
-//                            @Override
-//                            public void hasPermission(List<String> granted, boolean all) {
-//                                if (all) {
-//                                    openSystemFileChooser((BaseActivity) activity, callback, params);
-//                                } else {
-//                                    callback.onReceiveValue(null);
-//                                }
-//                            }
-//
-//                            @Override
-//                            public void noPermission(List<String> denied, boolean quick) {
-//                                callback.onReceiveValue(null);
-//                                if (quick) {
-//                                    ToastUtils.show(R.string.common_permission_fail);
-//                                    XXPermissions.startPermissionActivity(activity, false);
-//                                } else {
-//                                    ToastUtils.show(R.string.common_permission_hint);
-//                                }
-//                            }
-//                        });
-//            }
             return true;
         }
 
@@ -419,9 +357,7 @@ public final class BrowserView extends WebView {
 
     private static void loadUrl(WebView webView, String jsUrl, Callback returnCallback) {
         webView.loadUrl(jsUrl);
-//        LogUtils.i(TAG, "jsUrl: " + jsUrl);
-        // 添加至 Map<String, CallBackFunction>
-//        responseCallbacks.put(BridgeUtil.parseFunctionName(jsUrl), returnCallback);
+
     }
 
     /**
@@ -434,7 +370,7 @@ public final class BrowserView extends WebView {
                 public void onCallback(String data) {
                     List<MessageVo> messageList = GsonUtils.fromJson(data, new TypeToken<List<MessageVo>>() {
                     }.getType());
-                    LogUtils.i(TAG, "data: " + GsonUtils.toJson(messageList));
+                    LogUtils.i(TAG, "flushMessageQueue messageList: " + GsonUtils.toJson(messageList));
                 }
             });
         }

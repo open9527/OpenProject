@@ -8,6 +8,7 @@ import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ObservableField;
 import androidx.lifecycle.ViewModel;
 
+import com.android.open9527.image.pkg.R;
 import com.android.open9527.image.pkg.preview.PreviewCell;
 import com.android.open9527.recycleview.adapter.BaseBindingCell;
 import com.blankj.utilcode.util.CollectionUtils;
@@ -36,9 +37,8 @@ public class ImageViewModel extends ViewModel {
     public final ObservableArrayList<String> valueImageUrls = new ObservableArrayList<>();
 
 
-    protected void getImageUrl(String assetsFilePath) {
-        List<ImageVo> imageVos = getAssetsFileList(assetsFilePath);
-
+    protected void getImageUrl() {
+        List<ImageVo> imageVos = getRawFileList();
         if (CollectionUtils.isNotEmpty(imageVos)) {
 //            valueImageUrls.add("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2593572861,3728381392&fm=26&gp=0.jpg");
             for (ImageVo imageVo : imageVos) {
@@ -51,8 +51,8 @@ public class ImageViewModel extends ViewModel {
     }
 
 
-    private List<ImageVo> getAssetsFileList(String assetsFilePath) {
-        return GsonUtils.fromJson(ResourceUtils.readAssets2String(assetsFilePath), new TypeToken<List<ImageVo>>() {
+    private List<ImageVo> getRawFileList() {
+        return GsonUtils.fromJson(ResourceUtils.readRaw2String(R.raw.image), new TypeToken<List<ImageVo>>() {
         }.getType());
     }
 

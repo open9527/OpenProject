@@ -3,13 +3,14 @@
 
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="@color/white" />
+            <solid android:color="@color/common_accent_color" />
         </shape>
     </item>
 
     <item>
         <bitmap
             android:gravity="center"
+            android:alpha="0.5"
             android:src="@mipmap/ic_launcher_round" />
     </item>
 </layer-list>

@@ -1,7 +1,8 @@
-//GLog.d(project.toString() + " -> lib")
 apply {
     plugin "com.android.library"
-
+    plugin "kotlin-android"
+    plugin 'kotlin-kapt'
+//    plugin "kotlin-android-extensions"
 }
 
 android {
@@ -18,6 +19,15 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    //支持viewBinding
+//    viewBinding {
+//        enabled = true
+//    }
+
+    //处理dataBinding和kotlin 冲突
+    kapt {
+        generateStubs = true
     }
 
     lintOptions {

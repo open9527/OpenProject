@@ -1,7 +1,9 @@
-//GLog.d(project.toString() + " -> app")
 apply {
     plugin "com.android.application"
     plugin "com.blankj.api"
+    plugin "kotlin-android"
+    plugin 'kotlin-kapt'
+//    plugin "kotlin-android-extensions"
 }
 
 configSigning()
@@ -86,6 +88,16 @@ android {
         enabled true
     }
 
+    //支持viewBinding
+//    viewBinding {
+//        enabled = true
+//    }
+
+//    处理dataBinding和kotlin 冲突
+    kapt {
+        generateStubs = true
+    }
+
 }
 
 //dependencies {
@@ -105,7 +117,6 @@ def configSigning() {
     File signPropertiesFile = file("${rootDir.path}/sign/keystore.properties")
     if (!signPropertiesFile.exists()) return
 
-//    GLog.d("${project.toString()} sign start...")
     project.android {
         Properties properties = new Properties()
         properties.load(new FileInputStream(signPropertiesFile))

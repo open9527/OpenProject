@@ -9,11 +9,9 @@ import java.io.Serializable;
 public class MessageVo implements Serializable {
     public static final String UPDATE_WEB_VIEW_HEIGHT = "updateWebViewHeight";
 
-
     private String callbackId;
     private String responseId;
     private String responseData;
-//    private WebDataVo data;
     private String handlerName;
 
     public String getCallbackId() {
@@ -40,13 +38,7 @@ public class MessageVo implements Serializable {
         this.responseData = responseData;
     }
 
-//    public WebDataVo getData() {
-//        return data;
-//    }
-//
-//    public void setData(WebDataVo data) {
-//        this.data = data;
-//    }
+
 
     public String getHandlerName() {
         return handlerName;
@@ -62,7 +54,6 @@ public class MessageVo implements Serializable {
                 "callbackId='" + callbackId + '\'' +
                 ", responseId='" + responseId + '\'' +
                 ", responseData='" + responseData + '\'' +
-//                ", data=" + data +
                 ", handlerName='" + handlerName + '\'' +
                 '}';
     }

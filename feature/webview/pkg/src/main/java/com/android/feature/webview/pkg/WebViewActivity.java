@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.android.open9527.common.action.HandlerAction;
 import com.android.open9527.common.binding.refresh.IRefresh;
 import com.android.open9527.common.page.BaseCommonActivity;
 import com.android.open9527.page.DataBindingConfig;
@@ -23,7 +24,7 @@ import com.scwang.smart.refresh.layout.api.RefreshLayout;
  * @author open_9527
  * Create at 2021/1/6
  **/
-public class WebViewActivity extends BaseCommonActivity {
+public class WebViewActivity extends BaseCommonActivity implements HandlerAction {
 
     private WebViewViewModel mViewModel;
     private BrowserView browserView;
@@ -79,6 +80,7 @@ public class WebViewActivity extends BaseCommonActivity {
 
     @Override
     protected void onDestroy() {
+        removeCallbacks();
         browserView.onDestroy();
         super.onDestroy();
     }
@@ -125,7 +127,14 @@ public class WebViewActivity extends BaseCommonActivity {
         @Override
         public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
             // 这里为什么要用延迟呢？因为加载出错之后会先调用 onReceivedError 再调用 onPageFinished
-//            view.post(view::reload);
+
+            //可以加载一个错误重试布局 view.reload();
+//            post(new Runnable() {
+//                @Override
+//                public void run() {
+//
+//                }
+//            });
         }
 
         /**

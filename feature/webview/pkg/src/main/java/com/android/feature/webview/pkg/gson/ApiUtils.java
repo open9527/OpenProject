@@ -10,6 +10,12 @@ import com.google.gson.GsonBuilder;
 import java.lang.reflect.Type;
 import java.util.Map;
 
+
+/**
+ * @author open_9527
+ * Create at 2021/2/23
+ **/
+
 public class ApiUtils {
 
     private static final String DATE_FORMAT = ("yyyy-MM-dd HH:mm:ss");

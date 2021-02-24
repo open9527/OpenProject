@@ -8,10 +8,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+
+/**
+ * @author open_9527
+ * Create at 2021/2/23
+ **/
+
 public class BridgeUtil {
     public final static String RMT_SCHEMA = "rmt://";
     public final static String RMT_SCHEMA_QUEUE_MESSAGE = RMT_SCHEMA + "__QUEUE_MESSAGE__/";
-    public final static String RMT_RETURN_DATA = RMT_SCHEMA + "return/";//格式为   yy://return/{function}/returncontent
+    //格式为   yy://return/{function}/returncontent
+    public final static String RMT_RETURN_DATA = RMT_SCHEMA + "return/";
     public final static String UNDERLINE_STR = "_";
 
     private final static String RMT_FETCH_QUEUE = RMT_RETURN_DATA + "_fetchQueue/";
@@ -83,7 +90,7 @@ public class BridgeUtil {
      * 这里只是加载lib包中assets中的 WebViewJavascriptBridge.js
      *
      * @param view webview
-     * @param path rmsh_icon_share_2
+     * @param path xxx
      */
     public static void webViewLoadLocalJs(WebView view, String path) {
         String jsContent = assetFile2Str(view.getContext(), path);
@@ -94,7 +101,7 @@ public class BridgeUtil {
      * 解析assets文件夹里面的代码,去除注释,取可执行的代码
      *
      * @param c      context
-     * @param urlStr rmsh_icon_share_2
+     * @param urlStr xxx
      * @return 可执行代码
      */
     public static String assetFile2Str(Context c, String urlStr) {

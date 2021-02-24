@@ -9,6 +9,11 @@ import com.google.gson.JsonParseException;
 
 import java.lang.reflect.Type;
 
+
+/**
+ * @author open_9527
+ * Create at 2021/2/23
+ **/
 public class WebMsgJsonDeserializer implements JsonDeserializer<MessageVo> {
 
     @Override

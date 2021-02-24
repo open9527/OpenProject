@@ -22,7 +22,9 @@ dependencies {
     api Config.depConfig.gson
 
     api project(gradle.getUnionPath(":lib:glide"))
-    annotationProcessor Config.depConfig.glide_compiler
+//    annotationProcessor Config.depConfig.glide_compiler
+    //处理kotlin 冲突导致不生成GlideApp
+    kapt Config.depConfig.glide_compiler
 
     api Config.depConfig.androidx_material
     api Config.depConfig.androidx_constraint

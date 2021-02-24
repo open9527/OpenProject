@@ -4,11 +4,14 @@ class Config {
     static appName = 'open9527'
 
     static compileSdkVersion = 30
-    static buildToolsVersion = '30.0.2'
+    static buildToolsVersion = '30.0.3'
     static minSdkVersion = 21
     static targetSdkVersion = 30
     static versionCode = 1_000_000
     static versionName = '1.0.0'// E.g. 1.9.72 => 1,009,072
+
+    static kotlinVersion = '1.4.10'
+    static kotlinKtx = '1.3.2'
 
     static gradlePluginVersion = '3.6.3'
     static androidxVersion = '1.0.0'
@@ -20,9 +23,18 @@ class Config {
 
     static smartRefresh = '2.0.3'
 
+    //    implementation "androidx.core:core-ktx:1.3.2"
+    //    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
     static depConfig = [
             plugin_gradle                  : "com.android.tools.build:gradle:$gradlePluginVersion",
+
             api_gradle_plugin              : "com.blankj:api-gradle-plugin:1.5",
+
+            kotlin_gradle_plugin           : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion",
+
+            androidx_core_ktx              : "androidx.core:core-ktx:$kotlinKtx",
+            kotlin_stdlib_jdk7             : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion",
 
             androidx_appcompat             : "androidx.appcompat:appcompat:1.2.0",
             androidx_material              : "com.google.android.material:material:1.2.1",
