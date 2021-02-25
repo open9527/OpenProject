@@ -27,6 +27,6 @@ public class WebViewViewModel extends ViewModel {
     public final ObservableBoolean valueCloseHeaderOrFooter = new ObservableBoolean(false);
     public final ObservableBoolean valueNoMoreData = new ObservableBoolean(false);
 
-    public final ObservableField<String> valueUrl = new ObservableField<>("https://www.wanandroid.com");
+    public final ObservableField<String> valueUrl = new ObservableField<>("http://jyh.beta.easttone.com:8010/api/app/doc/release/rm_js_sdk_testcase.html");
 
 }

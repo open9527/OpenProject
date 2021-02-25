@@ -64,7 +64,7 @@
             android:id="@+id/refresh_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:srlEnableLoadMore="true"
+            app:srlEnableLoadMore="false"
             app:srlEnablePreviewInEditMode="false"
             app:bindRefreshCloseHeaderOrFooter="@{vm.valueCloseHeaderOrFooter}"
             app:bindRefreshListener="@{click.onRefreshListeners}"

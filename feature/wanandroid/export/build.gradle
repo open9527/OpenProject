@@ -2,15 +2,12 @@
 
 
 dependencies {
-//    api Config.depConfig.kotlin_stdlib_jdk7
-//    api Config.depConfig.androidx_core_ktx
-
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.10"
-    implementation 'androidx.core:core-ktx:1.3.2'
+    api Config.depConfig.kotlin_stdlib_jdk7
+    api Config.depConfig.androidx_core_ktx
 
 //    api project(gradle.getUnionPath(":lib:common"))
     api project(gradle.getUnionPath(":feature:image:export"))
+    api project(gradle.getUnionPath(":feature:webview:export"))
 
-//    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 
 }

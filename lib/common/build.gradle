@@ -29,6 +29,10 @@ dependencies {
     api Config.depConfig.androidx_material
     api Config.depConfig.androidx_constraint
 
+    //kotlin
+//    api Config.depConfig.kotlin_stdlib_jdk7
+//    api Config.depConfig.androidx_core_ktx
+
     api Config.depConfig.utilcode
     api Config.depConfig.smart_refresh_kernel
     api Config.depConfig.smart_refresh_header_classics

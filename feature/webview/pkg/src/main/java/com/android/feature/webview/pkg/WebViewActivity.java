@@ -12,6 +12,8 @@ import androidx.annotation.Nullable;
 
 import com.android.open9527.common.action.HandlerAction;
 import com.android.open9527.common.binding.refresh.IRefresh;
+import com.android.open9527.common.bundle.BaseBundleData;
+import com.android.open9527.common.bundle.BundleUtils;
 import com.android.open9527.common.page.BaseCommonActivity;
 import com.android.open9527.page.DataBindingConfig;
 import com.android.open9527.titlebar.OnTitleBarListener;
@@ -19,6 +21,8 @@ import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
+
+import java.util.List;
 
 /**
  * @author open_9527
@@ -52,8 +56,14 @@ public class WebViewActivity extends BaseCommonActivity implements HandlerAction
         browserView.setBrowserViewClient(new MyBrowserViewClient());
         browserView.setBrowserChromeClient(new MyBrowserChromeClient(browserView));
 
-//        browserView.loadUrl("https://www.wanandroid.com/");
-        browserView.loadUrl("http://jyh.beta.easttone.com:8010/api/app/doc/release/rm_js_sdk_testcase.html");
+
+        BundleData bundleData = BundleUtils.getBundleData(bundle);
+        if (bundleData == null) {
+            throw new IllegalArgumentException("bundleData is null");
+        }
+        mViewModel.valueTitle.set(bundleData.getTitle());
+        browserView.loadUrl(bundleData.getUrl());
+//        browserView.loadUrl("http://jyh.beta.easttone.com:8010/api/app/doc/release/rm_js_sdk_testcase.html");
     }
 
     @Override
@@ -183,8 +193,34 @@ public class WebViewActivity extends BaseCommonActivity implements HandlerAction
     }
 
 
-    public static void start(@NonNull String url) {
-        ActivityUtils.startActivity(WebViewActivity.class);
+    public static class BundleData extends BaseBundleData {
+        private String url;
+        private String title;
+
+        public BundleData(String url, String title) {
+            this.url = url;
+            this.title = title;
+        }
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+    }
+
+    public static void start(@NonNull String url, @NonNull String title) {
+        ActivityUtils.startActivity(BundleUtils.create(new BundleData(url, title)), WebViewActivity.class);
     }
 
 

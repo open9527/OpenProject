@@ -1,24 +1,19 @@
-package com.open9527.wanandroid.pkg.main.h5;
-
+package com.android.feature.webview.export.api;
 
 import com.android.open9527.common.bundle.BaseBundleData;
 
 /**
  * @author open_9527
- * Create at 2021/1/18
+ * Create at 2021/2/25
  **/
-public final class H5Bundle extends BaseBundleData {
+public final class WebBundle extends BaseBundleData {
+
     private String url;
     private String title;
 
-
-    public H5Bundle(String url, String title) {
+    public WebBundle(String url, String title) {
         this.url = url;
         this.title = title;
-    }
-
-    public H5Bundle(String url) {
-        this(url, "");
     }
 
     public String getUrl() {
@@ -35,5 +30,13 @@ public final class H5Bundle extends BaseBundleData {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return "WebBundle{" +
+                "url='" + url + '\'' +
+                ", title='" + title + '\'' +
+                '}';
     }
 }

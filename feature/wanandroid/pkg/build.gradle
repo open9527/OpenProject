@@ -9,8 +9,6 @@ android {
 
 dependencies {
     api project(gradle.getUnionPath(":feature:wanandroid:export"))
-
-//    implementation Config.depConfig.banner_viewpager
 }
 
 

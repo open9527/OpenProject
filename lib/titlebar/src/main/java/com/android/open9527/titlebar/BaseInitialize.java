@@ -35,6 +35,7 @@ public abstract class BaseInitialize implements TitleBarInitialize {
     @Override
     public TextView getTitleView(Context context) {
         TextView titleView = createTextView(context);
+        titleView.setPadding((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, titleView.getResources().getDisplayMetrics()), 0, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, titleView.getResources().getDisplayMetrics()), 0);
         titleView.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT, Gravity.CENTER_HORIZONTAL));
         titleView.setGravity(Gravity.CENTER);
         titleView.setFocusable(true);

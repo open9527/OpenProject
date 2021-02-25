@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="wan_main_title"><font color="#5a8ddf">android</font> open9527</string>
+
+    <string name="wan_main_tab_project">project</string>
+    <string name="wan_main_tab_article">article</string>
+    <string name="wan_main_tab_share">share</string>
+
+    <!--project-->
+    <string name="wan_project_author">作者:%1$s</string>
+    <string name="wan_project_sharer">分享人:%1$s</string>
+
+    <!--share-->
+    <string name="wan_share_author">作者:%1$s</string>
+    <string name="wan_share_sharer">分享人:%1$s</string>
 
 
 </resources>

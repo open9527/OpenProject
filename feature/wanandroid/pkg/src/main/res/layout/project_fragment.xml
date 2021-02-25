@@ -44,17 +44,20 @@
                 android:id="@+id/tab_layout"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/size_48"
+                android:paddingStart="@dimen/size_10"
+                android:paddingEnd="@dimen/size_10"
                 app:bindTabLayoutDefaultIndex="@{vm.valueDefaultIndex}"
                 app:bindTabLayoutFragmentList="@{vm.valueFragments}"
                 app:bindTabLayoutFragmentManager="@{vm.valueFragmentManager}"
                 app:bindTabLayoutTabBeanData="@{vm.valueTabList}"
+                app:tabContentStart="@dimen/size_10"
                 app:tabGravity="center"
                 app:tabIndicatorGravity="center"
                 app:tabMaxWidth="0dp"
                 app:tabMinWidth="0dp"
                 app:tabMode="scrollable"
-                app:tabContentStart="@dimen/size_10"
-                app:tabRippleColor="@android:color/transparent" />
+                app:tabRippleColor="@android:color/transparent"
+                tools:ignore="RtlSymmetry" />
 
         </com.android.open9527.titlebar.TitleBar>
 

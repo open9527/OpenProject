@@ -13,6 +13,7 @@ public class ResponseStatus {
     private Enum source = ResultSource.NETWORK;
 
     public ResponseStatus() {
+
     }
 
     public ResponseStatus(String responseCode, boolean success) {

@@ -12,7 +12,9 @@ import com.open9527.wanandroid.pkg.R
  * Create at 2021/1/12
  */
 class WanAndroidActivity : BaseCommonActivity() {
+
     private var mViewModel: WanAndroidViewModel? = null
+
     override fun initViewModel() {
         mViewModel = getActivityScopeViewModel(WanAndroidViewModel::class.java)
     }
