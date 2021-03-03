@@ -68,9 +68,8 @@
             android:background="@color/common_line_color" />
 
         <androidx.viewpager.widget.ViewPager
-            android:id="@+id/project_view_pager"
+            android:id="@+id/project_view_page"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintTop_toBottomOf="@+id/title_bar" />
+            android:layout_height="match_parent" />
     </LinearLayout>
 </layout>

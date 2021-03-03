@@ -1,5 +1,4 @@
 
-
 dependencies {
     implementation Config.depConfig.androidx_appcompat
 }

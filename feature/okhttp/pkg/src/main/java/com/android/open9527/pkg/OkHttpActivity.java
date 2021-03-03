@@ -24,8 +24,14 @@ import com.android.open9527.permission.PermissionsManage;
 import com.android.open9527.pkg.request.SearchAuthorApi;
 import com.android.open9527.pkg.request.SearchBlogsApi;
 import com.android.open9527.pkg.request.UpdateImageApi;
+import com.android.open9527.pkg.socket.IWebSocketCallBack;
+import com.android.open9527.pkg.socket.WebSocketClient;
 import com.blankj.utilcode.util.FileUtils;
+import com.blankj.utilcode.util.GsonUtils;
 import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.StringUtils;
+import com.blankj.utilcode.util.ThreadUtils;
+import com.blankj.utilcode.util.TimeUtils;
 import com.blankj.utilcode.util.ToastUtils;
 
 import java.io.File;
@@ -50,19 +56,20 @@ public class OkHttpActivity extends BaseCommonActivity implements OnHttpListener
 
     @Override
     protected DataBindingConfig getDataBindingConfig() {
-        return new DataBindingConfig(R.layout.okhttp_activity, BR.vm, mViewModel);
+        return new DataBindingConfig(R.layout.okhttp_activity, BR.vm, mViewModel)
+                .addBindingParam(BR.click, onClickListener);
     }
 
     @Override
     public void initView(@Nullable Bundle bundle) {
         super.initView(bundle);
 
-        findViewById(R.id.btn_main_get).setOnClickListener(onClickListener);
-        findViewById(R.id.btn_main_post).setOnClickListener(onClickListener);
-        findViewById(R.id.btn_main_exec).setOnClickListener(onClickListener);
-        findViewById(R.id.btn_main_update).setOnClickListener(onClickListener);
-        findViewById(R.id.btn_main_download).setOnClickListener(onClickListener);
+    }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        closeWebSocket();
     }
 
     public View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -134,6 +141,11 @@ public class OkHttpActivity extends BaseCommonActivity implements OnHttpListener
                         });
 
 
+            } else if (view.getId() == R.id.btn_main_socket) {
+                startWebSocket();
+
+            } else if (view.getId() == R.id.btn_main_msg) {
+                sendWebSocketMsg(String.valueOf(TimeUtils.getNowString()));
             }
         }
     };
@@ -145,7 +157,7 @@ public class OkHttpActivity extends BaseCommonActivity implements OnHttpListener
                 .request(new HttpCallback<HttpData>(this) {
                     @Override
                     public void onSucceed(HttpData result) {
-
+                        mViewModel.valueContent.set(GsonUtils.toJson(result));
                         ToastUtils.showShort("Get 请求成功，请看日志");
                     }
                 });
@@ -159,6 +171,7 @@ public class OkHttpActivity extends BaseCommonActivity implements OnHttpListener
 
                     @Override
                     public void onSucceed(HttpData result) {
+                        mViewModel.valueContent.set(GsonUtils.toJson(result));
                         ToastUtils.showShort("Post 请求成功，请看日志");
                     }
                 });
@@ -174,6 +187,7 @@ public class OkHttpActivity extends BaseCommonActivity implements OnHttpListener
                                 .setKeyword("搬砖不再有"))
                         .execute(new ResponseClass<HttpData>() {
                         });
+                mViewModel.valueContent.set(GsonUtils.toJson(data));
                 ToastUtils.showShort("同步请求成功，请看日志");
             } catch (Exception e) {
                 e.printStackTrace();
@@ -203,16 +217,19 @@ public class OkHttpActivity extends BaseCommonActivity implements OnHttpListener
                     public void onProgress(int progress) {
                         LogUtils.i(TAG, "progress-->" + progress);
 //                        mProgressBar.setProgress(progress);
+                        mViewModel.valueContent.set("上传进度:" + progress);
                     }
 
                     @Override
                     public void onSucceed(Void result) {
                         ToastUtils.showShort("上传成功");
+                        mViewModel.valueContent.set("上传成功!");
                     }
 
                     @Override
                     public void onFail(Exception e) {
                         ToastUtils.showShort("上传失败");
+                        mViewModel.valueContent.set("上传失败!");
                     }
 
                     @Override
@@ -250,6 +267,7 @@ public class OkHttpActivity extends BaseCommonActivity implements OnHttpListener
                     public void onProgress(File file, int progress) {
 //                        LogUtils.i(TAG, "progress-->" + progress);
 //                        mProgressBar.setProgress(progress);
+                        mViewModel.valueContent.set("下载进度:" + progress);
                     }
 
                     @Override
@@ -262,11 +280,14 @@ public class OkHttpActivity extends BaseCommonActivity implements OnHttpListener
                         MediaScannerConnection.scanFile(mActivity, new String[]{file.getAbsolutePath()}, new String[]{"image/*"}, (path, uri) -> {
                             LogUtils.i(TAG, "scanFile-->" + file.getPath());
                         });
+
+                        mViewModel.valueContent.set("下载完成!");
                     }
 
                     @Override
                     public void onError(File file, Exception e) {
                         ToastUtils.showShort("下载出错：" + e.getMessage());
+                        mViewModel.valueContent.set("下载出错!");
                     }
 
                     @Override
@@ -275,5 +296,64 @@ public class OkHttpActivity extends BaseCommonActivity implements OnHttpListener
                     }
 
                 }).start();
+    }
+
+
+    //监听
+    private IWebSocketCallBack webSocketCallBack = new IWebSocketCallBack() {
+
+
+        @Override
+        public void onOpen() {
+            //发送心跳
+            sendHeartMsg();
+        }
+
+        @Override
+        public void onMessage(String receiveMsg) {
+            //接收消息
+
+            mViewModel.valueContent.set("接收消息:" + receiveMsg);
+            LogUtils.i(TAG, "receiveMsg-->  " + receiveMsg);
+        }
+
+        @Override
+        public void onHeart() {
+            //接收心跳
+            LogUtils.i(TAG, "onHeart-->  ");
+        }
+
+        @Override
+        public void reconnectionWebSocket() {
+            //触发重连
+            ThreadUtils.runOnUiThreadDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    WebSocketClient.reconnection();
+                }
+            }, 5000);
+        }
+    };
+
+    //开启webSocket
+    private void startWebSocket() {
+        WebSocketClient.startRequest( webSocketCallBack);
+    }
+
+    //关闭webSocket
+    public void closeWebSocket() {
+        WebSocketClient.closeWebSocket();
+        WebSocketClient.destroy();
+    }
+
+
+    //发送 webSocket消息
+    private void sendWebSocketMsg(String msg) {
+        WebSocketClient.sendMessage(msg);
+    }
+
+    /* 发送 ping消息*/
+    public void sendHeartMsg() {
+        sendWebSocketMsg("ping");
     }
 }

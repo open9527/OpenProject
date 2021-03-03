@@ -20,7 +20,7 @@ public final class BundleUtils {
     @SuppressWarnings("unchecked")
     public static <T extends BaseBundleData> T getBundleData(@Nullable Bundle bundle) {
         if (bundle == null) {
-            throw new IllegalArgumentException("Bundle is null");
+            return null;
         }
         return (T) bundle.getSerializable(BaseBundleData.BUNDLE_NAME);
     }

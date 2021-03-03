@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="browser_author">作者:%1$s</string>
+    <string name="browser_sharer">分享人:%1$s</string>
+</resources>

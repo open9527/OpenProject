@@ -80,6 +80,7 @@ class ConfigUtils {
             ':lib:base',
             ':lib:common',
             ':lib:titlebar',
+            ':lib:webview',
 
             ':feature:launcher:app',
             ':feature:mock',
@@ -116,6 +117,9 @@ class ConfigUtils {
             ':feature:webview:pkg',
             ':feature:webview:app',
 
+            ':feature:custom:export',
+            ':feature:custom:pkg',
+            ':feature:custom:app',
 
     ]
 

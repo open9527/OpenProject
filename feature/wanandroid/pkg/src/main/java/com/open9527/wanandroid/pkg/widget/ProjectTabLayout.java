@@ -14,8 +14,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
 import com.android.open9527.common.widget.CommonFragmentPagerAdapter;
-import com.blankj.utilcode.util.ColorUtils;
-import com.blankj.utilcode.util.Utils;
 import com.google.android.material.tabs.TabLayout;
 import com.open9527.wanandroid.pkg.BR;
 import com.open9527.wanandroid.pkg.R;
@@ -43,7 +41,8 @@ public class ProjectTabLayout extends TabLayout {
     }
 
     public void init(@NonNull FragmentManager fragmentManager, @NonNull List<Fragment> fragmentList, int defaultIndex, List<TabBean> tabBeans) {
-        ViewPager viewPager = getRootView().findViewById(R.id.project_view_pager);
+        //2131230995
+        ViewPager viewPager = getRootView().findViewById(R.id.project_view_page);
         if (viewPager != null) {
             viewPager.setOffscreenPageLimit(fragmentList.size());
             viewPager.setAdapter(new CommonFragmentPagerAdapter(fragmentManager, fragmentList));

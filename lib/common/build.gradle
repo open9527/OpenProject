@@ -9,8 +9,6 @@ android {
 
 dependencies {
 
-    api Config.depConfig.androidx_lifecycle_common_java8
-
     api project(gradle.getUnionPath(":lib:base"))
     api project(gradle.getUnionPath(":lib:dialog"))
     api project(gradle.getUnionPath(":lib:crash"))
@@ -26,6 +24,9 @@ dependencies {
     //处理kotlin 冲突导致不生成GlideApp
     kapt Config.depConfig.glide_compiler
 
+    api project(gradle.getUnionPath(":lib:webview"))
+
+    api Config.depConfig.androidx_lifecycle_common_java8
     api Config.depConfig.androidx_material
     api Config.depConfig.androidx_constraint
 

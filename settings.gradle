@@ -5,4 +5,3 @@ static def getUnionPath(String path) {
     return ":" + path.substring(1).replace(":", "_")
 }
 gradle.ext.getUnionPath = this.&getUnionPath
-

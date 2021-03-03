@@ -1,4 +1,4 @@
-package com.android.feature.webview.pkg;
+package com.open9527.webview;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -6,9 +6,8 @@ import android.content.Context;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Build;
-import android.os.Looper;
 import android.util.AttributeSet;
-import android.view.ViewGroup;
+import android.webkit.GeolocationPermissions;
 import android.webkit.JsPromptResult;
 import android.webkit.JsResult;
 import android.webkit.SslErrorHandler;
@@ -20,31 +19,27 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.view.ContextThemeWrapper;
-
-import com.android.feature.webview.pkg.gson.ApiUtils;
-import com.android.feature.webview.pkg.gson.MessageVo;
-import com.android.open9527.common.action.HandlerAction;
-import com.blankj.utilcode.util.EncodeUtils;
-import com.blankj.utilcode.util.GsonUtils;
-import com.blankj.utilcode.util.LogUtils;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Map;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleEventObserver;
+import androidx.lifecycle.LifecycleOwner;
 
 /**
  * @author open_9527
- * Create at 2021/1/6
+ * Create at 2021/3/1
  * <p>
- * eg:基于 WebView 封装
+ * eg:基于原生 WebView 封装
  **/
 
-public final class BrowserView extends WebView  {
-    private static final String TAG = "BrowserView";
 
+public final class BrowserView extends NestedScrollWebView
+        implements LifecycleEventObserver {
+
+    static {
+        // WebView 调试模式开关
+        WebView.setWebContentsDebuggingEnabled(true);
+    }
 
     public BrowserView(Context context) {
         this(context, null);
@@ -82,9 +77,10 @@ public final class BrowserView extends WebView  {
             // 解决 Android 5.0 上 WebView 默认不允许加载 Http 与 Https 混合内容
             settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         }
-        // 支持自适应屏幕
-        settings.setUseWideViewPort(true);
-        settings.setLoadWithOverviewMode(true);
+
+        // 不显示滚动条
+        setVerticalScrollBarEnabled(false);
+        setHorizontalScrollBarEnabled(false);
 
         //支持屏幕缩放
         settings.setSupportZoom(true);
@@ -94,10 +90,6 @@ public final class BrowserView extends WebView  {
 
         //设置编码格式
         settings.setDefaultTextEncodingName("utf-8");
-
-        // 不显示滚动条
-        setVerticalScrollBarEnabled(false);
-        setHorizontalScrollBarEnabled(false);
     }
 
     /**
@@ -105,10 +97,10 @@ public final class BrowserView extends WebView  {
      * <p>
      * doc：https://stackoverflow.com/questions/41025200/android-view-inflateexception-error-inflating-class-android-webkit-webview
      */
-    public static Context getFixedContext(Context context) {
+    private static Context getFixedContext(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            // 这种写法返回的 Context 是 ContextImpl，而不是 Activity 或者 ContextWrapper
             // 为什么不用 ContextImpl，因为使用 ContextImpl 获取不到 Activity 对象，而 ContextWrapper 可以
+            // 这种写法返回的 Context 是 ContextImpl，而不是 Activity 或者 ContextWrapper
             // return context.createConfigurationContext(new Configuration());
             // 如果使用 ContextWrapper 还是导致崩溃，因为 Resources 对象冲突了
             // return new ContextWrapper(context);
@@ -133,31 +125,50 @@ public final class BrowserView extends WebView  {
         return super.getUrl();
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        resumeTimers();
+    /**
+     * 设置 WebView 生命管控（自动回调生命周期方法）
+     */
+    public void setLifecycleOwner(LifecycleOwner owner) {
+        owner.getLifecycle().addObserver(this);
     }
 
+    /**
+     * {@link LifecycleEventObserver}
+     */
+
     @Override
-    public void onPause() {
-        super.onPause();
-        pauseTimers();
+    public void onStateChanged(@NonNull LifecycleOwner source, @NonNull Lifecycle.Event event) {
+        switch (event) {
+            case ON_RESUME:
+                onResume();
+                resumeTimers();
+                break;
+            case ON_PAUSE:
+                onPause();
+                pauseTimers();
+                break;
+            case ON_DESTROY:
+                onDestroy();
+                break;
+            default:
+                break;
+        }
     }
 
+    /**
+     * 销毁 WebView
+     */
     public void onDestroy() {
-        ((ViewGroup) getParent()).removeView(this);
-        //清除历史记录
-        clearHistory();
-        //停止加载
+        // 停止加载网页
         stopLoading();
-        //加载一个空白页
-        loadUrl("about:blank");
+        // 清除历史记录
+        clearHistory();
+        // 取消监听引用
         setBrowserChromeClient(null);
         setBrowserViewClient(null);
-        //移除WebView所有的View对象
+        // 移除WebView所有的View对象
         removeAllViews();
-        //销毁此的WebView的内部状态
+        // 销毁此的WebView的内部状态
         destroy();
     }
 
@@ -166,7 +177,7 @@ public final class BrowserView extends WebView  {
      */
     @Deprecated
     @Override
-    public void setWebViewClient(WebViewClient client) {
+    public void setWebViewClient(@NonNull WebViewClient client) {
         super.setWebViewClient(client);
     }
 
@@ -190,6 +201,17 @@ public final class BrowserView extends WebView  {
     public static class BrowserViewClient extends WebViewClient {
 
         /**
+         * 网站证书校验错误
+         */
+        @Override
+        public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+            Context context = view.getContext();
+            if (context == null) {
+                return;
+            }
+        }
+
+        /**
          * 同名 API 兼容
          */
         @TargetApi(Build.VERSION_CODES.M)
@@ -202,19 +224,12 @@ public final class BrowserView extends WebView  {
             }
         }
 
+        /**
+         * 加载错误
+         */
         @Override
         public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
             super.onReceivedError(view, errorCode, description, failingUrl);
-        }
-
-        @Override
-        public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
-            // 注意一定要去除这行代码，否则设置无效。
-            //super.onReceivedSslError(view, handler, error);
-            // Android默认的处理方式
-            //handler.cancel();
-            // 接受所有网站的证书
-            handler.proceed();
         }
 
         /**
@@ -230,25 +245,36 @@ public final class BrowserView extends WebView  {
          * 跳转到其他链接
          */
         @Override
-        public boolean shouldOverrideUrlLoading(WebView webView, final String url) {
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
             String scheme = Uri.parse(url).getScheme();
-            if (scheme != null) {
-                scheme = scheme.toLowerCase();
+            if (scheme == null) {
+                return true;
             }
-            // 如果是返回数据
-            if (url.startsWith(BridgeUtil.RMT_RETURN_DATA)) {
-//                LogUtils.i(TAG, "RMT_RETURN_DATA: " + url);
-                handlerReturnData(EncodeUtils.urlDecode(url));
-
-            } else if (url.startsWith(BridgeUtil.RMT_SCHEMA_QUEUE_MESSAGE)) {
-//                LogUtils.i(TAG, "RMT_SCHEMA_QUEUE_MESSAGE: " + url);
-                flushMessageQueue(webView);
-
-            } else if ("http".equalsIgnoreCase(scheme) || "https".equalsIgnoreCase(scheme)) {
-                webView.loadUrl(url);
+            switch (scheme) {
+                // 如果这是跳链接操作
+                case "http":
+                case "https":
+                    view.loadUrl(url);
+                    break;
+                // 如果这是打电话操作
+                case "tel":
+                    dialing(view, url);
+                    break;
+                default:
+                    break;
             }
             // 已经处理该链接请求
             return true;
+        }
+
+        /**
+         * 跳转到拨号界面
+         */
+        protected void dialing(WebView view, String url) {
+            Context context = view.getContext();
+            if (context == null) {
+                return;
+            }
         }
     }
 
@@ -259,7 +285,7 @@ public final class BrowserView extends WebView  {
         public BrowserChromeClient(BrowserView view) {
             mWebView = view;
             if (mWebView == null) {
-                throw new IllegalArgumentException("mWebView  is  null !");
+                throw new IllegalArgumentException("are you ok?");
             }
         }
 
@@ -268,6 +294,7 @@ public final class BrowserView extends WebView  {
          */
         @Override
         public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
+
             return true;
         }
 
@@ -290,7 +317,17 @@ public final class BrowserView extends WebView  {
         }
 
         /**
-         * 网页弹出选择文件请求（测试地址：https://app.xunjiepdf.com/jpg2pdf/、http://www.script-tutorials.com/demos/199/index.html）
+         * 网页请求定位功能
+         * 测试地址：https://map.baidu.com/
+         */
+        @Override
+        public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
+
+        }
+
+        /**
+         * 网页弹出选择文件请求
+         * 测试地址：https://app.xunjiepdf.com/jpg2pdf/、http://www.script-tutorials.com/demos/199/index.html
          *
          * @param callback 文件选择回调
          * @param params   文件选择参数
@@ -298,83 +335,8 @@ public final class BrowserView extends WebView  {
         @TargetApi(Build.VERSION_CODES.LOLLIPOP)
         @Override
         public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> callback, FileChooserParams params) {
+
             return true;
         }
-
-//        /**
-//         * 打开系统文件选择器
-//         */
-//        private void openSystemFileChooser(BaseActivity activity, ValueCallback<Uri[]> callback, FileChooserParams params) {
-//            Intent intent = params.createIntent();
-//            String[] mimeTypes = params.getAcceptTypes();
-//            if (mimeTypes != null && mimeTypes.length > 0 && mimeTypes[0] != null && !"".equals(mimeTypes[0])) {
-//                // 设置要过滤的文件类型
-//                intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
-//            }
-//            // 设置是否是多选模式
-//            intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, params.getMode() == FileChooserParams.MODE_OPEN_MULTIPLE);
-//            activity.startActivityForResult(Intent.createChooser(intent, params.getTitle()), (resultCode, data) -> {
-//                Uri[] uris = null;
-//                if (resultCode == Activity.RESULT_OK && data != null) {
-//                    Uri uri = data.getData();
-//                    if (uri != null) {
-//                        // 如果用户只选择了一个文件
-//                        uris = new Uri[]{uri};
-//                    } else {
-//                        // 如果用户选择了多个文件
-//                        ClipData clipData = data.getClipData();
-//                        if (clipData != null) {
-//                            uris = new Uri[clipData.getItemCount()];
-//                            for (int i = 0; i < clipData.getItemCount(); i++) {
-//                                uris[i] = clipData.getItemAt(i).getUri();
-//                            }
-//                        }
-//                    }
-//                }
-//                // 不管用户最后有没有选择文件，最后还是调用 onReceiveValue，如果没有调用就会导致网页再次上传无响应
-//                callback.onReceiveValue(uris);
-//            });
-//        }
-
     }
-
-
-    /**
-     * 获取到CallBackFunction data执行调用并且从数据集移除
-     */
-    private static void handlerReturnData(String url) {
-        String data = BridgeUtil.getDataFromReturnUrl(url);
-        LogUtils.i(TAG, "handlerReturnData: " + data);
-
-        Map<Type, Object> adapterSetting = ApiUtils.defaultAdapterSetting();
-        Gson gson = ApiUtils.buildGson(adapterSetting);
-
-        List<MessageVo> messageList = gson.fromJson(data, new TypeToken<List<MessageVo>>() {
-        }.getType());
-        LogUtils.i(TAG, "handlerReturnData messageList: " + GsonUtils.toJson(messageList));
-
-    }
-
-    private static void loadUrl(WebView webView, String jsUrl, Callback returnCallback) {
-        webView.loadUrl(jsUrl);
-
-    }
-
-    /**
-     * 刷新消息队列
-     */
-    private static void flushMessageQueue(WebView webView) {
-        if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
-            loadUrl(webView, BridgeUtil.JS_FETCH_QUEUE_FROM_JAVA, new Callback() {
-                @Override
-                public void onCallback(String data) {
-                    List<MessageVo> messageList = GsonUtils.fromJson(data, new TypeToken<List<MessageVo>>() {
-                    }.getType());
-                    LogUtils.i(TAG, "flushMessageQueue messageList: " + GsonUtils.toJson(messageList));
-                }
-            });
-        }
-    }
-
-
 }

@@ -1,0 +1,3 @@
+dependencies {
+    api project(gradle.getUnionPath(":lib:common"))
+}

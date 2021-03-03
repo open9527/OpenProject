@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 
 import com.android.open9527.base.application.BaseApplication;
 import com.android.open9527.common.BuildConfig;
+import com.android.open9527.common.carsh.CrashHandler;
 import com.android.open9527.common.net.data.RequestHandler;
 import com.android.open9527.common.net.glide.ImageLoadUtils;
 import com.android.open9527.common.net.okhttp.OkHttpClientUtils;
@@ -45,6 +46,7 @@ public class CommonApplication extends BaseApplication {
     }
 
     private void init() {
+        // 本地异常捕捉
 //        InitializeService.start(this);
 //        initCrash();
         initOkHttp();

@@ -10,5 +10,7 @@ import androidx.lifecycle.ViewModel;
 public class OkHttpViewModel extends ViewModel {
 
     public final ObservableField<String> valueTitle = new ObservableField<>("OkHttp");
+    public final ObservableField<String> valueContent = new ObservableField<>("请求结果:");
+
 
 }

@@ -1,4 +1,4 @@
-package com.android.feature.webview.pkg;
+package com.android.feature.webview.pkg.browser;
 
 public interface Callback {
 

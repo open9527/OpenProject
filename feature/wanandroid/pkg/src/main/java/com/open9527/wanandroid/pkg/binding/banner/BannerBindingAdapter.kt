@@ -18,7 +18,6 @@ import com.zhpan.bannerview.BaseViewHolder
 import com.zhpan.bannerview.constants.IndicatorGravity
 import com.zhpan.indicator.enums.IndicatorSlideMode
 import com.zhpan.indicator.enums.IndicatorStyle
-import java.util.*
 
 object BannerBindingAdapter {
     @JvmStatic
@@ -43,9 +42,6 @@ object BannerBindingAdapter {
                 .setIndicatorStyle(IndicatorStyle.ROUND_RECT)
                 .setOnPageClickListener { clickedView: View?, position: Int ->
                     contentVoList[position].link?.let {
-//                        startH5(
-//                            it, contentVoList[position].title
-//                        )
                         if (ApiUtils.getApi(WebApi::class.java).toString().contains("WebApiMockImpl")) {
                             startH5(
                                 it,

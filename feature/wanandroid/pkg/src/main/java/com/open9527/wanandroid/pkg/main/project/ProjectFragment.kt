@@ -4,8 +4,6 @@ import com.android.open9527.common.net.data.response.DataResult
 import com.android.open9527.common.page.BaseCommonFragment
 import com.android.open9527.okhttp.OkHttpUtils
 import com.android.open9527.page.DataBindingConfig
-import com.blankj.utilcode.util.BarUtils
-import com.blankj.utilcode.util.LogUtils
 import com.open9527.wanandroid.pkg.BR
 import com.open9527.wanandroid.pkg.R
 import com.open9527.wanandroid.pkg.net.project.ProjectTreeVo
@@ -27,8 +25,8 @@ class ProjectFragment : BaseCommonFragment() {
     override fun initRequest() {
         super.initRequest()
         requestProjectTree()
-        LogUtils.i(TAG, "getStatusBarHeight: " + BarUtils.getStatusBarHeight())
-        LogUtils.i(TAG, "getNavBarHeight: " + BarUtils.getNavBarHeight())
+//        LogUtils.i(TAG, "getStatusBarHeight: " + BarUtils.getStatusBarHeight())
+//        LogUtils.i(TAG, "getNavBarHeight: " + BarUtils.getNavBarHeight())
     }
 
     override fun initEvent() {

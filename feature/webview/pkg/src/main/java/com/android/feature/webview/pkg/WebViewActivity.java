@@ -20,9 +20,9 @@ import com.android.open9527.titlebar.OnTitleBarListener;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
+import com.open9527.webview.BrowserView;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 
-import java.util.List;
 
 /**
  * @author open_9527
@@ -53,17 +53,18 @@ public class WebViewActivity extends BaseCommonActivity implements HandlerAction
         browserView = findViewById(R.id.browser_view);
         progressBar = findViewById(R.id.pb_web_progress);
 
+        browserView.setLifecycleOwner(this);
         browserView.setBrowserViewClient(new MyBrowserViewClient());
         browserView.setBrowserChromeClient(new MyBrowserChromeClient(browserView));
 
 
         BundleData bundleData = BundleUtils.getBundleData(bundle);
-        if (bundleData == null) {
-            throw new IllegalArgumentException("bundleData is null");
+        if (bundleData != null) {
+            mViewModel.valueTitle.set(bundleData.getTitle());
+            browserView.loadUrl(bundleData.getUrl());
+        } else {
+            browserView.loadUrl(mViewModel.valueUrl.get());
         }
-        mViewModel.valueTitle.set(bundleData.getTitle());
-        browserView.loadUrl(bundleData.getUrl());
-//        browserView.loadUrl("http://jyh.beta.easttone.com:8010/api/app/doc/release/rm_js_sdk_testcase.html");
     }
 
     @Override
@@ -77,21 +78,8 @@ public class WebViewActivity extends BaseCommonActivity implements HandlerAction
     }
 
     @Override
-    protected void onResume() {
-        browserView.onResume();
-        super.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        browserView.onPause();
-        super.onPause();
-    }
-
-    @Override
     protected void onDestroy() {
         removeCallbacks();
-        browserView.onDestroy();
         super.onDestroy();
     }
 
@@ -124,6 +112,7 @@ public class WebViewActivity extends BaseCommonActivity implements HandlerAction
 
         @Override
         public void onRightClick(View v) {
+            BrowserActivity.start();
             ToastUtils.showShort("onRightClick");
         }
     };

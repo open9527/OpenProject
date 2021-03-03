@@ -74,7 +74,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <com.android.feature.webview.pkg.BrowserView
+            <com.open9527.webview.BrowserView
                 android:id="@+id/browser_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />

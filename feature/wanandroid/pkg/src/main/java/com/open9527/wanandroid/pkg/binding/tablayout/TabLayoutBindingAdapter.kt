@@ -1,3 +1,4 @@
+/*
 package com.open9527.wanandroid.pkg.binding.tablayout
 
 import androidx.databinding.BindingAdapter
@@ -8,10 +9,12 @@ import com.open9527.wanandroid.pkg.bean.TabBean
 import com.open9527.wanandroid.pkg.widget.MainTabLayout
 import com.open9527.wanandroid.pkg.widget.ProjectTabLayout
 
+*/
 /**
  * @author open_9527
  * Create at 2021/1/12
- */
+ *//*
+
 object TabLayoutBindingAdapter {
     @JvmStatic
     @BindingAdapter(
@@ -32,4 +35,4 @@ object TabLayoutBindingAdapter {
             tabLayout.init(fragmentManager, fragmentList!!, defaultIndex, tabBeans)
         }
     }
-}
+}*/

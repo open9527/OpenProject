@@ -56,7 +56,7 @@ class ProjectContentFragment : BaseCommonFragment() {
         super.initView(bundle)
         //        mBundleData =  getBundleData();
         mBundleData = BundleUtils.getBundleData(bundle)
-        requireNotNull(mBundleData) { "mBundleData is null" }
+//        requireNotNull(mBundleData) { "mBundleData is null" }
         mViewModel!!.valueICellClick.set(iCellClick)
         mViewModel!!.valueTitle.set(mBundleData!!.title)
     }

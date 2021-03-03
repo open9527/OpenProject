@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -7,6 +8,10 @@
         <variable
             name="vm"
             type="com.android.open9527.pkg.OkHttpViewModel" />
+
+        <variable
+            name="click"
+            type="android.view.View.OnClickListener" />
 
     </data>
 
@@ -16,47 +21,90 @@
         android:orientation="vertical"
         tools:ignore="HardcodedText">
 
-        <LinearLayout
-            android:id="@+id/rg_language_languages"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="20dp">
+            android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/btn_main_get"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Get 请求" />
+            <LinearLayout
+                android:id="@+id/rg_language_languages"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="20dp">
 
-            <Button
-                android:id="@+id/btn_main_post"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Post 请求" />
+                <Button
+                    android:id="@+id/btn_main_get"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Get 请求"
+                    app:bindClickViewScale="@{true}"
+                    app:bindViewClick="@{v->click.onClick(v)}" />
 
-            <Button
-                android:id="@+id/btn_main_exec"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="同步请求" />
+                <Button
+                    android:id="@+id/btn_main_post"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Post 请求"
+                    app:bindClickViewScale="@{true}"
+                    app:bindViewClick="@{v->click.onClick(v)}" />
 
-            <Button
-                android:id="@+id/btn_main_update"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="上传文件" />
+                <Button
+                    android:id="@+id/btn_main_exec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="同步请求"
+                    app:bindClickViewScale="@{true}"
+                    app:bindViewClick="@{v->click.onClick(v)}" />
 
-            <Button
-                android:id="@+id/btn_main_download"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="下载文件" />
-        </LinearLayout>
+                <Button
+                    android:id="@+id/btn_main_update"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="上传文件"
+                    app:bindClickViewScale="@{true}"
+                    app:bindViewClick="@{v->click.onClick(v)}" />
+
+                <Button
+                    android:id="@+id/btn_main_download"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="下载文件"
+                    app:bindClickViewScale="@{true}"
+                    app:bindViewClick="@{v->click.onClick(v)}" />
+
+                <Button
+                    android:id="@+id/btn_main_socket"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="startSocket"
+                    app:bindClickViewScale="@{true}"
+                    app:bindViewClick="@{v->click.onClick(v)}" />
+
+                <Button
+                    android:id="@+id/btn_main_msg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Socket send msg"
+                    app:bindClickViewScale="@{true}"
+                    app:bindViewClick="@{v->click.onClick(v)}" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/size_25"
+                    android:text="@{vm.valueContent}" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
     </LinearLayout>
 </layout>

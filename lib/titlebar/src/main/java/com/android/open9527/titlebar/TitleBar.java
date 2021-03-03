@@ -43,6 +43,8 @@ public class TitleBar extends FrameLayout implements View.OnClickListener,
 
     public void init() {
         Log.i(TAG, "init-->" + mTitleBarConfig.toString());
+
+        removeViews();
         if (mTitleBarConfig.getTitleBarInitialize() == null) {
             mTitleBarConfig.setTitleBarInitialize(new LightBarInitialize(mTitleBarConfig));
         }
@@ -196,4 +198,24 @@ public class TitleBar extends FrameLayout implements View.OnClickListener,
     public View getLineView() {
         return mLineView;
     }
+
+
+    private void removeViews() {
+        //        removeAllViews();
+
+        if (mTitleView != null) {
+            removeView(mTitleView);
+        }
+        if (mLeftView != null) {
+            removeView(mLeftView);
+        }
+        if (mRightView != null) {
+            removeView(mRightView);
+        }
+        if (mLineView != null) {
+            removeView(mLineView);
+        }
+
+    }
+
 }
