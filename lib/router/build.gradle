@@ -1,0 +1,5 @@
+
+dependencies {
+    implementation Config.depConfig.androidx_appcompat
+    implementation project(gradle.getUnionPath(":apt:annotation"))
+}

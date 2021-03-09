@@ -24,11 +24,13 @@ import com.android.open9527.recycleview.scroll.RecycleViewScrollListener;
 import com.android.open9527.recycleview.scroll.RecycleViewScrollListener.IScrollListener;
 import com.android.open9527.titlebar.OnTitleBarListener;
 import com.blankj.utilcode.util.LogUtils;
+import com.open9527.annotation.router.Router;
 
 /**
  * @author open_9527
  * Create at 2021/1/25
  **/
+@Router(path = "/image/ImageActivity")
 public class ImageActivity extends BaseCommonActivity {
 
 

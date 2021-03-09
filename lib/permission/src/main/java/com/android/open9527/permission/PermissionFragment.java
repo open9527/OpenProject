@@ -1,6 +1,10 @@
 package com.android.open9527.permission;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -80,11 +84,71 @@ public final  class PermissionFragment extends Fragment {
     /** 权限回调对象 */
     private OnPermissionCallback mCallBack;
 
+
+    /** Activity 屏幕方向 */
+    private int mScreenOrientation;
+
+
+    /**
+     * 绑定 Activity
+     */
+    public void attachActivity(FragmentActivity activity) {
+        activity.getSupportFragmentManager().beginTransaction().add(this, this.toString()).commitAllowingStateLoss();
+    }
+
+    /**
+     * 解绑 Activity
+     */
+    public void detachActivity(FragmentActivity activity) {
+        activity.getSupportFragmentManager().beginTransaction().remove(this).commitAllowingStateLoss();
+    }
+
+
     /**
      * 设置权限监听回调监听
      */
     public void setCallBack(OnPermissionCallback callback) {
         mCallBack = callback;
+    }
+
+
+    @SuppressLint("SourceLockedOrientationActivity")
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        FragmentActivity activity = getActivity();
+        if (activity == null) {
+            return;
+        }
+        // 如果当前没有锁定屏幕方向就获取当前屏幕方向并进行锁定
+        mScreenOrientation = activity.getRequestedOrientation();
+        if (mScreenOrientation != ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED) {
+            return;
+        }
+        int activityOrientation = activity.getResources().getConfiguration().orientation;
+        try {
+            // 兼容问题：在 Android 8.0 的手机上可以固定 Activity 的方向，但是这个 Activity 不能是透明的，否则就会抛出异常
+            // 复现场景：只需要给 Activity 主题设置 <item name="android:windowIsTranslucent">true</item> 属性即可
+            if (activityOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+                activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+            } else if (activityOrientation == Configuration.ORIENTATION_PORTRAIT) {
+                activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            }
+        } catch (IllegalStateException e) {
+            // java.lang.IllegalStateException: Only fullscreen activities can request orientation
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        FragmentActivity activity = getActivity();
+        if (activity == null || mScreenOrientation != ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED) {
+            return;
+        }
+        // 为什么这里不用跟上面一样 try catch ？因为这里是把 Activity 方向取消固定，只有设置横屏或竖屏的时候才可能触发 crash
+        activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
     }
 
     @Override

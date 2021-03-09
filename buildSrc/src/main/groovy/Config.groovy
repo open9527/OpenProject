@@ -13,7 +13,8 @@ class Config {
     static kotlinVersion = '1.4.10'
     static kotlinKtx = '1.3.2'
 
-    static gradlePluginVersion = '3.6.3'
+//    static gradlePluginVersion = '3.2.1'
+    static gradlePluginVersion = '3.6.4'
     static androidxVersion = '1.0.0'
     static androidxLifecycle = '2.2.0'
     //OkHttp3.12.x分支支持Android2.3+(API级别9+)和Java 7+。
@@ -23,8 +24,6 @@ class Config {
 
     static smartRefresh = '2.0.3'
 
-    //    implementation "androidx.core:core-ktx:1.3.2"
-    //    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     static depConfig = [
             plugin_gradle                  : "com.android.tools.build:gradle:$gradlePluginVersion",
@@ -36,7 +35,8 @@ class Config {
             androidx_core_ktx              : "androidx.core:core-ktx:$kotlinKtx",
             kotlin_stdlib_jdk7             : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion",
 
-            androidx_appcompat             : "androidx.appcompat:appcompat:1.2.0",
+//            androidx_appcompat             : "androidx.appcompat:appcompat:1.2.0",
+            androidx_appcompat             : "androidx.appcompat:appcompat:1.3.0-alpha02",
             androidx_material              : "com.google.android.material:material:1.2.1",
             androidx_constraint            : "androidx.constraintlayout:constraintlayout:2.0.4",
 //            androidx_recyclerview          : "androidx.recyclerview:recyclerview:1.1.0",

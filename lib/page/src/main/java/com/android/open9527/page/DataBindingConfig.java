@@ -17,7 +17,7 @@ public class DataBindingConfig {
 
     private final ViewModel stateViewModel;
 
-    private SparseArray bindingParams = new SparseArray();
+    private SparseArray<Object> bindingParams = new SparseArray<>();
 
     public DataBindingConfig(@NonNull Integer layout,
                              @NonNull Integer vmVariableId,

@@ -2,6 +2,8 @@ package com.android.feature.webview.pkg;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebView;
@@ -20,6 +22,7 @@ import com.android.open9527.titlebar.OnTitleBarListener;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
+import com.open9527.annotation.router.Router;
 import com.open9527.webview.BrowserView;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 
@@ -28,6 +31,8 @@ import com.scwang.smart.refresh.layout.api.RefreshLayout;
  * @author open_9527
  * Create at 2021/1/6
  **/
+
+@Router(path = "/webview/WebViewActivity")
 public class WebViewActivity extends BaseCommonActivity implements HandlerAction {
 
     private WebViewViewModel mViewModel;
@@ -58,13 +63,14 @@ public class WebViewActivity extends BaseCommonActivity implements HandlerAction
         browserView.setBrowserChromeClient(new MyBrowserChromeClient(browserView));
 
 
-        BundleData bundleData = BundleUtils.getBundleData(bundle);
+        BundleData bundleData = BundleUtils.getBundleData(bundle, BundleData.class);
         if (bundleData != null) {
             mViewModel.valueTitle.set(bundleData.getTitle());
             browserView.loadUrl(bundleData.getUrl());
         } else {
             browserView.loadUrl(mViewModel.valueUrl.get());
         }
+
     }
 
     @Override
@@ -211,6 +217,4 @@ public class WebViewActivity extends BaseCommonActivity implements HandlerAction
     public static void start(@NonNull String url, @NonNull String title) {
         ActivityUtils.startActivity(BundleUtils.create(new BundleData(url, title)), WebViewActivity.class);
     }
-
-
 }

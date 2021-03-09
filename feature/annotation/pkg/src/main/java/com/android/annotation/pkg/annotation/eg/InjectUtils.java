@@ -1,6 +1,8 @@
 package com.android.annotation.pkg.annotation.eg;
 
 
+import com.open9527.annotation.layout.ContentView;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 

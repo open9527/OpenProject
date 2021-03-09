@@ -73,6 +73,7 @@ public class BaseBindingCellAdapter<CELL extends BaseBindingCell> extends Recycl
         super.onViewRecycled(holder);
         int position = holder.getAdapterPosition();
         if (position < 0 || position >= mItems.size()) {
+            Log.i("BaseBindingCellAdapter", "position < 0 || position >= mItems.size()");
             return;
         }
         mItems.get(position).onViewRecycled(holder, position);

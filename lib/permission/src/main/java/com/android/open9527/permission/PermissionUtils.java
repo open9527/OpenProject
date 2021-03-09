@@ -76,7 +76,6 @@ final class PermissionUtils {
             String[] requestedPermissions = context.getPackageManager().getPackageInfo(context.getPackageName(),
                     PackageManager.GET_PERMISSIONS).requestedPermissions;
             // 当清单文件没有注册任何权限的时候，那么这个数组对象就是空的
-            // https://github.com/getActivity/XXPermissions/issues/35
             if (requestedPermissions != null) {
                 return asArrayList(requestedPermissions);
             } else {

@@ -1,17 +1,18 @@
 package com.android.open9527;
 
+import android.os.Bundle;
 import android.view.View;
 
-import com.android.appmanager.pkg.AppManagerActivity;
-import com.android.feature.permission.pkg.PermissionActivity;
 import com.android.feature.webview.pkg.WebViewActivity;
+import com.android.open9527.common.bundle.BundleUtils;
 import com.android.open9527.common.page.BaseCommonActivity;
-import com.android.open9527.image.pkg.load.ImageActivity;
 import com.android.open9527.page.DataBindingConfig;
-import com.android.open9527.pkg.OkHttpActivity;
-import com.blankj.utilcode.util.ActivityUtils;
+import com.android.open9527.router.Path;
 import com.blankj.utilcode.util.AppUtils;
-import com.open9527.wanandroid.pkg.main.WanAndroidActivity;
+import com.blankj.utilcode.util.LogUtils;
+import com.open9527.router.Router;
+import com.open9527.router.callback.NavigationCallback;
+import com.open9527.router.info.Postcard;
 
 /**
  * @author open_9527
@@ -37,32 +38,59 @@ public class LauncherActivity extends BaseCommonActivity {
 
     }
 
-    public static class ClickProxy {
+    public class ClickProxy {
         public View.OnClickListener onClickListener = view -> {
             if (view.getId() == R.id.btn_okhttp) {
-                ActivityUtils.startActivity(OkHttpActivity.class);
+                Router.getsInstance()
+                        .build(Path.PATH_OKHTTP_OKHTTPACTIVITY)
+                        .navigation(LauncherActivity.this, new NavigationCallback() {
+                            @Override
+                            public void onFound(Postcard postcard) {
+                                LogUtils.i(TAG, "NavigationCallback" + "找到跳转页面");
+
+                            }
+
+                            @Override
+                            public void onLost(Postcard postcard) {
+                                LogUtils.i(TAG, "NavigationCallback" + "未找到");
+                            }
+
+                            @Override
+                            public void onArrival(Postcard postcard) {
+                                LogUtils.i(TAG, "NavigationCallback" + "成功跳转");
+                            }
+                        });
 
             } else if (view.getId() == R.id.btn_permission) {
-
-                ActivityUtils.startActivity(PermissionActivity.class);
+                Router.getsInstance()
+                        .build(Path.PATH_PERMISSION_PERMISSIONACTIVITY)
+                        .navigation(LauncherActivity.this);
 
             } else if (view.getId() == R.id.btn_wanandroid) {
-                ActivityUtils.startActivity(WanAndroidActivity.class);
+                Router.getsInstance()
+                        .build(Path.PATH_WANANDROID_WANANDROIDACTIVITY)
+                        .navigation(LauncherActivity.this);
 
             } else if (view.getId() == R.id.btn_image) {
-                ActivityUtils.startActivity(ImageActivity.class);
+                Router.getsInstance()
+                        .build(Path.PATH_IMAGE_IMAGEACTIVITY)
+                        .navigation(LauncherActivity.this);
 
             } else if (view.getId() == R.id.btn_annotation) {
-                ActivityUtils.startActivity(ContentViewActivity.class);
+                Router.getsInstance().build(Path.PATH_LAUNCHER_CONTENTVIEWACTIVITY)
+                        .navigation(LauncherActivity.this);
 
 
             } else if (view.getId() == R.id.btn_appmanager) {
-                ActivityUtils.startActivity(AppManagerActivity.class);
+                Router.getsInstance().build(Path.PATH_APPMANAGER_APPMANAGERACTIVITY)
+                        .navigation(LauncherActivity.this);
 
-
-            }else if (view.getId() == R.id.btn_webview) {
-                ActivityUtils.startActivity(WebViewActivity.class);
-
+            } else if (view.getId() == R.id.btn_webview) {
+                Bundle bundle = BundleUtils.create(new WebViewActivity.BundleData("https://www.wanandroid.com/index", "wanandroid"));
+                Router.getsInstance().build(Path.PATH_WEBVIEW_WEBVIEWACTIVITY)
+                        .withBundle(bundle)
+                        .navigation(LauncherActivity.this)
+                ;
 
             }
         };

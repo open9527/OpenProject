@@ -1,6 +1,5 @@
 
-
 dependencies {
     api project(gradle.getUnionPath(":lib:common"))
-
+    api project(gradle.getUnionPath(":apt:annotation"))
 }

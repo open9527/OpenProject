@@ -30,18 +30,26 @@ class ConfigUtils {
                     void beforeEvaluate(Project project) {
 //                        GLog.d("beforeEvaluate")
 //                        GLog.d("name: " + project.name)
-                        if (project.subprojects.isEmpty()) {// 定位到具体 project
-                            if (project.name.endsWith("_app")) {
-                                GLog.l(project.toString() + " applies buildApp.gradle")
+                        if (project.subprojects.isEmpty()) {
+                            // 定位到具体 project
+                            if (project.name.startsWith("apt_")) {
+                                GLog.l(project.toString() + " apt_")
+                                project.apply {
+                                    from "${project.rootDir.path}/buildJar.gradle"
+                                }
+
+                            } else if (project.name.endsWith("_app")) {
+//                                GLog.l(project.toString() + " applies buildApp.gradle")
                                 project.apply {
                                     from "${project.rootDir.path}/buildApp.gradle"
                                 }
                             } else {
-                                GLog.l(project.toString() + " applies buildLib.gradle")
+//                                GLog.l(project.toString() + " applies buildLib.gradle")
                                 project.apply {
                                     from "${project.rootDir.path}/buildLib.gradle"
                                 }
                             }
+
                         }
 
                     }
@@ -81,9 +89,15 @@ class ConfigUtils {
             ':lib:common',
             ':lib:titlebar',
             ':lib:webview',
+            ':lib:router',
+
+            //apt 注解器
+            ':apt:annotation',
+            ':apt:compiler',
 
             ':feature:launcher:app',
             ':feature:mock',
+
             //方便copy
             ':feature:copy:export',
             ':feature:copy:pkg',

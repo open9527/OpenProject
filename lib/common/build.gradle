@@ -23,8 +23,15 @@ dependencies {
 //    annotationProcessor Config.depConfig.glide_compiler
     //处理kotlin 冲突导致不生成GlideApp
     kapt Config.depConfig.glide_compiler
+//    annotationProcessor Config.depConfig.glide_compiler
 
     api project(gradle.getUnionPath(":lib:webview"))
+
+    // route
+    api project(gradle.getUnionPath(":lib:router"))
+    api project(gradle.getUnionPath(":apt:annotation"))
+//    kapt project(gradle.getUnionPath(":apt:compiler"))
+//    annotationProcessor project(gradle.getUnionPath(":apt:compiler"))
 
     api Config.depConfig.androidx_lifecycle_common_java8
     api Config.depConfig.androidx_material
@@ -41,6 +48,10 @@ dependencies {
 
     api Config.depConfig.persistent_cookie_jar
     api Config.depConfig.banner_viewpager
+
+
+
+
 
 
 }

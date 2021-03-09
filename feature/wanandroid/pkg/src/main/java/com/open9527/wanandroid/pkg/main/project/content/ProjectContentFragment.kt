@@ -19,7 +19,9 @@ import com.android.open9527.recycleview.adapter.BaseBindingCellAdapter
 import com.android.open9527.recycleview.decoration.SpacesItemDecoration
 import com.android.open9527.recycleview.layout_manager.WrapContentLinearLayoutManager
 import com.blankj.utilcode.util.ApiUtils
+import com.blankj.utilcode.util.GsonUtils
 import com.blankj.utilcode.util.LogUtils
+import com.open9527.router.Router
 import com.open9527.wanandroid.pkg.BR
 import com.open9527.wanandroid.pkg.R
 import com.open9527.wanandroid.pkg.cell.ProjectCell
@@ -116,7 +118,20 @@ class ProjectContentFragment : BaseCommonFragment() {
             if (ApiUtils.getApi(WebApi::class.java).toString().contains("WebApiMockImpl")) {
 
             } else {
-                ApiUtils.getApi(WebApi::class.java).startWeb(WebBundle(link, title))
+
+                Router.getsInstance()
+                    .build("/webview/WebViewActivity")
+                    .withBundle(
+                        BundleUtils.createBundleJson(
+                           WebBundle(
+                                link,
+                                title
+                            )
+                        )
+                    )
+                    .navigation(mActivity)
+
+//                ApiUtils.getApi(WebApi::class.java).startWeb(WebBundle(link, title))
             }
 
 

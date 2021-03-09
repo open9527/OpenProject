@@ -4,6 +4,7 @@ import android.os.Bundle
 import com.android.open9527.common.page.BaseCommonActivity
 import com.android.open9527.page.DataBindingConfig
 import com.blankj.utilcode.util.AppUtils
+import com.open9527.annotation.router.Router
 import com.open9527.wanandroid.pkg.BR
 import com.open9527.wanandroid.pkg.R
 
@@ -11,6 +12,7 @@ import com.open9527.wanandroid.pkg.R
  * @author open_9527
  * Create at 2021/1/12
  */
+@Router(path = "/wanandroid/WanAndroidActivity")
 class WanAndroidActivity : BaseCommonActivity() {
 
     private var mViewModel: WanAndroidViewModel? = null

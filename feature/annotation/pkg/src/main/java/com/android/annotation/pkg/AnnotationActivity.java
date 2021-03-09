@@ -9,12 +9,14 @@ import com.android.annotation.pkg.annotation.eg.Test;
 import com.android.open9527.common.page.BaseCommonActivity;
 import com.android.open9527.page.DataBindingConfig;
 import com.blankj.utilcode.util.LogUtils;
+import com.open9527.annotation.router.Router;
 
 /**
  * @author open_9527
  * Create at 2021/2/4
  **/
 
+@Router(path = "/annotation/AnnotationActivity")
 public class AnnotationActivity extends BaseCommonActivity {
 
     private AnnotationViewModel mViewModel;

@@ -28,6 +28,7 @@ import com.franmontiel.persistentcookiejar.PersistentCookieJar;
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
 
+
 import java.net.Proxy;
 import java.util.concurrent.TimeUnit;
 
@@ -49,6 +50,7 @@ public class CommonApplication extends BaseApplication {
         // 本地异常捕捉
 //        InitializeService.start(this);
 //        initCrash();
+
         initOkHttp();
         registerGlide();
     }

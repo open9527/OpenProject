@@ -8,5 +8,6 @@ android {
 
 dependencies {
     api  project(gradle.getUnionPath(":feature:webview:export"))
+    kapt project(gradle.getUnionPath(":apt:compiler"))
 
 }

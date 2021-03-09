@@ -3,7 +3,7 @@ apply {
     plugin "com.blankj.api"
     plugin "kotlin-android"
     plugin 'kotlin-kapt'
-//    plugin "kotlin-android-extensions"
+    plugin "kotlin-android-extensions"
 }
 
 configSigning()
@@ -31,6 +31,14 @@ android {
             // armeabi-v7a：曾经主流的架构平台（占用率：10%）
             // arm64-v8a：目前主流架构平台（占用率：90%）
             abiFilters 'armeabi-v7a', 'arm64-v8a'
+        }
+
+        //route 获取 moduleName
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
         }
     }
 
@@ -88,15 +96,11 @@ android {
         enabled true
     }
 
+
     //支持viewBinding
 //    viewBinding {
 //        enabled = true
 //    }
-
-//    处理dataBinding和kotlin 冲突
-    kapt {
-        generateStubs = true
-    }
 
 }
 

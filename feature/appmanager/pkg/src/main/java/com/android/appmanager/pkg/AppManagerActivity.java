@@ -9,6 +9,7 @@ import com.android.open9527.recycleview.decoration.SpacesItemDecoration;
 import com.android.open9527.recycleview.layout_manager.WrapContentLinearLayoutManager;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.ThreadUtils;
+import com.open9527.annotation.router.Router;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.List;
  * @author open_9527
  * Create at 2021/2/5
  **/
+@Router(path = "/appmanager/AppManagerActivity")
 public class AppManagerActivity extends BaseCommonActivity {
 
     private AppManagerViewModel mViewModel;

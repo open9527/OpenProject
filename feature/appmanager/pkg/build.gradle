@@ -8,4 +8,6 @@ android {
 
 dependencies {
     api project(gradle.getUnionPath(":feature:appmanager:export"))
+
+    kapt project(gradle.getUnionPath(":apt:compiler"))
 }

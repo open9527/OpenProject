@@ -1,13 +1,14 @@
-
 dependencies {
-    api project(gradle.getUnionPath(":feature:permission:pkg"))
-    api project(gradle.getUnionPath(":feature:okhttp:pkg"))
-    api project(gradle.getUnionPath(":feature:wanandroid:pkg"))
-    api project(gradle.getUnionPath(":feature:image:pkg"))
-    api project(gradle.getUnionPath(":feature:annotation:pkg"))
-    api project(gradle.getUnionPath(":feature:appmanager:pkg"))
-    api project(gradle.getUnionPath(":feature:webview:pkg"))
 
-//    debugImplementation 'com.didichuxing.doraemonkit:dokitx:3.3.5'
-//    releaseImplementation 'com.didichuxing.doraemonkit:dokitx-no-op:3.3.5'
+//    implementation project(gradle.getUnionPath(":lib:common"))
+
+    implementation project(gradle.getUnionPath(":feature:permission:pkg"))
+    implementation project(gradle.getUnionPath(":feature:okhttp:pkg"))
+    implementation project(gradle.getUnionPath(":feature:wanandroid:pkg"))
+    implementation project(gradle.getUnionPath(":feature:image:pkg"))
+    implementation project(gradle.getUnionPath(":feature:annotation:pkg"))
+    implementation project(gradle.getUnionPath(":feature:appmanager:pkg"))
+    implementation project(gradle.getUnionPath(":feature:webview:pkg"))
+
+    kapt project(gradle.getUnionPath(":apt:compiler"))
 }

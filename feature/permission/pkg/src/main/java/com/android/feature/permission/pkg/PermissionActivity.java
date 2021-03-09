@@ -17,6 +17,7 @@ import com.android.open9527.permission.PermissionsManage;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
+import com.open9527.annotation.router.Router;
 
 import java.util.List;
 
@@ -24,6 +25,7 @@ import java.util.List;
  * @author open_9527
  * Create at 2021/1/6
  **/
+@Router(path = "/permission/PermissionActivity")
 public class PermissionActivity extends BaseCommonActivity {
 
     private PermissionViewModel mViewModel;

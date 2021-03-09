@@ -33,6 +33,7 @@ import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.ThreadUtils;
 import com.blankj.utilcode.util.TimeUtils;
 import com.blankj.utilcode.util.ToastUtils;
+import com.open9527.annotation.router.Router;
 
 import java.io.File;
 import java.util.List;
@@ -43,6 +44,7 @@ import okhttp3.Call;
  * @author open_9527
  * Create at 2021/1/7
  **/
+@Router(path = "/okhttp/OkHttpActivity")
 public class OkHttpActivity extends BaseCommonActivity implements OnHttpListener {
 
     private String mFilePath;
@@ -337,7 +339,7 @@ public class OkHttpActivity extends BaseCommonActivity implements OnHttpListener
 
     //开启webSocket
     private void startWebSocket() {
-        WebSocketClient.startRequest( webSocketCallBack);
+        WebSocketClient.startRequest(webSocketCallBack);
     }
 
     //关闭webSocket

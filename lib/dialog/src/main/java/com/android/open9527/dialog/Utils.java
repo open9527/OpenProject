@@ -54,7 +54,7 @@ final class Utils {
 
     private static Activity getActivityFromDecorContext(Context context) {
         if (context == null) return null;
-        if (context.getClass().getName().equals("com.android.internal.policy.DecorContext")) {
+        if ("com.android.internal.policy.DecorContext".equals(context.getClass().getName())) {
             try {
                 Field mActivityContextField = context.getClass().getDeclaredField("mActivityContext");
                 mActivityContextField.setAccessible(true);

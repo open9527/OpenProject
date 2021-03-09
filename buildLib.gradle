@@ -2,7 +2,7 @@ apply {
     plugin "com.android.library"
     plugin "kotlin-android"
     plugin 'kotlin-kapt'
-//    plugin "kotlin-android-extensions"
+    plugin "kotlin-android-extensions"
 }
 
 android {
@@ -12,6 +12,14 @@ android {
         minSdkVersion Config.minSdkVersion
         versionCode Config.versionCode
         versionName Config.versionName
+
+        //route 获取 moduleName
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
     }
 
     buildTypes {
@@ -25,10 +33,10 @@ android {
 //        enabled = true
 //    }
 
-    //处理dataBinding和kotlin 冲突
-    kapt {
-        generateStubs = true
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
     }
+
 
     lintOptions {
         abortOnError false
