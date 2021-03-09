@@ -16,6 +16,7 @@ android {
         versionCode Config.versionCode
         versionName Config.versionName
         applicationId Config.applicationId + suffix
+//        applicationId Config.applicationId
         targetSdkVersion Config.targetSdkVersion
         multiDexEnabled true
 
@@ -55,6 +56,7 @@ android {
 
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             resValue "string", "app_name", Config.appName + suffix + ".debug"
+//            resValue "string", "app_name", Config.appName
 
         }
 

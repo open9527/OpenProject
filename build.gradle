@@ -1,9 +1,9 @@
-
 buildscript {
     repositories {
         google()
         jcenter()
-        
+        //umeng
+        maven { url 'https://dl.bintray.com/umsdk/release' }
     }
     dependencies {
         classpath Config.depConfig.plugin_gradle
@@ -19,6 +19,8 @@ allprojects {
         google()
         jcenter()
         maven { url "https://jitpack.io" }
+        //umeng
+        maven { url 'https://dl.bintray.com/umsdk/release' }
     }
     buildDir = new File(rootDir, "gradle-build/${path.replaceAll(':', '/')}")
 }

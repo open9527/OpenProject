@@ -21,10 +21,12 @@
     <dimen name="size_35">35dp</dimen>
     <dimen name="size_40">40dp</dimen>
     <dimen name="size_48">48dp</dimen>
+    <dimen name="size_50">50dp</dimen>
     <dimen name="size_80">80dp</dimen>
     <dimen name="size_160">160dp</dimen>
     <dimen name="size_500">500dp</dimen>
 
+    <dimen name="font_12">12sp</dimen>
     <dimen name="font_14">14sp</dimen>
     <dimen name="font_16">16sp</dimen>
     <dimen name="font_18">18sp</dimen>

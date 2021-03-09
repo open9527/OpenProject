@@ -90,6 +90,7 @@ class ConfigUtils {
             ':lib:titlebar',
             ':lib:webview',
             ':lib:router',
+            ':lib:umeng',
 
             //apt 注解器
             ':apt:annotation',

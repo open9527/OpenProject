@@ -33,6 +33,9 @@ dependencies {
 //    kapt project(gradle.getUnionPath(":apt:compiler"))
 //    annotationProcessor project(gradle.getUnionPath(":apt:compiler"))
 
+    //umeng
+//    api project(gradle.getUnionPath(":lib:umeng"))
+
     api Config.depConfig.androidx_lifecycle_common_java8
     api Config.depConfig.androidx_material
     api Config.depConfig.androidx_constraint

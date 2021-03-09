@@ -1,3 +1,23 @@
+android {
+
+    defaultConfig {
+        // 清单占位符
+        manifestPlaceholders = [
+                // 友盟 AppKey
+                'UMENG_APPKEY': '6046ed106ee47d382b78089c',
+                // QQ AppId
+                'QQ_APPID'    : 'xxxxxxxxx',
+                // QQ AppKey
+                'QQ_APPKEY'   : 'xxxxxxxxx',
+                // 微信 AppId
+                'WX_APPID'    : 'xxxxxxxxx',
+                // 微信 AppKey
+                'WX_APPKEY'   : 'xxxxxxxxx'
+        ]
+    }
+
+}
+
 dependencies {
 
 //    implementation project(gradle.getUnionPath(":lib:common"))

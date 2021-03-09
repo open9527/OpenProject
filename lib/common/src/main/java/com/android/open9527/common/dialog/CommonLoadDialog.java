@@ -11,7 +11,9 @@ import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 
 import com.android.open9527.common.R;
+import com.android.open9527.common.databinding.CommonLoadingDialogBinding;
 import com.android.open9527.dialog.BaseDialogFragment;
+import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SizeUtils;
 
 import java.util.Objects;
@@ -45,7 +47,13 @@ public class CommonLoadDialog extends BaseDialogFragment {
     public void initView(@NonNull BaseDialogFragment dialog, @NonNull View contentView) {
         setCancelable(true);
         Objects.requireNonNull(getDialog()).setCanceledOnTouchOutside(false);
-        DataBindingUtil.getBinding(contentView);
+        CommonLoadingDialogBinding mBinding = DataBindingUtil.getBinding(contentView);
+        if (mBinding != null) {
+            LogUtils.i(TAG, "mBinding is not null !");
+        }else {
+            LogUtils.i(TAG, "mBinding is  null !");
+        }
+
     }
 
     @Override

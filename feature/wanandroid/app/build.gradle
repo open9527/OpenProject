@@ -1,7 +1,24 @@
+android {
+    defaultConfig {
+        // 清单占位符
+        manifestPlaceholders = [
+                // 友盟 AppKey
+                'UMENG_APPKEY': 'xxx',
+                // QQ AppId
+                'QQ_APPID'    : 'xxx',
+                // QQ AppKey
+                'QQ_APPKEY'   : 'xxx',
+                // 微信 AppId
+                'WX_APPID'    : 'xxx',
+                // 微信 AppKey
+                'WX_APPKEY'   : 'xxx'
+        ]
+    }
 
-
+}
 
 dependencies {
-    api  project(gradle.getUnionPath(":feature:wanandroid:pkg"))
-    api  project(gradle.getUnionPath(":feature:mock"))
+    api project(gradle.getUnionPath(":feature:wanandroid:pkg"))
+    api project(gradle.getUnionPath(":feature:mock"))
+
 }

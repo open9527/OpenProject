@@ -1,5 +1,6 @@
 package com.open9527.wanandroid.pkg.main.share
 
+import android.view.View
 import com.android.open9527.common.binding.refresh.IRefresh
 import com.android.open9527.common.net.data.response.DataResult
 import com.android.open9527.common.page.BaseCommonFragment
@@ -13,6 +14,7 @@ import com.android.open9527.recycleview.layout_manager.WrapContentLinearLayoutMa
 import com.blankj.utilcode.util.LogUtils
 import com.open9527.wanandroid.pkg.BR
 import com.open9527.wanandroid.pkg.R
+import com.open9527.wanandroid.pkg.dialog.UmengShareDialog
 import com.open9527.wanandroid.pkg.net.DataVo
 import com.scwang.smart.refresh.layout.api.RefreshLayout
 import okhttp3.Call
@@ -60,6 +62,14 @@ class ShareFragment : BaseCommonFragment(), OnHttpListener<Any?> {
                 mPage = if (isRefresh!!) 0 else ++mPage
                 requestShare()
             }
+        }
+
+        @JvmField
+        var shareClick = View.OnClickListener {
+            UmengShareDialog.newInstance(it.context).show()
+//                .setShareTitle("")
+
+
         }
     }
 

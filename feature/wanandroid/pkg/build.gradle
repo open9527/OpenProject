@@ -10,6 +10,8 @@ android {
 dependencies {
     api project(gradle.getUnionPath(":feature:wanandroid:export"))
     kapt project(gradle.getUnionPath(":apt:compiler"))
+    //umeng
+    api project(gradle.getUnionPath(":lib:umeng"))
 }
 
 
