@@ -1,3 +1,5 @@
 dependencies {
     api project(gradle.getUnionPath(":lib:common"))
+    //umeng
+    api project(gradle.getUnionPath(":lib:umeng"))
 }

@@ -9,9 +9,14 @@ import androidx.annotation.NonNull;
 
 public interface IDialogView {
 
+    default DialogDataBindingConfig getDataBindingConfig() {
+        return new DialogDataBindingConfig();
+    }
+
     default void initView(@NonNull BaseDialogFragment dialog, @NonNull View contentView) {
 
     }
+
 
     default int bindTheme() {
         return 0;

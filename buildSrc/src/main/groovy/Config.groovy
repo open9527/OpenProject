@@ -36,7 +36,7 @@ class Config {
             kotlin_stdlib_jdk7             : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion",
 
 //            androidx_appcompat             : "androidx.appcompat:appcompat:1.2.0",
-            androidx_appcompat             : "androidx.appcompat:appcompat:1.3.0-alpha02",
+            androidx_appcompat             : "androidx.appcompat:appcompat:1.3.0-beta01",
             androidx_material              : "com.google.android.material:material:1.2.1",
             androidx_constraint            : "androidx.constraintlayout:constraintlayout:2.0.4",
 //            androidx_recyclerview          : "androidx.recyclerview:recyclerview:1.1.0",

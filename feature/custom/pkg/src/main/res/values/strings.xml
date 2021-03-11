@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- umeng-->
+    <string name="share_title">分享到&#8230;</string>
+
+    <string name="share_platform_wechat">微信</string>
+    <string name="share_platform_moment">朋友圈</string>
+    <string name="share_platform_qq">QQ</string>
+    <string name="share_platform_qzone">QQ空间</string>
+    <string name="share_platform_link">复制链接</string>
+
+    <string name="share_platform_copy_hint">已复制到剪贴板</string>
+</resources>

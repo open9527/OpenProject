@@ -1,16 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vm"
             type="com.android.custom.pkg.CustomViewModel" />
 
+        <variable
+            name="click"
+            type="android.view.View.OnClickListener" />
+
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <com.android.custom.pkg.view.ShadowConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size_40"
+                android:background="@drawable/button_round_shape"
+                app:bindDrawableRadius="@{10}"
+                app:bindDrawableShapeMode="@{vm.valueShapeMode}"
+                app:bindDrawableSolidColor="@{@color/gray}">
+
+                <TextView
+                    android:id="@+id/tv_shadow_3"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/size_50"
+                    android:background="@color/common_accent_color"
+                    app:bindViewClick="@{v->click.onClick(v)}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_radius="5dp"
+                    app:layout_shadowColor="@color/green"
+                    app:layout_shadowDx="0dp"
+                    app:layout_shadowDy="0dp"
+                    app:layout_shadowEvaluation="5dp" />
+
+                <TextView
+                    android:id="@+id/tv_shadow_4"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/size_15"
+                    android:background="@color/green"
+                    app:bindViewClick="@{v->click.onClick(v)}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_shadow_3"
+                    app:layout_radius="5dp"
+                    app:layout_shadowColor="@color/red"
+                    app:layout_shadowDy="5dp"
+                    app:layout_shadowEvaluation="5dp"
+                    tools:layout_shadowDx="5dp" />
+
+            </com.android.custom.pkg.view.ShadowConstraintLayout>
+
+
+            <com.android.custom.pkg.view.ShadowLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/size_40"
+                android:orientation="vertical"
+                app:bindDrawableRadius="@{10}"
+                app:bindDrawableShapeMode="@{vm.valueShapeMode}"
+                app:bindDrawableSolidColor="@{@color/gray}">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/size_50"
+                    android:background="@color/common_accent_color"
+                    app:layout_radius="5dp"
+                    app:layout_shadowColor="@color/green"
+                    app:layout_shadowDx="0dp"
+                    app:layout_shadowDy="0dp"
+                    app:layout_shadowEvaluation="0dp" />
+
+                <TextView
+                    android:id="@+id/tv_shadow_2"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/size_15"
+                    android:layout_marginBottom="@dimen/size_40"
+                    android:background="@color/green"
+                    app:layout_radius="5dp"
+                    app:layout_shadowColor="@color/red"
+                    app:layout_shadowEvaluation="5dp"
+                    tools:layout_shadowDx="5dp"
+                    tools:layout_shadowDy="5dp" />
+
+
+                <TextView
+                    android:id="@+id/tv_shadow_6"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/size_15"
+                    android:layout_marginBottom="@dimen/size_40"
+                    app:bindDrawableRadius="@{10}"
+                    app:bindDrawableShapeMode="@{vm.valueShapeMode}"
+                    app:bindDrawableSolidColor="@{@color/red}" />
+
+                <com.android.custom.pkg.view.ShadowLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_margin="@dimen/size_40"
+                    android:orientation="vertical"
+                    app:bindDrawableRadius="@{10}"
+                    app:bindDrawableShapeMode="@{vm.valueShapeMode}"
+                    app:bindDrawableSolidColor="@{@color/gray}">
+
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/size_15"
+                        android:layout_marginBottom="@dimen/size_40"
+                        android:background="@color/green"
+                        app:layout_radius="5dp"
+                        app:layout_shadowColor="@color/red"
+                        app:layout_shadowEvaluation="5dp"
+                        tools:layout_shadowDx="5dp"
+                        tools:layout_shadowDy="5dp" />
+
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/size_15"
+                        android:layout_marginBottom="@dimen/size_40"
+                        app:bindDrawableRadius="@{10}"
+                        app:bindDrawableShapeMode="@{vm.valueShapeMode}"
+                        app:bindDrawableSolidColor="@{@color/red}" />
+
+
+                </com.android.custom.pkg.view.ShadowLinearLayout>
+
+            </com.android.custom.pkg.view.ShadowLinearLayout>
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 </layout>

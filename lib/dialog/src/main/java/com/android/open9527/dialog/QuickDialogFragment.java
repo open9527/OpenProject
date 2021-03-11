@@ -42,12 +42,12 @@ public class QuickDialogFragment extends BaseDialogFragment {
     }
 
     @Override
-    public void initView(@NonNull BaseDialogFragment dialog,@NonNull View contentView) {
+    public void initView(@NonNull BaseDialogFragment dialog, @NonNull View contentView) {
         IQuickView quickViewProvider = dialogFragmentConfig.getQuickViewProvider();
         if (quickViewProvider != null) {
             quickViewProvider.viewHolder(dialog, contentView);
         }
         setCancelable(dialogFragmentConfig.getCancelable());
-        Objects.requireNonNull(getDialog()).setCanceledOnTouchOutside(dialogFragmentConfig.getCanceledOnTouchOutside());
+        setCanceledOnTouchOutside(dialogFragmentConfig.getCanceledOnTouchOutside());
     }
 }

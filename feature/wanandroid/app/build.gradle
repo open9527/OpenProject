@@ -14,7 +14,10 @@ android {
                 'WX_APPKEY'   : 'xxx'
         ]
     }
-
+    //支持dataBinding
+    dataBinding {
+        enabled true
+    }
 }
 
 dependencies {

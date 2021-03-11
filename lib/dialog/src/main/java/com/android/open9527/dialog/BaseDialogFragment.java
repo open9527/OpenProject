@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +15,13 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.viewbinding.ViewBinding;
 
 
 public abstract class BaseDialogFragment extends DialogFragment implements IDialogView {
@@ -69,16 +73,28 @@ public abstract class BaseDialogFragment extends DialogFragment implements IDial
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (bindLayout() > 0) {
-            return inflater.inflate(bindLayout(), container, false);
+            //支持DataBinding
+            final ViewDataBinding binding = DataBindingUtil.inflate(inflater, bindLayout(), container, false);
+//            return  inflater.inflate(bindLayout(), container, false);
+            return binding.getRoot();
         }
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         initView(this, view);
-//        super.onViewCreated(view, savedInstanceState);
     }
+
+    @Override
+    public void initView(@NonNull BaseDialogFragment dialog, @NonNull View contentView) {
+
+        if (getDataBindingConfig() != null && getDataBindingConfig().getBindingParams().size() > 0) {
+            bindingVariable(DataBindingUtil.getBinding(contentView), getDataBindingConfig().getBindingParams());
+        }
+    }
+
 
     @Override
     public void onCancel(@NonNull DialogInterface dialog) {
@@ -124,6 +140,14 @@ public abstract class BaseDialogFragment extends DialogFragment implements IDial
         });
     }
 
+    public void setCanceledOnTouchOutside(boolean cancel) {
+        Dialog mDialog = getDialog();
+        if (mDialog != null) {
+            mDialog.setCanceledOnTouchOutside(cancel);
+        }
+    }
+
+
     private FragmentActivity getFragmentActivity(Context context) {
         Activity activity = Utils.getActivityByContext(context);
         if (activity != null) {
@@ -140,6 +164,12 @@ public abstract class BaseDialogFragment extends DialogFragment implements IDial
             if (view instanceof TextView) {
                 Utils.hideSoftInput(mActivity, view);
             }
+        }
+    }
+
+    private static void bindingVariable(ViewDataBinding binding, SparseArray bindingParams) {
+        for (int i = 0, length = bindingParams.size(); i < length; i++) {
+            binding.setVariable(bindingParams.keyAt(i), bindingParams.valueAt(i));
         }
     }
 }

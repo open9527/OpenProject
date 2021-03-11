@@ -6,7 +6,6 @@ import com.android.open9527.common.page.BaseCommonActivity
 import com.android.open9527.page.DataBindingConfig
 import com.blankj.utilcode.util.AppUtils
 import com.open9527.annotation.router.Router
-import com.open9527.umeng.UmengClient
 import com.open9527.wanandroid.pkg.BR
 import com.open9527.wanandroid.pkg.R
 
@@ -40,11 +39,5 @@ class WanAndroidActivity : BaseCommonActivity() {
         } else {
             AppUtils.exitApp()
         }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        // 友盟登录回调
-        UmengClient.onActivityResult(this, requestCode, resultCode, data)
     }
 }

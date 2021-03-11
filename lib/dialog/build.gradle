@@ -1,4 +1,11 @@
 
+android {
+    //支持dataBinding
+    dataBinding {
+        enabled true
+    }
+}
+
 dependencies {
     implementation Config.depConfig.androidx_appcompat
 }

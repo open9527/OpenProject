@@ -1,4 +1,4 @@
-package com.open9527.wanandroid.pkg.dialog;
+package com.android.custom.pkg.umeng;
 
 import android.graphics.drawable.Drawable;
 

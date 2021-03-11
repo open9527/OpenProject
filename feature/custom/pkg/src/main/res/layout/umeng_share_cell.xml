@@ -5,11 +5,11 @@
 
     <data>
 
-        <import type="com.open9527.wanandroid.pkg.R" />
+        <import type="com.android.custom.pkg.R" />
 
         <variable
             name="cell"
-            type="com.open9527.wanandroid.pkg.dialog.UmengShareCell" />
+            type="com.android.custom.pkg.umeng.UmengShareDialog.UmengShareCell" />
 
     </data>
 
@@ -28,7 +28,7 @@
             android:layout_width="@dimen/size_50"
             android:layout_height="@dimen/size_50"
             app:bindIvDefaultImageDrawable="@{cell.valueImageDrawable}"
-            tools:src="@mipmap/ic_launcher" />
+            tools:src="@drawable/share_link_ic" />
 
 
         <com.android.open9527.common.widget.StateSwitchTextView
@@ -37,9 +37,10 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/font_12"
             app:bindTextDefaultText="@{cell.valueName}"
-            app:bindTextDefaultTextColor="@{R.color.common_text_sub_color}"
+            app:bindTextDefaultTextColor="@{@color/common_text_sub_color}"
             tools:ignore="SpUsage"
-            tools:text="分享平台" />
+            tools:text="分享平台"
+            tools:textColor="@color/common_text_sub_color" />
 
     </LinearLayout>
 </layout>

@@ -8,6 +8,7 @@ import com.android.open9527.recycleview.adapter.BaseBindingCellAdapter;
 import com.android.open9527.recycleview.decoration.SpacesItemDecoration;
 import com.android.open9527.recycleview.layout_manager.WrapContentLinearLayoutManager;
 import com.blankj.utilcode.util.AppUtils;
+import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ThreadUtils;
 import com.open9527.annotation.router.Router;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
@@ -39,7 +40,8 @@ public class AppManagerActivity extends BaseCommonActivity {
 
     @Override
     public void initRequest() {
-        createLoadDialog().show();
+        createLoadDialog();
+        mCommonLoadDialog.show();
         requestAppsInfo();
     }
 
@@ -53,7 +55,7 @@ public class AppManagerActivity extends BaseCommonActivity {
             @Override
             public void onSuccess(List<AppUtils.AppInfo> result) {
                 mViewModel.initData(result);
-                createLoadDialog().dismiss();
+                mCommonLoadDialog.dismiss();
             }
         });
     }

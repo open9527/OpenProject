@@ -14,7 +14,6 @@ import com.android.open9527.recycleview.layout_manager.WrapContentLinearLayoutMa
 import com.blankj.utilcode.util.LogUtils
 import com.open9527.wanandroid.pkg.BR
 import com.open9527.wanandroid.pkg.R
-import com.open9527.wanandroid.pkg.dialog.UmengShareDialog
 import com.open9527.wanandroid.pkg.net.DataVo
 import com.scwang.smart.refresh.layout.api.RefreshLayout
 import okhttp3.Call
@@ -66,8 +65,6 @@ class ShareFragment : BaseCommonFragment(), OnHttpListener<Any?> {
 
         @JvmField
         var shareClick = View.OnClickListener {
-            UmengShareDialog.newInstance(it.context).show()
-//                .setShareTitle("")
 
 
         }

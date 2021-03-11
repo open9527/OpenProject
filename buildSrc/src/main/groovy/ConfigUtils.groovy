@@ -43,6 +43,10 @@ class ConfigUtils {
                                 project.apply {
                                     from "${project.rootDir.path}/buildApp.gradle"
                                 }
+                                //test
+//                                project.apply {
+//                                    from "${project.rootDir.path}/buildTestApp.gradle"
+//                                }
                             } else {
 //                                GLog.l(project.toString() + " applies buildLib.gradle")
                                 project.apply {

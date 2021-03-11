@@ -2,15 +2,12 @@ package com.open9527.umeng;
 
 import android.app.Activity;
 import android.app.Application;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.ShareAction;
@@ -29,7 +26,7 @@ public final class UmengClient {
 
         try {
             Bundle metaData = application.getPackageManager().getApplicationInfo(application.getPackageName(), PackageManager.GET_META_DATA).metaData;
-            UMConfigure.init(application, String.valueOf(metaData.get("UMENG_APPKEY")),"umeng", UMConfigure.DEVICE_TYPE_PHONE, "");
+            UMConfigure.init(application, String.valueOf(metaData.get("UMENG_APPKEY")), "umeng", UMConfigure.DEVICE_TYPE_PHONE, "");
             // 初始化各个平台的 Key
             PlatformConfig.setWeixin(String.valueOf(metaData.get("WX_APPID")), String.valueOf(metaData.get("WX_APPKEY")));
             PlatformConfig.setQQZone(String.valueOf(metaData.get("QQ_APPID")), String.valueOf(metaData.get("QQ_APPKEY")));
@@ -41,13 +38,13 @@ public final class UmengClient {
     /**
      * 分享
      *
-     * @param activity              Activity对象
-     * @param platform              分享平台
-     * @param data                  分享内容
-     * @param listener              分享监听
+     * @param activity Activity对象
+     * @param platform 分享平台
+     * @param data     分享内容
+     * @param listener 分享监听
      */
     public static void share(Activity activity, Platform platform, UmengShare.ShareData data, UmengShare.OnShareListener listener) {
-        if (isAppInstalled(activity, platform.getPackageName())) {
+        if (isAppInstalled(activity, platform)) {
             new ShareAction(activity)
                     .setPlatform(platform.getThirdParty())
                     .withMedia(data.create())
@@ -57,16 +54,16 @@ public final class UmengClient {
         }
         // 当分享的平台软件可能没有被安装的时候
         if (listener != null) {
-            listener.onError(platform, new PackageManager.NameNotFoundException("Is not installed"));
+            listener.onError(platform, new PackageManager.NameNotFoundException("is not installed"));
         }
     }
 
     /**
      * 登录
      *
-     * @param activity              Activity对象
-     * @param platform              登录平台
-     * @param listener              登录监听
+     * @param activity Activity对象
+     * @param platform 登录平台
+     * @param listener 登录监听
      */
     public static void login(Activity activity, Platform platform, UmengLogin.OnLoginListener listener) {
         if (isAppInstalled(activity, platform)) {
@@ -98,17 +95,8 @@ public final class UmengClient {
     /**
      * 判断 App 是否安装
      */
-    public static boolean isAppInstalled(Context context, Platform platform) {
-        return isAppInstalled(context, platform.getPackageName());
+    public static boolean isAppInstalled(Activity activity, Platform platform) {
+        return UMShareAPI.get(activity).isInstall(activity, platform.getThirdParty());
     }
 
-    private static boolean isAppInstalled(Context context, @NonNull final String packageName) {
-        try {
-            context.getPackageManager().getApplicationInfo(packageName, 0);
-            return true;
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
 }

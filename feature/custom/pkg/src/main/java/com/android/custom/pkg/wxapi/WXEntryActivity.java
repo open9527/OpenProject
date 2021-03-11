@@ -1,4 +1,4 @@
-package com.wdit.shrmthk.wxapi;
+package com.android.custom.pkg.wxapi;
 
 import com.umeng.socialize.weixin.view.WXCallbackActivity;
 

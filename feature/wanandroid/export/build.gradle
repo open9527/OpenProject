@@ -1,5 +1,10 @@
 
-
+android {
+    //支持dataBinding
+    dataBinding {
+        enabled true
+    }
+}
 
 dependencies {
     api Config.depConfig.kotlin_stdlib_jdk7

@@ -39,28 +39,29 @@ public class GradientDrawableUtils {
     public static GradientDrawable createDrawableOval(int color, int width, int strokeColor, int strokeWidth) {
         GradientDrawable gradientDrawable = new GradientDrawable();
         gradientDrawable.setShape(GradientDrawable.OVAL);
-        gradientDrawable.setColor(color);
         gradientDrawable.setStroke(strokeWidth, strokeColor);
         gradientDrawable.setSize(width, width);
+        gradientDrawable.setColor(color);
         return gradientDrawable;
     }
 
     public static GradientDrawable createDrawableRectangle(int color, int width, int height, int radius, int strokeColor, int strokeWidth) {
         GradientDrawable gradientDrawable = new GradientDrawable();
         gradientDrawable.setShape(GradientDrawable.RECTANGLE);
-        gradientDrawable.setColor(color);
-        gradientDrawable.setStroke(strokeWidth, strokeColor);
+//        gradientDrawable.setStroke(strokeWidth, strokeColor);
         gradientDrawable.setCornerRadius(radius);
         gradientDrawable.setSize(width, height);
+        //TODO: View的背景会导致有圆角外有黑背景因为设置colors顺序的问题
+        gradientDrawable.setColor(color);
         return gradientDrawable;
     }
+
 
     public static GradientDrawable createDrawableRectangle(int[] colors, int gradient, GradientDrawable.Orientation orientation, int width, int height) {
         //int[] colors = {Color.YELLOW, Color.GREEN, Color.BLUE};
         GradientDrawable gradientDrawable = new GradientDrawable();
         gradientDrawable.setShape(GradientDrawable.RECTANGLE);
-        //添加颜色组
-        gradientDrawable.setColors(colors);
+
 
         //设置线性渐变
         //gradientDrawable.setGradientType(GradientDrawable.LINEAR_GRADIENT);
@@ -80,6 +81,8 @@ public class GradientDrawableUtils {
         gradientDrawable.setGradientType(gradient);
         gradientDrawable.setOrientation(orientation);
         gradientDrawable.setSize(width, height);
+        //添加颜色组
+        gradientDrawable.setColors(colors);
         return gradientDrawable;
     }
 

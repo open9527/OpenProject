@@ -793,6 +793,26 @@ public class DrawablesBindingAdapter {
             return null;
         }
         GradientDrawable drawable = new GradientDrawable();
+
+        drawable.setShape(validShapeMode(shapeMode));
+        if (shapeMode == ShapeMode.RING) {
+            // 由于GradientDrawable中没有ring相关的公开API，所以使用反射，若对性能有要求，请注意。
+            setRingValue(drawable, ringThickness, ringThicknessRatio, ringInnerRadius, ringInnerRadiusRatio);
+        }
+        if (strokeWidth > 0) {
+            drawable.setStroke(dip2px(strokeWidth), strokeColor, dip2px(strokeDash), dip2px(strokeDashGap));
+        }
+        if (radius <= 0) {
+            float[] radiusEach = new float[]{dip2px(radiusLT), dip2px(radiusLT), dip2px(radiusRT), dip2px(radiusRT),
+                    dip2px(radiusRB), dip2px(radiusRB), dip2px(radiusLB), dip2px(radiusLB)};
+            drawable.setCornerRadii(radiusEach);
+        } else {
+            drawable.setCornerRadius(dip2px(radius));
+        }
+        if (width > 0 && height > 0) {
+            // https://stackoverflow.com/a/29180660/4698946
+            drawable.setSize(dip2px(width), dip2px(height));
+        }
         if (startColor != null && endColor != null) {
             int[] colors;
             if (centerColor != null) {
@@ -815,28 +835,11 @@ public class DrawablesBindingAdapter {
             }
         } else {
             if (solidColor != null) {
+               // TODO: View的背景会导致有圆角外有黑背景因为设置colors顺序的问题
                 drawable.setColor(solidColor);
             }
         }
-        drawable.setShape(validShapeMode(shapeMode));
-        if (shapeMode == ShapeMode.RING) {
-            // 由于GradientDrawable中没有ring相关的公开API，所以使用反射，若对性能有要求，请注意。
-            setRingValue(drawable, ringThickness, ringThicknessRatio, ringInnerRadius, ringInnerRadiusRatio);
-        }
-        if (strokeWidth > 0) {
-            drawable.setStroke(dip2px(strokeWidth), strokeColor, dip2px(strokeDash), dip2px(strokeDashGap));
-        }
-        if (radius <= 0) {
-            float[] radiusEach = new float[]{dip2px(radiusLT), dip2px(radiusLT), dip2px(radiusRT), dip2px(radiusRT),
-                    dip2px(radiusRB), dip2px(radiusRB), dip2px(radiusLB), dip2px(radiusLB)};
-            drawable.setCornerRadii(radiusEach);
-        } else {
-            drawable.setCornerRadius(dip2px(radius));
-        }
-        if (width > 0 && height > 0) {
-            // https://stackoverflow.com/a/29180660/4698946
-            drawable.setSize(dip2px(width), dip2px(height));
-        }
+
         if (marginLeft != 0 || marginTop != 0 || marginRight != 0 || marginBottom != 0) {
             return new InsetDrawable(drawable,
                     dip2px(marginLeft),

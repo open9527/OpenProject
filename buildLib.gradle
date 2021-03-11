@@ -28,6 +28,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    //支持dataBinding
+//    dataBinding {
+//        enabled true
+//    }
+
     //支持viewBinding
 //    viewBinding {
 //        enabled = true
