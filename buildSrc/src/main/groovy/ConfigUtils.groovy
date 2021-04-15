@@ -95,6 +95,7 @@ class ConfigUtils {
             ':lib:webview',
             ':lib:router',
             ':lib:umeng',
+            ':lib:filter',
 
             //apt 注解器
             ':apt:annotation',

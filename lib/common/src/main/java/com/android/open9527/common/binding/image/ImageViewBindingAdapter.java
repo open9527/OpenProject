@@ -7,9 +7,9 @@ import androidx.databinding.BindingAdapter;
 
 import com.android.open9527.common.net.glide.ImageCallBack;
 import com.android.open9527.common.net.glide.ImageLoadConfig;
-import com.android.open9527.common.widget.LoadImageView;
-import com.android.open9527.common.widget.StateSwitchImageConfig;
-import com.android.open9527.common.widget.StateSwitchImageView;
+import com.android.open9527.common.widget.image.LoadImageView;
+import com.android.open9527.common.widget.image.StateSwitchImageConfig;
+import com.android.open9527.common.widget.image.StateSwitchImageView;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;

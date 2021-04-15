@@ -3,16 +3,16 @@ package com.android.open9527.common.binding.textview;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.BindingAdapter;
 
-import com.android.open9527.common.widget.StateSwitchTextConfig;
-import com.android.open9527.common.widget.StateSwitchTextView;
+import com.android.open9527.common.widget.textview.CountdownView;
+import com.android.open9527.common.widget.textview.StateSwitchTextConfig;
+import com.android.open9527.common.widget.textview.StateSwitchTextView;
 
 public class TextViewBindingAdapter {
 
@@ -165,5 +165,30 @@ public class TextViewBindingAdapter {
         return ContextCompat.getColor(context, colorRes);
     }
 
+
+    @BindingAdapter(value = {
+            "bindCountdownViewTime",
+            "bindCountdownViewText",
+            "bindCountdownViewDefaultColor",
+            "bindCountdownViewColor",
+            "bindCountdownViewListener"}, requireAll = false)
+    public static void setBindCountdownView(CountdownView countdownView,
+                                            int totalTime,
+                                            String text,
+                                            @ColorInt int defaultColor,
+                                            @ColorInt int color,
+                                            CountdownView.ICountdown iCountdown) {
+        if (countdownView == null) return;
+        if (totalTime > 0) {
+            countdownView.setTotalTime(totalTime);
+            countdownView.start();
+        }
+        countdownView.setDefaultColor(defaultColor);
+        countdownView.setColor(color);
+        if (iCountdown != null) {
+            countdownView.setListener(iCountdown);
+        }
+
+    }
 
 }

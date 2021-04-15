@@ -16,7 +16,7 @@
         app:bindViewClick="@{v->cell.onCellClick(v,cell)}"
         android:layout_height="wrap_content">
 
-        <com.android.open9527.common.widget.LoadImageView
+        <com.android.open9527.common.widget.image.LoadImageView
             android:id="@+id/iv_pic"
             android:layout_width="match_parent"
             android:layout_height="0dp"

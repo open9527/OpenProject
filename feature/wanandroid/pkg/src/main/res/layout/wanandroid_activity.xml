@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.android.open9527.common.widget.CommonNotScrollViewPager
+        <com.android.open9527.common.widget.viewpager.CommonNotScrollViewPager
             android:id="@+id/main_view_pager"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_0"

@@ -25,7 +25,7 @@ public class PreviewViewModel extends ViewModel {
 
     public final ObservableField<PreviewCell.ICellClick> valueICellClick = new ObservableField<>();
 
-    public final ObservableField<String> valueTransitionName = new ObservableField<>("TransitionName");
+    public final ObservableField<String> valueTransitionName = new ObservableField<>("transition_name");
 
 
      void initData(List list) {

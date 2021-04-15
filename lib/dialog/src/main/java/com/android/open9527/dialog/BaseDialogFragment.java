@@ -75,6 +75,7 @@ public abstract class BaseDialogFragment extends DialogFragment implements IDial
         if (bindLayout() > 0) {
             //支持DataBinding
             final ViewDataBinding binding = DataBindingUtil.inflate(inflater, bindLayout(), container, false);
+            binding.setLifecycleOwner(this);
 //            return  inflater.inflate(bindLayout(), container, false);
             return binding.getRoot();
         }

@@ -19,7 +19,7 @@
         android:padding="@dimen/size_10"
         app:bindViewClick="@{v->cell.onCellClick(v,cell)}">
 
-        <com.android.open9527.common.widget.StateSwitchTextView
+        <com.android.open9527.common.widget.textview.StateSwitchTextView
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
             tools:textSize="@dimen/font_16" />
 
 
-        <com.android.open9527.common.widget.StateSwitchTextView
+        <com.android.open9527.common.widget.textview.StateSwitchTextView
             android:id="@+id/tv_share_user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
             tools:textColor="@color/common_text_sub_color"
             tools:textSize="@dimen/font_14" />
 
-        <com.android.open9527.common.widget.StateSwitchTextView
+        <com.android.open9527.common.widget.textview.StateSwitchTextView
             android:id="@+id/tv_share_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

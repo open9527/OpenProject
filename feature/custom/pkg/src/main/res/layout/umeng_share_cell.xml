@@ -23,7 +23,7 @@
         app:bindViewClick="@{v->cell.onCellClick(v,cell)}"
         tools:context=".ui.dialog.ShareDialog">
 
-        <com.android.open9527.common.widget.StateSwitchImageView
+        <com.android.open9527.common.widget.image.StateSwitchImageView
             android:id="@+id/iv_pic"
             android:layout_width="@dimen/size_50"
             android:layout_height="@dimen/size_50"
@@ -31,7 +31,7 @@
             tools:src="@drawable/share_link_ic" />
 
 
-        <com.android.open9527.common.widget.StateSwitchTextView
+        <com.android.open9527.common.widget.textview.StateSwitchTextView
             android:id="@+id/tv_share_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -14,7 +14,7 @@
 
     </data>
 
-    <com.android.open9527.common.widget.PhotoViewPager
+    <com.android.open9527.common.widget.image.PhotoViewPager
         android:id="@+id/photo_view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

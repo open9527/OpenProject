@@ -6,7 +6,8 @@ package com.android.open9527.image.pkg;
  **/
 public class LocationChangeEvent {
 
-    private int startPosition,currentPosition;
+    private int startPosition = 0;
+    private int currentPosition = 0;
 
     public LocationChangeEvent(int startPosition, int currentPosition) {
         this.startPosition = startPosition;

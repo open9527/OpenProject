@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
-import com.android.open9527.common.widget.CommonFragmentPagerAdapter;
+import com.android.open9527.common.widget.viewpager.CommonFragmentPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.open9527.wanandroid.pkg.BR;
 import com.open9527.wanandroid.pkg.R;

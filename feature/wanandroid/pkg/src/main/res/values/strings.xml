@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+        <!-- " (&#34; 或 &quot;)-->
+
+        <!-- '  (&#39; 或 &apos;)-->
+
+        <!-- &  (&#38; 或 &amp;)-->
+
+        <!-- lt(<)  (&#60; 或 &lt;)-->
+
+        <!-- gt(>)  (&#62; 或 &gt;)-->
+
 
     <string name="wan_main_title"><font color="#5a8ddf">android</font> open9527</string>
 

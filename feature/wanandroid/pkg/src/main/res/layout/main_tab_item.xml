@@ -38,7 +38,7 @@
         android:layout_height="@dimen/offset_64"
         tools:ignore="HardcodedText">
 
-        <com.android.open9527.common.widget.StateSwitchTextView
+        <com.android.open9527.common.widget.textview.StateSwitchTextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="tabItem" />
 
-        <com.android.open9527.common.widget.StateSwitchImageView
+        <com.android.open9527.common.widget.image.StateSwitchImageView
             android:layout_width="@dimen/size_30"
             android:layout_height="@dimen/size_30"
             app:bindIvDefaultImageResId="@{defaultIcon}"

@@ -33,8 +33,7 @@ import androidx.lifecycle.LifecycleOwner;
  **/
 
 
-public final class BrowserView extends NestedScrollWebView
-        implements LifecycleEventObserver {
+public final class BrowserView extends NestedScrollWebView implements LifecycleEventObserver {
 
     static {
         // WebView 调试模式开关

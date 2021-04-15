@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.android.open9527.common.widget.LoadImageView
+        <com.android.open9527.common.widget.image.LoadImageView
             android:id="@+id/iv_comment_banner"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -29,7 +29,7 @@
             app:bindIvWidth="@{800}" />
 
 
-        <com.android.open9527.common.widget.StateSwitchTextView
+        <com.android.open9527.common.widget.textview.StateSwitchTextView
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

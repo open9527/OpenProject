@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
-import com.android.open9527.common.widget.CommonFragmentPagerAdapter;
+import com.android.open9527.common.widget.viewpager.CommonFragmentPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.open9527.wanandroid.pkg.BR;
 import com.open9527.wanandroid.pkg.R;
@@ -60,7 +60,7 @@ public class ProjectTabLayout extends TabLayout {
                 }
 //                View tabStripView = getChildAt(0);
 //                tabStripView.setBackground(new TabIndicatorDrawable(tabStripView, R.color.color_text_black));//设置背景 添加自定义下划线
-                setSelectedTabIndicator(getContext().getDrawable(R.drawable.layer_list_tab_indicator));
+                setSelectedTabIndicator(R.drawable.layer_list_tab_indicator);
                 setSelectedTabIndicatorColor(ContextCompat.getColor(getContext(), R.color.gold));
 
                 Objects.requireNonNull(getTabAt(defaultIndex)).select();

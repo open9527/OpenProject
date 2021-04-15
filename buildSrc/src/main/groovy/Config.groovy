@@ -69,15 +69,6 @@ class Config {
             banner_viewpager               : "com.github.zhpanvip:BannerViewPager:3.4.0",
 
             persistent_cookie_jar          : "com.github.franmontiel:PersistentCookieJar:v1.0.1",
-            //implementation  'com.scwang.smart:refresh-layout-kernel:2.0.3'      //核心必须依赖
-            //implementation  'com.scwang.smart:refresh-header-classics:2.0.3'    //经典刷新头
-            //implementation  'com.scwang.smart:refresh-header-radar:2.0.3'       //雷达刷新头
-            //implementation  'com.scwang.smart:refresh-header-falsify:2.0.3'     //虚拟刷新头
-            //implementation  'com.scwang.smart:refresh-header-material:2.0.3'    //谷歌刷新头
-            //implementation  'com.scwang.smart:refresh-header-two-level:2.0.3'   //二级刷新头
-            //implementation  'com.scwang.smart:refresh-footer-ball:2.0.3'        //球脉冲加载
-            //implementation  'com.scwang.smart:refresh-footer-classics:2.0.3'    //经典加载
-
 
             "photo_view"                   : "com.github.chrisbanes:PhotoView:2.3.0"
 
