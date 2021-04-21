@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.android.custom.pkg.R" />
+
+        <variable
+            name="barBackClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="barMenuClick"
+            type="android.view.View.OnClickListener" />
+
+
+        <variable
+            name="barBackgroundColor"
+            type="Integer" />
+
+        <variable
+            name="barBackgroundDrawable"
+            type="android.graphics.drawable.Drawable" />
+
+
+        <variable
+            name="showBarBack"
+            type="Integer" />
+
+        <variable
+            name="barBackSelect"
+            type="Boolean" />
+
+        <variable
+            name="barBackDefaultIcon"
+            type="Integer" />
+
+        <variable
+            name="barBackSelectIcon"
+            type="Integer" />
+
+        <variable
+            name="barTitleText"
+            type="String" />
+
+        <variable
+            name="barTitleSelect"
+            type="Boolean" />
+
+        <variable
+            name="barTitleDefaultTextColor"
+            type="Integer" />
+
+        <variable
+            name="barTitleSelectTextColor"
+            type="Integer" />
+
+        <variable
+            name="barMenuSelect"
+            type="Boolean" />
+
+        <variable
+            name="barMenuText"
+            type="String" />
+
+        <variable
+            name="barMenuDefaultTextColor"
+            type="Integer" />
+
+        <variable
+            name="barMenuSelectTextColor"
+            type="Integer" />
+
+        <variable
+            name="showMenuString"
+            type="Boolean" />
+
+        <variable
+            name="showMenuIcon"
+            type="Boolean" />
+
+        <variable
+            name="barMenuDefaultIcon"
+            type="Integer" />
+
+        <variable
+            name="barMenuSelectIcon"
+            type="Integer" />
+
+        <variable
+            name="showLine"
+            type="Integer" />
+
+        <variable
+            name="barLineBackgroundColor"
+            type="Integer" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/root_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:minHeight="@dimen/size_48"
+        app:bindViewBgColor="@{barBackgroundColor}"
+        app:bindViewBgDrawable="@{barBackgroundDrawable}">
+
+        <View
+            android:id="@+id/view_status_bar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_0"
+            app:bindViewStatusBar="@{0}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_height="@dimen/size_20" />
+
+        <com.android.open9527.common.widget.image.StateSwitchImageView
+            android:id="@+id/iv_bar_back"
+            android:layout_width="@dimen/size_45"
+            android:layout_height="@dimen/size_45"
+            android:padding="@dimen/size_12"
+            android:src="@drawable/common_back_gray"
+            android:visibility="@{showBarBack}"
+            app:bindClickViewScale="@{true}"
+            app:bindIvDefaultImageResId="@{barBackDefaultIcon}"
+            app:bindIvSelect="@{barBackSelect}"
+            app:bindIvSelectedImageResId="@{barBackSelectIcon}"
+            app:bindViewClick="@{barBackClick}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_status_bar" />
+
+        <com.android.open9527.common.widget.textview.StateSwitchTextView
+            android:id="@+id/tv_bar_title"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/size_80"
+            android:layout_marginEnd="@dimen/size_80"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="@color/common_text_color"
+            android:textSize="@dimen/font_18"
+            android:textStyle="bold"
+            app:bindTextDefaultText="@{barTitleText}"
+            app:bindTextDefaultTextColor="@{barTitleDefaultTextColor}"
+            app:bindTextSelect="@{barTitleSelect}"
+            app:bindTextSelectedText="@{barTitleText}"
+            app:bindTextSelectedTextColor="@{barTitleSelectTextColor}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_status_bar"
+            tools:ignore="SpUsage"
+            tools:text="标题" />
+
+        <com.android.open9527.common.widget.textview.StateSwitchTextView
+            android:id="@+id/tv_bar_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minWidth="@dimen/size_45"
+            android:minHeight="@dimen/size_45"
+            android:padding="@dimen/size_12"
+            android:text="@{barMenuText}"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/font_14"
+            app:bindClickViewScale="@{true}"
+            app:bindTextDefaultText="@{barMenuText}"
+            app:bindTextDefaultTextColor="@{barMenuDefaultTextColor}"
+            app:bindTextSelect="@{barMenuSelect}"
+            app:bindTextSelectedText="@{barMenuText}"
+            app:bindTextSelectedTextColor="@{barMenuSelectTextColor}"
+            app:bindViewClick="@{barMenuClick}"
+            app:bindViewIsVisibility="@{showMenuString}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_status_bar"
+            tools:ignore="SpUsage"
+            tools:text="右边"
+            tools:visibility="visible" />
+
+
+        <com.android.open9527.common.widget.image.StateSwitchImageView
+            android:id="@+id/iv_click_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="@dimen/size_45"
+            android:minHeight="@dimen/size_45"
+            android:padding="@dimen/size_12"
+            android:src="@drawable/common_more_gray"
+            app:bindClickViewScale="@{true}"
+            app:bindIvDefaultImageResId="@{barMenuDefaultIcon}"
+            app:bindIvSelect="@{barMenuSelect}"
+            app:bindIvSelectedImageResId="@{barMenuSelectIcon}"
+            app:bindViewClick="@{barMenuClick}"
+            app:bindViewIsVisibility="@{showMenuIcon}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_status_bar"
+            tools:visibility="visible" />
+
+        <View
+            android:id="@+id/view_line"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_1"
+            android:background="@color/common_line_color"
+            app:bindViewBgColor="@{barLineBackgroundColor}"
+            app:bindViewVisibility="@{showLine}"
+            app:layout_constraintTop_toBottomOf="@+id/iv_bar_back" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="cell"
+            type="com.android.custom.pkg.dialog.DateDialog.DatePickCell" />
+
+    </data>
+
+
+    <com.android.open9527.common.widget.textview.StateSwitchTextView
+        android:id="@+id/tv_picker_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingVertical="10dp"
+        android:singleLine="true"
+        android:text="@{cell.valueDate}"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_18"
+        android:textStyle="bold"
+        tools:text="2021年" />
+</layout>

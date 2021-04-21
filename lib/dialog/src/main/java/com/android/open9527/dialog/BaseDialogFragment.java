@@ -42,6 +42,9 @@ public abstract class BaseDialogFragment extends DialogFragment implements IDial
             Window window = mDialog.getWindow();
             assert window != null;
             setWindowStyle(window);
+            //  window.setWindowAnimations(id);
+            //  window.getAttributes().windowAnimations;
+
         }
     }
 

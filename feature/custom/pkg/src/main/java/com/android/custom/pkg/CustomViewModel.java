@@ -11,9 +11,10 @@ import com.android.open9527.common.binding.drawables.DrawablesBindingAdapter;
  **/
 public class CustomViewModel extends ViewModel {
 
-    public final ObservableField<String> valueTitle = new ObservableField<>("Copy");
-    public final ObservableField<Integer> valueShapeMode = new ObservableField<>(DrawablesBindingAdapter.ShapeMode.RECTANGLE);
+    public final ObservableField<String> valueTitle = new ObservableField<>("Custom");
 
+    public final ObservableField<String> valueShadowTitle = new ObservableField<>("Shadow");
+    public final ObservableField<String> valueDialogTitle = new ObservableField<>("Dialog");
 
 
 }

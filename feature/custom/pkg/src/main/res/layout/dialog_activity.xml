@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.android.custom.pkg.dialog.DialogViewModel" />
+
+        <variable
+            name="click"
+            type="com.android.custom.pkg.dialog.DialogActivity.ClickProxy" />
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/title_bar"
+            layout="@layout/custom_title_bar"
+            app:barMenuText="@{vm.valueMenuTitle}"
+            app:barTitleText="@{vm.valueTitle}"
+            app:barBackClick="@{click.backClick}"
+            app:barMenuClick="@{click.shareClick}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:showMenuString="@{true}" />
+
+        <com.android.open9527.common.widget.textview.StateSwitchTextView
+            bindClickViewScale="@{true}"
+            bindViewClick="@{click.dateClick}"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_45"
+            android:layout_margin="@dimen/size_10"
+            android:background="@color/common_default_background_color"
+            android:gravity="center"
+            android:text="@{vm.valueDateTitle}"
+            android:textColor="@color/common_text_color"
+            android:textSize="@dimen/font_16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_bar" />
+
+        <com.android.open9527.common.widget.textview.StateSwitchTextView
+            bindClickViewScale="@{true}"
+            bindViewClick="@{click.withViewClick}"
+            bindViewLongClick="@{click.loginClick}"
+            android:layout_width="@dimen/size_100"
+            android:layout_height="@dimen/size_100"
+            android:layout_margin="@dimen/size_10"
+            android:background="@color/gray"
+            android:gravity="center"
+            android:text="@{vm.valueLoginTitle}"
+            android:textColor="@color/common_text_color"
+            android:textSize="@dimen/font_16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_bar" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

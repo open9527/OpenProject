@@ -7,11 +7,14 @@
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowNoTitle">true</item>
-        <!-- 模糊 -->
+        <!-- 显示背景模糊 -->
         <item name="android:backgroundDimEnabled">true</item>
         <!-- 边框 -->
         <item name="android:windowFrame">@null</item>
-        <!-- 是否浮现在activity之上 (false会导致xml android:layout_height="wrap_content" 失效,键盘弹起必须true)-->
+        <!-- 是否浮现在activity之上
+        (false会导致xml android:layout_height="wrap_content" 失效,键盘弹起必须true)
+        dialog能够越过statusBar
+        -->
         <item name="android:windowIsFloating">false</item>
         <!--处理键盘-->
         <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>

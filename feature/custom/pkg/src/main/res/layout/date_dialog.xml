@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="dialog"
+            type="com.android.custom.pkg.dialog.DateDialog" />
+
+        <variable
+            name="yAdapter"
+            type="androidx.recyclerview.widget.RecyclerView.Adapter" />
+
+        <variable
+            name="yLayoutManager"
+            type="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <variable
+            name="mAdapter"
+            type="androidx.recyclerview.widget.RecyclerView.Adapter" />
+
+        <variable
+            name="mLayoutManager"
+            type="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <variable
+            name="dAdapter"
+            type="androidx.recyclerview.widget.RecyclerView.Adapter" />
+
+        <variable
+            name="dLayoutManager"
+            type="androidx.recyclerview.widget.LinearLayoutManager" />
+    </data>
+
+    <LinearLayout
+        bindDrawableRadiusLT="@{10}"
+        bindDrawableRadiusRT="@{10}"
+        bindDrawableSolidColor="@{@color/white}"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_date_year"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                app:bindRvAdapter="@{yAdapter}"
+                app:bindRvAnim="@{false}"
+                app:bindRvLayoutManager="@{yLayoutManager}"
+                app:bindRvList="@{dialog.valueYCells}"
+
+                tools:itemCount="3"
+                tools:listitem="@layout/date_pick_cell" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_date_month"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                app:bindRvAdapter="@{mAdapter}"
+                app:bindRvAnim="@{false}"
+                app:bindRvLayoutManager="@{mLayoutManager}"
+                app:bindRvList="@{dialog.valueMCells}"
+                tools:itemCount="3"
+                tools:listitem="@layout/date_pick_cell" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_date_day"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                app:bindRvAdapter="@{dAdapter}"
+                app:bindRvAnim="@{false}"
+                app:bindRvLayoutManager="@{dLayoutManager}"
+                app:bindRvList="@{dialog.valueDCells}"
+                tools:itemCount="3"
+                tools:listitem="@layout/date_pick_cell" />
+
+        </LinearLayout>
+
+        <com.android.open9527.common.widget.textview.StateSwitchTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/size_10"
+            android:text="确定"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_16"
+            app:bindClickViewScale="@{true}"
+            app:bindViewClick="@{dialog.confirmClick}"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+</layout>

@@ -43,8 +43,8 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 public class UmengShareDialog extends BaseDialogFragment {
 
     public final ObservableArrayList<BaseBindingCell> valueCells = new ObservableArrayList<>();
+    public final ObservableField<UmengShare.ShareData> valueShareData = new ObservableField<>();
 
-    private UmengShare.ShareData mShareData;
     private UmengShare.OnShareListener mListener;
 
     public static UmengShareDialog newInstance(@NonNull Context context) {
@@ -100,7 +100,7 @@ public class UmengShareDialog extends BaseDialogFragment {
         valueCells.add(new UmengShareCell(new UmengShareBean(ResourceUtils.getDrawable(R.drawable.share_qq_ic), StringUtils.getString(R.string.share_platform_qq), Platform.QQ)));
         valueCells.add(new UmengShareCell(new UmengShareBean(ResourceUtils.getDrawable(R.drawable.share_qzone_ic), StringUtils.getString(R.string.share_platform_qzone), Platform.QZONE)));
         valueCells.add(new UmengShareCell(new UmengShareBean(ResourceUtils.getDrawable(R.drawable.share_link_ic), StringUtils.getString(R.string.share_platform_link), null)));
-        mShareData = new UmengShare.ShareData(mActivity);
+
     }
 
 
@@ -132,7 +132,7 @@ public class UmengShareDialog extends BaseDialogFragment {
                 ToastUtils.showShort(R.string.share_platform_copy_hint);
                 return;
             }
-            UmengClient.share(mActivity, platform, mShareData, mListener);
+            UmengClient.share(mActivity, platform, valueShareData.get(), mListener);
         }
 
     }
@@ -142,28 +142,8 @@ public class UmengShareDialog extends BaseDialogFragment {
         return UmengShareDialog.newInstance(context);
     }
 
-    public UmengShareDialog setShareTitle(@NonNull String shareTitle) {
-        mShareData.setShareTitle(shareTitle);
-        return this;
-    }
-
-    public UmengShareDialog setShareUrl(@NonNull String shareUrl) {
-        mShareData.setShareUrl(shareUrl);
-        return this;
-    }
-
-    public UmengShareDialog setShareDescription(@NonNull String shareDescription) {
-        mShareData.setShareDescription(shareDescription);
-        return this;
-    }
-
-    public UmengShareDialog setShareLogo(@DrawableRes int id) {
-        mShareData.setShareLogo(id);
-        return this;
-    }
-
-    public UmengShareDialog setShareLogo(@NonNull String logo) {
-        mShareData.setShareLogo(logo);
+    public UmengShareDialog setShareData(UmengShare.ShareData mShareData) {
+        valueShareData.set(mShareData);
         return this;
     }
 

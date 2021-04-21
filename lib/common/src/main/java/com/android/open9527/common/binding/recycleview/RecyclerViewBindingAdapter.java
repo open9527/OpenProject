@@ -8,13 +8,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.android.open9527.common.cell.CommonEmptyCell;
 import com.android.open9527.recycleview.RecycleViewUtils;
 import com.android.open9527.recycleview.adapter.BaseBindingCell;
 import com.android.open9527.recycleview.adapter.BaseBindingCellAdapter;
+import com.android.open9527.recycleview.layout_manager.PickerLayoutManager;
 import com.android.open9527.recycleview.layout_manager.WrapContentGridLayoutManager;
 import com.android.open9527.recycleview.layout_manager.WrapContentLinearLayoutManager;
 import com.android.open9527.recycleview.layout_manager.WrapContentStaggeredGridLayoutManager;
 import com.android.open9527.recycleview.scroll.RecycleViewScrollListener;
+import com.blankj.utilcode.util.CollectionUtils;
 
 import java.util.List;
 
@@ -53,13 +56,17 @@ public class RecyclerViewBindingAdapter {
         }
         recyclerView.setHasFixedSize(hasFixedSize);
         if (layoutManager != null) {
+            if (layoutManager instanceof PickerLayoutManager) {
+                recyclerView.setLayoutManager(layoutManager);
 
-            if (layoutManager instanceof GridLayoutManager) {
+            } else if (layoutManager instanceof GridLayoutManager) {
                 int spanCount = ((GridLayoutManager) layoutManager).getSpanCount();
                 recyclerView.setLayoutManager(new WrapContentGridLayoutManager(recyclerView.getContext(), spanCount));
 
             } else if (layoutManager instanceof LinearLayoutManager) {
-                recyclerView.setLayoutManager(new WrapContentLinearLayoutManager(recyclerView.getContext()));
+                int orientation = ((LinearLayoutManager) layoutManager).getOrientation();
+                boolean reverseLayout = ((LinearLayoutManager) layoutManager).getReverseLayout();
+                recyclerView.setLayoutManager(new WrapContentLinearLayoutManager(recyclerView.getContext(), orientation, reverseLayout));
 
             } else if (layoutManager instanceof StaggeredGridLayoutManager) {
                 int spanCount = ((StaggeredGridLayoutManager) layoutManager).getSpanCount();
@@ -68,7 +75,6 @@ public class RecyclerViewBindingAdapter {
 
             } else {
                 recyclerView.setLayoutManager(layoutManager);
-
             }
         }
         if (itemDecoration != null) {
@@ -81,8 +87,8 @@ public class RecyclerViewBindingAdapter {
 
     }
 
-    @BindingAdapter(value = {"bindRvList", "bindRvIsRefresh"}, requireAll = false)
-    public static void setBindingRecycleViewData(RecyclerView recyclerView, List list, boolean isRefresh) {
+    @BindingAdapter(value = {"bindRvList", "bindRvIsRefresh", "bindRvSpanSizeLookup"}, requireAll = false)
+    public static void setBindingRecycleViewData(RecyclerView recyclerView, List list, boolean isRefresh, GridLayoutManager.SpanSizeLookup spanSizeLookup) {
         if (recyclerView == null) return;
         if (recyclerView.getAdapter() != null) {
             RecyclerView.Adapter adapter = recyclerView.getAdapter();
@@ -93,8 +99,14 @@ public class RecyclerViewBindingAdapter {
                 } else {
                     bindingCellAdapter.submitItems(list, isRefresh);
                 }
-
-
+                setEmptyLayoutManager(recyclerView, list);
+                if (spanSizeLookup != null) {
+                    RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
+                    if (layoutManager instanceof GridLayoutManager) {
+                        GridLayoutManager gridLayoutManager = (GridLayoutManager) layoutManager;
+                        gridLayoutManager.setSpanSizeLookup(spanSizeLookup);
+                    }
+                }
             }
 
         }
@@ -106,5 +118,34 @@ public class RecyclerViewBindingAdapter {
         recyclerView.addOnScrollListener(scrollListener);
     }
 
+
+    private static void setEmptyLayoutManager(RecyclerView recyclerView, List list) {
+        if (CollectionUtils.isNotEmpty(list) && list.size() == 1) {
+            if (list.get(0) instanceof CommonEmptyCell) {
+                RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
+                if (layoutManager instanceof GridLayoutManager) {
+                    recyclerView.setLayoutManager(new WrapContentLinearLayoutManager(recyclerView.getContext()));
+                }
+            }
+        }
+    }
+
+
+    @BindingAdapter(value = {
+            "bindPickerLayoutManager",
+            "bindPickerListener",
+            "bindPickerPosition",
+    },
+            requireAll = false)
+    public static void setBindingPickerLayoutManager(RecyclerView recyclerView, PickerLayoutManager pickerLayoutManager, PickerLayoutManager.OnPickerListener listener, int position) {
+        if (recyclerView == null || pickerLayoutManager == null) return;
+        recyclerView.setLayoutManager(pickerLayoutManager);
+        if (listener != null) {
+            pickerLayoutManager.setOnPickerListener(listener);
+        }
+        if (position > -1) {
+            recyclerView.scrollToPosition(position);
+        }
+    }
 
 }

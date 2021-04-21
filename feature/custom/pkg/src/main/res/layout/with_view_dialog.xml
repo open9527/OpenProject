@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="dialog"
+            type="com.android.custom.pkg.dialog.WithViewDialog" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        bindDrawableRadius="@{5}"
+        bindDrawableSolidColor="@{@color/white}"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingStart="@dimen/size_10"
+            android:paddingTop="5dp"
+            android:paddingEnd="@dimen/size_10"
+            android:paddingBottom="5dp"
+            android:text="依附于View展示"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_16"
+            app:bindClickViewScale="@{true}"
+            app:bindViewClick="@{dialog.cancelClick}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText,SpUsage"
+            tools:text="23333" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

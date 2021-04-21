@@ -127,6 +127,7 @@
     <color name="common_primary_dark_color">@color/black</color>
     <color name="common_accent_color">#5A8DDF</color>
     <color name="common_window_background_color">#F4F4F4</color>
+    <color name="common_default_background_color">#F4F4F4</color>
     <color name="common_text_color">#333333</color>
     <color name="common_text_sub_color">#666666</color>
     <color name="common_text_hint_color">#999999</color>
