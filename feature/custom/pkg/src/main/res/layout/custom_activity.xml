@@ -28,6 +28,19 @@
 
             <com.android.open9527.common.widget.textview.StateSwitchTextView
                 bindClickViewScale="@{true}"
+                bindViewClick="@{click.nightClick}"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_45"
+                android:layout_margin="@dimen/size_10"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="@{vm.valueFilterTitle}"
+                android:textColor="@color/common_text_color"
+                android:textSize="@dimen/font_16" />
+
+
+            <com.android.open9527.common.widget.textview.StateSwitchTextView
+                bindClickViewScale="@{true}"
                 bindViewClick="@{click.shadowClick}"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/size_45"

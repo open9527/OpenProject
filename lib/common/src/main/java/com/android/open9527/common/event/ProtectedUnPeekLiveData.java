@@ -92,7 +92,7 @@ public class ProtectedUnPeekLiveData<T> extends LiveData<T> {
         }
     }
 
-    protected void clear() {
+    public void clear() {
         super.setValue(null);
     }
 }

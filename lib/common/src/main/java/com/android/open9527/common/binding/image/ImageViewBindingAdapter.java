@@ -2,12 +2,16 @@ package com.android.open9527.common.binding.image;
 
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.widget.ImageView;
 
+import androidx.annotation.ColorInt;
 import androidx.databinding.BindingAdapter;
 
 import com.android.open9527.common.net.glide.ImageCallBack;
 import com.android.open9527.common.net.glide.ImageLoadConfig;
 import com.android.open9527.common.widget.image.LoadImageView;
+import com.android.open9527.common.widget.image.RoundImageType;
+import com.android.open9527.common.widget.image.RoundImageView;
 import com.android.open9527.common.widget.image.StateSwitchImageConfig;
 import com.android.open9527.common.widget.image.StateSwitchImageView;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -15,7 +19,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class ImageViewBindingAdapter {
-    @BindingAdapter(value = {"bindIvUrl", "bindIvUri","bindIvRadius", "bindIvCornerType", "bindIvWidth",
+    @BindingAdapter(value = {"bindIvUrl", "bindIvUri", "bindIvRadius", "bindIvCornerType", "bindIvWidth",
             "bindIvHeight", "bindIvFallbackDrawable", "bindIvPlaceholderResourceId",
             "bindIvErrorResourceId", "bindIvOnlyRetrieveFromCache", "bindIvSkipMemoryCache",
             "bindIvDiskCacheStrategy", "bindIvImageCallBack",}, requireAll = false)
@@ -25,6 +29,7 @@ public class ImageViewBindingAdapter {
                                                       int errorResourceId, boolean onlyRetrieveFromCache, boolean skipMemoryCache,
                                                       DiskCacheStrategy strategy, ImageCallBack imageCallBack) {
         if (loadImageView == null) return;
+
         loadImageView.setImageLoadConfig(ImageLoadConfig.with(loadImageView)
                 .setUrl(url)
                 .setUri(uri)
@@ -40,14 +45,24 @@ public class ImageViewBindingAdapter {
                 .setStrategy(strategy)
                 .setCallBack(imageCallBack));
         loadImageView.init();
+
     }
 
 
-    @BindingAdapter(value = {"bindIvDefaultImageResId", "bindIvSelectedImageResId",
-            "bindIvDefaultImageDrawable", "bindIvSelectedImageDrawable", "bindIvSelect"}, requireAll = false)
-    public static void setBindingStateSwitchImageView(StateSwitchImageView imageView,
-                                                      int defaultImageResId, int selectedImageResId
-            , Drawable defaultImageDrawable, Drawable selectedImageDrawable, boolean select
+    @BindingAdapter(value = {
+            "bindIvDefaultImageResId",
+            "bindIvSelectedImageResId",
+            "bindIvDefaultImageDrawable",
+            "bindIvSelectedImageDrawable",
+            "bindIvSelect"},
+            requireAll = false)
+    public static void setBindingStateSwitchImageView(
+            StateSwitchImageView imageView,
+            int defaultImageResId,
+            int selectedImageResId,
+            Drawable defaultImageDrawable,
+            Drawable selectedImageDrawable,
+            boolean select
     ) {
         if (imageView != null) {
             imageView.setStateSwitchImageConfig(StateSwitchImageConfig.Builder()
@@ -61,4 +76,27 @@ public class ImageViewBindingAdapter {
 
 
     }
+
+    @BindingAdapter(value = {"bindIvRoundType", "bindCornerType", "bindIvBorderRadius", "bindIvRoundRadius",
+            "bindIvBorderColor", "bindIvBorderWidth"},
+            requireAll = false)
+    public static void setBindingStateSwitchImageView(RoundImageView imageView,
+                                                      @RoundImageType.RoundType String roundType,
+                                                      @RoundImageType.CornerType String cornerType,
+                                                      int borderRadius, int roundRadius, @ColorInt Integer color, int borderWidth) {
+        if (imageView == null) return;
+        if (roundType != null) {
+            imageView.setRoundType(roundType);
+        }
+        if (cornerType != null) {
+            imageView.setCornerType(cornerType);
+        }
+        if (color != null) {
+            imageView.setBorderColor(color);
+        }
+        imageView.setBorderRadius(borderRadius);
+        imageView.setRoundRadius(roundRadius);
+        imageView.setBorderWidth(borderWidth);
+    }
+
 }

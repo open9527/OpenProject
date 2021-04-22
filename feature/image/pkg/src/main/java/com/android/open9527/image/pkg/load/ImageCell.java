@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
 import com.android.open9527.common.net.glide.ImageCallBack;
+import com.android.open9527.common.widget.image.RoundImageType;
 import com.android.open9527.image.pkg.BR;
 import com.android.open9527.image.pkg.R;
 import com.android.open9527.recycleview.adapter.BaseBindingCell;
@@ -21,7 +22,8 @@ import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
  **/
 public class ImageCell extends BaseBindingCell<ImageCell> {
 
-    public final ObservableField<RoundedCornersTransformation.CornerType> valueCornerType = new ObservableField<>(RoundedCornersTransformation.CornerType.ALL);
+    public final ObservableField<String> valueCornerType = new ObservableField<>(RoundImageType.CORNER_TYPE_ALL);
+    public final ObservableField<String> valueRoundType = new ObservableField<>(RoundImageType.ROUND_TYPE_ROUND);
     public final ObservableField<String> valueImageUrl = new ObservableField<>();
     public final ObservableField<Uri> valueImageUri = new ObservableField<>();
 
@@ -57,7 +59,7 @@ public class ImageCell extends BaseBindingCell<ImageCell> {
         void onCellClick(View view, int index);
     }
 
-    public ImageCallBack imageCallBack =new ImageCallBack() {
+    public ImageCallBack imageCallBack = new ImageCallBack() {
         @Override
         public void onStart() {
 

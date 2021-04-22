@@ -12,39 +12,37 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:transitionName="@{cell.valueImageUrl}"
-        app:bindViewClick="@{v->cell.onCellClick(v,cell)}"
-        android:layout_height="wrap_content">
+        app:bindViewClick="@{v->cell.onCellClick(v,cell)}">
 
         <com.android.open9527.common.widget.image.LoadImageView
             android:id="@+id/iv_pic"
+            bindIvRoundRadius="@{10}"
+            bindCornerType="@{cell.valueCornerType}"
+            bindIvRoundType="@{cell.valueRoundType}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:scaleType="centerCrop"
             android:adjustViewBounds="true"
-            app:bindIvCornerType="@{cell.valueCornerType}"
-            app:bindIvHeight="@{225}"
-            app:bindIvRadius="@{10}"
+            android:scaleType="centerCrop"
             app:bindIvSkipMemoryCache="@{true}"
-            app:bindIvUrl="@{cell.valueImageUrl}"
             app:bindIvUri="@{cell.valueImageUri}"
-            app:bindIvWidth="@{400}"
+            app:bindIvUrl="@{cell.valueImageUrl}"
             app:layout_constraintDimensionRatio="16:9"
             app:layout_constraintTop_toTopOf="parent" />
 
 
-
-<!--        <ProgressBar-->
-<!--            android:id="@+id/pb_loading"-->
-<!--            android:layout_width="@dimen/size_40"-->
-<!--            android:layout_height="@dimen/size_40"-->
-<!--            android:indeterminateBehavior="repeat"-->
-<!--            android:indeterminateDrawable="@drawable/common_image_loading"-->
-<!--            android:visibility="visible"-->
-<!--            app:layout_constraintBottom_toBottomOf="@+id/iv_pic"-->
-<!--            app:layout_constraintEnd_toEndOf="@+id/iv_pic"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/iv_pic"-->
-<!--            app:layout_constraintTop_toTopOf="@+id/iv_pic" />-->
+        <!--        <ProgressBar-->
+        <!--            android:id="@+id/pb_loading"-->
+        <!--            android:layout_width="@dimen/size_40"-->
+        <!--            android:layout_height="@dimen/size_40"-->
+        <!--            android:indeterminateBehavior="repeat"-->
+        <!--            android:indeterminateDrawable="@drawable/common_image_loading"-->
+        <!--            android:visibility="visible"-->
+        <!--            app:layout_constraintBottom_toBottomOf="@+id/iv_pic"-->
+        <!--            app:layout_constraintEnd_toEndOf="@+id/iv_pic"-->
+        <!--            app:layout_constraintStart_toStartOf="@+id/iv_pic"-->
+        <!--            app:layout_constraintTop_toTopOf="@+id/iv_pic" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

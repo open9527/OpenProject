@@ -15,7 +15,7 @@ import com.android.open9527.common.net.glide.ImageLoadUtils;
  * @author open_9527
  * Create at 2021/1/4
  **/
-public class LoadImageView extends AppCompatImageView {
+public class LoadImageView extends RoundImageView {
 
     private static final String TAG = "LoadImageView";
 

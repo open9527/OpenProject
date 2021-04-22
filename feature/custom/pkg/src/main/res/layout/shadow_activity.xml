@@ -18,12 +18,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/gray"
         android:orientation="vertical">
 
         <include
             layout="@layout/custom_title_bar"
-            app:barTitleText="@{vm.valueTitle}"
-            app:barBackClick="@{click.backClick}" />
+            app:barBackClick="@{click.backClick}"
+            app:barTitleText="@{vm.valueTitle}" />
 
 
         <androidx.core.widget.NestedScrollView
@@ -78,7 +79,6 @@
                         tools:layout_shadowDx="5dp" />
 
                 </com.android.custom.pkg.view.ShadowConstraintLayout>
-
 
                 <com.android.custom.pkg.view.ShadowLinearLayout
                     android:layout_width="match_parent"
@@ -165,6 +165,204 @@
                     </com.android.custom.pkg.view.ShadowLinearLayout>
 
                 </com.android.custom.pkg.view.ShadowLinearLayout>
+
+                <com.android.open9527.common.widget.image.LoadImageView
+                    android:id="@+id/iv_normal"
+                    bindIvUrl="@{vm.valueUrl}"
+                    android:layout_width="@dimen/size_100"
+                    android:layout_height="@dimen/size_100"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/size_10"
+                    android:scaleType="centerCrop"
+                    android:visibility="gone"
+                    tools:background="@color/white" />
+
+                <com.android.open9527.common.widget.image.LoadImageView
+                    bindCornerType="@{vm.valueCornerLeftTop}"
+                    bindIvBorderColor="@{@color/white}"
+                    bindIvRoundRadius="@{20}"
+                    bindIvRoundType="@{vm.valueRound}"
+                    bindIvUrl="@{vm.valueUrl}"
+                    android:layout_width="@dimen/size_100"
+                    android:layout_height="@dimen/size_100"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/size_10"
+                    android:scaleType="centerCrop"
+                    tools:background="@color/white" />
+
+                <com.android.open9527.common.widget.image.LoadImageView
+                    bindCornerType="@{vm.valueCornerRightTop}"
+                    bindIvBorderColor="@{@color/white}"
+                    bindIvRoundRadius="@{20}"
+                    bindIvRoundType="@{vm.valueRound}"
+                    bindIvUrl="@{vm.valueUrl}"
+                    android:layout_width="@dimen/size_100"
+                    android:layout_height="@dimen/size_100"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/size_10"
+                    android:scaleType="centerCrop"
+                    tools:background="@color/white" />
+
+                <com.android.open9527.common.widget.image.LoadImageView
+                    bindCornerType="@{vm.valueCornerTop}"
+                    bindIvBorderColor="@{@color/white}"
+                    bindIvRoundRadius="@{20}"
+                    bindIvRoundType="@{vm.valueRound}"
+                    bindIvUrl="@{vm.valueUrl}"
+                    android:layout_width="@dimen/size_100"
+                    android:layout_height="@dimen/size_100"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/size_10"
+                    android:scaleType="centerCrop"
+                    tools:background="@color/white" />
+
+
+                <com.android.open9527.common.widget.image.LoadImageView
+                    bindCornerType="@{vm.valueCornerLeft}"
+                    bindIvBorderColor="@{@color/white}"
+                    bindIvRoundRadius="@{20}"
+                    bindIvRoundType="@{vm.valueRound}"
+                    bindIvUrl="@{vm.valueUrl}"
+                    android:layout_width="@dimen/size_100"
+                    android:layout_height="@dimen/size_100"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/size_10"
+                    android:scaleType="centerCrop"
+                    tools:background="@color/white" />
+
+
+                <com.android.open9527.common.widget.image.LoadImageView
+                    bindCornerType="@{vm.valueCornerRight}"
+                    bindIvBorderColor="@{@color/white}"
+                    bindIvRoundRadius="@{20}"
+                    bindIvRoundType="@{vm.valueRound}"
+                    bindIvUrl="@{vm.valueUrl}"
+                    android:layout_width="@dimen/size_100"
+                    android:layout_height="@dimen/size_100"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/size_10"
+                    android:scaleType="centerCrop"
+                    tools:background="@color/white" />
+
+                <com.android.open9527.common.widget.image.LoadImageView
+                    bindCornerType="@{vm.valueCornerBottomLeft}"
+                    bindIvBorderColor="@{@color/white}"
+                    bindIvRoundRadius="@{20}"
+                    bindIvRoundType="@{vm.valueRound}"
+                    bindIvUrl="@{vm.valueUrl}"
+                    android:layout_width="@dimen/size_100"
+                    android:layout_height="@dimen/size_100"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/size_10"
+                    android:scaleType="centerCrop"
+                    tools:background="@color/white" />
+
+                <com.android.open9527.common.widget.image.LoadImageView
+                    bindCornerType="@{vm.valueCornerBottomRight}"
+                    bindIvBorderColor="@{@color/white}"
+                    bindIvRoundRadius="@{20}"
+                    bindIvRoundType="@{vm.valueRound}"
+                    bindIvUrl="@{vm.valueUrl}"
+                    android:layout_width="@dimen/size_100"
+                    android:layout_height="@dimen/size_100"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/size_10"
+                    android:scaleType="centerCrop"
+                    tools:background="@color/white" />
+
+
+                <com.android.open9527.common.widget.image.LoadImageView
+                    bindCornerType="@{vm.valueCornerBottom}"
+                    bindIvBorderColor="@{@color/white}"
+                    bindIvRoundRadius="@{20}"
+                    bindIvRoundType="@{vm.valueRound}"
+                    bindIvUrl="@{vm.valueUrl}"
+                    android:layout_width="@dimen/size_100"
+                    android:layout_height="@dimen/size_100"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/size_10"
+                    android:scaleType="centerCrop"
+                    tools:background="@color/white" />
+
+                <com.android.open9527.common.widget.image.LoadImageView
+                    android:id="@+id/iv_circle"
+                    bindIvRoundType="@{vm.valueCircle}"
+                    bindIvUrl="@{vm.valueUrl}"
+                    android:layout_width="@dimen/size_100"
+                    android:layout_height="@dimen/size_100"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/size_10"
+                    android:scaleType="centerCrop" />
+
+                <com.android.open9527.common.widget.image.LoadImageView
+                    bindIvRoundType="@{vm.valueRound}"
+                    bindIvUrl="@{vm.valueUrl}"
+                    bindIvRoundRadius="@{10}"
+                    android:layout_width="@dimen/size_100"
+                    android:layout_height="@dimen/size_100"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/size_10"
+                    android:scaleType="centerCrop" />
+
+
+
+                <com.android.custom.pkg.view.ShadowLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_10"
+                    android:orientation="vertical">
+
+                    <com.android.open9527.common.widget.image.LoadImageView
+                        bindIvUrl="@{vm.valueUrl}"
+                        android:layout_width="@dimen/size_100"
+                        android:layout_height="@dimen/size_100"
+                        android:layout_gravity="center"
+                        android:scaleType="centerCrop"
+                        app:layout_radius="50dp"
+                        app:layout_shadowColor="@color/white"
+                        app:layout_shadowDx="2dp"
+                        app:layout_shadowDy="2dp"
+                        app:layout_shadowEvaluation="2dp" />
+
+                    <com.android.open9527.common.widget.image.LoadImageView
+                        bindIvUrl="@{vm.valueUrl}"
+                        android:layout_width="@dimen/size_100"
+                        android:layout_height="@dimen/size_100"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/size_10"
+                        android:scaleType="centerCrop"
+                        app:layout_radius="10dp"
+                        app:layout_shadowColor="@color/white"
+                        app:layout_shadowDx="2dp"
+                        app:layout_shadowDy="2dp"
+                        app:layout_shadowEvaluation="1dp" />
+
+
+                    <com.android.open9527.common.widget.image.LoadImageView
+                        bindIvUrl="@{vm.valueUrl}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/size_20"
+                        android:scaleType="centerCrop"
+                        app:layout_radius="5dp"
+                        app:layout_shadowColor="@color/white"
+                        app:layout_shadowEvaluation="5dp"
+                        tools:layout_shadowDx="5dp"
+                        tools:layout_shadowDy="5dp" />
+
+                </com.android.custom.pkg.view.ShadowLinearLayout>
+
+
+                <com.android.open9527.common.widget.image.LoadImageView
+                    android:id="@+id/iv_shadow"
+                    bindIvUrl="@{vm.valueUrl}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/size_20"
+                    android:scaleType="centerCrop" />
+
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>

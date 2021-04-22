@@ -1,6 +1,7 @@
 package com.android.custom.app;
 
 import com.android.open9527.common.application.CommonApplication;
+import com.android.open9527.filter.AppFilter;
 import com.open9527.umeng.UmengClient;
 
 /**
@@ -13,5 +14,6 @@ public class CustomApp extends CommonApplication {
     public void onCreate() {
         super.onCreate();
         UmengClient.init(this);
+        AppFilter.with(this);
     }
 }

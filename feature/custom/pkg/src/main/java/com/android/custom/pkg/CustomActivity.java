@@ -8,6 +8,9 @@ import androidx.annotation.Nullable;
 import com.android.custom.pkg.dialog.DialogActivity;
 import com.android.custom.pkg.shadow.ShadowActivity;
 import com.android.open9527.common.page.BaseCommonActivity;
+import com.android.open9527.filter.AppFilter;
+import com.android.open9527.filter.FilterColor;
+import com.android.open9527.filter.color.NightColor;
 import com.android.open9527.page.DataBindingConfig;
 import com.blankj.utilcode.util.ActivityUtils;
 
@@ -34,13 +37,22 @@ public class CustomActivity extends BaseCommonActivity {
     @Override
     public void initView(@Nullable Bundle bundle) {
         super.initView(bundle);
-
     }
 
     public class ClickProxy {
 
         public View.OnClickListener backClick = v -> {
             finish();
+        };
+
+        public View.OnClickListener nightClick = v -> {
+            FilterColor filterColor = AppFilter.getColor();
+            if (filterColor instanceof NightColor) {
+                AppFilter.tint(null);
+            } else {
+                AppFilter.tint(new NightColor());
+            }
+
         };
 
         public View.OnClickListener dialogClick = v -> {

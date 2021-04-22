@@ -62,8 +62,10 @@ public final class ImageLoadUtils {
         if (imageLoadConfig.getRadius() > 0 && imageLoadConfig.getCornerType() != null) {
             requestOptions.apply(getBitmapTransform(imageLoadConfig.getRadius(), 0, imageLoadConfig.getCornerType()));
         }
+
         GlideApp.with(imageLoadConfig.getImageView())
                 .asBitmap()
+                .centerCrop()
                 .load(imageLoadConfig.getUri() == null ? imageLoadConfig.getUrl() : imageLoadConfig.getUri())
                 .apply(requestOptions)
                 .into(new GlideBitmapImageViewTarget(imageLoadConfig.getImageView(), imageLoadConfig.getCallBack()));
