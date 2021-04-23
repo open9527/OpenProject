@@ -1,21 +1,41 @@
-# 友盟统计
-#-keep class com.umeng.** {*;}
-#-keepclassmembers class * {
-#   public <init> (org.json.JSONObject);
-#}
-#-keepclassmembers enum * {
-#    public static **[] values();
-#    public static ** valueOf(java.lang.String);
-#}
-#
-#-keep public class [com.open9527.umeng].R$*{
-#    public static final int *;
-#}
+# OkHttp3
+-keepattributes Signature
+-keepattributes *Annotation*
+-keep class okhttp3.** { *; }
+-keep interface okhttp3.** { *; }
+-dontwarn okhttp3.**
+-dontwarn okio.**
+-dontwarn org.conscrypt.**
 
-# 友盟社会化
+
+
+
+# Glide
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep class * extends com.bumptech.glide.module.AppGlideModule {
+ <init>(...);
+}
+-keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
+}
+-keep class com.bumptech.glide.load.data.ParcelFileDescriptorRewinder$InternalRewinder {
+  *** rewind();
+}
+
+# Gson
+#-keepattributes Signature-keepattributes *Annotation*
+-keep class sun.misc.Unsafe { *; }
+-keep class com.google.gson.stream.** { *; }
+# 使用Gson时需要配置Gson的解析对象及变量都不混淆。不然Gson会找不到变量。
+# 将下面替换成自己的实体类
+#-keep class com.example.bean.** { *; }
+
+# 友盟
 -dontshrink
 -dontoptimize
 -dontwarn com.google.android.maps.**
+-dontwarn com.squareup.okhttp.**
 -dontwarn android.webkit.WebView
 -dontwarn com.umeng.**
 -dontwarn com.tencent.weibo.sdk.**
@@ -27,7 +47,7 @@
 -keepattributes Exceptions,InnerClasses,Signature
 -keepattributes *Annotation*
 -keepattributes SourceFile,LineNumberTable
-
+-keepattributes EnclosingMethod
 -keep public interface com.facebook.**
 -keep public interface com.tencent.**
 -keep public interface com.umeng.socialize.**
@@ -36,7 +56,10 @@
 
 -keep public class com.umeng.socialize.* {*;}
 
-
+-keep class com.umeng.commonsdk.statistics.common.MLog {*;}
+-keep class com.umeng.commonsdk.UMConfigure {*;}
+-keep class com.umeng.** {*;}
+-keep class com.umeng.**
 -keep class com.facebook.**
 -keep class com.facebook.** { *; }
 -keep class com.umeng.scrshot.**
@@ -65,8 +88,8 @@
 -keep class com.tencent.mm.sdk.** {
    *;
 }
-
--keep class com.twitter.** { *; }
+-dontwarn twitter4j.**
+-keep class twitter4j.** { *; }
 
 -keep class com.tencent.** {*;}
 -dontwarn com.tencent.**

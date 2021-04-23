@@ -69,7 +69,7 @@ object BannerBindingAdapter {
         ) {
             val binding: BannerItemBinding? = DataBindingUtil.bind(holder.itemView)
             if (contentVo != null && binding != null) {
-//                binding.imageUrl = contentVo.imageUrl
+                binding.imageUrl = contentVo.imageUrl
                 binding.title = contentVo.title
             }
         }

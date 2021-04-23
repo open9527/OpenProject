@@ -18,4 +18,6 @@ public interface Path {
 
     String PATH_WEBVIEW_WEBVIEWACTIVITY = "/webview/WebViewActivity";
 
+    String PATH_CUSTOM_CUSTOMACTIVITY = "/custom/CustomActivity";
+
 }

@@ -25,6 +25,11 @@ allprojects {
     buildDir = new File(rootDir, "gradle-build/${path.replaceAll(':', '/')}")
 }
 
+def releaseTime() {
+    // return new Date().format("yyyy-MM-dd-HH-mm", TimeZone.getTimeZone("GMT+08:00"))
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("GMT+08:00"))
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }

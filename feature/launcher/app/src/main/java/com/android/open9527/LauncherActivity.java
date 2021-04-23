@@ -92,6 +92,9 @@ public class LauncherActivity extends BaseCommonActivity {
                         .navigation(LauncherActivity.this)
                 ;
 
+            } else if (view.getId() == R.id.btn_custom) {
+                Router.getsInstance().build(Path.PATH_CUSTOM_CUSTOMACTIVITY)
+                        .navigation(LauncherActivity.this);
             }
         };
     }

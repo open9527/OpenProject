@@ -12,16 +12,17 @@ import com.open9527.wanandroid.pkg.net.BannerVo
  * @author open_9527
  * Create at 2021/1/12
  */
-class BannerCell(contentVoList: List<BannerVo?>?) :
-    BaseBindingCell<BannerCell>(R.layout.banner_cell) {
+class BannerCell : BaseBindingCell<BannerCell> {
     @JvmField
     val observableList: ObservableList<BannerVo> = ObservableArrayList()
+
+    constructor(contentVoList: List<BannerVo?>?) : super(R.layout.banner_cell) {
+        observableList.addAll(contentVoList!!)
+    }
+
 
     override fun bind(holder: BaseBindingCellViewHolder<*>, position: Int) {
         holder.addBindingParam(BR.cell, this)
     }
 
-    init {
-        observableList.addAll(contentVoList!!)
-    }
 }

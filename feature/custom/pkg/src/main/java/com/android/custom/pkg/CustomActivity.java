@@ -13,11 +13,13 @@ import com.android.open9527.filter.FilterColor;
 import com.android.open9527.filter.color.NightColor;
 import com.android.open9527.page.DataBindingConfig;
 import com.blankj.utilcode.util.ActivityUtils;
+import com.open9527.annotation.router.Router;
 
 /**
  * @author open_9527
  * Create at 2021/2/23
  **/
+@Router(path = "/custom/CustomActivity")
 public class CustomActivity extends BaseCommonActivity {
 
     private CustomViewModel mViewModel;

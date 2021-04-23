@@ -48,13 +48,14 @@ android {
             debuggable true
             jniDebuggable true
             // 移除无用的资源文件
-            shrinkResources false
+            shrinkResources true
             // ZipAlign 优化
-            zipAlignEnabled false
+            zipAlignEnabled true
             // 设置混淆
-            minifyEnabled false
+            minifyEnabled true
 
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles 'proguard-rules.pro', 'proguard-lib.pro', 'proguard-sdk.pro'
             resValue "string", "app_name", Config.appName + suffix + ".debug"
 //            resValue "string", "app_name", Config.appName
 
@@ -154,7 +155,8 @@ def configApkName() {
             def artifact = variant.getPackageApplicationProvider().get()
             artifact.outputDirectory = new File("${rootDir.path}/apk")
             artifact.outputScope.apkDatas.forEach { apkData ->
-                apkData.outputFileName = "open9527" + suffix +
+//                apkData.outputFileName = "open9527" + suffix + rootProject.releaseTime() +
+                apkData.outputFileName = suffix + ("_" + rootProject.releaseTime()) +
                         (variant.flavorName == "" ? "" : ("_" + variant.flavorName)) +
                         "_" + variant.versionName.replace(".", "_") +
                         "_" + variant.buildType.name +
