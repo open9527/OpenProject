@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 
 import com.bumptech.glide.load.MultiTransformation;
 import com.bumptech.glide.load.Transformation;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.request.RequestOptions;
 
@@ -43,9 +44,12 @@ public final class ImageLoadUtils {
             requestOptions.fallback(imageLoadConfig.getFallbackDrawable());
         }
 
+
         //磁盘缓存策略() DiskCacheStrategy.RESOURCE
         if (imageLoadConfig.getStrategy() != null) {
             requestOptions.diskCacheStrategy(imageLoadConfig.getStrategy());
+        } else {
+            requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
         }
 
         //是否跳过内存缓存
@@ -65,7 +69,7 @@ public final class ImageLoadUtils {
 
         GlideApp.with(imageLoadConfig.getImageView())
                 .asBitmap()
-                .centerCrop()
+//                .centerCrop()
                 .load(imageLoadConfig.getUri() == null ? imageLoadConfig.getUrl() : imageLoadConfig.getUri())
                 .apply(requestOptions)
                 .into(new GlideBitmapImageViewTarget(imageLoadConfig.getImageView(), imageLoadConfig.getCallBack()));

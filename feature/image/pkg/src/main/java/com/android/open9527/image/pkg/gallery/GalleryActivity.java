@@ -48,7 +48,7 @@ public class GalleryActivity extends BaseCommonActivity {
     protected DataBindingConfig getDataBindingConfig() {
         return new DataBindingConfig(R.layout.gallery_activity, BR.vm, mViewModel)
                 .addBindingParam(BR.titleBarListener, onTitleBarListener)
-                .addBindingParam(BR.layoutManager, new WrapContentGridLayoutManager(this, 3))
+                .addBindingParam(BR.layoutManager, new WrapContentGridLayoutManager(this, 2))
                 .addBindingParam(BR.itemDecoration, new GridSpaceItemDecoration(10))
                 .addBindingParam(BR.adapter, new BaseBindingCellAdapter<>());
     }

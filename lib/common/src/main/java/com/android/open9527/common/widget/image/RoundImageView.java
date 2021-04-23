@@ -98,7 +98,12 @@ public class RoundImageView extends AppCompatImageView {
         }
         initPaint();
         initBitmapShader();
-        initCanvas(canvas);
+        if (mRoundType.equals(RoundImageType.ROUND_TYPE_NORMAL)){
+            super.onDraw(canvas);
+        }else {
+            initCanvas(canvas);
+        }
+
     }
 
     @Override
@@ -138,9 +143,10 @@ public class RoundImageView extends AppCompatImageView {
             if (mBorderWidth > 0) {
                 canvas.drawCircle(mRoundRadius, mRoundRadius, mRoundRadius - mBorderWidth / 2f, mBorderPaint);
             }
-        } else {
-            getDrawable().draw(canvas);
         }
+//        else {
+//            getDrawable().draw(canvas);
+//        }
 
     }
 
@@ -220,6 +226,10 @@ public class RoundImageView extends AppCompatImageView {
 
         float scale1 = 1.0f;
         float scale2 = 1.0f;
+        if (mMatrix!=null){
+            mMatrix.setScale(scale1, scale2);
+        }
+
         final boolean fits = (drawableWidth < 0 || viewWidth == drawableWidth)
                 && (drawableHeight < 0 || viewHeight == drawableHeight);
         if (mRoundType.equals(RoundImageType.ROUND_TYPE_CIRCLE)) {
@@ -237,46 +247,48 @@ public class RoundImageView extends AppCompatImageView {
             mMatrix = null;
         } else {
             drawable.setBounds(0, 0, drawableWidth, drawableHeight);
-            if (ScaleType.MATRIX == getScaleType()) {
-                if (mMatrix.isIdentity()) {
+            if (mMatrix != null) {
+                if (ScaleType.MATRIX == getScaleType()) {
+                    if (mMatrix.isIdentity()) {
+                        mMatrix = null;
+                    }
+                } else if (fits) {
                     mMatrix = null;
-                }
-            } else if (fits) {
-                mMatrix = null;
-            } else if (ScaleType.CENTER == getScaleType()) {
-                mMatrix.setTranslate(Math.round((viewWidth - drawableWidth) * 0.5f),
-                        Math.round((viewHeight - drawableHeight) * 0.5f));
-            } else if (ScaleType.CENTER_CROP == getScaleType()) {
-                if (drawableWidth * viewHeight > viewWidth * drawableHeight) {
-                    dx = (viewWidth - drawableWidth * scale) * 0.5f;
+                } else if (ScaleType.CENTER == getScaleType()) {
+                    mMatrix.setTranslate(Math.round((viewWidth - drawableWidth) * 0.5f),
+                            Math.round((viewHeight - drawableHeight) * 0.5f));
+                } else if (ScaleType.CENTER_CROP == getScaleType()) {
+                    if (drawableWidth * viewHeight > viewWidth * drawableHeight) {
+                        dx = (viewWidth - drawableWidth * scale) * 0.5f;
+                    } else {
+                        dy = (viewHeight - drawableHeight * scale) * 0.5f;
+                    }
+
+                    mMatrix.setScale(scale, scale);
+                    mMatrix.postTranslate((int) (dx + 0.5f), (int) (dy + 0.5f));
+
+
+                } else if (ScaleType.CENTER_INSIDE == getScaleType()) {
+
+                    if (drawableWidth <= viewWidth && drawableHeight <= viewHeight) {
+                        scale = 1.0f;
+                    } else {
+                        scale = Math.min((float) viewWidth / (float) drawableWidth,
+                                (float) viewHeight / (float) drawableHeight);
+                    }
+                    dx = Math.round((viewWidth - drawableWidth * scale) * 0.5f);
+                    dy = Math.round((viewHeight - drawableHeight * scale) * 0.5f);
+                    mMatrix.setScale(scale, scale);
+                    mMatrix.postTranslate(dx, dy);
                 } else {
-                    dy = (viewHeight - drawableHeight * scale) * 0.5f;
-                }
-                if (mMatrix!=null){
+                    if (drawableWidth * viewHeight > viewWidth * drawableHeight) {
+                        dx = (viewWidth - drawableWidth * scale) * 0.5f;
+                    } else {
+                        dy = (viewHeight - drawableHeight * scale) * 0.5f;
+                    }
                     mMatrix.setScale(scale, scale);
                     mMatrix.postTranslate((int) (dx + 0.5f), (int) (dy + 0.5f));
                 }
-
-            } else if (ScaleType.CENTER_INSIDE == getScaleType()) {
-
-                if (drawableWidth <= viewWidth && drawableHeight <= viewHeight) {
-                    scale = 1.0f;
-                } else {
-                    scale = Math.min((float) viewWidth / (float) drawableWidth,
-                            (float) viewHeight / (float) drawableHeight);
-                }
-                dx = Math.round((viewWidth - drawableWidth * scale) * 0.5f);
-                dy = Math.round((viewHeight - drawableHeight * scale) * 0.5f);
-                mMatrix.setScale(scale, scale);
-                mMatrix.postTranslate(dx, dy);
-            } else {
-                if (drawableWidth * viewHeight > viewWidth * drawableHeight) {
-                    dx = (viewWidth - drawableWidth * scale) * 0.5f;
-                } else {
-                    dy = (viewHeight - drawableHeight * scale) * 0.5f;
-                }
-                mMatrix.setScale(scale, scale);
-                mMatrix.postTranslate((int) (dx + 0.5f), (int) (dy + 0.5f));
             }
         }
         if (ScaleType.FIT_XY == getScaleType() && mMatrix != null) {
@@ -379,7 +391,7 @@ public class RoundImageView extends AppCompatImageView {
             BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
             return bitmapDrawable.getBitmap();
         }
-        Bitmap bitmap;
+        Bitmap bitmap = null;
         if (drawable.getIntrinsicWidth() <= 0 || drawable.getIntrinsicHeight() <= 0) {
             bitmap = Bitmap.createBitmap(1, 1,
                     drawable.getOpacity() != PixelFormat.OPAQUE

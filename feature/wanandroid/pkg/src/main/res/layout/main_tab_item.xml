@@ -35,7 +35,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/offset_64"
+        android:layout_height="@dimen/size_64"
         tools:ignore="HardcodedText">
 
         <com.android.open9527.common.widget.textview.StateSwitchTextView

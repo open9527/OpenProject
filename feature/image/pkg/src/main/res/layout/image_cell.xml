@@ -18,7 +18,7 @@
 
         <com.android.open9527.common.widget.image.LoadImageView
             android:id="@+id/iv_pic"
-            bindIvRoundRadius="@{10}"
+            bindIvRoundRadius="@{6}"
             bindCornerType="@{cell.valueCornerType}"
             bindIvRoundType="@{cell.valueRoundType}"
             android:layout_width="match_parent"

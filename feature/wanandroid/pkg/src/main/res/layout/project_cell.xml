@@ -6,6 +6,7 @@
     <data>
 
         <import type="com.open9527.wanandroid.pkg.R" />
+        <import type="com.android.open9527.common.widget.image.RoundImageType"/>
 
         <variable
             name="cell"
@@ -33,13 +34,15 @@
 
         <com.android.open9527.common.widget.image.LoadImageView
             android:id="@+id/iv_pic"
-            android:layout_width="150dp"
-            android:layout_height="0dp"
+            android:layout_width="@dimen/size_150"
+            android:layout_height="@dimen/size_0"
+            bindCornerType="@{RoundImageType.CORNER_TYPE_ALL}"
+            bindIvRoundType="@{RoundImageType.ROUND_TYPE_ROUND}"
+            bindIvRoundRadius="@{10}"
             android:layout_marginTop="@dimen/size_10"
             android:adjustViewBounds="true"
-            app:bindIvHeight="@{400}"
+            android:scaleType="centerCrop"
             app:bindIvUrl="@{cell.valueImageUrl}"
-            app:bindIvWidth="@{225}"
             app:bindViewClick="@{v->cell.onCellClick(v,cell)}"
             app:layout_constraintDimensionRatio="9:16"
             app:layout_constraintStart_toStartOf="parent"

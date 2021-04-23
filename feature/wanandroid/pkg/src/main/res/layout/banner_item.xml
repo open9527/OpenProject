@@ -24,9 +24,8 @@
             android:id="@+id/iv_comment_banner"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:bindIvHeight="@{450}"
-            app:bindIvUrl="@{imageUrl}"
-            app:bindIvWidth="@{800}" />
+            android:scaleType="centerCrop"
+            app:bindIvUrl="@{imageUrl}" />
 
 
         <com.android.open9527.common.widget.textview.StateSwitchTextView
