@@ -48,11 +48,11 @@ android {
             debuggable true
             jniDebuggable true
             // 移除无用的资源文件
-            shrinkResources true
+            shrinkResources false
             // ZipAlign 优化
-            zipAlignEnabled true
+            zipAlignEnabled false
             // 设置混淆
-            minifyEnabled true
+            minifyEnabled false
 
 //            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             proguardFiles 'proguard-rules.pro', 'proguard-lib.pro', 'proguard-sdk.pro'

@@ -29,6 +29,7 @@ dependencies {
     implementation project(gradle.getUnionPath(":feature:annotation:pkg"))
     implementation project(gradle.getUnionPath(":feature:appmanager:pkg"))
     implementation project(gradle.getUnionPath(":feature:webview:pkg"))
+    implementation project(gradle.getUnionPath(":feature:custom:pkg"))
 
     kapt project(gradle.getUnionPath(":apt:compiler"))
 }

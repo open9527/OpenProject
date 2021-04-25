@@ -89,12 +89,30 @@ public class LauncherActivity extends BaseCommonActivity {
                 Bundle bundle = BundleUtils.create(new WebViewActivity.BundleData("https://www.wanandroid.com/index", "wanandroid"));
                 Router.getsInstance().build(Path.PATH_WEBVIEW_WEBVIEWACTIVITY)
                         .withBundle(bundle)
-                        .navigation(LauncherActivity.this)
-                ;
+                        .navigation(LauncherActivity.this);
 
             } else if (view.getId() == R.id.btn_custom) {
-                Router.getsInstance().build(Path.PATH_CUSTOM_CUSTOMACTIVITY)
-                        .navigation(LauncherActivity.this);
+                Router.getsInstance()
+                        .build(Path.PATH_CUSTOM_CUSTOMACTIVITY)
+                        .navigation(LauncherActivity.this, new NavigationCallback() {
+                            @Override
+                            public void onFound(Postcard postcard) {
+                                LogUtils.i(TAG, "NavigationCallback" + "找到跳转页面");
+
+                            }
+
+                            @Override
+                            public void onLost(Postcard postcard) {
+                                LogUtils.i(TAG, "NavigationCallback" + "未找到");
+                            }
+
+                            @Override
+                            public void onArrival(Postcard postcard) {
+                                LogUtils.i(TAG, "NavigationCallback" + "成功跳转");
+                            }
+                        });
+
+
             }
         };
     }
