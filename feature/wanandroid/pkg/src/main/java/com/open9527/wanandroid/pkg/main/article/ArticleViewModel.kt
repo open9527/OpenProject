@@ -32,7 +32,7 @@ class ArticleViewModel : ViewModel() {
     @JvmField
     val valueCloseHeaderOrFooter = ObservableBoolean(false)
     @JvmField
-    val valueCells = ObservableArrayList<BaseBindingCell<*>>()
+    var valueCells = ObservableArrayList<BaseBindingCell<*>>()
     @JvmField
     val articleRequest = ArticleRequest()
     fun onBanner(page: Int, bannerVos: List<BannerVo?>?) {

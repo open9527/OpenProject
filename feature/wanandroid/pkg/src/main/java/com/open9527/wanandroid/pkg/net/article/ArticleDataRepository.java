@@ -5,14 +5,19 @@ import androidx.annotation.NonNull;
 import com.android.open9527.common.net.data.HttpData;
 import com.android.open9527.common.net.data.response.DataResult;
 import com.android.open9527.common.net.data.response.ResponseStatus;
+import com.android.open9527.okhttp.OkHttpClientUtils;
 import com.android.open9527.okhttp.listener.HttpCallback;
 import com.android.open9527.okhttp.listener.OnHttpListener;
 import com.android.open9527.okhttp.request.GetRequest;
 import com.open9527.wanandroid.pkg.net.BannerVo;
 import com.open9527.wanandroid.pkg.net.DataVo;
 
+import java.net.Proxy;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
 
 /**
  * @author open_9527
@@ -20,15 +25,19 @@ import java.util.List;
  **/
 public class ArticleDataRepository implements OnHttpListener {
 
-    private static final ArticleDataRepository S_REQUEST_MANAGER = new ArticleDataRepository();
-
     private ArticleDataRepository() {
 
     }
 
-    public static ArticleDataRepository getInstance() {
-        return S_REQUEST_MANAGER;
+    private static class RepositoryInstance {
+        private static final ArticleDataRepository INSTANCE = new ArticleDataRepository();;
     }
+
+    public static ArticleDataRepository getInstance() {
+        return  RepositoryInstance.INSTANCE;
+    }
+
+
 
     public void banner(@NonNull GetRequest request, @NonNull DataResult.Result<List<BannerVo>> dataVoResult) {
         request.api(new BannerApi())

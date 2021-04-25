@@ -20,15 +20,16 @@ import java.util.List;
  * Create at 2021/1/15
  **/
 public class UserDataRepository implements OnHttpListener {
-
-    private static final UserDataRepository S_REQUEST_MANAGER = new UserDataRepository();
-
     private UserDataRepository() {
 
     }
 
+    private static class RepositoryInstance {
+        private static final UserDataRepository INSTANCE = new UserDataRepository();
+    }
+
     public static UserDataRepository getInstance() {
-        return S_REQUEST_MANAGER;
+        return RepositoryInstance.INSTANCE;
     }
 
     public void login(@NonNull String userName,@NonNull String passWord, @NonNull PostRequest request, @NonNull DataResult.Result<Object> dataVoResult) {

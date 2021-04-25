@@ -9,6 +9,7 @@ import com.android.open9527.okhttp.listener.HttpCallback;
 import com.android.open9527.okhttp.listener.OnHttpListener;
 import com.android.open9527.okhttp.request.GetRequest;
 import com.open9527.wanandroid.pkg.net.DataVo;
+import com.open9527.wanandroid.pkg.net.article.ArticleDataRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,15 +19,16 @@ import java.util.List;
  * Create at 2021/1/15
  **/
 public class ProjectDataRepository implements OnHttpListener {
-
-    private static final ProjectDataRepository S_REQUEST_MANAGER = new ProjectDataRepository();
-
     private ProjectDataRepository() {
 
     }
 
+    private static class RepositoryInstance {
+        private static final ProjectDataRepository INSTANCE = new ProjectDataRepository();;
+    }
+
     public static ProjectDataRepository getInstance() {
-        return S_REQUEST_MANAGER;
+        return RepositoryInstance.INSTANCE;
     }
 
     public void project(@NonNull int page,@NonNull String cId, @NonNull GetRequest request, @NonNull DataResult.Result<DataVo> dataVoResult) {

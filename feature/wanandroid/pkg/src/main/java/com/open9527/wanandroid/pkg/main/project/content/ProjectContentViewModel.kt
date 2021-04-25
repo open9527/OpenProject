@@ -29,7 +29,7 @@ class ProjectContentViewModel : ViewModel() {
     val valueNoMoreData = ObservableBoolean(false)
 
     @JvmField
-    val valueCells = ObservableArrayList<BaseBindingCell<*>>()
+    var valueCells = ObservableArrayList<BaseBindingCell<*>>()
 
     val valueICellClick = ObservableField<ProjectCell.ICellClick>()
 

@@ -1,5 +1,6 @@
 package com.android.open9527.recycleview.adapter;
 
+import android.util.Log;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
@@ -48,12 +49,15 @@ public abstract class BaseBindingCell<CELL extends BaseBindingCell> implements I
 
 
     public void partialUpdate(List<Object> payloads) {
+        Log.i("partialUpdate", "payloads");
     }
 
     void bindViewHolder(@NonNull final BaseBindingCellViewHolder holder, final int position) {
         bind(holder, position);
     }
-
+    void bindViewHolder(@NonNull final BaseBindingCellViewHolder holder, final int position, List<Object> payloads) {
+        bind(holder, position);
+    }
 
     public void onViewRecycled(@NonNull final BaseBindingCellViewHolder holder, final int position) {/**/}
 

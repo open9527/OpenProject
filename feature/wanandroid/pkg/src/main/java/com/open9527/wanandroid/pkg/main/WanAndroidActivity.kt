@@ -1,6 +1,5 @@
 package com.open9527.wanandroid.pkg.main
 
-import android.content.Intent
 import android.os.Bundle
 import com.android.open9527.common.page.BaseCommonActivity
 import com.android.open9527.page.DataBindingConfig

@@ -27,7 +27,6 @@ class WanAndroidViewModel : ViewModel() {
 
     val valueDefaultIndex = ObservableInt(1)
 
-//    val userRequest = UserRequest()
 
 
     fun initTab(fragmentManager: FragmentManager) {

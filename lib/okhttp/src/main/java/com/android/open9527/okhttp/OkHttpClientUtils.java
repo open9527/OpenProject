@@ -14,22 +14,20 @@ import okhttp3.OkHttpClient;
  **/
 public final class OkHttpClientUtils {
 
-    private static volatile OkHttpClient okHttpClient;
+    private OkHttpClientUtils() {
+    }
 
-    public final static OkHttpClient getClient() {
-        if (okHttpClient == null) {
-            synchronized (OkHttpUtils.class) {
-                if (okHttpClient == null) {
-                    okHttpClient = new OkHttpClient.Builder()
-                            .proxy(Proxy.NO_PROXY)
-                            .connectTimeout(30, TimeUnit.SECONDS)
-                            .readTimeout(30, TimeUnit.SECONDS)
-                            .writeTimeout(30, TimeUnit.SECONDS)
-                            .build();
-                }
-            }
-        }
-        return okHttpClient;
+    private static class OkHttpClientInstance {
+        private static final OkHttpClient INSTANCE = new OkHttpClient.Builder()
+                .proxy(Proxy.NO_PROXY)
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .writeTimeout(30, TimeUnit.SECONDS)
+                .build();
+    }
+
+    public static OkHttpClient getInstance() {
+        return OkHttpClientInstance.INSTANCE;
     }
 
 }

@@ -51,17 +51,18 @@ public class BaseBindingCellAdapter<CELL extends BaseBindingCell> extends Recycl
 
     @Override
     public final void onBindViewHolder(@NonNull BaseBindingCellViewHolder holder, int position) {
-        mItems.get(position).bindViewHolder(holder, position);
+        mItems.get(position).bindViewHolder(holder, position,mItems);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BaseBindingCellViewHolder holder, int position, @NonNull List<Object> payloads) {
+    public void onBindViewHolder(@NonNull BaseBindingCellViewHolder holder, int position,  List<Object> payloads) {
         if (payloads.isEmpty()) {
             super.onBindViewHolder(holder, position, payloads);
-            return;
+        }else {
+            mItems.get(position).partialUpdate(payloads);
         }
-        mItems.get(position).partialUpdate(payloads);
     }
+
 
     @Override
     public int getItemCount() {
@@ -73,7 +74,6 @@ public class BaseBindingCellAdapter<CELL extends BaseBindingCell> extends Recycl
         super.onViewRecycled(holder);
         int position = holder.getAdapterPosition();
         if (position < 0 || position >= mItems.size()) {
-            Log.i("BaseBindingCellAdapter", "position < 0 || position >= mItems.size()");
             return;
         }
         mItems.get(position).onViewRecycled(holder, position);
@@ -143,15 +143,14 @@ public class BaseBindingCellAdapter<CELL extends BaseBindingCell> extends Recycl
         } else {
             Log.i("submitItems", "Update");
             this.mItems = items;
-//            notifyItemRangeChanged(0, items.size(), items.size());
             notifyItemRangeChanged(0, mItems.size(), mItems.size());
         }
     }
 
     public void submitItems(@NonNull final ObservableList<CELL> items, boolean isRefresh) {
-        if (items.size() == 0) {
-            return;
-        }
+//        if (items.size() == 0) {
+//            return;
+//        }
         mItems = items;
         if (isRefresh) {
             Log.i("submitItems", "Add");
@@ -161,5 +160,44 @@ public class BaseBindingCellAdapter<CELL extends BaseBindingCell> extends Recycl
             Log.i("submitItems", "Update");
             notifyItemRangeChanged(0, mItems.size(), mItems.size());
         }
+//        registerNotify(items);
     }
+
+    private void registerNotify(@NonNull final ObservableList<CELL> items) {
+        items.addOnListChangedCallback(new ObservableList.OnListChangedCallback<ObservableList<CELL>>() {
+            @Override
+            public void onChanged(ObservableList<CELL> sender) {
+                Log.i("registerNotify", "onChanged");
+                notifyDataSetChanged();
+            }
+
+            @Override
+            public void onItemRangeChanged(ObservableList<CELL> sender, int positionStart, int itemCount) {
+                Log.i("registerNotify", "onItemRangeChanged");
+                notifyItemRangeChanged(positionStart, itemCount,items);
+            }
+
+            @Override
+            public void onItemRangeInserted(ObservableList<CELL> sender, int positionStart, int itemCount) {
+                Log.i("registerNotify", "onItemRangeInserted");
+                notifyItemRangeInserted(positionStart, itemCount);
+            }
+
+            @Override
+            public void onItemRangeMoved(ObservableList<CELL> sender, int fromPosition, int toPosition, int itemCount) {
+                Log.i("registerNotify", "onItemRangeMoved");
+                if (itemCount == 1) {
+                    notifyItemMoved(fromPosition, toPosition);
+                } else {
+                    notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onItemRangeRemoved(ObservableList<CELL> sender, int positionStart, int itemCount) {
+                notifyItemRangeRemoved(positionStart, itemCount);
+            }
+        });
+    }
+
 }

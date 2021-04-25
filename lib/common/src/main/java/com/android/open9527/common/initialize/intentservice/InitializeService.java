@@ -6,12 +6,12 @@ import android.content.Intent;
 
 import com.android.open9527.common.BuildConfig;
 import com.android.open9527.common.net.data.RequestHandler;
+import com.android.open9527.common.net.okhttp.OkHttpClientUtils;
 import com.android.open9527.common.net.server.ReleaseServer;
 import com.android.open9527.common.net.server.TestServer;
 import com.android.open9527.crash.Crash;
 import com.android.open9527.crash.ExceptionHandler;
 import com.android.open9527.okhttp.HttpConfig;
-import com.android.open9527.okhttp.OkHttpClientUtils;
 import com.android.open9527.okhttp.config.IRequestServer;
 import com.blankj.utilcode.util.AppUtils;
 
@@ -91,7 +91,7 @@ public class InitializeService extends IntentService {
         } else {
             server = new ReleaseServer();
         }
-        HttpConfig.with(OkHttpClientUtils.getClient())
+        HttpConfig.with(OkHttpClientUtils.getInstance())
                 // 是否打印日志
                 .setLogEnabled(BuildConfig.DEBUG)
                 // 设置服务器配置

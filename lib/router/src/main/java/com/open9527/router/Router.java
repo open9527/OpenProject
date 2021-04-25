@@ -35,7 +35,7 @@ import java.util.Set;
  **/
 public class Router {
 
-    private static final String TAG = "Router";
+//    private static final String TAG = "Router";
     /**
      * 注意这个是注解生成代码的路径
      */
@@ -70,7 +70,7 @@ public class Router {
             loadInfo();
         } catch (Exception e) {
             e.printStackTrace();
-            Log.e(TAG, "初始化失败!", e);
+//            Log.e(TAG, "初始化失败!", e);
         }
     }
 
@@ -91,7 +91,7 @@ public class Router {
             stringBuilder.append(SEPARATOR);
             stringBuilder.append(SUFFIX_ROOT);
             String s = stringBuilder.toString();
-            Log.e(TAG, "className-----------" + s);
+//            Log.e(TAG, "className-----------" + s);
             //root中注册的是分组信息 将分组信息加入仓库中
             if (className.startsWith(s)) {
                 //拿到反射字节码
@@ -105,8 +105,8 @@ public class Router {
         Set<Map.Entry<String, Class<? extends IRouteGroup>>> entries =
                 Warehouse.groupsIndex.entrySet();
         for (Map.Entry<String, Class<? extends IRouteGroup>> stringClassEntry : entries) {
-            Log.e(TAG, "Root映射表[ " + stringClassEntry.getKey() + " : "
-                    + stringClassEntry.getValue() + "]");
+//            Log.e(TAG, "Root映射表[ " + stringClassEntry.getKey() + " : "
+//                    + stringClassEntry.getValue() + "]");
         }
     }
 
@@ -139,7 +139,7 @@ public class Router {
         if (TextUtils.isEmpty(path) || TextUtils.isEmpty(group)) {
             throw new RuntimeException("路由地址无效!");
         } else {
-            Log.e(TAG, "传入path路径: " + path + "  group组: " + group);
+//            Log.e(TAG, "传入path路径: " + path + "  group组: " + group);
             return new Postcard(path, group);
         }
     }
@@ -257,7 +257,7 @@ public class Router {
     private void prepareCard(Postcard card) {
         String path = card.getPath();
         String group = card.getGroup();
-        Log.e(TAG, "Router路径: " + path);
+//        Log.e(TAG, "Router路径: " + path);
         RouteMeta routeMeta = Warehouse.routes.get(path);
         if (null == routeMeta) {
             Class<? extends IRouteGroup> groupMeta = Warehouse.groupsIndex.get(card.getGroup());

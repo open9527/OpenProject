@@ -121,7 +121,7 @@ public class CommonApplication extends BaseApplication {
         ClearableCookieJar cookieJar =
                 new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(this));
 
-        OkHttpClient okHttpClient = OkHttpClientUtils.getClient().newBuilder()
+        OkHttpClient okHttpClient = OkHttpClientUtils.getInstance().newBuilder()
                 .proxy(Proxy.NO_PROXY)
                 .cookieJar(cookieJar)
                 .connectTimeout(30, TimeUnit.SECONDS)

@@ -90,7 +90,7 @@ public class GlideModuleConfig extends AppGlideModule {
 //                .readTimeout(30, TimeUnit.SECONDS)
 //                .writeTimeout(30, TimeUnit.SECONDS)
 //                .build();
-        OkHttpClient okHttpClient = OkHttpClientUtils.getClient().newBuilder()
+        OkHttpClient okHttpClient = OkHttpClientUtils.getInstance().newBuilder()
 //                .addInterceptor(new GlideHeadInterceptor())
                 .connectTimeout(10, TimeUnit.SECONDS)
                 .readTimeout(10, TimeUnit.SECONDS)
