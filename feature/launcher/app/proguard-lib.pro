@@ -15,3 +15,7 @@
 #-keepclassmembernames class com.android.open9527.okhttp.** {
 #    <fields>;
 #}
+
+#BannerViewPager
+-keep class androidx.recyclerview.widget.**{*;}
+-keep class androidx.viewpager2.widget.**{*;}
