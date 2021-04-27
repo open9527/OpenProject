@@ -23,7 +23,7 @@ import com.android.open9527.common.page.BaseCommonActivity;
 import com.android.open9527.okhttp.request.GetRequest;
 import com.android.open9527.page.DataBindingConfig;
 import com.android.open9527.recycleview.adapter.BaseBindingCell;
-import com.android.open9527.recycleview.adapter.BaseBindingCellAdapter;
+import com.android.open9527.recycleview.adapter.BaseBindingCellListAdapter;
 import com.android.open9527.recycleview.decoration.SpacesItemDecoration;
 import com.android.open9527.recycleview.layout_manager.WrapContentLinearLayoutManager;
 import com.android.open9527.titlebar.OnTitleBarListener;
@@ -58,7 +58,7 @@ public class BrowserActivity extends BaseCommonActivity {
                                 BR.itemDecoration,
                                 new SpacesItemDecoration(this).setParam(R.color.common_line_color, 10)
                         )
-                .addBindingParam(BR.adapter, new BaseBindingCellAdapter<BaseBindingCell>())
+                .addBindingParam(BR.adapter, new BaseBindingCellListAdapter<BaseBindingCell>())
                 .addBindingParam(BR.titleBarListener, onTitleBarListener);
     }
 

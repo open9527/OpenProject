@@ -4,7 +4,7 @@ import com.android.open9527.common.binding.refresh.IRefresh;
 import com.android.open9527.common.dialog.CommonLoadDialog;
 import com.android.open9527.common.page.BaseCommonActivity;
 import com.android.open9527.page.DataBindingConfig;
-import com.android.open9527.recycleview.adapter.BaseBindingCellAdapter;
+import com.android.open9527.recycleview.adapter.BaseBindingCellListAdapter;
 import com.android.open9527.recycleview.decoration.SpacesItemDecoration;
 import com.android.open9527.recycleview.layout_manager.WrapContentLinearLayoutManager;
 import com.blankj.utilcode.util.AppUtils;
@@ -34,13 +34,17 @@ public class AppManagerActivity extends BaseCommonActivity {
                 .addBindingParam(BR.click, new ClickProxy())
                 .addBindingParam(BR.layoutManager, new WrapContentLinearLayoutManager(mActivity))
                 .addBindingParam(BR.itemDecoration, new SpacesItemDecoration(mActivity).setParam(R.color.common_line_color, 10))
-                .addBindingParam(BR.adapter, new BaseBindingCellAdapter<>());
+                .addBindingParam(BR.adapter, new BaseBindingCellListAdapter<>());
+    }
+
+    @Override
+    public void initStatusBar() {
+        super.initStatusBar();
     }
 
     @Override
     public void initRequest() {
-        createLoadDialog();
-        mCommonLoadDialog.show();
+        createLoadDialog().show();
         requestAppsInfo();
     }
 
@@ -56,6 +60,12 @@ public class AppManagerActivity extends BaseCommonActivity {
                 mViewModel.initData(result);
                 mCommonLoadDialog.dismiss();
             }
+
+            @Override
+            public void onFail(Throwable t) {
+                super.onFail(t);
+                mCommonLoadDialog.dismiss();
+            }
         });
     }
 
@@ -65,10 +75,9 @@ public class AppManagerActivity extends BaseCommonActivity {
             @Override
             public void onRefresh(RefreshLayout refreshLayout, Boolean isRefresh) {
                 if (isRefresh) {
-                    mViewModel.valueCells.clear();
                     requestAppsInfo();
                 }
-                refreshLayout.closeHeaderOrFooter();
+
             }
         };
     }

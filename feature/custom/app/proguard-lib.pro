@@ -10,6 +10,20 @@
     public <methods>;
 }
 
+#persistent_cookie_jar
+-dontwarn com.franmontiel.persistentcookiejar.**
+-keep class com.franmontiel.persistentcookiejar.**
+
+-keepclassmembers class * implements java.io.Serializable {
+    static final long serialVersionUID;
+    private static final java.io.ObjectStreamField[] serialPersistentFields;
+    !static !transient <fields>;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
+}
+
 # okhttp
 #-keep class com.android.open9527.okhttp.**{ *; }
 #-keepclassmembernames class com.android.open9527.okhttp.** {

@@ -1,17 +1,14 @@
 package com.android.open9527.common.binding.recycleview;
 
 import androidx.databinding.BindingAdapter;
-import androidx.databinding.ObservableInt;
-import androidx.databinding.ObservableList;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.android.open9527.common.cell.CommonEmptyCell;
 import com.android.open9527.recycleview.RecycleViewUtils;
-import com.android.open9527.recycleview.adapter.BaseBindingCell;
-import com.android.open9527.recycleview.adapter.BaseBindingCellAdapter;
 import com.android.open9527.recycleview.layout_manager.PickerLayoutManager;
 import com.android.open9527.recycleview.layout_manager.WrapContentGridLayoutManager;
 import com.android.open9527.recycleview.layout_manager.WrapContentLinearLayoutManager;
@@ -87,18 +84,15 @@ public class RecyclerViewBindingAdapter {
 
     }
 
-    @BindingAdapter(value = {"bindRvList", "bindRvIsRefresh", "bindRvSpanSizeLookup"}, requireAll = false)
-    public static void setBindingRecycleViewData(RecyclerView recyclerView, List list, boolean isRefresh, GridLayoutManager.SpanSizeLookup spanSizeLookup) {
+
+    @BindingAdapter(value = {"bindRvList",   "bindRvSpanSizeLookup"}, requireAll = false)
+    public static void setBindingRecycleViewData(RecyclerView recyclerView, List list,   GridLayoutManager.SpanSizeLookup spanSizeLookup) {
         if (recyclerView == null) return;
         if (recyclerView.getAdapter() != null) {
             RecyclerView.Adapter adapter = recyclerView.getAdapter();
-            if (adapter instanceof BaseBindingCellAdapter) {
-                BaseBindingCellAdapter<BaseBindingCell> bindingCellAdapter = (BaseBindingCellAdapter) adapter;
-                if (list instanceof ObservableList) {
-                    bindingCellAdapter.submitItems((ObservableList) list, isRefresh);
-                } else {
-                    bindingCellAdapter.submitItems(list, isRefresh);
-                }
+            if (adapter instanceof ListAdapter) {
+                ListAdapter listAdapter = (ListAdapter) adapter;
+                listAdapter.submitList(list);
                 setEmptyLayoutManager(recyclerView, list);
                 if (spanSizeLookup != null) {
                     RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();

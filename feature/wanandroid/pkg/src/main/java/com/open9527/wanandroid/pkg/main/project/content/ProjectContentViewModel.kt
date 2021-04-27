@@ -20,12 +20,6 @@ class ProjectContentViewModel : ViewModel() {
     val valueTitle = ObservableField<String>()
 
     @JvmField
-    val valueIsRefresh = ObservableBoolean(true)
-
-    @JvmField
-    val valueCloseHeaderOrFooter = ObservableBoolean(false)
-
-    @JvmField
     val valueNoMoreData = ObservableBoolean(false)
 
     @JvmField
@@ -38,17 +32,16 @@ class ProjectContentViewModel : ViewModel() {
 
     fun onCreateCells(page: Int, contentVos: List<ContentVo?>) {
         if (page == 0 && valueCells.size > 0) valueCells.clear()
-        valueIsRefresh.set(page == 0)
         if (CollectionUtils.isNotEmpty(contentVos)) {
             for (contentVo in contentVos) {
                 if (contentVo == null) continue
                 valueCells.add(valueICellClick.get()?.let { ProjectCell(contentVo, it) })
             }
+//            valueNoMoreData.set(contentVos.size < 20)
             valueNoMoreData.set(false)
         } else {
             if (page == 0) valueCells.add(CommonEmptyCell())
             valueNoMoreData.set(true)
         }
-        valueCloseHeaderOrFooter.set(true)
     }
 }

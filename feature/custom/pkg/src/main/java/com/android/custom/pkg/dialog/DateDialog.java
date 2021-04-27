@@ -18,7 +18,7 @@ import com.android.custom.pkg.R;
 import com.android.open9527.dialog.BaseDialogFragment;
 import com.android.open9527.dialog.DialogDataBindingConfig;
 import com.android.open9527.recycleview.adapter.BaseBindingCell;
-import com.android.open9527.recycleview.adapter.BaseBindingCellAdapter;
+import com.android.open9527.recycleview.adapter.BaseBindingCellListAdapter;
 import com.android.open9527.recycleview.adapter.BaseBindingCellViewHolder;
 import com.android.open9527.recycleview.layout_manager.PickerLayoutManager;
 
@@ -86,13 +86,13 @@ public class DateDialog extends BaseDialogFragment {
         return new DialogDataBindingConfig().addBindingParam(BR.dialog, this)
                 .addBindingParam(BR.yLayoutManager, mYearManager = new PickerLayoutManager.Builder(getContext())
                         .build())
-                .addBindingParam(BR.yAdapter, new BaseBindingCellAdapter<>())
+                .addBindingParam(BR.yAdapter, new BaseBindingCellListAdapter<>())
                 .addBindingParam(BR.mLayoutManager, mMonthManager = new PickerLayoutManager.Builder(getContext())
                         .build())
-                .addBindingParam(BR.mAdapter, new BaseBindingCellAdapter<>())
+                .addBindingParam(BR.mAdapter, new BaseBindingCellListAdapter<>())
                 .addBindingParam(BR.dLayoutManager, mDayManager = new PickerLayoutManager.Builder(getContext())
                         .build())
-                .addBindingParam(BR.dAdapter, new BaseBindingCellAdapter<>());
+                .addBindingParam(BR.dAdapter, new BaseBindingCellListAdapter<>());
     }
 
     @Override

@@ -8,7 +8,7 @@ import com.android.open9527.okhttp.OkHttpUtils
 import com.android.open9527.okhttp.listener.OnHttpListener
 import com.android.open9527.page.DataBindingConfig
 import com.android.open9527.recycleview.adapter.BaseBindingCell
-import com.android.open9527.recycleview.adapter.BaseBindingCellAdapter
+import com.android.open9527.recycleview.adapter.BaseBindingCellListAdapter
 import com.android.open9527.recycleview.decoration.SpacesItemDecoration
 import com.android.open9527.recycleview.layout_manager.WrapContentLinearLayoutManager
 import com.blankj.utilcode.util.LogUtils
@@ -38,7 +38,7 @@ class ShareFragment : BaseCommonFragment(), OnHttpListener<Any?> {
                 SpacesItemDecoration(mActivity).setFooterNoShowDivider(1)
                     .setParam(R.color.common_line_color, 10)
             )
-            .addBindingParam(BR.adapter, BaseBindingCellAdapter<BaseBindingCell<*>>())
+            .addBindingParam(BR.adapter, BaseBindingCellListAdapter<BaseBindingCell<*>>())
     }
 
     override fun initRequest() {
@@ -76,12 +76,10 @@ class ShareFragment : BaseCommonFragment(), OnHttpListener<Any?> {
 
     override fun onStart(call: Call) {
         LogUtils.i(TAG, "onStart")
-        //        mViewModel.valueCloseHeaderOrFooter.set(false);
     }
 
     override fun onEnd(call: Call) {
         LogUtils.i(TAG, "onEnd")
-        //        mViewModel.valueCloseHeaderOrFooter.set(true);
     }
 
     companion object {

@@ -26,17 +26,14 @@ public class AppManagerViewModel extends ViewModel {
 
 
     public final ObservableBoolean valueNoMoreData = new ObservableBoolean(true);
-    public final ObservableBoolean valueIsRefresh = new ObservableBoolean(true);
-    public final ObservableBoolean valueCloseHeaderOrFooter = new ObservableBoolean(false);
     public final ObservableArrayList<BaseBindingCell> valueCells = new ObservableArrayList<>();
 
     void initData(List<AppUtils.AppInfo> appInfoList) {
-
+         valueCells.clear();
         if (CollectionUtils.isNotEmpty(appInfoList)) {
             for (AppUtils.AppInfo appInfo : appInfoList) {
                 valueCells.add(new AppManagerCell(appInfo));
             }
-            valueCloseHeaderOrFooter.set(true);
         }
     }
 

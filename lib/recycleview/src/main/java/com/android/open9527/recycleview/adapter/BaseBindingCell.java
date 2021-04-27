@@ -14,6 +14,8 @@ import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
 
 /**
  * @author open_9527
@@ -55,19 +57,20 @@ public abstract class BaseBindingCell<CELL extends BaseBindingCell> implements I
     void bindViewHolder(@NonNull final BaseBindingCellViewHolder holder, final int position) {
         bind(holder, position);
     }
-    void bindViewHolder(@NonNull final BaseBindingCellViewHolder holder, final int position, List<Object> payloads) {
-        bind(holder, position);
-    }
+
 
     public void onViewRecycled(@NonNull final BaseBindingCellViewHolder holder, final int position) {/**/}
 
     public long getItemId() {
         return RecyclerView.NO_ID;
+    }
 
+    public String getUUID() {
+        return UUID.randomUUID().toString();
     }
 
     private int viewType;
-    BaseBindingCellAdapter<CELL> mAdapter;
+
 
     public BaseBindingCell(@LayoutRes int layoutId) {
         viewType = getViewTypeByLayoutId(layoutId);
@@ -83,9 +86,15 @@ public abstract class BaseBindingCell<CELL extends BaseBindingCell> implements I
         return viewType;
     }
 
-    public BaseBindingCellAdapter<CELL> getAdapter() {
-        return mAdapter;
-    }
+//    private BaseBindingCellListAdapter<CELL> mAdapter;
+//    public BaseBindingCellListAdapter<CELL> getAdapter() {
+//        return mAdapter;
+//    }
+//
+//    @SuppressWarnings("unchecked")
+//    public void setAdapter(BaseBindingCellListAdapter adapter) {
+//        mAdapter = adapter;
+//    }
 
 
     public boolean isViewType(@LayoutRes int layoutId) {
@@ -116,11 +125,11 @@ public abstract class BaseBindingCell<CELL extends BaseBindingCell> implements I
 //        return getAdapter().getItemCount();
 //    }
 //
-    @SuppressWarnings("unchecked")
-    public int getIndex() {
-        if (getAdapter() == null) return -1;
-        return getAdapter().getItems().indexOf((CELL) this);
-    }
+//    @SuppressWarnings("unchecked")
+//    public int getIndex() {
+//        if (getAdapter() == null) return -1;
+//        return getAdapter().getCurrentList().indexOf((CELL) this);
+//    }
 
 
     /*----------------------------------------Click-------------------------------------------------------*/
@@ -135,5 +144,20 @@ public abstract class BaseBindingCell<CELL extends BaseBindingCell> implements I
     @Override
     public void onClick(View view) {
         onCellClick(view, (CELL) this);
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BaseBindingCell<?> that = (BaseBindingCell<?>) o;
+        return viewType == that.viewType &&
+                Objects.equals(TAG, that.TAG);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(TAG, viewType);
     }
 }

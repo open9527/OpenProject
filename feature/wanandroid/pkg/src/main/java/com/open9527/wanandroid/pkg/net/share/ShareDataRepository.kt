@@ -7,6 +7,7 @@ import com.android.open9527.okhttp.listener.HttpCallback
 import com.android.open9527.okhttp.listener.OnHttpListener
 import com.android.open9527.okhttp.request.GetRequest
 import com.open9527.wanandroid.pkg.net.DataVo
+import com.open9527.wanandroid.pkg.net.user.CollectApi
 
 /**
  * @author open_9527
@@ -15,6 +16,7 @@ import com.open9527.wanandroid.pkg.net.DataVo
 class ShareDataRepository private constructor() : OnHttpListener<Any?> {
     fun share(page: Int, request: GetRequest, dataVoResult: (DataResult<DataVo>) -> Unit) {
         request.api(ShareApi().setPage(page))
+//        request.api(CollectApi().setPage(page))
             .request(object : HttpCallback<HttpData<DataVo?>?>(this) {
                 override fun onSucceed(result: HttpData<DataVo?>?) {
                     super.onSucceed(result)

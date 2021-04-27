@@ -33,6 +33,7 @@ class ProjectCell(contentVo: ContentVo, iCellClick: ICellClick) :
     @JvmField
     val valueNiceShareDate = ObservableField<String?>()
     private val valueICellClick = ObservableField<ICellClick?>()
+    private val valueId =  ObservableField<String?>()
     override fun bind(holder: BaseBindingCellViewHolder<*>, position: Int) {
         holder.addBindingParam(BR.cell, this)
     }
@@ -61,6 +62,7 @@ class ProjectCell(contentVo: ContentVo, iCellClick: ICellClick) :
     }
 
     init {
+        valueId.set(contentVo.id)
         valueTitle.set(contentVo.title)
         valueLink.set(contentVo.link)
         valueImageUrl.set(contentVo.envelopePic)
@@ -81,5 +83,9 @@ class ProjectCell(contentVo: ContentVo, iCellClick: ICellClick) :
             )
         }
         valueNiceShareDate.set(contentVo.niceShareDate)
+    }
+
+    override fun getUUID(): String? {
+        return valueId.get()
     }
 }

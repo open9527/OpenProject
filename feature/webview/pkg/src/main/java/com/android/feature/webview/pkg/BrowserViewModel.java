@@ -34,9 +34,7 @@ public class BrowserViewModel extends ViewModel {
 
     public final ObservableInt valueWebPbVisibility = new ObservableInt(View.GONE);
 
-    public final ObservableBoolean valueCloseHeaderOrFooter = new ObservableBoolean(false);
     public final ObservableBoolean valueNoMoreData = new ObservableBoolean(false);
-    public final ObservableBoolean valueIsRefresh = new ObservableBoolean(true);
     public final ObservableArrayList<BaseBindingCell> valueCells = new ObservableArrayList<BaseBindingCell>();
 
 
@@ -45,7 +43,6 @@ public class BrowserViewModel extends ViewModel {
     public ArticleRequest articleRequest = new ArticleRequest();
 
     void onCreateCells(int page, List<ContentVo> contentVos) {
-        valueIsRefresh.set(page == 0);
         if (CollectionUtils.isNotEmpty(contentVos)) {
             for (ContentVo contentVo : contentVos) {
                 if (contentVo == null) continue;
@@ -56,7 +53,6 @@ public class BrowserViewModel extends ViewModel {
             if (page == 0) valueCells.add(new CommonEmptyCell());
             valueNoMoreData.set(true);
         }
-        valueCloseHeaderOrFooter.set(true);
     }
 
 }

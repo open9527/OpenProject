@@ -28,11 +28,7 @@ class ShareViewModel : ViewModel() {
     @JvmField
     val valueNoMoreData = ObservableBoolean(false)
 
-    @JvmField
-    val valueIsRefresh = ObservableBoolean(true)
 
-    @JvmField
-    val valueCloseHeaderOrFooter = ObservableBoolean(false)
 
     @JvmField
     var valueCells = ObservableArrayList<BaseBindingCell<*>>()
@@ -42,16 +38,15 @@ class ShareViewModel : ViewModel() {
 
     fun onCreateCells(page: Int, contentVos: List<ContentVo>?) {
         if (page == 0 && valueCells.size > 0) valueCells.clear()
-        valueIsRefresh.set(page == 0)
         if (CollectionUtils.isNotEmpty(contentVos) && contentVos != null) {
             for (contentVo in contentVos) {
                 valueCells.add(ShareContentTextCell(contentVo))
             }
+//            valueNoMoreData.set(contentVos.size < 20)
             valueNoMoreData.set(false)
         } else {
             if (page == 0) valueCells.add(CommonEmptyCell())
             valueNoMoreData.set(true)
         }
-        valueCloseHeaderOrFooter.set(true)
     }
 }

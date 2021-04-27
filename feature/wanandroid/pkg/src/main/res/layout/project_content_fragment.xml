@@ -34,7 +34,6 @@
             android:id="@+id/refresh_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:bindRefreshCloseHeaderOrFooter="@{vm.valueCloseHeaderOrFooter}"
             app:bindRefreshListener="@{click.onRefreshListeners}"
             app:bindRefreshNoMoreData="@{vm.valueNoMoreData}">
 
@@ -50,7 +49,6 @@
                 android:scrollbars="none"
                 app:bindRvAdapter="@{adapter}"
                 app:bindRvAnim="@{false}"
-                app:bindRvIsRefresh="@{vm.valueIsRefresh}"
                 app:bindRvItemDecoration="@{itemDecoration}"
                 app:bindRvLayoutManager="@{layoutManager}"
                 app:bindRvList="@{vm.valueCells}" />

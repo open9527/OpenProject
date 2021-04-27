@@ -4,9 +4,11 @@ import android.content.ComponentCallbacks2;
 import android.content.res.Configuration;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 
 import com.android.open9527.base.application.BaseApplication;
 import com.android.open9527.common.BuildConfig;
+import com.android.open9527.common.R;
 import com.android.open9527.common.carsh.CrashHandler;
 import com.android.open9527.common.net.data.RequestHandler;
 import com.android.open9527.common.net.glide.ImageLoadUtils;
@@ -27,6 +29,9 @@ import com.franmontiel.persistentcookiejar.ClearableCookieJar;
 import com.franmontiel.persistentcookiejar.PersistentCookieJar;
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
+import com.scwang.smart.refresh.footer.ClassicsFooter;
+import com.scwang.smart.refresh.header.ClassicsHeader;
+import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 
 
 import java.net.Proxy;
@@ -118,6 +123,7 @@ public class CommonApplication extends BaseApplication {
         } else {
             server = new ReleaseServer();
         }
+        //cookie持久化存储
         ClearableCookieJar cookieJar =
                 new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(this));
 
@@ -147,11 +153,27 @@ public class CommonApplication extends BaseApplication {
                 // 设置请求重试时间
                 .setRetryTime(1000)
                 // 添加全局请求参数
-                .addParam("token", "23333")
+//                .addParam("token", "23333")
                 // 添加全局请求头
                 .addHeader("time", String.valueOf(System.currentTimeMillis()))
                 .into();
 
     }
 
+
+    static {
+        SmartRefreshLayout.setDefaultRefreshHeaderCreator((context, layout) -> {
+            ClassicsHeader classicsHeader = new ClassicsHeader(context);
+            classicsHeader.setAccentColorId(R.color.gray);
+            classicsHeader.setPrimaryColor(ContextCompat.getColor(context, R.color.white));
+            return classicsHeader;
+        });
+        SmartRefreshLayout.setDefaultRefreshFooterCreator((context, layout) -> {
+            ClassicsFooter classicsFooter = new ClassicsFooter(context).setDrawableSize(20);
+            classicsFooter.setDrawableSize(20);
+            classicsFooter.setAccentColorId(R.color.gray);//设置强调颜色
+            classicsFooter.setPrimaryColor(ContextCompat.getColor(context, R.color.white));
+            return classicsFooter;
+        });
+    }
 }

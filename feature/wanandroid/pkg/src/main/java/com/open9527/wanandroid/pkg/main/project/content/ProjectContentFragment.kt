@@ -15,11 +15,10 @@ import com.android.open9527.image.export.api.ImageBundle
 import com.android.open9527.okhttp.OkHttpUtils
 import com.android.open9527.page.DataBindingConfig
 import com.android.open9527.recycleview.adapter.BaseBindingCell
-import com.android.open9527.recycleview.adapter.BaseBindingCellAdapter
+import com.android.open9527.recycleview.adapter.BaseBindingCellListAdapter
 import com.android.open9527.recycleview.decoration.SpacesItemDecoration
 import com.android.open9527.recycleview.layout_manager.WrapContentLinearLayoutManager
 import com.blankj.utilcode.util.ApiUtils
-import com.blankj.utilcode.util.GsonUtils
 import com.blankj.utilcode.util.LogUtils
 import com.open9527.router.Router
 import com.open9527.wanandroid.pkg.BR
@@ -51,7 +50,7 @@ class ProjectContentFragment : BaseCommonFragment() {
                 BR.itemDecoration,
                 SpacesItemDecoration(mActivity).setParam(R.color.common_line_color, 10)
             )
-            .addBindingParam(BR.adapter, BaseBindingCellAdapter<BaseBindingCell<*>>())
+            .addBindingParam(BR.adapter, BaseBindingCellListAdapter<BaseBindingCell<*>>())
     }
 
     override fun initView(bundle: Bundle?) {

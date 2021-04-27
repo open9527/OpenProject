@@ -6,6 +6,7 @@ import android.view.View;
 import androidx.annotation.Nullable;
 
 import com.android.custom.pkg.dialog.DialogActivity;
+import com.android.custom.pkg.recycleview.RecycleViewActivity;
 import com.android.custom.pkg.shadow.ShadowActivity;
 import com.android.open9527.common.page.BaseCommonActivity;
 import com.android.open9527.filter.AppFilter;
@@ -64,6 +65,8 @@ public class CustomActivity extends BaseCommonActivity {
         public View.OnClickListener shadowClick = v -> {
             ActivityUtils.startActivity(ShadowActivity.class);
         };
-
+        public View.OnClickListener recycleViewClick = v -> {
+            ActivityUtils.startActivity(RecycleViewActivity.class);
+        };
     }
 }

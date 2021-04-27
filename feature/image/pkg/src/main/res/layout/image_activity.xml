@@ -71,7 +71,6 @@
             android:scrollbars="none"
             app:bindRvAdapter="@{adapter}"
             app:bindRvAnim="@{false}"
-            app:bindRvIsRefresh="@{false}"
             app:bindRvItemDecoration="@{itemDecoration}"
             app:bindRvLayoutManager="@{layoutManager}"
             app:bindRvList="@{vm.valueCells}"

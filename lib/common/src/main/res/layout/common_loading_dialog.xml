@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -11,15 +12,17 @@
     </data>
 
     <LinearLayout
+        bindDrawableRadius="@{10}"
+        bindDrawableSolidColor="@{@color/translucent}"
         android:layout_width="@dimen/size_80"
         android:layout_height="@dimen/size_80"
-        android:background="@color/translucent"
+        tools:background="@color/translucent"
         android:gravity="center">
 
         <ProgressBar
-            android:indeterminateBehavior="repeat"
             android:layout_width="@dimen/size_40"
             android:layout_height="@dimen/size_40"
+            android:indeterminateBehavior="repeat"
             android:indeterminateDrawable="@drawable/common_pb_loading" />
 
 

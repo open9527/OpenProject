@@ -17,7 +17,7 @@ import com.android.open9527.page.DataBindingConfig;
 import com.android.open9527.permission.OnPermissionCallback;
 import com.android.open9527.permission.Permission;
 import com.android.open9527.permission.PermissionsManage;
-import com.android.open9527.recycleview.adapter.BaseBindingCellAdapter;
+import com.android.open9527.recycleview.adapter.BaseBindingCellListAdapter;
 import com.android.open9527.recycleview.decoration.GridSpaceItemDecoration;
 import com.android.open9527.recycleview.layout_manager.WrapContentGridLayoutManager;
 import com.android.open9527.titlebar.OnTitleBarListener;
@@ -50,7 +50,7 @@ public class GalleryActivity extends BaseCommonActivity {
                 .addBindingParam(BR.titleBarListener, onTitleBarListener)
                 .addBindingParam(BR.layoutManager, new WrapContentGridLayoutManager(this, 2))
                 .addBindingParam(BR.itemDecoration, new GridSpaceItemDecoration(10))
-                .addBindingParam(BR.adapter, new BaseBindingCellAdapter<>());
+                .addBindingParam(BR.adapter, new BaseBindingCellListAdapter<>());
     }
 
     @Override

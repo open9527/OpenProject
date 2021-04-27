@@ -7,7 +7,7 @@ import com.android.open9527.okhttp.OkHttpUtils
 import com.android.open9527.okhttp.listener.OnHttpListener
 import com.android.open9527.page.DataBindingConfig
 import com.android.open9527.recycleview.adapter.BaseBindingCell
-import com.android.open9527.recycleview.adapter.BaseBindingCellAdapter
+import com.android.open9527.recycleview.adapter.BaseBindingCellListAdapter
 import com.android.open9527.recycleview.decoration.SpacesItemDecoration
 import com.android.open9527.recycleview.layout_manager.WrapContentLinearLayoutManager
 import com.open9527.wanandroid.pkg.BR
@@ -35,12 +35,13 @@ class ArticleFragment : BaseCommonFragment(), OnHttpListener<Any?> {
                 BR.itemDecoration,
                 SpacesItemDecoration(mActivity).setParam(R.color.common_line_color, 10)
             )
-            .addBindingParam(BR.adapter, BaseBindingCellAdapter<BaseBindingCell<*>>())
+            .addBindingParam(BR.adapter, BaseBindingCellListAdapter<BaseBindingCell<*>>())
     }
 
     override fun initRequest() {
         super.initRequest()
-        requestBanner()
+//        requestBanner()
+        requestArticle()
     }
 
     override fun initEvent() {
@@ -73,15 +74,16 @@ class ArticleFragment : BaseCommonFragment(), OnHttpListener<Any?> {
 
     inner class ClickProxy {
         @JvmField
-        var onRefreshListeners: IRefresh<Boolean?> = object : IRefresh<Boolean?> {
-            override fun onRefresh(refreshLayout: RefreshLayout?, isRefresh: Boolean?) {
-                mPage = if (isRefresh!!) 0 else ++mPage
+        var onRefreshListeners: IRefresh<Boolean> = object : IRefresh<Boolean> {
+            override fun onRefresh(refreshLayout: RefreshLayout?, isRefresh: Boolean) {
                 if (isRefresh) {
-                    requestBanner()
+                    mPage=0
+//                    requestBanner()
                 } else {
-                    requestArticle()
+                    mPage++
+//                    requestArticle()
                 }
-                refreshLayout?.closeHeaderOrFooter()
+                requestArticle()
             }
         }
     }

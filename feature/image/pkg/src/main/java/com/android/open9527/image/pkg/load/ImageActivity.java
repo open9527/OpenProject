@@ -17,7 +17,7 @@ import com.android.open9527.image.pkg.SharedElementViewModel;
 import com.android.open9527.image.pkg.gallery.GalleryActivity;
 import com.android.open9527.image.pkg.preview.Preview2Activity;
 import com.android.open9527.page.DataBindingConfig;
-import com.android.open9527.recycleview.adapter.BaseBindingCellAdapter;
+import com.android.open9527.recycleview.adapter.BaseBindingCellListAdapter;
 import com.android.open9527.recycleview.decoration.GridSpaceItemDecoration;
 import com.android.open9527.recycleview.layout_manager.WrapContentGridLayoutManager;
 import com.android.open9527.recycleview.scroll.RecycleViewScrollListener;
@@ -52,7 +52,7 @@ public class ImageActivity extends BaseCommonActivity {
                 .addBindingParam(BR.scrollListener, new RecycleViewScrollListener(iScrollListener))
                 .addBindingParam(BR.layoutManager, new WrapContentGridLayoutManager(this, 2))
                 .addBindingParam(BR.itemDecoration, new GridSpaceItemDecoration(10))
-                .addBindingParam(BR.adapter, new BaseBindingCellAdapter<>());
+                .addBindingParam(BR.adapter, new BaseBindingCellListAdapter<>());
     }
 
     @Override
@@ -70,7 +70,7 @@ public class ImageActivity extends BaseCommonActivity {
 
     @Override
     public void initEvent() {
-        sharedElementViewModel.getLocationChangeEventLiveData().observeInActivity(this, locationChangeEvent -> {
+        sharedElementViewModel.getLocationChangeEventLiveData().observe(this, locationChangeEvent -> {
             LogUtils.i(TAG, "getLocationChangeEventLiveData:");
             RecyclerView recyclerView = findViewById(R.id.recyclerView);
             recyclerView.smoothScrollToPosition(locationChangeEvent.getCurrentPosition());

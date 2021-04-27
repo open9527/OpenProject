@@ -15,6 +15,7 @@ import com.open9527.wanandroid.pkg.net.BannerVo
 class BannerCell : BaseBindingCell<BannerCell> {
     @JvmField
     val observableList: ObservableList<BannerVo> = ObservableArrayList()
+   private val  stringBuilder:  StringBuilder? =  StringBuilder();
 
     constructor(contentVoList: List<BannerVo?>?) : super(R.layout.banner_cell) {
         observableList.addAll(contentVoList!!)
@@ -23,6 +24,13 @@ class BannerCell : BaseBindingCell<BannerCell> {
 
     override fun bind(holder: BaseBindingCellViewHolder<*>, position: Int) {
         holder.addBindingParam(BR.cell, this)
+    }
+
+    override fun getUUID(): String {
+        for (bannerVo in observableList){
+            stringBuilder!!.append(bannerVo.id)
+        }
+        return stringBuilder.toString()
     }
 
 }

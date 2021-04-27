@@ -7,6 +7,7 @@ import java.io.Serializable
  * Create at 2021/1/14
  */
 class ContentVo : Serializable {
+    var id: String? = null
     var title: String? = null
     var link: String? = null
     var author: String? = null

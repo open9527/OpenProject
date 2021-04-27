@@ -8,12 +8,21 @@ import java.io.Serializable;
  **/
 public class ContentVo implements Serializable {
 
+    private String id;
     private String title;
     private String link;
     private String author;
     private String shareUser;
     private String niceShareDate;
     private String envelopePic;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;

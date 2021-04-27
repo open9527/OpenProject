@@ -47,8 +47,8 @@ public class PreviewActivity extends BaseCommonActivity {
 
     @Override
     public void initView(@Nullable Bundle bundle) {
-        super.initView(bundle);
         bundleData = BundleUtils.getBundleData(bundle);
+        super.initView(bundle);
         mViewModel.valueTitle.set(getTitle().toString());
         if (bundleData == null) {
             throw new IllegalArgumentException("bundleData is null");

@@ -24,7 +24,7 @@ import com.android.open9527.page.DataBindingConfig;
 import com.android.open9527.permission.OnPermissionCallback;
 import com.android.open9527.permission.Permission;
 import com.android.open9527.permission.PermissionsManage;
-import com.android.open9527.recycleview.adapter.BaseBindingCellAdapter;
+import com.android.open9527.recycleview.adapter.BaseBindingCellListAdapter;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
@@ -52,7 +52,7 @@ public class Preview2Activity extends BaseCommonActivity {
     @Override
     protected DataBindingConfig getDataBindingConfig() {
         return new DataBindingConfig(R.layout.preview_2_activity, BR.vm, mViewModel)
-                .addBindingParam(BR.adapter, new BaseBindingCellAdapter<>())
+                .addBindingParam(BR.adapter, new BaseBindingCellListAdapter<>())
                 .addBindingParam(BR.vpCallBack, onPageChangeCallback);
     }
 
@@ -63,8 +63,8 @@ public class Preview2Activity extends BaseCommonActivity {
 
     @Override
     public void initView(@Nullable Bundle bundle) {
-        super.initView(bundle);
         bundleData = BundleUtils.getBundleData(bundle);
+        super.initView(bundle);
         mViewModel.valueICellClick.set(iCellClick);
         if (bundleData == null) {
             throw new IllegalArgumentException("bundleData is null");

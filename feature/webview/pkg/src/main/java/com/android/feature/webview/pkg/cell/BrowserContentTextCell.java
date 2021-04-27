@@ -18,6 +18,7 @@ import com.blankj.utilcode.util.StringUtils;
  **/
 public class BrowserContentTextCell extends BaseBindingCell<BrowserContentTextCell> {
 
+    public final ObservableField<String> valueId = new ObservableField<>();
     public final ObservableField<String> valueTitle = new ObservableField<>();
 //    private final ObservableField<String> valueLink = new ObservableField<>();
     public final ObservableField<String> valueShareUser = new ObservableField<>();
@@ -25,6 +26,7 @@ public class BrowserContentTextCell extends BaseBindingCell<BrowserContentTextCe
 
     public BrowserContentTextCell(ContentVo contentVo) {
         super(R.layout.browser_content_text_cell);
+        valueId.set(contentVo.getId());
         valueTitle.set(contentVo.getTitle());
 //        valueLink.set(contentVo.getLink());
         if (TextUtils.isEmpty(contentVo.getShareUser())) {
@@ -46,5 +48,10 @@ public class BrowserContentTextCell extends BaseBindingCell<BrowserContentTextCe
     @Override
     public void bind(@NonNull BaseBindingCellViewHolder holder, int position) {
         holder.addBindingParam(BR.cell, this);
+    }
+
+    @Override
+    public String getUUID() {
+        return valueId.get();
     }
 }

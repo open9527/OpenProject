@@ -30,13 +30,13 @@ public class ArticleDataRepository implements OnHttpListener {
     }
 
     private static class RepositoryInstance {
-        private static final ArticleDataRepository INSTANCE = new ArticleDataRepository();;
+        private static final ArticleDataRepository INSTANCE = new ArticleDataRepository();
+        ;
     }
 
     public static ArticleDataRepository getInstance() {
-        return  RepositoryInstance.INSTANCE;
+        return RepositoryInstance.INSTANCE;
     }
-
 
 
     public void banner(@NonNull GetRequest request, @NonNull DataResult.Result<List<BannerVo>> dataVoResult) {

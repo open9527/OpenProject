@@ -2,13 +2,14 @@ package com.android.open9527.common.binding.viewpage;
 
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.ObservableList;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.android.open9527.recycleview.adapter.BaseBindingCell;
-import com.android.open9527.recycleview.adapter.BaseBindingCellAdapter;
+import com.android.open9527.recycleview.adapter.BaseBindingCellListAdapter;
 
 import java.util.List;
 
@@ -38,18 +39,14 @@ public class ViewPagerBindingAdapter {
     }
 
     @SuppressWarnings("unchecked")
-    @BindingAdapter(value = {"bindVpList", "bindVpIndex", "bindVpIsRefresh", "bindVpChangeCallback"}, requireAll = false)
-    public static void setBindingViewPager2(ViewPager2 viewPager, List list, int index, boolean isRefresh, ViewPager2.OnPageChangeCallback onPageChangeCallback) {
+    @BindingAdapter(value = {"bindVpList", "bindVpIndex", "bindVpChangeCallback"}, requireAll = false)
+    public static void setBindingViewPager2(ViewPager2 viewPager, List list, int index, ViewPager2.OnPageChangeCallback onPageChangeCallback) {
         if (viewPager == null) return;
         if (viewPager.getAdapter() != null) {
             RecyclerView.Adapter adapter = viewPager.getAdapter();
-            if (adapter instanceof BaseBindingCellAdapter) {
-                BaseBindingCellAdapter<BaseBindingCell> bindingCellAdapter = (BaseBindingCellAdapter) adapter;
-                if (list instanceof ObservableList) {
-                    bindingCellAdapter.submitItems((ObservableList) list, isRefresh);
-                } else {
-                    bindingCellAdapter.submitItems(list, isRefresh);
-                }
+            if (adapter instanceof ListAdapter) {
+                ListAdapter listAdapter = (ListAdapter) adapter;
+                listAdapter.submitList(list);
 
             }
         }

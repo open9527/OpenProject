@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.view.View
 import androidx.databinding.ObservableField
+import androidx.databinding.ObservableInt
 import com.android.open9527.common.net.glide.ImageCallBack
 import com.android.open9527.common.widget.image.RoundImageType
 import com.android.open9527.image.pkg.BR
@@ -31,10 +32,13 @@ class ImageCell : BaseBindingCell<ImageCell> {
     @JvmField
     val valueICellClick = ObservableField<ICellClick>()
 
+    val valueIndex = ObservableInt()
+
     constructor(imageVo: ImageVo, iCellClick: ICellClick) : super(R.layout.image_cell) {
         valueImageUrl.set(imageVo.imageUrl)
         valueICellClick.set(iCellClick)
     }
+
     constructor(uri: Uri) : super(R.layout.image_cell) {
         valueImageUri.set(uri)
     }
@@ -42,11 +46,12 @@ class ImageCell : BaseBindingCell<ImageCell> {
 
     override fun bind(holder: BaseBindingCellViewHolder<*>, position: Int) {
         holder.addBindingParam(BR.cell, this)
+        valueIndex.set(position)
     }
 
     override fun onCellClick(view: View, imageCell: ImageCell) {
         val iCellClick = valueICellClick.get()
-        iCellClick?.onCellClick(view, imageCell.index)
+        iCellClick?.onCellClick(view, valueIndex.get())
     }
 
     interface ICellClick {
@@ -57,5 +62,12 @@ class ImageCell : BaseBindingCell<ImageCell> {
         override fun onStart() {}
         override fun onStop() {}
         override fun onResourceReady(resource: Bitmap) {}
+    }
+
+    override fun getUUID(): String? {
+        if (valueImageUri.get() != null) {
+            return valueImageUri.get().toString()
+        }
+        return valueImageUrl.get()
     }
 }

@@ -25,7 +25,7 @@ class ShareContentTextCell(contentVo: ContentVo) :
     @JvmField
     val valueTitle = ObservableField<String?>()
     private val valueLink = ObservableField<String?>()
-
+    private val valueId =  ObservableField<String?>()
     @JvmField
     val valueShareUser = ObservableField<String>()
 
@@ -50,6 +50,7 @@ class ShareContentTextCell(contentVo: ContentVo) :
     }
 
     init {
+        valueId.set(contentVo.id)
         valueTitle.set(contentVo.title)
         valueLink.set(contentVo.link)
         if (TextUtils.isEmpty(contentVo.shareUser)) {
@@ -68,5 +69,9 @@ class ShareContentTextCell(contentVo: ContentVo) :
             )
         }
         valueNiceShareDate.set(contentVo.niceShareDate)
+    }
+
+    override fun getUUID(): String? {
+        return valueId.get()
     }
 }

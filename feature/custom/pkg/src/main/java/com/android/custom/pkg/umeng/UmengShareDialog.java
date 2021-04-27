@@ -22,7 +22,7 @@ import com.android.custom.pkg.R;
 import com.android.open9527.dialog.BaseDialogFragment;
 import com.android.open9527.dialog.DialogDataBindingConfig;
 import com.android.open9527.recycleview.adapter.BaseBindingCell;
-import com.android.open9527.recycleview.adapter.BaseBindingCellAdapter;
+import com.android.open9527.recycleview.adapter.BaseBindingCellListAdapter;
 import com.android.open9527.recycleview.adapter.BaseBindingCellViewHolder;
 import com.android.open9527.recycleview.layout_manager.WrapContentGridLayoutManager;
 import com.blankj.utilcode.util.ResourceUtils;
@@ -83,7 +83,7 @@ public class UmengShareDialog extends BaseDialogFragment {
     public DialogDataBindingConfig getDataBindingConfig() {
         return new DialogDataBindingConfig().addBindingParam(BR.dialog, this)
                 .addBindingParam(BR.layoutManager, new WrapContentGridLayoutManager(mActivity, valueCells.size()))
-                .addBindingParam(BR.adapter, new BaseBindingCellAdapter<>());
+                .addBindingParam(BR.adapter, new BaseBindingCellListAdapter<>());
     }
 
     @Override

@@ -62,4 +62,9 @@ public class AppManagerCell extends BaseBindingCell<AppManagerCell> {
         ToastUtils.showShort("复制成功!");
         return true;
     }
+
+    @Override
+    public String getUUID() {
+        return valuePkgName.get();
+    }
 }
