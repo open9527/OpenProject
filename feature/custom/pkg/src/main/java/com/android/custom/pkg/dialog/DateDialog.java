@@ -193,6 +193,10 @@ public class DateDialog extends BaseDialogFragment {
             holder.addBindingParam(BR.cell, this);
         }
 
+        @Override
+        public String getUUID() {
+            return valueDate.get();
+        }
     }
 
     public interface IDialog {

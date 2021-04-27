@@ -20,7 +20,7 @@
         android:singleLine="true"
         android:text="@{cell.valueDate}"
         android:textColor="@color/black"
-        android:textSize="@dimen/font_18"
+        android:textSize="@dimen/font_16"
         android:textStyle="bold"
         tools:text="2021年" />
 </layout>
