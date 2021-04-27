@@ -171,14 +171,6 @@ public final class BrowserView extends NestedScrollWebView implements LifecycleE
         destroy();
     }
 
-    /**
-     * 已过时，推荐使用 {@link BrowserViewClient}
-     */
-    @Deprecated
-    @Override
-    public void setWebViewClient(@NonNull WebViewClient client) {
-        super.setWebViewClient(client);
-    }
 
     public void setBrowserViewClient(BrowserViewClient client) {
         super.setWebViewClient(client);

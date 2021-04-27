@@ -47,7 +47,8 @@ public final class UmengClient {
         if (isAppInstalled(activity, platform)) {
             new ShareAction(activity)
                     .setPlatform(platform.getThirdParty())
-                    .withMedia(data.create())
+                    .withMedia(data.createWeb())
+//                    .withMedia(data.createVideo())
                     .setCallback(listener != null ? new UmengShare.ShareListenerWrapper(platform.getThirdParty(), listener) : null)
                     .share();
             return;
@@ -97,6 +98,15 @@ public final class UmengClient {
      */
     public static boolean isAppInstalled(Activity activity, Platform platform) {
         return UMShareAPI.get(activity).isInstall(activity, platform.getThirdParty());
+    }
+
+    /**
+     * 内存泄漏解决方案
+     * 在使用分享或者授权的Activity中，重写onDestory()方法：
+     * @param activity
+     */
+    public static void release(Activity activity){
+        UMShareAPI.get(activity).release();
     }
 
 }

@@ -1,24 +1,14 @@
 dependencies {
     implementation Config.depConfig.androidx_appcompat
 
-    //必选 asms, share-core
-    implementation 'com.umeng.umsdk:common:9.3.6'
-    implementation 'com.umeng.umsdk:asms:1.2.1'
-    implementation 'com.umeng.umsdk:share-core:7.1.4'
-//    implementation 'com.umeng.umsdk:share-board:7.1.4'   //分享面板功能，可选
+    implementation Config.depConfig.umsdk_common
+//    implementation Config.depConfig.umsdk_asms
+    implementation Config.depConfig.umsdk_share_core
+    implementation Config.depConfig.umsdk_share_qq
+    implementation Config.depConfig.umsdk_qq
+    implementation Config.depConfig.umsdk_share_wx
+    implementation Config.depConfig.umsdk_wx
 
-    implementation 'com.umeng.umsdk:share-qq:7.1.4'
-    //QQ官方SDK依赖库
-    implementation 'com.tencent.tauth:qqopensdk:3.51.2'
-
-
-    api 'com.umeng.umsdk:share-wx:7.1.4'
-    //微信官方SDK依赖库
-    api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:6.6.5'
-
-//    implementation 'com.umeng.umsdk:share-sina:7.1.4'
-    //新浪微博官方SDK依赖库
-//    implementation 'com.sina.weibo.sdk:core:10.10.0:openDefaultRelease@aar'
 }
 
 

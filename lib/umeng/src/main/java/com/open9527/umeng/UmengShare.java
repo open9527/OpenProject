@@ -7,8 +7,10 @@ import androidx.annotation.DrawableRes;
 import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.media.UMImage;
+import com.umeng.socialize.media.UMVideo;
 import com.umeng.socialize.media.UMWeb;
 
+import java.io.File;
 import java.lang.ref.SoftReference;
 
 /**
@@ -40,6 +42,11 @@ public final class UmengShare {
          */
         private UMImage mShareLogo;
 
+        /**
+         * 分享 视频URL
+         */
+        private String mShareVideoUrl;
+
         public ShareData(Context context) {
             mContext = context;
         }
@@ -64,12 +71,29 @@ public final class UmengShare {
             mShareLogo = new UMImage(mContext, id);
         }
 
+        public void setShareVideoUrl(String videoUrl) {
+            mShareVideoUrl = videoUrl;
+        }
+
+
         public String getShareUrl() {
             return mShareUrl;
         }
 
-        UMWeb create() {
+        //分享网页链接
+        UMWeb createWeb() {
             UMWeb content = new UMWeb(mShareUrl);
+            content.setTitle(mShareTitle);
+            if (mShareLogo != null) {
+                content.setThumb(mShareLogo);
+            }
+            content.setDescription(mShareDescription);
+            return content;
+        }
+
+        //分享视频
+        UMVideo createVideo() {
+            UMVideo content = new UMVideo(mShareVideoUrl);
             content.setTitle(mShareTitle);
             if (mShareLogo != null) {
                 content.setThumb(mShareLogo);

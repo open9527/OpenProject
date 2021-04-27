@@ -23,6 +23,7 @@ class Config {
     static glide = '4.11.0'
 
     static smartRefresh = '2.0.3'
+    static umSdk = '7.1.4'
 
 
     static depConfig = [
@@ -63,6 +64,23 @@ class Config {
             smart_refresh_kernel           : "com.scwang.smart:refresh-layout-kernel:$smartRefresh",
             smart_refresh_header_classics  : "com.scwang.smart:refresh-header-classics:$smartRefresh",
             smart_refresh_footer_classics  : "com.scwang.smart:refresh-footer-classics:$smartRefresh",
+
+            //必选 common, asms, share-core
+            umsdk_common                   : "com.umeng.umsdk:common:9.3.6",
+            umsdk_asms                     : "com.umeng.umsdk:asms:1.2.1",
+            umsdk_share_core               : "com.umeng.umsdk:share-core:$umSdk",
+            //分享面板功能，可选
+            umsdk_share_board              : "com.umeng.umsdk:share_board:$umSdk",
+            //QQ官方SDK依赖库
+            umsdk_qq                       : "com.tencent.tauth:qqopensdk:3.51.2",
+            umsdk_share_qq                 : "com.umeng.umsdk:share-qq:$umSdk",
+            //微信官方SDK依赖库
+            umsdk_wx                       : "com.tencent.mm.opensdk:wechat-sdk-android-without-mta:6.6.5",
+            umsdk_share_wx                 : "com.umeng.umsdk:share-wx:$umSdk",
+            //新浪微博官方SDK依赖库
+            umsdk_sina                     : "com.sina.weibo.sdk:core:10.10.0:openDefaultRelease@aar",
+            umsdk_share_sina               : "com.umeng.umsdk:share-sina:$umSdk",
+
 
 
             banner_viewpager               : "com.github.zhpanvip:BannerViewPager:3.4.0",
