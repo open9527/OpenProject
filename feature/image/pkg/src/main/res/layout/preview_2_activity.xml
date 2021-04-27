@@ -21,11 +21,12 @@
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/photo_view_pager"
+        bindVpAdapter="@{adapter}"
+        bindVpChangeCallback="@{vpCallBack}"
+        bindVpIndex="@{vm.valuePageIndex}"
+        bindVpList="@{vm.valueCells}"
+        bindVpSmoothScroll="@{true}"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        app:bindVpAdapter="@{adapter}"
-        app:bindVpChangeCallback="@{vpCallBack}"
-        app:bindVpIndex="@{vm.valuePageIndex}"
-        app:bindVpList="@{vm.valueCells}" />
+        android:orientation="horizontal" />
 </layout>

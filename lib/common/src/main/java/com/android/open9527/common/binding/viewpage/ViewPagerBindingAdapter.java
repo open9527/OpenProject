@@ -20,8 +20,8 @@ import java.util.List;
  **/
 public class ViewPagerBindingAdapter {
 
-    @BindingAdapter(value = {"bindVpAdapter", "bindVpIndex", "bindVpChangeChangeListener"}, requireAll = false)
-    public static void setBindingViewPager(ViewPager viewPager, PagerAdapter pagerAdapter, int index, ViewPager.OnPageChangeListener onPageChangeListener) {
+    @BindingAdapter(value = {"bindVpAdapter", "bindVpIndex","bindVpSmoothScroll", "bindVpChangeChangeListener"}, requireAll = false)
+    public static void setBindingViewPager(ViewPager viewPager, PagerAdapter pagerAdapter, int index,boolean smoothScroll, ViewPager.OnPageChangeListener onPageChangeListener) {
         if (viewPager == null) return;
         if (pagerAdapter != null && viewPager.getAdapter() == null) {
             viewPager.setAdapter(pagerAdapter);
@@ -29,7 +29,7 @@ public class ViewPagerBindingAdapter {
         if (onPageChangeListener != null) {
             viewPager.addOnPageChangeListener(onPageChangeListener);
         }
-        viewPager.setCurrentItem(index, false);
+        viewPager.setCurrentItem(index, smoothScroll);
     }
 
     @BindingAdapter(value = {"bindVpAdapter"}, requireAll = false)
@@ -39,22 +39,21 @@ public class ViewPagerBindingAdapter {
     }
 
     @SuppressWarnings("unchecked")
-    @BindingAdapter(value = {"bindVpList", "bindVpIndex", "bindVpChangeCallback"}, requireAll = false)
-    public static void setBindingViewPager2(ViewPager2 viewPager, List list, int index, ViewPager2.OnPageChangeCallback onPageChangeCallback) {
+    @BindingAdapter(value = {"bindVpList", "bindVpIndex", "bindVpSmoothScroll", "bindVpChangeCallback"}, requireAll = false)
+    public static void setBindingViewPager2(ViewPager2 viewPager, List list, int index, boolean smoothScroll, ViewPager2.OnPageChangeCallback onPageChangeCallback) {
         if (viewPager == null) return;
         if (viewPager.getAdapter() != null) {
             RecyclerView.Adapter adapter = viewPager.getAdapter();
             if (adapter instanceof ListAdapter) {
                 ListAdapter listAdapter = (ListAdapter) adapter;
                 listAdapter.submitList(list);
-
             }
         }
 
         if (onPageChangeCallback != null) {
             viewPager.registerOnPageChangeCallback(onPageChangeCallback);
         }
-        viewPager.setCurrentItem(index, false);
+        viewPager.setCurrentItem(index, smoothScroll);
     }
 
 }
