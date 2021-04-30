@@ -68,8 +68,6 @@ public class NestedScrollViewWebActivity extends BaseCommonActivity implements H
             @Override
             public void onPageFinished(com.tencent.smtt.sdk.WebView webView, String s) {
                 super.onPageFinished(webView, s);
-//                webJs.onGetWebContentHeight();
-
             }
         });
         x5BridgeWebView.loadUrl(mViewModel.valueWebUrl.get());

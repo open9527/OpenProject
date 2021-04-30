@@ -3,7 +3,6 @@ package com.android.custom.pkg.webview.bridge;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -12,13 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.custom.pkg.BR;
 import com.android.custom.pkg.R;
+import com.android.open9527.common.action.HandlerAction;
 import com.android.open9527.common.binding.refresh.IRefresh;
 import com.android.open9527.common.cell.CommonEmptyCell;
 import com.android.open9527.common.page.BaseCommonActivity;
 import com.android.open9527.page.DataBindingConfig;
 import com.android.open9527.recycleview.WrapRecyclerView;
 import com.android.open9527.recycleview.adapter.BaseBindingCellListAdapter;
-import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ScreenUtils;
 import com.open9527.webview.NestedScrollBrowserView;
 import com.open9527.webview.bridge.X5BridgeWebView;
@@ -28,13 +27,11 @@ import com.scwang.smart.refresh.layout.api.RefreshLayout;
  * @author open_9527
  * Create at 2021/4/30
  **/
-public class RecycleViewWebActivity extends BaseCommonActivity {
+public class RecycleViewWebActivity extends BaseCommonActivity implements HandlerAction {
 
     private BridgeViewModel mViewModel;
     private NestedScrollBrowserView mBrowserView;
     private View mHeaderView;
-
-    private WebJs webJs = new WebJs();
 
     @Override
     protected void initViewModel() {
@@ -65,7 +62,7 @@ public class RecycleViewWebActivity extends BaseCommonActivity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                webJs.onGetWebContentHeight();
+                getHandler().post(runnable);
             }
         });
 
@@ -77,25 +74,6 @@ public class RecycleViewWebActivity extends BaseCommonActivity {
 //        mViewModel.valueCellList.add(new CommonEmptyCell());
     }
 
-
-    private class WebJs {
-        @JavascriptInterface
-        public void onGetWebContentHeight() {
-            //重新调整webview高度
-            mHeaderView.post(() -> {
-                mBrowserView.measure(0, 0);
-                int measuredHeight = mBrowserView.getMeasuredHeight();
-                if (measuredHeight == 0) {
-                    measuredHeight = ScreenUtils.getScreenHeight();
-                }
-                setHeaderHeight(measuredHeight);
-
-                LogUtils.i(TAG, "measuredHeight: " + mBrowserView.getMeasuredHeight());
-            });
-
-
-        }
-    }
 
     private void setHeaderHeight(int height) {
         if (height <= 0) return;
@@ -112,6 +90,15 @@ public class RecycleViewWebActivity extends BaseCommonActivity {
         mViewModel.valueCellList.add(new CommonEmptyCell());
     }
 
+    private Runnable runnable = () -> {
+        mBrowserView.measure(0, 0);
+        //可能存在获取不到高度
+        int measuredHeight = mBrowserView.getMeasuredHeight();
+        if (measuredHeight == 0) {
+            measuredHeight = ScreenUtils.getScreenHeight();
+        }
+        setHeaderHeight(measuredHeight);
+    };
 
     public class ClickProxy {
         public View.OnClickListener backClick = v -> {
@@ -126,5 +113,11 @@ public class RecycleViewWebActivity extends BaseCommonActivity {
                 }
             }
         };
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        removeCallbacks(runnable);
     }
 }
