@@ -156,7 +156,6 @@ public class WebViewActivity extends BaseCommonActivity implements HandlerAction
         @Override
         public void onPageFinished(WebView view, String url) {
             mViewModel.valueWebPbVisibility.set(View.GONE);
-            mViewModel.valueCloseHeaderOrFooter.set(true);
         }
     }
 

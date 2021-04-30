@@ -32,6 +32,7 @@ import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersisto
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.ClassicsHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
+import com.tencent.smtt.sdk.QbSdk;
 
 
 import java.net.Proxy;
@@ -44,6 +45,7 @@ import okhttp3.OkHttpClient;
  * Create at 2021/1/6
  **/
 public class CommonApplication extends BaseApplication {
+    private static final String TAG = "CommonApplication";
 
     @Override
     public void onCreate() {
@@ -55,9 +57,9 @@ public class CommonApplication extends BaseApplication {
         // 本地异常捕捉
 //        InitializeService.start(this);
 //        initCrash();
-
         initOkHttp();
         registerGlide();
+        initX5WebView();
     }
 
     private void registerGlide() {
@@ -160,6 +162,22 @@ public class CommonApplication extends BaseApplication {
 
     }
 
+    public void initX5WebView() {
+        //搜集本地tbs内核信息并上报服务器，服务器返回结果决定使用哪个内核。
+        QbSdk.PreInitCallback cb = new QbSdk.PreInitCallback() {
+            @Override
+            public void onViewInitFinished(boolean arg0) {
+                //x5內核初始化完成的回调，为true表示x5内核加载成功，否则表示x5内核加载失败，会自动切换到系统内核。
+                LogUtils.i(TAG, " onViewInitFinished is " + arg0);
+            }
+
+            @Override
+            public void onCoreInitFinished() {
+            }
+        };
+        //x5内核初始化接口
+        QbSdk.initX5Environment(getApplicationContext(), cb);
+    }
 
     static {
         SmartRefreshLayout.setDefaultRefreshHeaderCreator((context, layout) -> {

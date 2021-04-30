@@ -19,6 +19,13 @@ public class CommonLineCell extends BaseBindingCell<CommonLineCell> {
         super(R.layout.common_line_cell);
     }
 
+    public CommonLineCell(int color, int height) {
+        super(R.layout.common_line_cell);
+        valueBgColor.set(color);
+        valueViewHeight.set(height);
+    }
+
+
     @Override
     public void bind(@NonNull BaseBindingCellViewHolder holder, int position) {
         holder.addBindingParam(BR.cell, this);

@@ -13,7 +13,6 @@ class Config {
     static kotlinVersion = '1.4.10'
     static kotlinKtx = '1.3.2'
 
-//    static gradlePluginVersion = '3.2.1'
     static gradlePluginVersion = '3.6.4'
     static androidxVersion = '1.0.0'
     static androidxLifecycle = '2.2.0'
@@ -37,7 +36,7 @@ class Config {
             kotlin_stdlib_jdk7             : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion",
 
 //            androidx_appcompat             : "androidx.appcompat:appcompat:1.2.0",
-            androidx_appcompat             : "androidx.appcompat:appcompat:1.3.0-beta01",
+            androidx_appcompat             : "androidx.appcompat:appcompat:1.3.0-rc01",
             androidx_material              : "com.google.android.material:material:1.2.1",
             androidx_constraint            : "androidx.constraintlayout:constraintlayout:2.0.4",
             androidx_recyclerview          : "androidx.recyclerview:recyclerview:1.2.0",
@@ -55,17 +54,17 @@ class Config {
             glide_transformations          : "jp.wasabeef:glide-transformations:4.3.0",
 
 
-
             androidx_lifecycle_common      : "androidx.lifecycle:lifecycle-common:$androidxLifecycle",
             androidx_lifecycle_common_java8: "androidx.lifecycle:lifecycle-common-java8:$androidxLifecycle",
             androidx_lifecycle_runtime     : "androidx.lifecycle:lifecycle-runtime:$androidxLifecycle",
             androidx_lifecycle_viewmodel   : "androidx.lifecycle:lifecycle-viewmodel:$androidxLifecycle",
 
+            //refresh
             smart_refresh_kernel           : "com.scwang.smart:refresh-layout-kernel:$smartRefresh",
             smart_refresh_header_classics  : "com.scwang.smart:refresh-header-classics:$smartRefresh",
             smart_refresh_footer_classics  : "com.scwang.smart:refresh-footer-classics:$smartRefresh",
 
-            //必选 common, asms, share-core
+            //UMShareSdk 必选 common, asms, share-core
             umsdk_common                   : "com.umeng.umsdk:common:9.3.6",
             umsdk_asms                     : "com.umeng.umsdk:asms:1.2.1",
             umsdk_share_core               : "com.umeng.umsdk:share-core:$umSdk",
@@ -82,12 +81,12 @@ class Config {
             umsdk_share_sina               : "com.umeng.umsdk:share-sina:$umSdk",
 
 
-
             banner_viewpager               : "com.github.zhpanvip:BannerViewPager:3.4.0",
 
             persistent_cookie_jar          : "com.github.franmontiel:PersistentCookieJar:v1.0.1",
 
-            "photo_view"                   : "com.github.chrisbanes:PhotoView:2.3.0"
+            photo_view                   : "com.github.chrisbanes:PhotoView:2.3.0",
 
+            tbssdk                         : "com.tencent.tbs.tbssdk:sdk:43993",
     ]
 }

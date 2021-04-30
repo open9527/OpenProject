@@ -15,12 +15,14 @@ public final class DiffUtilCallbacks<CELL> {
         return new DiffUtil.ItemCallback<CELL>() {
             @Override
             public boolean areItemsTheSame(@NonNull CELL oldItem, @NonNull CELL newItem) {
+                if (oldItem == null || newItem == null) return false;
                 return ((BaseBindingCell) oldItem).getUUID().equals(((BaseBindingCell) newItem).getUUID());
             }
 
             @SuppressLint("DiffUtilEquals")
             @Override
             public boolean areContentsTheSame(@NonNull CELL oldItem, @NonNull CELL newItem) {
+                if (oldItem == null || newItem == null) return false;
                 return oldItem.equals(newItem);
 
             }

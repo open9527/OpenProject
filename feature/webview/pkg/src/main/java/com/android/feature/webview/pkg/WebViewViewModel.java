@@ -24,9 +24,6 @@ public class WebViewViewModel extends ViewModel {
 
     public final ObservableInt valueWebPbVisibility = new ObservableInt(View.GONE);
 
-    public final ObservableBoolean valueCloseHeaderOrFooter = new ObservableBoolean(false);
-    public final ObservableBoolean valueNoMoreData = new ObservableBoolean(false);
-
     public final ObservableField<String> valueUrl = new ObservableField<>("http://jyh.beta.easttone.com:8010/api/app/doc/release/rm_js_sdk_testcase.html");
 
 }

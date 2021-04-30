@@ -1,3 +1,6 @@
 dependencies {
     implementation Config.depConfig.androidx_appcompat
+    api Config.depConfig.tbssdk
+    api Config.depConfig.gson
+    implementation Config.depConfig.utilcode
 }

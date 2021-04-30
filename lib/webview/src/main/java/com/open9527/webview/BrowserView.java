@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.webkit.GeolocationPermissions;
 import android.webkit.JsPromptResult;
 import android.webkit.JsResult;
@@ -25,6 +26,8 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleEventObserver;
 import androidx.lifecycle.LifecycleOwner;
 
+import com.open9527.webview.bridge.BridgeUtil;
+
 /**
  * @author open_9527
  * Create at 2021/3/1
@@ -33,7 +36,8 @@ import androidx.lifecycle.LifecycleOwner;
  **/
 
 
-public final class BrowserView extends NestedScrollWebView implements LifecycleEventObserver {
+public final class BrowserView extends WebView implements LifecycleEventObserver {
+    private static final String TAG = "BrowserView";
 
     static {
         // WebView 调试模式开关
@@ -49,7 +53,7 @@ public final class BrowserView extends NestedScrollWebView implements LifecycleE
     }
 
     public BrowserView(Context context, AttributeSet attrs, int defStyleAttr) {
-        this(getFixedContext(context), attrs, defStyleAttr, 0);
+        this(context, attrs, defStyleAttr, 0);
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -89,8 +93,13 @@ public final class BrowserView extends NestedScrollWebView implements LifecycleE
 
         //设置编码格式
         settings.setDefaultTextEncodingName("utf-8");
+
+
     }
 
+    public void setUserAgentString(String suffix){
+        getSettings().setUserAgentString(BridgeUtil.USER_AGENT + suffix);
+    }
     /**
      * 修复原生 WebView 和 AndroidX 在 Android 5.x 上面崩溃的问题
      * <p>
@@ -276,7 +285,7 @@ public final class BrowserView extends NestedScrollWebView implements LifecycleE
         public BrowserChromeClient(BrowserView view) {
             mWebView = view;
             if (mWebView == null) {
-                throw new IllegalArgumentException("are you ok?");
+                throw new IllegalArgumentException("mWebView is  null ");
             }
         }
 
@@ -330,4 +339,5 @@ public final class BrowserView extends NestedScrollWebView implements LifecycleE
             return true;
         }
     }
+
 }

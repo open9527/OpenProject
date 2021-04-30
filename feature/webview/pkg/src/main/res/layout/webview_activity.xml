@@ -64,15 +64,9 @@
             android:id="@+id/refresh_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:srlEnableLoadMore="false"
-            app:srlEnablePreviewInEditMode="false"
-            app:bindRefreshCloseHeaderOrFooter="@{vm.valueCloseHeaderOrFooter}"
             app:bindRefreshListener="@{click.onRefreshListeners}"
-            app:bindRefreshNoMoreData="@{vm.valueNoMoreData}">
-
-            <com.scwang.smart.refresh.header.ClassicsHeader
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+            app:srlEnableLoadMore="false"
+            app:srlEnablePreviewInEditMode="false">
 
             <com.open9527.webview.BrowserView
                 android:id="@+id/browser_view"

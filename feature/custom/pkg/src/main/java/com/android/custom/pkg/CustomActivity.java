@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import com.android.custom.pkg.dialog.DialogActivity;
 import com.android.custom.pkg.recycleview.RecycleViewActivity;
 import com.android.custom.pkg.shadow.ShadowActivity;
+import com.android.custom.pkg.webview.bridge.BridgeActivity;
 import com.android.open9527.common.page.BaseCommonActivity;
 import com.android.open9527.filter.AppFilter;
 import com.android.open9527.filter.FilterColor;
@@ -67,6 +68,10 @@ public class CustomActivity extends BaseCommonActivity {
         };
         public View.OnClickListener recycleViewClick = v -> {
             ActivityUtils.startActivity(RecycleViewActivity.class);
+        };
+
+        public View.OnClickListener BridgeWebViewClick = v -> {
+            ActivityUtils.startActivity(BridgeActivity.class);
         };
     }
 }

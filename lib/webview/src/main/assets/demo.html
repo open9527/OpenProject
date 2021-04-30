@@ -1,0 +1,92 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" contentEntity="text/html;charset=utf-8">
+    <script >
+
+       function testClick() {
+           //发送消息给java代码
+           var data = '发送消息给java代码全局接收';
+           //第一个参数要发送的数据 第二个参数js在被回调后具体执行方法，responseData为java层回传数据
+           window.WebViewJavascriptBridge.send(
+               data
+               , function(responseData) {
+                  bridgeLog('来自Java的回传数据： ' +responseData);
+               }
+           );
+       }
+       function testClick1() {
+           //调用本地java方法
+           //第一个参数是 调用java的函数名字 第二个参数是要传递的数据 第三个参数js在被回调后具体执行方法，responseData为java层回传数据
+         //  alert("安卓");
+            try {
+            window.WebViewJavascriptBridge.callHandler(
+                'goToLoginFormTheApp'
+                ,''
+                , function(responseData) {
+                    alert('response:' + responseData);
+                }
+            );
+            // var token = window.android.getToken();
+            // alert('token:' + token)
+        } catch (e) {
+            alert('安卓获取goToLoginFormTheApp方法错误')
+        }
+        // window.locationEntity.href = downUrl
+           <!--var data='发送消息给java代码指定接收';-->
+           <!--window.WebViewJavascriptBridge.callHandler(-->
+               <!--'submitFromWeb'-->
+               <!--,data-->
+               <!--, function(responseData) {-->
+                   <!--bridgeLog('来自Java的回传数据： ' + responseData);-->
+               <!--}-->
+           <!--);-->
+       }
+
+       function bridgeLog(logContent) {
+           document.getElementById("log_msg").innerHTML = logContent;
+       }
+
+       //注册事件监听
+       function connectWebViewJavascriptBridge(callback) {
+           if (window.WebViewJavascriptBridge) {
+               callback(WebViewJavascriptBridge)
+           } else {
+               document.addEventListener(
+                   'WebViewJavascriptBridgeReady'
+                   , function() {
+                       callback(WebViewJavascriptBridge)
+                   },
+                   false
+               );
+           }
+       }
+       //注册回调函数，第一次连接时调用 初始化函数
+       connectWebViewJavascriptBridge(function(bridge) {
+           bridge.init(function(message, responseCallback) {
+               bridgeLog('默认接收收到来自Java数据： ' + message);
+               var responseData = '默认接收收到来自Java的数据，回传数据给你';
+               responseCallback(responseData);
+           });
+
+           bridge.registerHandler("functionInJs", function(data, responseCallback) {
+               bridgeLog('指定接收收到来自Java数据： ' + data);
+               var responseData = '指定接收收到来自Java的数据，回传数据给你';
+               responseCallback(responseData);
+           });
+       })
+   </script>
+
+</head>
+<body>
+<p>WebViewJsBridge</p>
+<div>
+    <button onClick="testClick()">发送数据给默认Handler接收</button>
+</div>
+<br/>
+<div>
+    <button onClick="testClick1()">发送数据给指定Handler接收</button>
+</div>
+<br/>
+<div id="log_msg">调用打印信息</div>
+</body>
+</html>
