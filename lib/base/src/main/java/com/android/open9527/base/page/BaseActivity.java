@@ -3,11 +3,9 @@ package com.android.open9527.base.page;
 
 import android.app.Activity;
 import android.app.Application;
-import android.os.Bundle;
 import android.view.inputmethod.InputMethodManager;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 

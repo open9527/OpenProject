@@ -49,7 +49,6 @@ public class ViewPagerBindingAdapter {
                 listAdapter.submitList(list);
             }
         }
-
         if (onPageChangeCallback != null) {
             viewPager.registerOnPageChangeCallback(onPageChangeCallback);
         }

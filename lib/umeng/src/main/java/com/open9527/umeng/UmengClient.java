@@ -55,7 +55,7 @@ public final class UmengClient {
         }
         // 当分享的平台软件可能没有被安装的时候
         if (listener != null) {
-            listener.onError(platform, new PackageManager.NameNotFoundException("is not installed"));
+            listener.onError(platform, new PackageManager.NameNotFoundException(platform.getThirdParty().getName()+" Is not installed"));
         }
     }
 
@@ -82,7 +82,7 @@ public final class UmengClient {
         }
         // 当登录的平台软件可能没有被安装的时候
         if (listener != null) {
-            listener.onError(platform, new PackageManager.NameNotFoundException("Is not installed"));
+            listener.onError(platform, new PackageManager.NameNotFoundException(platform.getThirdParty().getName()+" Is not installed"));
         }
     }
 
@@ -103,9 +103,10 @@ public final class UmengClient {
     /**
      * 内存泄漏解决方案
      * 在使用分享或者授权的Activity中，重写onDestory()方法：
+     *
      * @param activity
      */
-    public static void release(Activity activity){
+    public static void release(Activity activity) {
         UMShareAPI.get(activity).release();
     }
 

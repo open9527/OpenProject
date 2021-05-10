@@ -20,7 +20,7 @@ import com.android.open9527.dialog.DialogDataBindingConfig;
 import com.android.open9527.recycleview.adapter.BaseBindingCell;
 import com.android.open9527.recycleview.adapter.BaseBindingCellListAdapter;
 import com.android.open9527.recycleview.adapter.BaseBindingCellViewHolder;
-import com.android.open9527.recycleview.layout_manager.PickerLayoutManager;
+import com.android.open9527.recycleview.layout_manager.WrapContentPickerLayoutManager;
 
 import java.util.Calendar;
 import java.util.Locale;
@@ -43,9 +43,9 @@ public class DateDialog extends BaseDialogFragment {
     public final ObservableArrayList<BaseBindingCell> valueMCells = new ObservableArrayList<>();
     public final ObservableArrayList<BaseBindingCell> valueDCells = new ObservableArrayList<>();
 
-    private PickerLayoutManager mYearManager;
-    private PickerLayoutManager mMonthManager;
-    private PickerLayoutManager mDayManager;
+    private WrapContentPickerLayoutManager mYearManager;
+    private WrapContentPickerLayoutManager mMonthManager;
+    private WrapContentPickerLayoutManager mDayManager;
 
     private RecyclerView mYearView;
     private RecyclerView mMonthView;
@@ -84,13 +84,17 @@ public class DateDialog extends BaseDialogFragment {
     @Override
     public DialogDataBindingConfig getDataBindingConfig() {
         return new DialogDataBindingConfig().addBindingParam(BR.dialog, this)
-                .addBindingParam(BR.yLayoutManager, mYearManager = new PickerLayoutManager.Builder(getContext())
-                        .build())
+                .addBindingParam(BR.yLayoutManager,
+                        mYearManager = new WrapContentPickerLayoutManager.Builder(mActivity)
+                                .setOnPickerListener(pickerListener)
+                        .build()
+                )
                 .addBindingParam(BR.yAdapter, new BaseBindingCellListAdapter<>())
-                .addBindingParam(BR.mLayoutManager, mMonthManager = new PickerLayoutManager.Builder(getContext())
+                .addBindingParam(BR.mLayoutManager, mMonthManager = new WrapContentPickerLayoutManager.Builder(getContext())
+                        .setOnPickerListener(pickerListener)
                         .build())
                 .addBindingParam(BR.mAdapter, new BaseBindingCellListAdapter<>())
-                .addBindingParam(BR.dLayoutManager, mDayManager = new PickerLayoutManager.Builder(getContext())
+                .addBindingParam(BR.dLayoutManager, mDayManager = new WrapContentPickerLayoutManager.Builder(getContext())
                         .build())
                 .addBindingParam(BR.dAdapter, new BaseBindingCellListAdapter<>());
     }
@@ -114,9 +118,6 @@ public class DateDialog extends BaseDialogFragment {
         setPickIndex(mYearView, valueYIndex.get());
         setPickIndex(mMonthView, valueMIndex.get());
         setPickIndex(mDayView, valueDIndex.get());
-
-        mYearManager.setOnPickerListener(pickerListener);
-        mMonthManager.setOnPickerListener(pickerListener);
     }
 
     private void initData() {
@@ -162,7 +163,7 @@ public class DateDialog extends BaseDialogFragment {
         dismiss();
     };
 
-    public PickerLayoutManager.OnPickerListener pickerListener = new PickerLayoutManager.OnPickerListener() {
+    public WrapContentPickerLayoutManager.OnPickerListener pickerListener = new WrapContentPickerLayoutManager.OnPickerListener() {
         @Override
         public void onPicked(RecyclerView recyclerView, int position) {
             // 获取这个月最多有多少天

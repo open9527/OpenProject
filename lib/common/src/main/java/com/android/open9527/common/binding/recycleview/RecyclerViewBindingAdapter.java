@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.android.open9527.common.cell.CommonEmptyCell;
 import com.android.open9527.recycleview.RecycleViewUtils;
-import com.android.open9527.recycleview.layout_manager.PickerLayoutManager;
 import com.android.open9527.recycleview.layout_manager.WrapContentGridLayoutManager;
 import com.android.open9527.recycleview.layout_manager.WrapContentLinearLayoutManager;
+import com.android.open9527.recycleview.layout_manager.WrapContentPickerLayoutManager;
 import com.android.open9527.recycleview.layout_manager.WrapContentStaggeredGridLayoutManager;
 import com.android.open9527.recycleview.scroll.RecycleViewScrollListener;
 import com.blankj.utilcode.util.CollectionUtils;
@@ -53,7 +53,7 @@ public class RecyclerViewBindingAdapter {
         }
         recyclerView.setHasFixedSize(hasFixedSize);
         if (layoutManager != null) {
-            if (layoutManager instanceof PickerLayoutManager) {
+            if (layoutManager instanceof WrapContentPickerLayoutManager) {
                 recyclerView.setLayoutManager(layoutManager);
 
             } else if (layoutManager instanceof GridLayoutManager) {
@@ -85,8 +85,8 @@ public class RecyclerViewBindingAdapter {
     }
 
 
-    @BindingAdapter(value = {"bindRvList",   "bindRvSpanSizeLookup"}, requireAll = false)
-    public static void setBindingRecycleViewData(RecyclerView recyclerView, List list,   GridLayoutManager.SpanSizeLookup spanSizeLookup) {
+    @BindingAdapter(value = {"bindRvList", "bindRvSpanSizeLookup"}, requireAll = false)
+    public static void setBindingRecycleViewData(RecyclerView recyclerView, List list, GridLayoutManager.SpanSizeLookup spanSizeLookup) {
         if (recyclerView == null) return;
         if (recyclerView.getAdapter() != null) {
             RecyclerView.Adapter adapter = recyclerView.getAdapter();
@@ -131,11 +131,11 @@ public class RecyclerViewBindingAdapter {
             "bindPickerPosition",
     },
             requireAll = false)
-    public static void setBindingPickerLayoutManager(RecyclerView recyclerView, PickerLayoutManager pickerLayoutManager, PickerLayoutManager.OnPickerListener listener, int position) {
-        if (recyclerView == null || pickerLayoutManager == null) return;
-        recyclerView.setLayoutManager(pickerLayoutManager);
+    public static void setBindingPickerLayoutManager(RecyclerView recyclerView, WrapContentPickerLayoutManager layoutManager, WrapContentPickerLayoutManager.OnPickerListener listener, int position) {
+        if (recyclerView == null || layoutManager == null) return;
+        recyclerView.setLayoutManager(layoutManager);
         if (listener != null) {
-            pickerLayoutManager.setOnPickerListener(listener);
+            layoutManager.setOnPickerListener(listener);
         }
         if (position > -1) {
             recyclerView.scrollToPosition(position);

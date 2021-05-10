@@ -1,5 +1,6 @@
 package com.android.open9527.recycleview.layout_manager;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.View;
 
@@ -13,25 +14,31 @@ import androidx.recyclerview.widget.RecyclerView;
  * @author open_9527
  * Create at 2020/12/31
  **/
-public final class PickerLayoutManager extends LinearLayoutManager {
+public class WrapContentPickerLayoutManager extends LinearLayoutManager {
 
-    private final LinearSnapHelper mLinearSnapHelper;
-    private final int mOrientation;
-    private final int mMaxItem;
-    private final float mScale;
-    private final boolean mAlpha;
-
+    private LinearSnapHelper mLinearSnapHelper;
     private RecyclerView mRecyclerView;
-    private OnPickerListener mListener;
 
-    private PickerLayoutManager(Context context, int orientation, boolean reverseLayout, int maxItem, float scale, boolean alpha) {
-        super(context, orientation, reverseLayout);
-        mLinearSnapHelper = new LinearSnapHelper();
-        mMaxItem = maxItem;
-        mOrientation = orientation;
-        mAlpha = alpha;
-        mScale = scale;
+    private @RecyclerView.Orientation
+    int mOrientation;
+    private int mMaxItem;
+    private float mScale;
+    private boolean mAlpha;
+
+
+    private static WrapContentPickerLayoutManager newInstance(@NonNull Context context) {
+        return new WrapContentPickerLayoutManager(context);
     }
+
+    public WrapContentPickerLayoutManager(@NonNull Context context) {
+        super(context);
+        init();
+    }
+
+    private void init() {
+        mLinearSnapHelper = new LinearSnapHelper();
+    }
+
 
     @Override
     public void onAttachedToWindow(RecyclerView recyclerView) {
@@ -53,6 +60,7 @@ public final class PickerLayoutManager extends LinearLayoutManager {
     public boolean isAutoMeasureEnabled() {
         return mMaxItem == 0;
     }
+
 
     @Override
     public void onMeasure(@NonNull RecyclerView.Recycler recycler, @NonNull RecyclerView.State state, int widthSpec, int heightSpec) {
@@ -125,6 +133,12 @@ public final class PickerLayoutManager extends LinearLayoutManager {
         return super.scrollVerticallyBy(dy, recycler, state);
     }
 
+
+
+
+
+    /*-----------------------------------------------------------------------------------------*/
+
     /**
      * 横向情况下的缩放
      */
@@ -174,9 +188,9 @@ public final class PickerLayoutManager extends LinearLayoutManager {
         return 0;
     }
 
-    /**
-     * 设置监听器
-     */
+
+    private OnPickerListener mListener;
+
     public void setOnPickerListener(OnPickerListener listener) {
         mListener = listener;
     }
@@ -192,10 +206,18 @@ public final class PickerLayoutManager extends LinearLayoutManager {
         void onPicked(RecyclerView recyclerView, int position);
     }
 
+
+    public static WrapContentPickerLayoutManager with(@NonNull Context context) {
+        return WrapContentPickerLayoutManager.newInstance(context);
+    }
+
+    /*-----------------------------------------------------------------------------------------*/
+
     public static final class Builder {
 
         private final Context mContext;
-        private int mOrientation = VERTICAL;
+        private @RecyclerView.Orientation
+        int mOrientation = VERTICAL;
         private boolean mReverseLayout;
         private OnPickerListener mListener;
 
@@ -203,45 +225,32 @@ public final class PickerLayoutManager extends LinearLayoutManager {
         private float mScale = 0.6f;
         private boolean mAlpha = true;
 
-        public Builder(Context context) {
+        public Builder(@NonNull Context context) {
             mContext = context;
         }
 
-        /**
-         * 设置布局摆放器方向
-         */
+        @SuppressLint("WrongConstant")
         public Builder setOrientation(@RecyclerView.Orientation int orientation) {
             mOrientation = orientation;
             return this;
         }
 
-        /**
-         * 设置是否反向显示
-         */
         public Builder setReverseLayout(boolean reverseLayout) {
             mReverseLayout = reverseLayout;
             return this;
         }
 
-        /**
-         * 设置最大显示条目数
-         */
         public Builder setMaxItem(int maxItem) {
             mMaxItem = maxItem;
             return this;
         }
 
-        /**
-         * 设置缩放比例
-         */
+
         public Builder setScale(float scale) {
             mScale = scale;
             return this;
         }
 
-        /**
-         * 设置透明开关
-         */
         public Builder setAlpha(boolean alpha) {
             mAlpha = alpha;
             return this;
@@ -252,22 +261,25 @@ public final class PickerLayoutManager extends LinearLayoutManager {
             return this;
         }
 
-        /**
-         * 构建布局管理器
-         */
-        public PickerLayoutManager build() {
-            PickerLayoutManager layoutManager = new PickerLayoutManager(mContext, mOrientation, mReverseLayout, mMaxItem, mScale, mAlpha);
+        @SuppressLint("WrongConstant")
+        public WrapContentPickerLayoutManager build() {
+            WrapContentPickerLayoutManager layoutManager = WrapContentPickerLayoutManager.newInstance(mContext);
+            layoutManager.mOrientation = mOrientation;
+            layoutManager.mMaxItem = mMaxItem;
+            layoutManager.mScale = mScale;
+            layoutManager.mAlpha = mAlpha;
+            layoutManager.setOrientation(mOrientation);
+            layoutManager.setReverseLayout(mReverseLayout);
             if (mListener != null) {
                 layoutManager.setOnPickerListener(mListener);
             }
             return layoutManager;
         }
 
-        /**
-         * 应用到 RecyclerView
-         */
-        public void into(RecyclerView recyclerView) {
+        public void into(@NonNull RecyclerView recyclerView) {
             recyclerView.setLayoutManager(build());
         }
+
     }
+
 }

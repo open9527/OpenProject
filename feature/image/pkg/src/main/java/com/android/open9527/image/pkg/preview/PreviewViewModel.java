@@ -1,6 +1,7 @@
 package com.android.open9527.image.pkg.preview;
 
 import androidx.databinding.ObservableArrayList;
+import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableInt;
 import androidx.lifecycle.ViewModel;
@@ -20,6 +21,7 @@ public class PreviewViewModel extends ViewModel {
 
     public final ObservableField<PagerAdapter> valuePageAdapter = new ObservableField<>();
     public final ObservableInt valuePageIndex = new ObservableInt(0);
+    public final ObservableBoolean valuePageSmoothScroll = new ObservableBoolean(false);
 
     public final ObservableArrayList<BaseBindingCell> valueCells = new ObservableArrayList<>();
 
@@ -28,7 +30,7 @@ public class PreviewViewModel extends ViewModel {
     public final ObservableField<String> valueTransitionName = new ObservableField<>("transition_name");
 
 
-     void initData(List list) {
+    void initData(List list) {
 //        valueCells.add(new PreviewCell("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2593572861,3728381392&fm=26&gp=0.jpg", valueICellClick.get()));
 
         for (Object item : list) {

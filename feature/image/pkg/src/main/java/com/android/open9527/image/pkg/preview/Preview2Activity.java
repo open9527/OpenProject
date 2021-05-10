@@ -70,6 +70,7 @@ public class Preview2Activity extends BaseCommonActivity {
             throw new IllegalArgumentException("bundleData is null");
         }
         mViewModel.initData(bundleData.getList());
+        mViewModel.valuePageSmoothScroll.set(false);
         mViewModel.valuePageIndex.set(bundleData.getIndex());
         mViewModel.valueTransitionName.set(bundleData.getList().get(bundleData.getIndex()).toString());
 
@@ -198,7 +199,12 @@ public class Preview2Activity extends BaseCommonActivity {
             mEnterSharedElementCallback.setTransitionName(bundleData.getList().get(position).toString());
             mViewModel.valueTransitionName.set(bundleData.getList().get(position).toString());
             sharedElementViewModel.requestLocationChangeEventLiveData(new LocationChangeEvent(bundleData.getIndex(), mViewModel.valuePageIndex.get()));
+        }
 
+        @Override
+        public void onPageScrollStateChanged(int state) {
+            super.onPageScrollStateChanged(state);
+            mViewModel.valuePageSmoothScroll.set(true);
         }
     };
 
