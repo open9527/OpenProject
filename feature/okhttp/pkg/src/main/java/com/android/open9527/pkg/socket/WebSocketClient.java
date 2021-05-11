@@ -23,8 +23,8 @@ public class WebSocketClient {
 
     private static OkHttpClient sClient;
     private static WebSocket sWebSocket;
-    private static final long READ_TIMEOUT = 5;//读取超时
-    private static final long WRITE_TIMEOUT = 5;//写入超时
+    private static final long READ_TIMEOUT = 10;//读取超时
+    private static final long WRITE_TIMEOUT = 10;//写入超时
     private static final long CONNECT_TIMEOUT = 30;//连接超时
     private static final long INTERVAL_TIME = 10;//心跳时间间隔
 

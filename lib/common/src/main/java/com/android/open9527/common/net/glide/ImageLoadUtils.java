@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import com.bumptech.glide.load.MultiTransformation;
 import com.bumptech.glide.load.Transformation;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.model.GlideUrl;
+import com.bumptech.glide.load.model.LazyHeaders;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.request.RequestOptions;
 
@@ -157,12 +159,18 @@ public final class ImageLoadUtils {
         GlideApp.get(context).clearDiskCache();
     }
 
-    public static void clearMemory(@NonNull Context context){
+    public static void clearMemory(@NonNull Context context) {
         GlideApp.get(context).clearMemory();
     }
 
-  public static void trimMemory(@NonNull Context context, int level){
+    public static void trimMemory(@NonNull Context context, int level) {
         GlideApp.get(context).trimMemory(level);
+    }
+
+    public static void addHeader(String url, String key, String value) {
+        GlideUrl glideUrl = new GlideUrl(url, new LazyHeaders.Builder()
+                .addHeader(key, value)
+                .build());
     }
 
 

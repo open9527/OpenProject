@@ -34,7 +34,7 @@ class H5Activity : BaseCommonActivity() {
         @JvmStatic
         fun startH5(url: String, title: String?) {
             ActivityUtils.startActivity(
-                BundleUtils.create(H5Bundle(url, title!!)),
+                BundleUtils.createBundleJson(H5Bundle(url, title!!)),
                 H5Activity::class.java
             )
         }

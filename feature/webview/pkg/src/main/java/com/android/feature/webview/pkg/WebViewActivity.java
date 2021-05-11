@@ -55,6 +55,9 @@ public class WebViewActivity extends BaseCommonActivity implements HandlerAction
     public void initView(@Nullable Bundle bundle) {
         LogUtils.i(TAG, "initView");
         BundleData bundleData = BundleUtils.getBundleData(bundle, BundleData.class);
+        if (bundleData == null) {
+            bundleData = BundleUtils.getBundleData(bundle);
+        }
         super.initView(bundle);
         browserView = findViewById(R.id.browser_view);
         progressBar = findViewById(R.id.pb_web_progress);

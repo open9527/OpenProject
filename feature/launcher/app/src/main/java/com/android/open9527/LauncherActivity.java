@@ -86,7 +86,7 @@ public class LauncherActivity extends BaseCommonActivity {
                         .navigation(LauncherActivity.this);
 
             } else if (view.getId() == R.id.btn_webview) {
-                Bundle bundle = BundleUtils.create(new WebViewActivity.BundleData("https://www.wanandroid.com/index", "wanandroid"));
+                Bundle bundle = BundleUtils.createBundleJson(new WebViewActivity.BundleData("https://www.wanandroid.com/index", "wanandroid"));
                 Router.getsInstance().build(Path.PATH_WEBVIEW_WEBVIEWACTIVITY)
                         .withBundle(bundle)
                         .navigation(LauncherActivity.this);

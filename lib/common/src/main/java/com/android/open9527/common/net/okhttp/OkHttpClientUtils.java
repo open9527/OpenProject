@@ -3,6 +3,7 @@ package com.android.open9527.common.net.okhttp;
 import java.net.Proxy;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.ConnectionPool;
 import okhttp3.OkHttpClient;
 
 /**
@@ -20,6 +21,8 @@ public final class OkHttpClientUtils {
                 .connectTimeout(30, TimeUnit.SECONDS)
                 .readTimeout(30, TimeUnit.SECONDS)
                 .writeTimeout(30, TimeUnit.SECONDS)
+                //设置同时连接的个数和时间，我这里8个，和每个保持时间为15s
+                .connectionPool(new ConnectionPool(8, 15, TimeUnit.SECONDS))
                 .build();
     }
 

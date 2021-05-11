@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 
 import com.android.open9527.common.R;
 import com.android.open9527.common.net.okhttp.OkHttpClientUtils;
+import com.android.open9527.glide.GlideHeadInterceptor;
 import com.android.open9527.glide.OkHttpLoader;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
@@ -83,13 +84,6 @@ public class GlideModuleConfig extends AppGlideModule {
         // Glide 默认采用的是 HttpURLConnection 来做网络请求，这里切换成更高效的 OkHttp
         //可以配置全局请求头,同时可以和网络请求统一获取OkHttpClient,
         //TODO:这里是自己创建得
-//        OkHttpClient okHttpClient = new OkHttpClient.Builder()
-//                //配置全局请求头
-//                .addInterceptor(new GlideHeadInterceptor())
-//                .connectTimeout(30, TimeUnit.SECONDS)
-//                .readTimeout(30, TimeUnit.SECONDS)
-//                .writeTimeout(30, TimeUnit.SECONDS)
-//                .build();
         OkHttpClient okHttpClient = OkHttpClientUtils.getInstance().newBuilder()
 //                .addInterceptor(new GlideHeadInterceptor())
                 .connectTimeout(10, TimeUnit.SECONDS)
