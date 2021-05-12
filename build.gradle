@@ -1,4 +1,7 @@
 buildscript {
+    ext {
+        kotlin_version = '1.4.10'
+    }
     repositories {
         google()
         jcenter()
@@ -9,6 +12,7 @@ buildscript {
         classpath Config.depConfig.plugin_gradle
         classpath Config.depConfig.api_gradle_plugin
         classpath Config.depConfig.kotlin_gradle_plugin
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }

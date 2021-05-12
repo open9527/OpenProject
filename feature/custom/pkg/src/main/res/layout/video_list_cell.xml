@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="cell"
+            type="com.android.custom.pkg.video.VideoListCell" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <com.android.custom.pkg.video.exo.player.ListPlayerView
+            android:id="@+id/list_player"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/translucent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:minHeight="@dimen/size_200" />
+
+        <com.android.open9527.common.widget.textview.StateSwitchTextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size_10"
+            app:bindTextDefaultText="@{cell.valueTitle}"
+            app:bindTextDefaultTextColor="@{@color/common_text_sub_color}"
+            app:bindTextDefaultTextSize="@{14}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/list_player"
+            tools:text="这是一段描述"
+            tools:textColor="@color/common_text_sub_color"
+            tools:textSize="@dimen/font_14" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

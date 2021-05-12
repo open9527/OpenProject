@@ -21,7 +21,11 @@ public class BaseBindingCellViewHolder<BINDING extends ViewDataBinding> extends 
         mBinding.setVariable(variableId, object);
     }
 
-//    public BINDING getBinding(@NonNull View itemView) {
+    //    public BINDING getBinding(@NonNull View itemView) {
 //        return DataBindingUtil.getBinding(itemView);
 //    }
+    //警惕使用。非必要情况下，尽可能不在子类中拿到 binding 实例乃至获取 view 实例
+    public ViewDataBinding getBinding() {
+        return mBinding;
+    }
 }

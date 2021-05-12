@@ -96,10 +96,12 @@ class ConfigUtils {
             ':lib:router',
             ':lib:umeng',
             ':lib:filter',
-
+            ':lib:video',
             //apt 注解器
             ':apt:annotation',
             ':apt:compiler',
+            //kt
+            ':lib_kt:page',
 
             ':feature:launcher:app',
             ':feature:mock',

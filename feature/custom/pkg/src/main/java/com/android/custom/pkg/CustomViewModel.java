@@ -18,6 +18,7 @@ public class CustomViewModel extends ViewModel {
     public final ObservableField<String> valueDialogTitle = new ObservableField<>("Dialog");
     public final ObservableField<String> valueRecycleViewTitle = new ObservableField<>("RecycleView");
     public final ObservableField<String> valueBridgeTitle = new ObservableField<>("Bridge");
+    public final ObservableField<String> valueVideoTitle = new ObservableField<>("video");
 
 
 }

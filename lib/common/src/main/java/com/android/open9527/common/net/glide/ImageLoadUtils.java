@@ -62,6 +62,7 @@ public final class ImageLoadUtils {
 
         //配置图片宽高(px)
         if (imageLoadConfig.getWidth() > 0 && imageLoadConfig.getHeight() > 0) {
+            //Target.SIZE_ORIGINAL 原始大小
             requestOptions.override(imageLoadConfig.getWidth(), imageLoadConfig.getHeight());
         }
         //配置图片圆角

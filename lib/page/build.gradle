@@ -7,7 +7,7 @@ android {
 
 }
 dependencies {
-    api Config.depConfig.androidx_appcompat
+    implementation Config.depConfig.androidx_appcompat
     api Config.depConfig.androidx_lifecycle_viewmodel
 }
 

@@ -55,6 +55,11 @@ public abstract class DataBindingFragment extends Fragment {
         return binding.getRoot();
     }
 
+    //警惕使用。非必要情况下，尽可能不在子类中拿到 binding 实例乃至获取 view 实例
+    protected ViewDataBinding getBinding() {
+        return mBinding;
+    }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();

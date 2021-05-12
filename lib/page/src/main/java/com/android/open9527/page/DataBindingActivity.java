@@ -1,6 +1,9 @@
 package com.android.open9527.page;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +37,11 @@ public abstract class DataBindingActivity extends AppCompatActivity {
         BindingVariableUtils.bindingVariable(binding, dataBindingConfig.getBindingParams());
 
         mBinding = binding;
+    }
+
+    //警惕使用。非必要情况下，尽可能不在子类中拿到 binding 实例乃至获取 view 实例
+    protected ViewDataBinding getBinding() {
+        return mBinding;
     }
 
     @Override
