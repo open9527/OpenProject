@@ -43,7 +43,7 @@ public class CompleteView extends FrameLayout implements IControlComponent {
 
     {
         setVisibility(GONE);
-        LayoutInflater.from(getContext()).inflate(R.layout.dkplayer_layout_complete_view, this, true);
+        LayoutInflater.from(getContext()).inflate(R.layout.player_layout_complete_view, this, true);
         findViewById(R.id.iv_replay).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

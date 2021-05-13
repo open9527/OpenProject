@@ -9,7 +9,6 @@ import androidx.core.content.ContextCompat;
 import com.android.open9527.base.application.BaseApplication;
 import com.android.open9527.common.BuildConfig;
 import com.android.open9527.common.R;
-import com.android.open9527.common.carsh.CrashHandler;
 import com.android.open9527.common.net.data.RequestHandler;
 import com.android.open9527.common.net.glide.ImageLoadUtils;
 import com.android.open9527.common.net.okhttp.OkHttpClientUtils;
@@ -17,12 +16,16 @@ import com.android.open9527.common.net.server.ReleaseServer;
 import com.android.open9527.common.net.server.TestServer;
 import com.android.open9527.crash.Crash;
 import com.android.open9527.crash.ExceptionHandler;
-import com.android.open9527.glide.GlideHeadInterceptor;
 import com.android.open9527.okhttp.HttpConfig;
 import com.android.open9527.okhttp.config.IRequestInterceptor;
 import com.android.open9527.okhttp.config.IRequestServer;
 import com.android.open9527.okhttp.model.HttpHeaders;
 import com.android.open9527.okhttp.model.HttpParams;
+import com.android.open9527.video.common.player.VideoView;
+import com.android.open9527.video.common.player.VideoViewConfig;
+import com.android.open9527.video.common.player.VideoViewManager;
+import com.android.open9527.video.common.render.TextureRenderViewFactory;
+import com.android.open9527.video.exo.ExoMediaPlayerFactory;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.franmontiel.persistentcookiejar.ClearableCookieJar;
@@ -33,7 +36,6 @@ import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.ClassicsHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 import com.tencent.smtt.sdk.QbSdk;
-
 
 import java.net.Proxy;
 import java.util.concurrent.TimeUnit;
@@ -59,8 +61,26 @@ public class CommonApplication extends BaseApplication {
 //        initCrash();
         initOkHttp();
         registerGlide();
+        initVideo();
         initX5WebView();
     }
+
+    private void initVideo() {
+        //播放器配置，注意：此为全局配置，按需开启
+        VideoViewManager.setConfig(VideoViewConfig.newBuilder()
+                .setLogEnabled(BuildConfig.DEBUG)//调试的时候请打开日志，方便排错
+                .setPlayerFactory(ExoMediaPlayerFactory.create())
+                .setRenderViewFactory(TextureRenderViewFactory.create())
+//                .setEnableOrientation(true)
+//                .setEnableAudioFocus(false)
+                .setScreenScaleType(VideoView.SCREEN_SCALE_DEFAULT)
+//                .setAdaptCutout(false)
+                .setPlayOnMobileNetwork(true)
+//                .setProgressManager(new ProgressManagerImpl())
+                .build());
+
+    }
+
 
     private void registerGlide() {
         //Glide低内存优化操作

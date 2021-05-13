@@ -19,7 +19,6 @@ import com.android.open9527.video.common.player.VideoView;
 
 /**
  * 播放出错提示界面
- * Created by dueeeke on 2017/4/13.
  */
 public class ErrorView extends LinearLayout implements IControlComponent {
 
@@ -42,7 +41,7 @@ public class ErrorView extends LinearLayout implements IControlComponent {
 
     {
         setVisibility(GONE);
-        LayoutInflater.from(getContext()).inflate(R.layout.dkplayer_layout_error_view, this, true);
+        LayoutInflater.from(getContext()).inflate(R.layout.player_layout_error_view, this, true);
         findViewById(R.id.status_btn).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

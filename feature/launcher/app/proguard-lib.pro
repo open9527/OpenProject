@@ -3,7 +3,7 @@
 # **星表示把本包和所含子包下的类名都保持；
 -keep class com.open9527.router.**
 
-#AOP
+# AOP
 -adaptclassstrings
 -keepattributes InnerClasses, EnclosingMethod, Signature, *Annotation*
 -keepnames @org.aspectj.lang.annotation.Aspect class * {
@@ -16,11 +16,11 @@
 #    <fields>;
 #}
 
-#BannerViewPager
+# BannerViewPager
 -keep class androidx.recyclerview.widget.**{*;}
 -keep class androidx.viewpager2.widget.**{*;}
 
-#persistent_cookie_jar
+# persistent_cookie_jar
 -dontwarn com.franmontiel.persistentcookiejar.**
 -keep class com.franmontiel.persistentcookiejar.**
 -keepclassmembers class * implements java.io.Serializable {
@@ -32,3 +32,7 @@
     java.lang.Object writeReplace();
     java.lang.Object readResolve();
 }
+
+# VideoView
+#-keep com.android.open9527.video.** { *; }
+#-dontwarn com.android.open9527.video.**

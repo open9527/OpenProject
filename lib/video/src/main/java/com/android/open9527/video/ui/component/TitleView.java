@@ -54,7 +54,7 @@ public class TitleView extends FrameLayout implements IControlComponent {
 
     {
         setVisibility(GONE);
-        LayoutInflater.from(getContext()).inflate(R.layout.dkplayer_layout_title_view, this, true);
+        LayoutInflater.from(getContext()).inflate(R.layout.player_layout_title_view, this, true);
         mTitleContainer = findViewById(R.id.title_container);
         ImageView back = findViewById(R.id.back);
         back.setOnClickListener(new OnClickListener() {

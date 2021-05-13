@@ -15,7 +15,7 @@
     <item android:id="@android:id/progress">
         <clip>
             <shape>
-                <solid android:color="@color/dkplayer_theme_color"/>
+                <solid android:color="@color/player_theme_color"/>
             </shape>
         </clip>
     </item>

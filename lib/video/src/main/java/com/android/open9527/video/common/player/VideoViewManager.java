@@ -2,7 +2,7 @@ package com.android.open9527.video.common.player;
 
 import android.app.Application;
 
-import com.android.open9527.video.common.util.L;
+import com.android.open9527.video.common.util.VideoLogUtils;
 
 import java.util.LinkedHashMap;
 
@@ -89,7 +89,7 @@ public class VideoViewManager {
      */
     public void add(VideoView videoView, String tag) {
         if (!(videoView.getContext() instanceof Application)) {
-            L.w("The Context of this VideoView is not an Application Context," +
+            VideoLogUtils.w("The Context of this VideoView is not an Application Context," +
                     "you must remove it after release,or it will lead to memory leek.");
         }
         VideoView old = get(tag);

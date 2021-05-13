@@ -8,10 +8,10 @@
 
     <ImageView
         android:id="@+id/stop_fullscreen"
-        android:layout_width="@dimen/dkplayer_controller_height"
-        android:layout_height="@dimen/dkplayer_controller_height"
-        android:padding="@dimen/dkplayer_controller_icon_padding"
-        android:src="@drawable/dkplayer_ic_action_arrow_back"
+        android:layout_width="@dimen/player_controller_height"
+        android:layout_height="@dimen/player_controller_height"
+        android:padding="@dimen/player_controller_icon_padding"
+        android:src="@drawable/player_ic_action_arrow_back"
         android:visibility="gone"
         tools:visibility="visible" />
 
@@ -23,17 +23,17 @@
 
         <ImageView
             android:id="@+id/iv_replay"
-            android:layout_width="@dimen/dkplayer_play_btn_size"
-            android:layout_height="@dimen/dkplayer_play_btn_size"
+            android:layout_width="@dimen/player_play_btn_size"
+            android:layout_height="@dimen/player_play_btn_size"
             android:layout_gravity="center"
-            android:background="@drawable/dkplayer_shape_play_bg"
-            android:padding="@dimen/dkplayer_controller_icon_padding"
-            android:src="@drawable/dkplayer_ic_action_replay" />
+            android:background="@drawable/player_shape_play_bg"
+            android:padding="@dimen/player_controller_icon_padding"
+            android:src="@drawable/player_ic_action_replay" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dkplayer_replay"
+            android:text="@string/player_replay"
             android:layout_marginTop="12dp"
             android:textColor="@android:color/white" />
 

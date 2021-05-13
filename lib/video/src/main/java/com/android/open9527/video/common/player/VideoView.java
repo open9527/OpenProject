@@ -19,12 +19,15 @@ import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleEventObserver;
+import androidx.lifecycle.LifecycleOwner;
 
 import com.android.open9527.video.common.controller.BaseVideoController;
 import com.android.open9527.video.common.controller.MediaPlayerControl;
 import com.android.open9527.video.common.render.IRenderView;
 import com.android.open9527.video.common.render.RenderViewFactory;
-import com.android.open9527.video.common.util.L;
+import com.android.open9527.video.common.util.VideoLogUtils;
 import com.android.open9527.video.common.util.PlayerUtils;
 
 import java.io.IOException;
@@ -34,11 +37,10 @@ import java.util.Map;
 
 /**
  * 播放器
- * Created by dueeeke on 2017/4/7.
  */
 
 public class VideoView<P extends AbstractPlayer> extends FrameLayout
-        implements MediaPlayerControl, AbstractPlayer.PlayerEventListener {
+        implements MediaPlayerControl, AbstractPlayer.PlayerEventListener, LifecycleEventObserver {
 
     protected P mMediaPlayer;//播放器
     protected PlayerFactory<P> mPlayerFactory;//工厂类，用于实例化播放核心
@@ -118,11 +120,6 @@ public class VideoView<P extends AbstractPlayer> extends FrameLayout
      */
     protected boolean mIsLooping;
 
-    /**
-     * {@link #mPlayerContainer}背景色，默认黑色
-     */
-    private int mPlayerBackgroundColor=Color.BLACK;
-
     public VideoView(@NonNull Context context) {
         this(context, null);
     }
@@ -149,7 +146,10 @@ public class VideoView<P extends AbstractPlayer> extends FrameLayout
      */
     protected void initView() {
         mPlayerContainer = new FrameLayout(getContext());
-        mPlayerContainer.setBackgroundColor(mPlayerBackgroundColor);
+        /**
+         * {@link #mPlayerContainer}背景色，默认黑色
+         */
+        mPlayerContainer.setBackgroundColor(Color.BLACK);
         LayoutParams params = new LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT);
@@ -184,6 +184,7 @@ public class VideoView<P extends AbstractPlayer> extends FrameLayout
 
     /**
      * 第一次播放
+     *
      * @return 是否成功开始播放
      */
     protected boolean startPlay() {
@@ -290,6 +291,7 @@ public class VideoView<P extends AbstractPlayer> extends FrameLayout
 
     /**
      * 设置播放数据
+     *
      * @return 播放数据是否设置成功
      */
     protected boolean prepareDataSource() {
@@ -387,7 +389,7 @@ public class VideoView<P extends AbstractPlayer> extends FrameLayout
      */
     protected void saveProgress() {
         if (mProgressManager != null && mCurrentPosition > 0) {
-            L.d("saveProgress: " + mCurrentPosition);
+            VideoLogUtils.d("saveProgress: " + mCurrentPosition);
             mProgressManager.saveProgress(mUrl, mCurrentPosition);
         }
     }
@@ -983,11 +985,40 @@ public class VideoView<P extends AbstractPlayer> extends FrameLayout
         }
     }
 
+
+    /**
+     * 设置 VideoView 生命管控（自动回调生命周期方法）
+     *
+     * @param owner :
+     */
+
+    public void setLifecycleOwner(@NonNull LifecycleOwner owner) {
+        owner.getLifecycle().addObserver(this);
+    }
+
+    @Override
+    public void onStateChanged(@NonNull LifecycleOwner source, @NonNull Lifecycle.Event event) {
+        switch (event) {
+            case ON_RESUME:
+                resume();
+                break;
+            case ON_PAUSE:
+                pause();
+                break;
+            case ON_DESTROY:
+                release();
+                break;
+            default:
+                break;
+        }
+    }
+
     /**
      * 播放状态改变监听器
      */
     public interface OnStateChangeListener {
         void onPlayerStateChanged(int playerState);
+
         void onPlayStateChanged(int playState);
     }
 
@@ -996,9 +1027,12 @@ public class VideoView<P extends AbstractPlayer> extends FrameLayout
      */
     public static class SimpleOnStateChangeListener implements OnStateChangeListener {
         @Override
-        public void onPlayerStateChanged(int playerState) {}
+        public void onPlayerStateChanged(int playerState) {
+        }
+
         @Override
-        public void onPlayStateChanged(int playState) {}
+        public void onPlayStateChanged(int playState) {
+        }
     }
 
     /**
@@ -1051,7 +1085,7 @@ public class VideoView<P extends AbstractPlayer> extends FrameLayout
 
     @Override
     protected Parcelable onSaveInstanceState() {
-        L.d("onSaveInstanceState: " + mCurrentPosition);
+        VideoLogUtils.d("onSaveInstanceState: " + mCurrentPosition);
         //activity切到后台后可能被系统回收，故在此处进行进度保存
         saveProgress();
         return super.onSaveInstanceState();

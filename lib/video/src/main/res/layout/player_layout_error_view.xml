@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/dkplayer_error_message"
+            android:text="@string/player_error_message"
             android:textColor="@android:color/white" />
 
         <TextView
@@ -23,13 +23,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@drawable/dkplayer_shape_status_view_btn"
+            android:background="@drawable/player_shape_status_view_btn"
             android:gravity="center"
             android:paddingLeft="18dp"
             android:paddingTop="4dp"
             android:paddingRight="18dp"
             android:paddingBottom="4dp"
-            android:text="@string/dkplayer_retry"
+            android:text="@string/player_retry"
             android:textColor="@android:color/white" />
 
     </LinearLayout>

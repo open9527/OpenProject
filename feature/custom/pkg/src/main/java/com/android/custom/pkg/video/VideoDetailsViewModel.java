@@ -10,8 +10,8 @@ import androidx.lifecycle.ViewModel;
 public class VideoDetailsViewModel extends ViewModel {
     public final ObservableField<String> valueTitle = new ObservableField<>("VideoDetails");
 
-    public final ObservableField<String> valueVideoTitle = new ObservableField<>("7日，韶关市公安局浈江分局发布关于“特斯拉追尾货车”的情况通报");
-    public final ObservableField<String> valueVideoUrl = new ObservableField<>("https://shanwei.storage.gdmedia.tech/55959ac1bb90428186a8e8ada9781d17.mp4");
-    public final ObservableField<String> valueVideoCoverUrl = new ObservableField<>("https://shanwei.storage.gdmedia.tech/55959ac1bb90428186a8e8ada9781d17.mp4?vframe/png/offset/1");
+    public final ObservableField<String> valueVideoTitle = new ObservableField<>("#三十而立 纪录片1当年的学生会主席如今怎样？第一批30岁的90后 #创作人计划");
+    public final ObservableField<String> valueVideoUrl = new ObservableField<>("https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200f830000bnhjh6hevctn5kvs3c90&line=0&ratio=540p&watermark=1&media_type=4&vr_type=0&improve_bitrate=0&logo_name=aweme");
+    public final ObservableField<String> valueVideoCoverUrl = new ObservableField<>("http://p9-dy.byteimg.com/large/tos-cn-p-0015/680d4dc0c3c1453d8b62791c3483b43b_1575172317.jpeg?from=2563711402_large");
 
 }

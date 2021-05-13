@@ -128,7 +128,7 @@
 -keepattributes Signature
 
 
-#WebX5
+# WebX5
 -dontwarn dalvik.**
 -dontwarn com.tencent.smtt.**
 
@@ -139,3 +139,7 @@
 -keep class com.tencent.tbs.** {
     *;
 }
+
+# ExoPlayer
+-keep class com.google.android.exoplayer2.** { *; }
+-dontwarn com.google.android.exoplayer2.**

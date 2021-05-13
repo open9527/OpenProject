@@ -12,19 +12,19 @@
 
     <ImageView
         android:id="@+id/start_play"
-        android:layout_width="@dimen/dkplayer_play_btn_size"
-        android:layout_height="@dimen/dkplayer_play_btn_size"
+        android:layout_width="@dimen/player_play_btn_size"
+        android:layout_height="@dimen/player_play_btn_size"
         android:layout_gravity="center"
-        android:background="@drawable/dkplayer_shape_play_bg"
-        android:padding="@dimen/dkplayer_default_spacing"
-        android:src="@drawable/dkplayer_selector_play_button" />
+        android:background="@drawable/player_shape_play_bg"
+        android:padding="@dimen/player_default_spacing"
+        android:src="@drawable/player_selector_play_button" />
 
     <ProgressBar
         android:id="@+id/loading"
-        android:layout_width="@dimen/dkplayer_play_btn_size"
-        android:layout_height="@dimen/dkplayer_play_btn_size"
+        android:layout_width="@dimen/player_play_btn_size"
+        android:layout_height="@dimen/player_play_btn_size"
         android:layout_gravity="center"
-        android:indeterminateDrawable="@drawable/dkplayer_progress_loading"
+        android:indeterminateDrawable="@drawable/player_progress_loading"
         android:indeterminateDuration="2000"
         android:visibility="gone"
         tools:visibility="visible" />
@@ -36,7 +36,9 @@
         android:background="@android:color/black"
         android:clickable="true"
         android:focusable="true"
-        android:visibility="gone">
+        android:visibility="gone"
+        tools:visibility="visible"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,7 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/dkplayer_wifi_tip"
+                android:text="@string/player_wifi_tip"
                 android:textColor="@android:color/white" />
 
             <TextView
@@ -57,13 +59,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/dkplayer_shape_status_view_btn"
+                android:background="@drawable/player_shape_status_view_btn"
                 android:gravity="center"
                 android:paddingLeft="16dp"
                 android:paddingTop="4dp"
                 android:paddingRight="16dp"
                 android:paddingBottom="4dp"
-                android:text="@string/dkplayer_continue_play"
+                android:text="@string/player_continue_play"
                 android:textColor="@android:color/white" />
 
         </LinearLayout>

@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.android.open9527.video.R;
+import com.android.open9527.video.common.controller.IControlComponent;
 import com.android.open9527.video.ui.component.CompleteView;
 import com.android.open9527.video.ui.component.ErrorView;
 import com.android.open9527.video.ui.component.GestureView;
@@ -31,7 +32,6 @@ import com.android.open9527.video.common.util.PlayerUtils;
  * 直播/点播控制器
  * 注意：此控制器仅做一个参考，如果想定制ui，你可以直接继承GestureVideoController或者BaseVideoController实现
  * 你自己的控制器
- * Created by dueeeke on 2017/4/7.
  */
 
 public class StandardVideoController extends GestureVideoController implements View.OnClickListener {
@@ -54,7 +54,7 @@ public class StandardVideoController extends GestureVideoController implements V
 
     @Override
     protected int getLayoutId() {
-        return R.layout.dkplayer_layout_standard_controller;
+        return R.layout.player_layout_standard_controller;
     }
 
     @Override
@@ -67,6 +67,7 @@ public class StandardVideoController extends GestureVideoController implements V
 
     /**
      * 快速添加各个组件
+     *
      * @param title  标题
      * @param isLive 是否为直播
      */
@@ -87,6 +88,24 @@ public class StandardVideoController extends GestureVideoController implements V
         setCanChangePosition(!isLive);
     }
 
+    public void addDefaultControlComponent(IControlComponent prepareComponent, String title, boolean isLive) {
+        CompleteView completeView = new CompleteView(getContext());
+        ErrorView errorView = new ErrorView(getContext());
+//        PrepareView prepareView = new PrepareView(getContext());
+//        prepareView.setClickStart();
+        TitleView titleView = new TitleView(getContext());
+        titleView.setTitle(title);
+        addControlComponent(completeView, errorView, prepareComponent, titleView);
+        if (isLive) {
+            addControlComponent(new LiveControlView(getContext()));
+        } else {
+            addControlComponent(new VodControlView(getContext()));
+        }
+        addControlComponent(new GestureView(getContext()));
+        setCanChangePosition(!isLive);
+    }
+
+
     @Override
     public void onClick(View v) {
         int i = v.getId();
@@ -99,10 +118,10 @@ public class StandardVideoController extends GestureVideoController implements V
     protected void onLockStateChanged(boolean isLocked) {
         if (isLocked) {
             mLockButton.setSelected(true);
-            Toast.makeText(getContext(), R.string.dkplayer_locked, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), R.string.player_locked, Toast.LENGTH_SHORT).show();
         } else {
             mLockButton.setSelected(false);
-            Toast.makeText(getContext(), R.string.dkplayer_unlocked, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), R.string.player_unlocked, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -194,7 +213,7 @@ public class StandardVideoController extends GestureVideoController implements V
     public boolean onBackPressed() {
         if (isLocked()) {
             show();
-            Toast.makeText(getContext(), R.string.dkplayer_lock_tip, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), R.string.player_lock_tip, Toast.LENGTH_SHORT).show();
             return true;
         }
         if (mControlWrapper.isFullScreen()) {

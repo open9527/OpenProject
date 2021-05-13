@@ -80,7 +80,7 @@ public class VodControlView extends FrameLayout implements IControlComponent, Vi
     }
 
     protected int getLayoutId() {
-        return R.layout.dkplayer_layout_vod_control_view;
+        return R.layout.player_layout_vod_control_view;
     }
 
     /**

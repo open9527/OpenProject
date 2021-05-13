@@ -7,15 +7,14 @@ import com.android.open9527.video.common.player.VideoViewManager;
 
 /**
  * 日志类
- * Created by dueeeke on 2017/6/5.
  */
 
-public final class L {
+public final class VideoLogUtils {
 
-    private L() {
+    private VideoLogUtils() {
     }
 
-    private static final String TAG = "VideoPlayer";
+    private static final String TAG = "VideoPlayerLog";
 
     private static boolean isDebug = VideoViewManager.getConfig().mIsEnableLog;
 
@@ -45,6 +44,6 @@ public final class L {
     }
 
     public static void setDebug(boolean isDebug) {
-        L.isDebug = isDebug;
+        VideoLogUtils.isDebug = isDebug;
     }
 }

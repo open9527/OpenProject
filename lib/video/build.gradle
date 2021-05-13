@@ -7,8 +7,6 @@ android {
 
 dependencies {
     implementation Config.depConfig.androidx_appcompat
-    implementation Config.depConfig.utilcode
-    implementation Config.depConfig.androidx_recyclerview
     //exoplayer 视频播放组件
     api 'com.google.android.exoplayer:exoplayer-core:2.13.3'
     api 'com.google.android.exoplayer:exoplayer-dash:2.13.3'

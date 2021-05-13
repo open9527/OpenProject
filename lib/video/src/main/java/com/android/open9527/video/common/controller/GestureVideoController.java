@@ -20,7 +20,6 @@ import java.util.Map;
 
 /**
  * 包含手势操作的VideoController
- * Created by dueeeke on 2018/1/6.
  */
 
 public abstract class GestureVideoController extends BaseVideoController implements

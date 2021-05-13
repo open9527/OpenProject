@@ -30,7 +30,6 @@ import java.util.Locale;
 
 /**
  * 播放器相关工具类
- * Created by dueeeke on 2017/4/10.
  */
 
 public final class PlayerUtils {
@@ -185,7 +184,7 @@ public final class PlayerUtils {
             return NO_NETWORK;
         }
 
-        NetworkInfo networkInfo = connectMgr.getActiveNetworkInfo();
+        @SuppressLint("MissingPermission") NetworkInfo networkInfo = connectMgr.getActiveNetworkInfo();
         if (networkInfo == null) {
             // 没有任何网络
             return NO_NETWORK;

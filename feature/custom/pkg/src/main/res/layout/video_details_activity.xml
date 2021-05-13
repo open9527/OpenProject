@@ -25,7 +25,6 @@
 <!--            app:barBackClick="@{click.backClick}"-->
 <!--            app:barTitleText="@{vm.valueTitle}" />-->
 
-
         <com.android.open9527.video.common.player.VideoView
             android:id="@+id/video_view"
             android:layout_width="match_parent"

@@ -37,6 +37,8 @@ dependencies {
 
     //umeng
 //    api project(gradle.getUnionPath(":lib:umeng"))
+    //video
+    api project(gradle.getUnionPath(":lib:video"))
 
     api Config.depConfig.androidx_lifecycle_common_java8
     api Config.depConfig.androidx_material

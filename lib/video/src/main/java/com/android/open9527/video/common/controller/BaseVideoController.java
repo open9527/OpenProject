@@ -20,7 +20,7 @@ import androidx.annotation.Nullable;
 import com.android.open9527.video.common.player.VideoView;
 import com.android.open9527.video.common.player.VideoViewManager;
 import com.android.open9527.video.common.util.CutoutUtil;
-import com.android.open9527.video.common.util.L;
+import com.android.open9527.video.common.util.VideoLogUtils;
 import com.android.open9527.video.common.util.PlayerUtils;
 
 import java.util.Iterator;
@@ -36,7 +36,6 @@ import java.util.Map;
  * 4.播放进度改变: {@link #handleSetProgress(int, int)}
  * 5.锁定状态改变: {@link #handleLockStateChanged(boolean)}
  * 6.设备方向监听: {@link #onOrientationChanged(int)}
- * Created by dueeeke on 2017/4/12.
  */
 public abstract class BaseVideoController extends FrameLayout
         implements IVideoController,
@@ -338,7 +337,7 @@ public abstract class BaseVideoController extends FrameLayout
                 mCutoutHeight = (int) PlayerUtils.getStatusBarHeightPortrait(mActivity);
             }
         }
-        L.d("hasCutout: " + mHasCutout + " cutout height: " + mCutoutHeight);
+        VideoLogUtils.d("hasCutout: " + mHasCutout + " cutout height: " + mCutoutHeight);
     }
 
     /**

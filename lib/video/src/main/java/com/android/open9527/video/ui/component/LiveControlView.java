@@ -46,7 +46,7 @@ public class LiveControlView extends FrameLayout implements IControlComponent, V
     
     {
         setVisibility(GONE);
-        LayoutInflater.from(getContext()).inflate(R.layout.dkplayer_layout_live_control_view, this, true);
+        LayoutInflater.from(getContext()).inflate(R.layout.player_layout_live_control_view, this, true);
         mFullScreen = findViewById(R.id.fullscreen);
         mFullScreen.setOnClickListener(this);
         mBottomContainer = findViewById(R.id.bottom_container);
