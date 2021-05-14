@@ -20,4 +20,6 @@ public interface Path {
 
     String PATH_CUSTOM_CUSTOMACTIVITY = "/custom/CustomActivity";
 
+    String PATH_VIDEO_VIDEOACTIVITY = "/video/VideoActivity";
+
 }

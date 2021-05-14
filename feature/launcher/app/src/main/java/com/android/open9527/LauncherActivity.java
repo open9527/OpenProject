@@ -113,6 +113,28 @@ public class LauncherActivity extends BaseCommonActivity {
                         });
 
 
+            }else if (view.getId() == R.id.btn_video) {
+                Router.getsInstance()
+                        .build(Path.PATH_VIDEO_VIDEOACTIVITY)
+                        .navigation(LauncherActivity.this, new NavigationCallback() {
+                            @Override
+                            public void onFound(Postcard postcard) {
+                                LogUtils.i(TAG, "NavigationCallback" + "找到跳转页面");
+
+                            }
+
+                            @Override
+                            public void onLost(Postcard postcard) {
+                                LogUtils.i(TAG, "NavigationCallback" + "未找到");
+                            }
+
+                            @Override
+                            public void onArrival(Postcard postcard) {
+                                LogUtils.i(TAG, "NavigationCallback" + "成功跳转");
+                            }
+                        });
+
+
             }
         };
     }

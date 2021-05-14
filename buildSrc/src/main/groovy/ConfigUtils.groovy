@@ -139,9 +139,16 @@ class ConfigUtils {
             ':feature:webview:pkg',
             ':feature:webview:app',
 
+            ':feature:video:export',
+            ':feature:video:pkg',
+            ':feature:video:app',
+
+
             ':feature:custom:export',
             ':feature:custom:pkg',
             ':feature:custom:app',
+
+
 
     ]
 

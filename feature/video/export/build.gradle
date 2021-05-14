@@ -1,0 +1,5 @@
+dependencies {
+    implementation Config.depConfig.androidx_appcompat
+
+    api project(gradle.getUnionPath(":lib:common"))
+}

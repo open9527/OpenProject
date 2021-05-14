@@ -51,14 +51,16 @@ public class VideoDetailsActivity extends BaseCommonActivity {
         mVideoView = ((VideoDetailsActivityBinding) getBinding()).videoView;
         mVideoView.setLifecycleOwner(this);
         mVideoView.setLooping(true);
-        mVideoView.setUrl(mViewModel.valueVideoUrl.get()); //设置视频地址
+        //设置视频地址
+//        mVideoView.setUrl("http://tx2play1.douyucdn.cn/live/1126960rPXROLJ7f.flv?uuid=1126960");
+        mVideoView.setUrl("http://tx2play1.douyucdn.cn/live/2132902rMfyxirEj.flv?uuid=2132902");
         StandardVideoController mController = new StandardVideoController(this);
 
         PrepareView prepareView = new PrepareView(this);//准备播放界面
         ImageView thumb = prepareView.findViewById(R.id.thumb);//封面图
         ImageLoadUtils.loadImage(ImageLoadConfig.with(thumb)
                 .setUrl(mViewModel.valueVideoCoverUrl.get()));
-        mController.addDefaultControlComponent(prepareView, mViewModel.valueVideoTitle.get(), false);
+        mController.addDefaultControlComponent(prepareView, mViewModel.valueVideoTitle.get(), true);
         mVideoView.setVideoController(mController);
         mVideoView.start(); //开始播放，不调用则不自动播放
     }

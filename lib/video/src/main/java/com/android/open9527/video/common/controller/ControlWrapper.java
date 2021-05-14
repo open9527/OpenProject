@@ -1,5 +1,6 @@
 package com.android.open9527.video.common.controller;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
@@ -154,6 +155,7 @@ public class ControlWrapper implements MediaPlayerControl, IVideoController {
     /**
      * 横竖屏切换，会旋转屏幕
      */
+    @SuppressLint("SourceLockedOrientationActivity")
     public void toggleFullScreen(Activity activity) {
         if (activity == null || activity.isFinishing())
             return;
@@ -180,6 +182,7 @@ public class ControlWrapper implements MediaPlayerControl, IVideoController {
     /**
      * 横竖屏切换，根据适配宽高决定是否旋转屏幕
      */
+    @SuppressLint("SourceLockedOrientationActivity")
     public void toggleFullScreenByVideoSize(Activity activity) {
         if (activity == null || activity.isFinishing())
             return;

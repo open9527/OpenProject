@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.android.video.pkg.VideoViewModel" />
+
+        <variable
+            name="click"
+            type="com.android.video.pkg.VideoActivity.ClickProxy" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:ignore="HardcodedText">
+
+        <include
+            layout="@layout/common_title_bar"
+            app:barBackClick="@{click.backClick}"
+            app:barTitleText="@{vm.valueTitle}" />
+
+
+        <com.android.open9527.common.widget.textview.StateSwitchTextView
+            bindClickViewScale="@{true}"
+            bindViewClick="@{click.tikTokClick}"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_45"
+            android:layout_margin="@dimen/size_10"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="Tiktok-ViewPager2"
+            android:textColor="@color/common_text_color"
+            android:textSize="@dimen/font_16" />
+
+    </LinearLayout>
+</layout>
