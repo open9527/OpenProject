@@ -34,9 +34,46 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_45"
             android:layout_margin="@dimen/size_10"
-            android:background="@color/white"
+            android:background="@color/common_line_color"
             android:gravity="center"
             android:text="Tiktok-ViewPager2"
+            android:textColor="@color/common_text_color"
+            android:textSize="@dimen/font_16" />
+
+
+        <com.android.open9527.common.widget.textview.StateSwitchTextView
+            bindClickViewScale="@{true}"
+            bindViewClick="@{click.landscapeLiveClick}"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_45"
+            android:layout_margin="@dimen/size_10"
+            android:background="@color/common_line_color"
+            android:gravity="center"
+            android:text="Live-Landscape"
+            android:textColor="@color/common_text_color"
+            android:textSize="@dimen/font_16" />
+
+        <com.android.open9527.common.widget.textview.StateSwitchTextView
+            bindClickViewScale="@{true}"
+            bindViewClick="@{click.portraitLiveClick}"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_45"
+            android:layout_margin="@dimen/size_10"
+            android:background="@color/common_line_color"
+            android:gravity="center"
+            android:text="Live-Portrait"
+            android:textColor="@color/common_text_color"
+            android:textSize="@dimen/font_16" />
+
+        <com.android.open9527.common.widget.textview.StateSwitchTextView
+            bindClickViewScale="@{true}"
+            bindViewClick="@{click.pipClick}"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_45"
+            android:layout_margin="@dimen/size_10"
+            android:background="@color/common_line_color"
+            android:gravity="center"
+            android:text="Other-pip"
             android:textColor="@color/common_text_color"
             android:textSize="@dimen/font_16" />
 

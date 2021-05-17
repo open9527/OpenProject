@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 
 import com.android.open9527.video.R;
 import com.android.open9527.video.common.controller.IControlComponent;
+import com.android.open9527.video.common.player.VideoViewManager;
 import com.android.open9527.video.ui.component.CompleteView;
 import com.android.open9527.video.ui.component.ErrorView;
 import com.android.open9527.video.ui.component.GestureView;

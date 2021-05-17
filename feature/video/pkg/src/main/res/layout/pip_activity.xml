@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.android.video.pkg.other.PipViewModel" />
+
+        <variable
+            name="click"
+            type="com.android.video.pkg.other.PipActivity.ClickProxy" />
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="HardcodedText">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include
+                layout="@layout/common_title_bar"
+                app:barBackClick="@{click.backClick}"
+                app:barTitleText="@{vm.valueTitle}" />
+
+            <FrameLayout
+                android:id="@+id/player_container"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="16:9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/root_status_bar" />
+
+
+            <com.android.open9527.common.widget.textview.StateSwitchTextView
+                android:id="@+id/tv_pic"
+                bindClickViewScale="@{true}"
+                bindViewClick="@{click.pipClick}"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_45"
+                android:layout_margin="@dimen/size_10"
+                android:background="@color/common_line_color"
+                android:gravity="center"
+                android:text="pip"
+                android:textColor="@color/common_text_color"
+                android:textSize="@dimen/font_16"
+                app:layout_constraintTop_toBottomOf="@+id/player_container" />
+
+            <com.android.open9527.common.widget.textview.StateSwitchTextView
+                android:id="@+id/tv_speed"
+                bindClickViewScale="@{true}"
+                bindViewClick="@{click.speedClick}"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_45"
+                android:layout_margin="@dimen/size_10"
+                android:background="@color/common_line_color"
+                android:gravity="center"
+                android:text="@{vm.valueSpeedTitle}"
+                android:textColor="@color/common_text_color"
+                android:textSize="@dimen/font_16"
+                app:layout_constraintTop_toBottomOf="@+id/tv_pic" />
+
+            <com.android.open9527.common.widget.textview.StateSwitchTextView
+                bindClickViewScale="@{true}"
+                bindViewClick="@{click.screenScaleTypeClick}"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_45"
+                android:layout_margin="@dimen/size_10"
+                android:background="@color/common_line_color"
+                android:gravity="center"
+                android:text="@{vm.valueScreenScaleType}"
+                android:textColor="@color/common_text_color"
+                android:textSize="@dimen/font_16"
+                app:layout_constraintTop_toBottomOf="@+id/tv_speed" />
+
+
+            <com.android.open9527.common.widget.textview.StateSwitchTextView
+                android:id="@+id/tv_scale_type"
+                bindClickViewScale="@{true}"
+                bindViewClick="@{click.screenScaleTypeClick}"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_45"
+                android:layout_margin="@dimen/size_10"
+                android:background="@color/common_line_color"
+                android:gravity="center"
+                android:text="@{vm.valueScreenScaleType}"
+                android:textColor="@color/common_text_color"
+                android:textSize="@dimen/font_16"
+                app:layout_constraintTop_toBottomOf="@+id/tv_speed" />
+
+            <com.android.open9527.common.widget.textview.StateSwitchTextView
+                android:id="@+id/tv_shot"
+                bindClickViewScale="@{true}"
+                bindViewClick="@{click.doScreenShotClick}"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_45"
+                android:layout_margin="@dimen/size_10"
+                android:background="@color/common_line_color"
+                android:gravity="center"
+                android:text="截图"
+                android:textColor="@color/common_text_color"
+                android:textSize="@dimen/font_16"
+                app:layout_constraintTop_toBottomOf="@+id/tv_scale_type" />
+
+            <ImageView
+                android:id="@+id/iv_shot"
+                bindIvBitmap="@{vm.valueShotBitmap}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size_10"
+                android:scaleType="centerCrop"
+                app:layout_constraintTop_toBottomOf="@+id/tv_shot" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</layout>

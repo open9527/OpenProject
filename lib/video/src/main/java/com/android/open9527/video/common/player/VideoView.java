@@ -538,9 +538,13 @@ public class VideoView<P extends AbstractPlayer> extends FrameLayout
                 break;
             case AbstractPlayer.MEDIA_INFO_VIDEO_RENDERING_START: // 视频开始渲染
                 setPlayState(STATE_PLAYING);
-                if (mPlayerContainer.getWindowVisibility() != VISIBLE) {
+                mPlayerContainer.setKeepScreenOn(true);
+                // 视频准备完成之后，activity 如果处于 paused，则暂停播放
+                Activity activity = getActivity();
+                if (activity != null && !activity.hasWindowFocus()) {
                     pause();
                 }
+
                 break;
             case AbstractPlayer.MEDIA_INFO_VIDEO_ROTATION_CHANGED:
                 if (mRenderView != null)
@@ -899,6 +903,10 @@ public class VideoView<P extends AbstractPlayer> extends FrameLayout
         if (mRenderView != null) {
             mRenderView.setScaleType(screenScaleType);
         }
+    }
+
+    public int getScreenScaleType() {
+       return mCurrentScreenScaleType;
     }
 
     /**

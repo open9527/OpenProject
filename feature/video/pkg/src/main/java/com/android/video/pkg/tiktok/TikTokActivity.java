@@ -124,6 +124,7 @@ public class TikTokActivity extends BaseCommonActivity {
 
     private void initVideoView() {
         mVideoView = new VideoView(this);
+        mVideoView.setLifecycleOwner(this);
         mVideoView.setLooping(true);
         mVideoView.setRenderViewFactory(TikTokRenderViewFactory.create());
 //        mVideoView.setScreenScaleType(VideoView.SCREEN_SCALE_CENTER_CROP);

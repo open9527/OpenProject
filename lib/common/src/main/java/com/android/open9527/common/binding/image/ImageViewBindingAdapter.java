@@ -1,5 +1,6 @@
 package com.android.open9527.common.binding.image;
 
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.widget.ImageView;
@@ -97,6 +98,13 @@ public class ImageViewBindingAdapter {
         imageView.setBorderRadius(borderRadius);
         imageView.setRoundRadius(roundRadius);
         imageView.setBorderWidth(borderWidth);
+    }
+
+
+    @BindingAdapter(value = {"bindIvBitmap"}, requireAll = false)
+    public static void setBindingImageView(ImageView imageView, Bitmap bitmap) {
+        if (imageView == null || bitmap == null) return;
+        imageView.setImageBitmap(bitmap);
     }
 
 }

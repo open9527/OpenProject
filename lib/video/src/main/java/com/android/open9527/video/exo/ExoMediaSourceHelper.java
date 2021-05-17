@@ -12,7 +12,6 @@ import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.source.ProgressiveMediaSource;
 import com.google.android.exoplayer2.source.dash.DashMediaSource;
 import com.google.android.exoplayer2.source.hls.HlsMediaSource;
-import com.google.android.exoplayer2.source.smoothstreaming.SsMediaSource;
 import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSource;
@@ -83,8 +82,6 @@ public final class ExoMediaSourceHelper {
         switch (contentType) {
             case C.TYPE_DASH:
                 return new DashMediaSource.Factory(factory).createMediaSource(MediaItem.fromUri(contentUri));
-            case C.TYPE_SS:
-                return new SsMediaSource.Factory(factory).createMediaSource(MediaItem.fromUri(contentUri));
             case C.TYPE_HLS:
                 return new HlsMediaSource.Factory(factory).createMediaSource(MediaItem.fromUri(contentUri));
             default:
@@ -94,14 +91,12 @@ public final class ExoMediaSourceHelper {
     }
 
     private int inferContentType(String fileName) {
-        fileName = Util.toLowerInvariant(fileName);
+        fileName = fileName.toLowerCase();
         if (fileName.contains(".mpd")) {
             return C.TYPE_DASH;
         } else if (fileName.contains(".m3u8")) {
             return C.TYPE_HLS;
-        } else if (fileName.matches(".*\\.ism(l)?(/manifest(\\(.+\\))?)?")) {
-            return C.TYPE_SS;
-        } else {
+        }else {
             return C.TYPE_OTHER;
         }
     }

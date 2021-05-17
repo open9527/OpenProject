@@ -4,6 +4,9 @@ import android.view.View;
 
 import com.android.open9527.common.page.BaseCommonActivity;
 import com.android.open9527.page.DataBindingConfig;
+import com.android.video.pkg.live.LandscapeActivity;
+import com.android.video.pkg.live.PortraitActivity;
+import com.android.video.pkg.other.PipActivity;
 import com.android.video.pkg.tiktok.TikTokActivity;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.open9527.annotation.router.Router;
@@ -35,6 +38,18 @@ public class VideoActivity extends BaseCommonActivity {
         };
         public View.OnClickListener tikTokClick = v -> {
             ActivityUtils.startActivity(TikTokActivity.class);
+        };
+
+        public View.OnClickListener landscapeLiveClick = v -> {
+            ActivityUtils.startActivity(LandscapeActivity.class);
+        };
+
+        public View.OnClickListener portraitLiveClick = v -> {
+            ActivityUtils.startActivity(PortraitActivity.class);
+        };
+
+        public View.OnClickListener pipClick = v -> {
+            ActivityUtils.startActivity(PipActivity.class);
         };
     }
 }
