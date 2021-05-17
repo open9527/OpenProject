@@ -23,6 +23,7 @@ class Config {
 
     static smartRefresh = '2.0.3'
     static umSdk = '7.1.4'
+    static exoplayer = '2.14.0'
 
 
     static depConfig = [
@@ -59,7 +60,7 @@ class Config {
             androidx_lifecycle_runtime      : "androidx.lifecycle:lifecycle-runtime:$androidxLifecycle",
 
             //包含了 ViewModel 和 LiveData
-            androidx_lifecycle_extensions      : "androidx.lifecycle:lifecycle-extensions:$androidxLifecycle",
+            androidx_lifecycle_extensions   : "androidx.lifecycle:lifecycle-extensions:$androidxLifecycle",
             //指明使用ViewModel
             androidx_lifecycle_viewmodel    : "androidx.lifecycle:lifecycle-viewmodel:$androidxLifecycle",
             //指明使用LiveData
@@ -100,6 +101,15 @@ class Config {
             //    api 'com.google.android.exoplayer:exoplayer-core:2.10.4'
             //    api 'com.google.android.exoplayer:exoplayer-dash:2.10.4'
             //    api 'com.google.android.exoplayer:exoplayer-ui:2.10.4'
+
+
+            exoplayer_core                  : "com.google.android.exoplayer:exoplayer-core:$exoplayer",
+            exoplayer_dash                  : "com.google.android.exoplayer:exoplayer-dash:$exoplayer",
+            exoplayer_ui                    : "com.google.android.exoplayer:exoplayer-ui:$exoplayer",
+            exoplayer_hls                   : "com.google.android.exoplayer:exoplayer-hls:$exoplayer",
+            exoplayer_smoothstreaming       : "com.google.android.exoplayer:exoplayer-smoothstreaming:$exoplayer",
+            exoplayer_rtsp                  : "com.google.android.exoplayer:exoplayer-rtsp:$exoplayer",
+            exoplayer_rtmp                  : "com.google.android.exoplayer:extension-rtmp:$exoplayer",
 
 
     ]

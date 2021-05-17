@@ -7,14 +7,17 @@ android {
 
 dependencies {
     implementation Config.depConfig.androidx_appcompat
+
     //exoplayer 视频播放组件
-    api 'com.google.android.exoplayer:exoplayer-core:2.14.0'
-    api 'com.google.android.exoplayer:exoplayer-dash:2.14.0'
-    api 'com.google.android.exoplayer:exoplayer-ui:2.14.0'
-    api 'com.google.android.exoplayer:exoplayer-hls:2.14.0'
-//    api 'com.google.android.exoplayer:exoplayer-smoothstreaming:2.14.0'
-    api 'com.google.android.exoplayer:exoplayer-rtsp:2.14.0'
-    api 'com.google.android.exoplayer:extension-rtmp:2.14.0'
+    api Config.depConfig.exoplayer_core
+    api Config.depConfig.exoplayer_dash
+    api Config.depConfig.exoplayer_ui
+    api Config.depConfig.exoplayer_hls
+//    api Config.depConfig.exoplayer_smoothstreaming
+    api Config.depConfig.exoplayer_rtsp
+    api Config.depConfig.exoplayer_rtmp
+
+
 }
 
 
