@@ -13,8 +13,8 @@ import androidx.lifecycle.ViewModel;
 public class PipViewModel extends ViewModel {
 
     public final ObservableField<String> valueTitle = new ObservableField<>("Live");
-    public final ObservableField<String> valueSpeedTitle = new ObservableField<>("1.5f");
-    public final ObservableField<String> valueScreenScaleType = new ObservableField<>("默认");
+    public final ObservableField<String> valueSpeedTitle = new ObservableField<>("1.0f");
+    public final ObservableField<String> valueScreenScaleType = new ObservableField<>("原始大小");
     public final ObservableField<Bitmap> valueShotBitmap = new ObservableField<>();
 
     public final ObservableField<String> valueVideoTitle = new ObservableField<>("#三十而立纪录片1当年的学生会主席如今怎样？第一批30岁的...");

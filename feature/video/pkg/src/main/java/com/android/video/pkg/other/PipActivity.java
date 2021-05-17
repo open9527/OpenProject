@@ -1,6 +1,5 @@
 package com.android.video.pkg.other;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -98,6 +97,7 @@ public class PipActivity extends BaseCommonActivity implements DefinitionControl
         PrepareView prepareView = new PrepareView(this);
         prepareView.setClickStart();
         TitleView titleView = new TitleView(this);
+        titleView.setTitle(mViewModel.valueVideoTitle.get());
         mDefinitionControlView = new DefinitionControlView(this);
         mDefinitionControlView.setOnRateSwitchListener(this);
         GestureView gestureView = new GestureView(this);
