@@ -102,14 +102,16 @@ class ConfigUtils {
             ':apt:compiler',
             //kt
             ':lib_kt:page',
+            ':lib_kt:base',
+            ':lib_kt:common',
 
             ':feature:launcher:app',
             ':feature:mock',
 
             //方便copy
-            ':feature:copy:export',
-            ':feature:copy:pkg',
-            ':feature:copy:app',
+//            ':feature:copy:export',
+//            ':feature:copy:pkg',
+//            ':feature:copy:app',
 
             ':feature:permission:export',
             ':feature:permission:pkg',
@@ -143,11 +145,13 @@ class ConfigUtils {
             ':feature:video:pkg',
             ':feature:video:app',
 
-
             ':feature:custom:export',
             ':feature:custom:pkg',
             ':feature:custom:app',
 
+            ':feature:kotlin:export',
+            ':feature:kotlin:pkg',
+            ':feature:kotlin:app',
 
 
     ]

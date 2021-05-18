@@ -1,0 +1,14 @@
+dependencies {
+    //  exclude group: 'androidx.appcompat', module: 'appcompat'
+    //  exclude group: 'androidx.lifecycle', module: 'lifecycle-viewmodel'
+
+    api Config.depConfig.androidx_appcompat
+    api Config.depConfig.androidx_lifecycle_viewmodel
+    api project(gradle.getUnionPath(":lib_kt:base"))
+
+    api Config.depConfig.androidx_constraint
+    api Config.depConfig.utilcode
+}
+
+
+

@@ -69,7 +69,7 @@ public class PipActivity extends BaseCommonActivity implements DefinitionControl
         LinkedHashMap<String, String> videos = new LinkedHashMap<>();
         videos.put("标清", mViewModel.valueVideoUrl.get());
         videos.put("高清", mViewModel.valueVideoUrl.get());
-        videos.put("超清", mViewModel.valueVideoUrl.get());
+        videos.put("超清", "https://upos-sz-mirrorshdx.bilivideo.com/upgcxcode/96/75/339627596/339627596_nb2-1-32.flv?e=ig8euxZM2rNcNbRj7zUVhoM17buBhwdEto8g5X10ugNcXBlqNxHxNEVE5XREto8KqJZHUa6m5J0SqE85tZvEuENvNo8g2ENvNo8i8o859r1qXg8xNEVE5XREto8GuFGv2U7SuxI72X6fTr859r1qXg8gNEVE5XREto8z5JZC2X2gkX5L5F1eTX1jkXlsTXHeux_f2o859IB_&uipk=5&nbs=1&deadline=1621253026&gen=playurlv2&os=shdxbv&oi=975280346&trid=dab74a57d8444d12944c880eed7c3596u&platform=pc&upsig=35acd766631905421a35c02b91a84921&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform&mid=0&orderid=0,3&agrr=0&logo=80000000");
         videos.put("4K", "http://vodcnd.cp59.ott.cibntv.net/Act-ss-m3u8-fhd/bab97ed9041c482f994a1b5b81fddda0/905497gfd.m3u8");
 
         mDefinitionControlView.setData(videos);

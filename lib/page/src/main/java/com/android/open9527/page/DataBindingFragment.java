@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment;
 public abstract class DataBindingFragment extends Fragment {
 
     protected AppCompatActivity mActivity;
+
     private ViewDataBinding mBinding;
 
     @Override

@@ -84,7 +84,8 @@ public final class PlayerUtils {
      */
     public static boolean hasNavigationBar(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            Display display = getWindowManager(context).getDefaultDisplay();
+//            Display display = getWindowManager(context).getDefaultDisplay();
+            Display display = context.getDisplay();
             Point size = new Point();
             Point realSize = new Point();
             display.getSize(size);
