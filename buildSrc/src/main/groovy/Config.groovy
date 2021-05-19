@@ -36,8 +36,8 @@ class Config {
             androidx_core_ktx               : "androidx.core:core-ktx:$kotlinKtx",
             kotlin_stdlib_jdk7              : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion",
 
-//            androidx_appcompat             : "androidx.appcompat:appcompat:1.2.0",
-            androidx_appcompat              : "androidx.appcompat:appcompat:1.3.0-rc01",
+            androidx_appcompat             : "androidx.appcompat:appcompat:1.2.0",
+//            androidx_appcompat              : "androidx.appcompat:appcompat:1.3.0-rc01",
             androidx_material               : "com.google.android.material:material:1.2.1",
             androidx_constraint             : "androidx.constraintlayout:constraintlayout:2.0.4",
             androidx_recyclerview           : "androidx.recyclerview:recyclerview:1.2.0",
@@ -97,12 +97,7 @@ class Config {
 
             tbssdk                          : "com.tencent.tbs.tbssdk:sdk:43993",
 
-            //   //视频播放组件
-            //    api 'com.google.android.exoplayer:exoplayer-core:2.10.4'
-            //    api 'com.google.android.exoplayer:exoplayer-dash:2.10.4'
-            //    api 'com.google.android.exoplayer:exoplayer-ui:2.10.4'
-
-
+            // 视频播放组件 exoplayer
             exoplayer_core                  : "com.google.android.exoplayer:exoplayer-core:$exoplayer",
             exoplayer_dash                  : "com.google.android.exoplayer:exoplayer-dash:$exoplayer",
             exoplayer_ui                    : "com.google.android.exoplayer:exoplayer-ui:$exoplayer",

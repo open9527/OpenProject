@@ -5,6 +5,7 @@ dependencies {
     api Config.depConfig.androidx_appcompat
     api Config.depConfig.androidx_lifecycle_viewmodel
     api project(gradle.getUnionPath(":lib_kt:base"))
+    api project(gradle.getUnionPath(":lib_kt:permissions"))
 
     api Config.depConfig.androidx_constraint
     api Config.depConfig.utilcode

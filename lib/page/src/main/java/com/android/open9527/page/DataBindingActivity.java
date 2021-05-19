@@ -19,6 +19,9 @@ public abstract class DataBindingActivity extends AppCompatActivity {
 
     protected abstract DataBindingConfig getDataBindingConfig();
 
+
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

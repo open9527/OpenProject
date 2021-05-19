@@ -23,13 +23,16 @@ public abstract class DataBindingFragment extends Fragment {
 
     private ViewDataBinding mBinding;
 
+    protected abstract void initViewModel();
+
+    protected abstract DataBindingConfig getDataBindingConfig();
+
+
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         mActivity = (AppCompatActivity) context;
     }
-
-    protected abstract void initViewModel();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,7 +40,6 @@ public abstract class DataBindingFragment extends Fragment {
         initViewModel();
     }
 
-    protected abstract DataBindingConfig getDataBindingConfig();
 
     @Nullable
     @Override

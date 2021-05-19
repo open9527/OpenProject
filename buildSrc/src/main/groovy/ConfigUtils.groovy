@@ -104,6 +104,7 @@ class ConfigUtils {
             ':lib_kt:page',
             ':lib_kt:base',
             ':lib_kt:common',
+            ':lib_kt:permissions',
 
             ':feature:launcher:app',
             ':feature:mock',
