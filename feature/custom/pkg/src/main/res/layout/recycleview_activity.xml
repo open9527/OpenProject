@@ -37,11 +37,11 @@
             app:bindRefreshListener="@{click.onRefreshListeners}"
             app:bindRefreshNoMoreData="@{vm.valueNoMoreData}">
 
+<!--              bindRvAdapter="@{adapter}"
+                bindRvAnim="@{false}"
+                bindRvList="@{vm.valueCellList}"-->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
-                bindRvAdapter="@{adapter}"
-                bindRvAnim="@{false}"
-                bindRvList="@{vm.valueCellList}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"

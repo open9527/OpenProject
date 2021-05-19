@@ -1,10 +1,21 @@
 package com.android.custom.pkg.recycleview;
 
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.ConcatAdapter;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.custom.pkg.BR;
 import com.android.custom.pkg.R;
+import com.android.custom.pkg.databinding.RecycleviewActivityBinding;
 import com.android.custom.pkg.recycleview.cell.CollectCell;
 import com.android.custom.pkg.recycleview.user.ContentVo;
 import com.android.open9527.common.binding.refresh.IRefresh;
@@ -13,6 +24,7 @@ import com.android.open9527.okhttp.OkHttpUtils;
 import com.android.open9527.page.DataBindingConfig;
 import com.android.open9527.recycleview.adapter.BaseBindingCell;
 import com.android.open9527.recycleview.adapter.BaseBindingCellListAdapter;
+import com.android.open9527.recycleview.adapter.BaseCellViewHolder;
 import com.blankj.utilcode.util.CollectionUtils;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 
@@ -41,6 +53,99 @@ public class RecycleViewActivity extends BaseCommonActivity {
                 .addBindingParam(BR.adapter, new BaseBindingCellListAdapter<>())
                 .addBindingParam(BR.click, new ClickProxy());
     }
+
+    @Override
+    public void initView(@Nullable Bundle bundle) {
+        super.initView(bundle);
+        initConcatAdapter();
+    }
+
+    private void initConcatAdapter() {
+        ConcatAdapter.Config config = new ConcatAdapter.Config.Builder()
+                .setIsolateViewTypes(true)
+                .setStableIdMode(ConcatAdapter.Config.StableIdMode.NO_STABLE_IDS)
+                .build();
+        ConcatAdapter adapter = new ConcatAdapter(config);
+        adapter.addAdapter(new HeaderAdapter());
+        adapter.addAdapter(new ContentAdapter());
+        adapter.addAdapter(new FooterAdapter());
+        RecyclerView recyclerView = ((RecycleviewActivityBinding) getBinding()).recyclerView;
+        recyclerView.setAdapter(adapter);
+
+    }
+
+    private class HeaderAdapter extends RecyclerView.Adapter<BaseCellViewHolder> {
+
+//        @Override
+//        public void setHasStableIds(boolean hasStableIds) {
+//            super.setHasStableIds(true);
+//        }
+
+        @NonNull
+        @Override
+        public BaseCellViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            return new BaseCellViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.common_title_bar, ((RecycleviewActivityBinding) getBinding()).recyclerView, false));
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull BaseCellViewHolder holder, int position) {
+
+        }
+
+        @Override
+        public int getItemCount() {
+            return 1;
+        }
+    }
+
+    private class ContentAdapter extends RecyclerView.Adapter<BaseCellViewHolder> {
+//        @Override
+//        public void setHasStableIds(boolean hasStableIds) {
+//            super.setHasStableIds(true);
+//        }
+
+        @NonNull
+        @Override
+        public BaseCellViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            return new BaseCellViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.common_empty_cell, ((RecycleviewActivityBinding) getBinding()).recyclerView, false));
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull BaseCellViewHolder holder, int position) {
+            ImageView imageView = holder.findViewById(R.id.iv_empty);
+            imageView.setImageResource(com.android.open9527.common.R.drawable.common_empty_icon);
+        }
+
+        @Override
+        public int getItemCount() {
+            return 1;
+        }
+    }
+
+    private class FooterAdapter extends RecyclerView.Adapter<BaseCellViewHolder> {
+//        @Override
+//        public void setHasStableIds(boolean hasStableIds) {
+//            super.setHasStableIds(true);
+//        }
+
+        @NonNull
+        @Override
+        public BaseCellViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            return new BaseCellViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.common_no_more_data_cell, ((RecycleviewActivityBinding) getBinding()).recyclerView, false));
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull BaseCellViewHolder holder, int position) {
+            TextView textView = holder.findViewById(R.id.tv_no_more);
+            textView.setText("无更多数据~");
+        }
+
+        @Override
+        public int getItemCount() {
+            return 1;
+        }
+    }
+
 
     @Override
     public void initRequest() {

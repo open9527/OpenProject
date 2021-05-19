@@ -31,15 +31,19 @@ public class RecycleViewViewModel extends ViewModel implements UserRequest.IUser
 
     public final ObservableBoolean valueNotify = new ObservableBoolean(true);
 
-    public final MutableLiveData<List<BaseBindingCell>> valueCellList = new MutableLiveData<>(new ArrayList<>());
+    public final MutableLiveData<List<BaseBindingCell>> valueCellList = new MutableLiveData<>();
 
-    public final MutableLiveData<List<ContentVo>> valueList = new MutableLiveData<>(new ArrayList<>());
-    public final MutableLiveData<Boolean> valueRefresh = new MutableLiveData<>(true);
-
-
+    public final MutableLiveData<List<ContentVo>> valueList = new MutableLiveData<>();
+    public final MutableLiveData<Boolean> valueRefresh = new MutableLiveData<>();
 
 
     private UserRequest userRequest = new UserRequest();
+
+    {
+        valueCellList.setValue(new ArrayList<>());
+        valueList.setValue(new ArrayList<>());
+        valueRefresh.setValue(true);
+    }
 
     @Override
     public void requestLogin(@NonNull String userName, @NonNull String passWord, @NonNull PostRequest request) {

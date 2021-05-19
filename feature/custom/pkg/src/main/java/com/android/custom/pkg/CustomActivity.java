@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.ConcatAdapter;
 
 import com.android.custom.pkg.dialog.DialogActivity;
 import com.android.custom.pkg.recycleview.RecycleViewActivity;
@@ -42,6 +43,7 @@ public class CustomActivity extends BaseCommonActivity {
     @Override
     public void initView(@Nullable Bundle bundle) {
         super.initView(bundle);
+
     }
 
     public class ClickProxy {
