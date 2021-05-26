@@ -2,8 +2,6 @@ package com.android.feature.webview.pkg;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebView;
@@ -18,10 +16,8 @@ import com.android.open9527.common.bundle.BaseBundleData;
 import com.android.open9527.common.bundle.BundleUtils;
 import com.android.open9527.common.page.BaseCommonActivity;
 import com.android.open9527.page.DataBindingConfig;
-import com.android.open9527.titlebar.OnTitleBarListener;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.LogUtils;
-import com.blankj.utilcode.util.ToastUtils;
 import com.open9527.annotation.router.Router;
 import com.open9527.webview.BrowserView;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
@@ -47,8 +43,7 @@ public class WebViewActivity extends BaseCommonActivity implements HandlerAction
     @Override
     protected DataBindingConfig getDataBindingConfig() {
         return new DataBindingConfig(R.layout.webview_activity, BR.vm, mViewModel)
-                .addBindingParam(BR.click, new ClickProxy())
-                .addBindingParam(BR.titleBarListener, onTitleBarListener);
+                .addBindingParam(BR.click, new ClickProxy());
     }
 
     @Override
@@ -103,6 +98,11 @@ public class WebViewActivity extends BaseCommonActivity implements HandlerAction
 
 
     public class ClickProxy {
+
+        public View.OnClickListener backClick = v -> {
+            finish();
+        };
+
         public IRefresh<Boolean> onRefreshListeners = new IRefresh<Boolean>() {
             @Override
             public void onRefresh(RefreshLayout refreshLayout, Boolean isRefresh) {
@@ -112,18 +112,7 @@ public class WebViewActivity extends BaseCommonActivity implements HandlerAction
     }
 
 
-    public OnTitleBarListener onTitleBarListener = new OnTitleBarListener() {
-        @Override
-        public void onLeftClick(View v) {
-            finish();
-        }
 
-        @Override
-        public void onRightClick(View v) {
-            BrowserActivity.start();
-            ToastUtils.showShort("onRightClick");
-        }
-    };
 
 
     private class MyBrowserViewClient extends BrowserView.BrowserViewClient {

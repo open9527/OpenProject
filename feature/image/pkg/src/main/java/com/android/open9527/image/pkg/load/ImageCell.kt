@@ -1,6 +1,5 @@
 package com.android.open9527.image.pkg.load
 
-import android.graphics.Bitmap
 import android.net.Uri
 import android.view.View
 import androidx.databinding.ObservableField
@@ -34,7 +33,11 @@ class ImageCell : BaseBindingCell<ImageCell> {
 
     val valueIndex = ObservableInt()
 
-    constructor(imageVo: ImageVo, iCellClick: ICellClick) : super(R.layout.image_cell) {
+    constructor(
+        imageVo: ImageVo,
+        iCellClick: ICellClick
+
+    ) : super(R.layout.image_cell) {
         valueImageUrl.set(imageVo.imageUrl)
         valueICellClick.set(iCellClick)
     }
@@ -58,11 +61,6 @@ class ImageCell : BaseBindingCell<ImageCell> {
         fun onCellClick(view: View?, index: Int)
     }
 
-    var imageCallBack: ImageCallBack = object : ImageCallBack {
-        override fun onStart() {}
-        override fun onStop() {}
-        override fun onResourceReady(resource: Bitmap) {}
-    }
 
     override fun getUUID(): String? {
         if (valueImageUri.get() != null) {

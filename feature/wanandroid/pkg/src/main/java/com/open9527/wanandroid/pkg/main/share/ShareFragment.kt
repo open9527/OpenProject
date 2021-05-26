@@ -63,11 +63,6 @@ class ShareFragment : BaseCommonFragment(), OnHttpListener<Any?> {
             }
         }
 
-        @JvmField
-        var shareClick = View.OnClickListener {
-
-
-        }
     }
 
     private fun requestShare() {

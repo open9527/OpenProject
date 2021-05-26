@@ -5,7 +5,7 @@
 
     <data>
 
-        <import type="com.open9527.wanandroid.pkg.R" />
+        <import type="android.view.View" />
 
         <variable
             name="vm"
@@ -37,22 +37,10 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <View
-            android:id="@+id/view_status_bar"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:bindViewBgDrawable="@{vm.valueTitleBarBg}" />
-
-        <com.android.open9527.titlebar.TitleBar
-            android:id="@+id/title_bar"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_48"
-            app:bindTitleBarDrawableBg="@{vm.valueTitleBarBg}"
-            app:bindTitleBarStatusBarViewId="@{R.id.view_status_bar}"
-            app:bindTitleBarTitleText="@{vm.valueTitle}"
-            app:bindTitleBarTitleTextColor="@{R.color.common_text_sub_color}"
-            app:bindTitleBarTitleTextSize="@{16}"
-            tools:layout_height="?android:attr/actionBarSize" />
+        <include
+            layout="@layout/common_title_bar"
+            app:showBarBack="@{View.GONE}"
+            app:barTitleText="@{vm.valueTitle}" />
 
 
         <com.scwang.smart.refresh.layout.SmartRefreshLayout

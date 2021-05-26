@@ -1,5 +1,6 @@
 package com.open9527.wanandroid.pkg.main.article
 
+import android.view.View
 import com.android.open9527.common.binding.refresh.IRefresh
 import com.android.open9527.common.net.data.response.DataResult
 import com.android.open9527.common.page.BaseCommonFragment
@@ -73,6 +74,9 @@ class ArticleFragment : BaseCommonFragment(), OnHttpListener<Any?> {
     }
 
     inner class ClickProxy {
+
+
+
         @JvmField
         var onRefreshListeners: IRefresh<Boolean> = object : IRefresh<Boolean> {
             override fun onRefresh(refreshLayout: RefreshLayout?, isRefresh: Boolean) {

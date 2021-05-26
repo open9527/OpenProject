@@ -1,6 +1,7 @@
 package com.android.open9527.common.net.glide;
 
 import android.content.Context;
+import android.graphics.drawable.PictureDrawable;
 
 import androidx.annotation.NonNull;
 
@@ -8,6 +9,12 @@ import com.android.open9527.common.R;
 import com.android.open9527.common.net.okhttp.OkHttpClientUtils;
 import com.android.open9527.glide.GlideHeadInterceptor;
 import com.android.open9527.glide.OkHttpLoader;
+import com.android.open9527.glide.svg.SvgDecoder;
+import com.android.open9527.glide.svg.SvgDrawableTranscoder;
+import com.android.open9527.glide.webp.WebpBytebufferDecoder;
+import com.android.open9527.glide.webp.WebpDrawable;
+import com.android.open9527.glide.webp.WebpDrawableEncoder;
+import com.android.open9527.glide.webp.WebpResourceDecoder;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.Registry;
@@ -19,9 +26,12 @@ import com.bumptech.glide.load.engine.cache.MemorySizeCalculator;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.module.AppGlideModule;
 import com.bumptech.glide.request.RequestOptions;
+import com.caverock.androidsvg.SVG;
 
 import java.io.File;
 import java.io.InputStream;
+import java.net.Proxy;
+import java.nio.ByteBuffer;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -85,12 +95,21 @@ public class GlideModuleConfig extends AppGlideModule {
         //可以配置全局请求头,同时可以和网络请求统一获取OkHttpClient,
         //TODO:这里是自己创建得
         OkHttpClient okHttpClient = OkHttpClientUtils.getInstance().newBuilder()
+                .proxy(Proxy.NO_PROXY)
 //                .addInterceptor(new GlideHeadInterceptor())
                 .connectTimeout(10, TimeUnit.SECONDS)
                 .readTimeout(10, TimeUnit.SECONDS)
                 .writeTimeout(10, TimeUnit.SECONDS)
                 .build();
         registry.replace(GlideUrl.class, InputStream.class, new OkHttpLoader.Factory(okHttpClient));
+
+        //创建支持 webp,Svg
+        registry.register(WebpDrawable.class, new WebpDrawableEncoder())
+                .append(InputStream.class, WebpDrawable.class, new WebpResourceDecoder(context, glide))
+                .append(ByteBuffer.class, WebpDrawable.class, new WebpBytebufferDecoder(context, glide))
+                .register(SVG.class, PictureDrawable.class, new SvgDrawableTranscoder())
+                .append(InputStream.class, SVG.class, new SvgDecoder());
+
 
         //Hack to fix Glide outputting tons of log spam with ExifInterface errors
 //        registry.imageHeaderParsers.removeAll { it is ExifInterfaceImageHeaderParser }

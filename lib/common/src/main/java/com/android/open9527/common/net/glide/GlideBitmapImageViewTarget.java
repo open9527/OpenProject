@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import com.bumptech.glide.request.target.SizeReadyCallback;
 import com.bumptech.glide.request.transition.Transition;
 
 /**
@@ -82,5 +83,9 @@ public class GlideBitmapImageViewTarget extends BitmapImageViewTarget {
         }
     }
 
-
+    @Override
+    public void getSize(@NonNull SizeReadyCallback cb) {
+        super.getSize(cb);
+        
+    }
 }

@@ -130,14 +130,17 @@
             app:bindViewClick="@{barBackClick}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view_status_bar" />
+            app:layout_constraintTop_toBottomOf="@+id/view_status_bar"
+            tools:visibility="visible" />
 
         <com.android.open9527.common.widget.textview.StateSwitchTextView
             android:id="@+id/tv_bar_title"
             android:layout_width="@dimen/size_0"
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/size_80"
+            android:layout_marginTop="@dimen/size_12"
             android:layout_marginEnd="@dimen/size_80"
+            android:layout_marginBottom="@dimen/size_12"
             android:ellipsize="end"
             android:gravity="center"
             android:singleLine="true"
@@ -209,7 +212,7 @@
             android:background="@color/common_line_color"
             app:bindViewBgColor="@{barLineBackgroundColor}"
             app:bindViewVisibility="@{showLine}"
-            app:layout_constraintTop_toBottomOf="@+id/iv_bar_back" />
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

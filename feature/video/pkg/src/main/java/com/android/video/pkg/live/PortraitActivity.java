@@ -38,9 +38,7 @@ public class PortraitActivity extends BaseCommonActivity  {
 
     @Override
     protected DataBindingConfig getDataBindingConfig() {
-        return new DataBindingConfig(R.layout.live_portrait_activity, BR.vm, mViewModel)
-
-                ;
+        return new DataBindingConfig(R.layout.live_portrait_activity, BR.vm, mViewModel);
     }
 
     @Override
@@ -52,12 +50,14 @@ public class PortraitActivity extends BaseCommonActivity  {
     public void initView(@Nullable Bundle bundle) {
         super.initView(bundle);
         mVideoView = ((LivePortraitActivityBinding) getBinding()).videoView;
+        mVideoView.setScreenScaleType(VideoView.SCREEN_SCALE_MATCH_PARENT);
         mVideoView.setLifecycleOwner(this);
-        mVideoView.startFullScreen();
+//        mVideoView.startFullScreen();
         mVideoView.setLooping(true);
 //        initDefinition();
         //设置视频地址
         mVideoView.setUrl(mViewModel.valueVideoUrl.get());
+
         mController = new StandardVideoController(this);
         if (VideoViewManager.getConfig().mIsEnableLog) {
             //调试信息
@@ -77,6 +77,11 @@ public class PortraitActivity extends BaseCommonActivity  {
     @Override
     public void initRequest() {
         mViewModel.request();
+//        mViewModel.request0();
+//        mViewModel.request1();
+//        mViewModel.request2();
+//        mViewModel.request3();
+//        mViewModel.request4();
     }
 
 

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.android.open9527.common.widget.image.RoundImageType" />
+
+        <variable
+            name="cell"
+            type="com.android.open9527.image.pkg.gif.GifListCell" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bindViewClick="@{v->cell.onCellClick(v,cell)}">
+
+
+        <com.android.open9527.common.widget.textview.StateSwitchTextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size_10"
+            android:minHeight="@dimen/size_30"
+            android:text="@{cell.valueTitle}"
+            android:textColor="@color/common_text_color"
+            android:textSize="@dimen/font_16"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.android.open9527.common.widget.image.LoadImageView
+            android:id="@+id/iv_pic"
+            bindCornerType="@{RoundImageType.CORNER_TYPE_ALL}"
+            bindIvRoundRadius="@{6}"
+            bindIvRoundType="@{RoundImageType.ROUND_TYPE_ROUND}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/size_10"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            app:bindIvUrl="@{cell.valueUrl}"
+            app:layout_constraintDimensionRatio="16:9"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+
+        <com.android.open9527.common.widget.textview.StateSwitchTextView
+            android:id="@+id/tv_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size_10"
+            android:minHeight="@dimen/size_30"
+            android:text="@{cell.valueDesc}"
+            android:textColor="@color/common_text_sub_color"
+            android:textSize="@dimen/font_16"
+            app:layout_constraintTop_toBottomOf="@+id/iv_pic" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

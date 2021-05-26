@@ -17,14 +17,11 @@ import com.android.open9527.common.binding.refresh.IRefresh;
 import com.android.open9527.common.page.BaseCommonActivity;
 import com.android.open9527.okhttp.request.GetRequest;
 import com.android.open9527.page.DataBindingConfig;
-import com.android.open9527.recycleview.adapter.BaseBindingCell;
 import com.android.open9527.recycleview.adapter.BaseBindingCellListAdapter;
 import com.android.open9527.recycleview.decoration.SpacesItemDecoration;
 import com.android.open9527.recycleview.layout_manager.WrapContentLinearLayoutManager;
-import com.android.open9527.titlebar.OnTitleBarListener;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.LogUtils;
-import com.blankj.utilcode.util.ToastUtils;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 
 /**
@@ -53,8 +50,7 @@ public class BrowserActivity extends BaseCommonActivity {
                                 BR.itemDecoration,
                                 new SpacesItemDecoration(this).setParam(R.color.common_line_color, 10)
                         )
-                .addBindingParam(BR.adapter, new BaseBindingCellListAdapter<BaseBindingCell>())
-                .addBindingParam(BR.titleBarListener, onTitleBarListener);
+                .addBindingParam(BR.adapter, new BaseBindingCellListAdapter<>());
     }
 
     @Override
@@ -93,6 +89,10 @@ public class BrowserActivity extends BaseCommonActivity {
 
 
     public class ClickProxy {
+        public View.OnClickListener backClick = v -> {
+            finish();
+        };
+
         public IRefresh<Boolean> onRefreshListeners = new IRefresh<Boolean>() {
             @Override
             public void onRefresh(RefreshLayout refreshLayout, Boolean isRefresh) {
@@ -103,17 +103,7 @@ public class BrowserActivity extends BaseCommonActivity {
         };
     }
 
-    public OnTitleBarListener onTitleBarListener = new OnTitleBarListener() {
-        @Override
-        public void onLeftClick(View v) {
-            finish();
-        }
 
-        @Override
-        public void onRightClick(View v) {
-            ToastUtils.showShort("onRightClick");
-        }
-    };
 
 
     private class MyBrowserViewClient extends BridgeWebViewClient {

@@ -1,9 +1,16 @@
-
-
 dependencies {
     api Config.depConfig.okhttp3
     api Config.depConfig.glide
     api Config.depConfig.glide_transformations
+
+    //SVG
+    api 'com.caverock:androidsvg-aar:1.3'
+
+    //WebP
+    api "com.facebook.fresco:animated-webp:2.4.0"
+    api "com.facebook.soloader:soloader:0.9.0"
+    api "com.facebook.fresco:imagepipeline-base:2.4.0"
+    api 'com.facebook.fresco:animated-base:2.4.0'
 
 }
 

@@ -13,6 +13,9 @@ import androidx.lifecycle.ViewModel;
 public class PipViewModel extends ViewModel {
 
     public final ObservableField<String> valueTitle = new ObservableField<>("Live");
+
+    public final ObservableField<String> valueCustomUrl = new ObservableField<>();
+
     public final ObservableField<String> valueSpeedTitle = new ObservableField<>("1.0f");
     public final ObservableField<String> valueScreenScaleType = new ObservableField<>("原始大小");
     public final ObservableField<Bitmap> valueShotBitmap = new ObservableField<>();

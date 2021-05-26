@@ -71,11 +71,13 @@ public final class ImageLoadUtils {
         }
 
         GlideApp.with(imageLoadConfig.getImageView())
-                .asBitmap()
-//                .centerCrop()
+//                .asBitmap()
+                .asDrawable()
                 .load(imageLoadConfig.getUri() == null ? imageLoadConfig.getUrl() : imageLoadConfig.getUri())
                 .apply(requestOptions)
-                .into(new GlideBitmapImageViewTarget(imageLoadConfig.getImageView(), imageLoadConfig.getCallBack()));
+//                .into(new GlideBitmapImageViewTarget(imageLoadConfig.getImageView(), imageLoadConfig.getCallBack()))
+                .into(new GlideDrawableImageViewTarget(imageLoadConfig.getImageView(), imageLoadConfig.getCallBack(),1))
+        ;
     }
 
     @SuppressLint("CheckResult")
@@ -102,6 +104,8 @@ public final class ImageLoadUtils {
         //磁盘缓存策略() DiskCacheStrategy.RESOURCE
         if (imageLoadConfig.getStrategy() != null) {
             requestOptions.diskCacheStrategy(imageLoadConfig.getStrategy());
+        } else {
+            requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
         }
 
         //是否跳过内存缓存
@@ -116,14 +120,17 @@ public final class ImageLoadUtils {
         }
         //配置图片宽高(px)
         if (imageLoadConfig.getWidth() > 0 && imageLoadConfig.getHeight() > 0) {
+            //Target.SIZE_ORIGINAL 原始大小
             requestOptions.override(imageLoadConfig.getWidth(), imageLoadConfig.getHeight());
         }
 
         GlideApp.with(imageLoadConfig.getImageView())
                 .asGif()
+//                .asDrawable()
                 .load(imageLoadConfig.getUrl())
                 .apply(requestOptions)
-                .into(new GlideImageViewTarget(imageLoadConfig.getImageView(), imageLoadConfig.getCallBack(), -1));
+//                .into(new GlideDrawableImageViewTarget(imageLoadConfig.getImageView(), imageLoadConfig.getCallBack(),-1));
+                .into(imageLoadConfig.getImageView());
     }
 
 
@@ -147,9 +154,18 @@ public final class ImageLoadUtils {
         GlideApp.with(view).resumeRequests();
     }
 
+    public static void resumeLoad(@NonNull Context context) {
+        GlideApp.with(context).resumeRequests();
+    }
+
     public static void pauseLoad(@NonNull View view) {
         GlideApp.with(view).pauseRequests();
     }
+
+    public static void pauseLoad(@NonNull Context context) {
+        GlideApp.with(context).pauseRequests();
+    }
+
 
     public static void clearImageView(@NonNull ImageView imageView) {
         GlideApp.with(imageView).clear(imageView);

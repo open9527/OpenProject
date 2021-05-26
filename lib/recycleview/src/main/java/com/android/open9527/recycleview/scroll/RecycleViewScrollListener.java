@@ -29,17 +29,17 @@ public class RecycleViewScrollListener extends RecyclerView.OnScrollListener {
         mDistance += dy;
         scrollListener.onScrimsStateChange(recyclerView, mDistance >= mThreshold);
 
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-            }
-
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-            }
-        });
+//        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+//            @Override
+//            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+//                super.onScrollStateChanged(recyclerView, newState);
+//            }
+//
+//            @Override
+//            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+//                super.onScrolled(recyclerView, dx, dy);
+//            }
+//        });
 
     }
 
@@ -57,6 +57,7 @@ public class RecycleViewScrollListener extends RecyclerView.OnScrollListener {
                 //由于用户的操作，屏幕产生惯性滑动，停止加载图片
                 scrollListener.onImageLoadChange(recyclerView, false);
                 break;
+
         }
 
     }
@@ -66,6 +67,7 @@ public class RecycleViewScrollListener extends RecyclerView.OnScrollListener {
         }
 
         default void onImageLoadChange(@NonNull RecyclerView recyclerView, boolean loadImage) {
+
         }
     }
 

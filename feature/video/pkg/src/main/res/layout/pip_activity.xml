@@ -38,9 +38,38 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/root_status_bar" />
 
+            <EditText
+                android:id="@+id/et_play_url"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size_10"
+                android:layout_marginStart="@dimen/size_10"
+                android:background="@color/common_line_color"
+                android:hint="URL:"
+                android:minHeight="@dimen/size_45"
+                android:text="@={vm.valueCustomUrl}"
+                android:textColor="@color/common_text_color"
+                android:textSize="@dimen/font_16"
+                app:layout_constraintTop_toBottomOf="@+id/player_container" />
+
 
             <com.android.open9527.common.widget.textview.StateSwitchTextView
-                android:id="@+id/tv_pic"
+                android:id="@+id/tv_play"
+                bindClickViewScale="@{true}"
+                bindViewClick="@{click.playClick}"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_45"
+                android:layout_margin="@dimen/size_10"
+                android:background="@color/common_line_color"
+                android:gravity="center"
+                android:text="play"
+                android:textColor="@color/common_text_color"
+                android:textSize="@dimen/font_16"
+                app:layout_constraintTop_toBottomOf="@+id/et_play_url" />
+
+
+            <com.android.open9527.common.widget.textview.StateSwitchTextView
+                android:id="@+id/tv_pip"
                 bindClickViewScale="@{true}"
                 bindViewClick="@{click.pipClick}"
                 android:layout_width="match_parent"
@@ -51,7 +80,7 @@
                 android:text="pip"
                 android:textColor="@color/common_text_color"
                 android:textSize="@dimen/font_16"
-                app:layout_constraintTop_toBottomOf="@+id/player_container" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_play" />
 
             <com.android.open9527.common.widget.textview.StateSwitchTextView
                 android:id="@+id/tv_speed"
@@ -65,7 +94,7 @@
                 android:text="@{vm.valueSpeedTitle}"
                 android:textColor="@color/common_text_color"
                 android:textSize="@dimen/font_16"
-                app:layout_constraintTop_toBottomOf="@+id/tv_pic" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_pip" />
 
             <com.android.open9527.common.widget.textview.StateSwitchTextView
                 bindClickViewScale="@{true}"

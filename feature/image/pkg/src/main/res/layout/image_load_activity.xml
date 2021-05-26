@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.android.open9527.image.pkg.R" />
+
+        <variable
+            name="vm"
+            type="com.android.open9527.image.pkg.load.ImageViewLoadModel" />
+
+        <variable
+            name="click"
+            type="com.android.open9527.image.pkg.load.ImageLoadActivity.ClickProxy" />
+
+        <variable
+            name="scrollListener"
+            type="com.android.open9527.recycleview.scroll.RecycleViewScrollListener" />
+
+
+        <variable
+            name="adapter"
+            type="androidx.recyclerview.widget.RecyclerView.Adapter" />
+
+        <variable
+            name="layoutManager"
+            type="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <variable
+            name="itemDecoration"
+            type="androidx.recyclerview.widget.RecyclerView.ItemDecoration" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/common_title_bar"
+            app:barBackClick="@{click.backClick}"
+            app:barMenuClick="@{click.menuClick}"
+            app:showMenuString="@{true}"
+            app:barMenuText="@{vm.valueMenu}"
+            app:barTitleText="@{vm.valueTitle}" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:bindRvAdapter="@{adapter}"
+            app:bindRvAnim="@{false}"
+            app:bindRvItemDecoration="@{itemDecoration}"
+            app:bindRvLayoutManager="@{layoutManager}"
+            app:bindRvList="@{vm.valueCells}"
+            app:bindRvScrollListener="@{scrollListener}" />
+
+    </LinearLayout>
+</layout>

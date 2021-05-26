@@ -3,4 +3,12 @@
 <network-security-config>
     <!-- 允许明文通信 -->
     <base-config cleartextTrafficPermitted="true" />
+
+    <!-- 支持 Android 7.0 以上调试时，信任 Charles 和 Fiddler 等用户信任的证书 -->
+<!--    <debug-overrides>-->
+<!--        <trust-anchors>-->
+<!--            <certificates src="system" />-->
+<!--            <certificates src="user" />-->
+<!--        </trust-anchors>-->
+<!--    </debug-overrides>-->
 </network-security-config>

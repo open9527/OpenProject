@@ -26,8 +26,6 @@ public class GalleryViewModel extends ViewModel {
     public final ObservableField<String> valueTitle = new ObservableField<>("Gallery");
     public final ObservableField<Drawable> valueTitleBarBg = new ObservableField<>(new ColorDrawable(Color.WHITE));
 
-    public final ObservableField<String> valueLeft = new ObservableField<>("返回");
-    public final ObservableField<String> valueRight = new ObservableField<>("菜单");
 
     public final ObservableArrayList<BaseBindingCell> valueCells = new ObservableArrayList<>();
 

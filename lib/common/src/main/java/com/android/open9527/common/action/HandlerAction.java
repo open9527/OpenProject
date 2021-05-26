@@ -57,4 +57,5 @@ public interface HandlerAction {
     default void removeCallbacks() {
         HANDLER.removeCallbacksAndMessages(this);
     }
+
 }

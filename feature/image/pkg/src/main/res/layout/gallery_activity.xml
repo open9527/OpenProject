@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <import type="com.android.open9527.image.pkg.R" />
 
         <variable
             name="vm"
             type="com.android.open9527.image.pkg.gallery.GalleryViewModel" />
 
-
         <variable
-            name="titleBarListener"
-            type="com.android.open9527.titlebar.OnTitleBarListener" />
+            name="click"
+            type="com.android.open9527.image.pkg.gallery.GalleryActivity.ClickProxy" />
 
         <variable
             name="adapter"
@@ -33,29 +33,10 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <View
-            android:id="@+id/view_status_bar"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:bindViewBgDrawable="@{vm.valueTitleBarBg}" />
-
-        <com.android.open9527.titlebar.TitleBar
-            android:id="@+id/title_bar"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_48"
-            app:bindTitleBarDrawableBg="@{vm.valueTitleBarBg}"
-            app:bindTitleBarLeftText="@{vm.valueLeft}"
-            app:bindTitleBarLeftTextColor="@{R.color.common_text_sub_color}"
-            app:bindTitleBarLeftTextSize="@{14}"
-            app:bindTitleBarListener="@{titleBarListener}"
-            app:bindTitleBarRightText="@{vm.valueRight}"
-            app:bindTitleBarRightTextColor="@{R.color.common_text_sub_color}"
-            app:bindTitleBarRightTextSize="@{14}"
-            app:bindTitleBarStatusBarViewId="@{R.id.view_status_bar}"
-            app:bindTitleBarTitleText="@{vm.valueTitle}"
-            app:bindTitleBarTitleTextColor="@{R.color.common_text_color}"
-            app:bindTitleBarTitleTextSize="@{16}"
-            tools:layout_height="?android:attr/actionBarSize" />
+        <include
+            layout="@layout/common_title_bar"
+            app:barBackClick="@{click.backClick}"
+            app:barTitleText="@{vm.valueTitle}" />
 
 
         <androidx.recyclerview.widget.RecyclerView

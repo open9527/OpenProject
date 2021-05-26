@@ -20,8 +20,6 @@ import com.android.open9527.permission.PermissionsManage;
 import com.android.open9527.recycleview.adapter.BaseBindingCellListAdapter;
 import com.android.open9527.recycleview.decoration.GridSpaceItemDecoration;
 import com.android.open9527.recycleview.layout_manager.WrapContentGridLayoutManager;
-import com.android.open9527.titlebar.OnTitleBarListener;
-import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.GsonUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ThreadUtils;
@@ -47,7 +45,7 @@ public class GalleryActivity extends BaseCommonActivity {
     @Override
     protected DataBindingConfig getDataBindingConfig() {
         return new DataBindingConfig(R.layout.gallery_activity, BR.vm, mViewModel)
-                .addBindingParam(BR.titleBarListener, onTitleBarListener)
+                .addBindingParam(BR.click, new ClickProxy())
                 .addBindingParam(BR.layoutManager, new WrapContentGridLayoutManager(this, 2))
                 .addBindingParam(BR.itemDecoration, new GridSpaceItemDecoration(10))
                 .addBindingParam(BR.adapter, new BaseBindingCellListAdapter<>());
@@ -86,23 +84,15 @@ public class GalleryActivity extends BaseCommonActivity {
                 });
     }
 
-    public OnTitleBarListener onTitleBarListener = new OnTitleBarListener() {
-        @Override
-        public void onLeftClick(View v) {
+
+    public class ClickProxy {
+        public View.OnClickListener backClick = v -> {
             finish();
-        }
+        };
+        public View.OnClickListener menuClick = v -> {
 
-        @Override
-        public void onRightClick(View v) {
-
-        }
-    };
-
-
-    public static void start() {
-        ActivityUtils.startActivity(GalleryActivity.class);
+        };
     }
-
 
     /**
      * 图片专辑
@@ -114,7 +104,6 @@ public class GalleryActivity extends BaseCommonActivity {
     ArrayList<String> mAllPhoto = new ArrayList<>();
 
     private void getAlbum() {
-
 
         final Uri contentUri = MediaStore.Files.getContentUri("external");
         final String sortOrder = MediaStore.Files.FileColumns.DATE_MODIFIED + " DESC";

@@ -5,7 +5,6 @@
 
     <data>
 
-        <import type="com.open9527.wanandroid.pkg.R" />
 
         <variable
             name="vm"
@@ -27,40 +26,31 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:bindViewBgDrawable="@{vm.valueTitleBarBg}"
+            app:bindViewStatusBar="@{0}"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.android.open9527.titlebar.TitleBar
-            android:id="@+id/title_bar"
+        <!--app:tabIndicatorFullWidth="true"-->
+        <!--app:tabIndicator="@drawable/layer_list_tab_indicator"
+            app:tabIndicatorColor="@color/pinkRose"-->
+        <com.open9527.wanandroid.pkg.widget.ProjectTabLayout
+            android:id="@+id/tab_layout"
+            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_48"
-            app:bindTitleBarDrawableBg="@{vm.valueTitleBarBg}"
-            app:bindTitleBarStatusBarViewId="@{R.id.view_status_bar}"
-            tools:layout_height="?android:attr/actionBarSize">
-
-            <!--app:tabIndicatorFullWidth="true"-->
-            <!--app:tabIndicator="@drawable/layer_list_tab_indicator"
-                app:tabIndicatorColor="@color/pinkRose"-->
-            <com.open9527.wanandroid.pkg.widget.ProjectTabLayout
-                android:id="@+id/tab_layout"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/size_48"
-                android:paddingStart="@dimen/size_10"
-                android:paddingEnd="@dimen/size_10"
-                app:bindTabLayoutDefaultIndex="@{vm.valueDefaultIndex}"
-                app:bindTabLayoutFragmentList="@{vm.valueFragments}"
-                app:bindTabLayoutFragmentManager="@{vm.valueFragmentManager}"
-                app:bindTabLayoutTabBeanData="@{vm.valueTabList}"
-                app:tabContentStart="@dimen/size_10"
-                app:tabGravity="center"
-                app:tabIndicatorGravity="center"
-                app:tabMaxWidth="0dp"
-                app:tabMinWidth="0dp"
-                app:tabMode="scrollable"
-                app:tabRippleColor="@android:color/transparent"
-                tools:ignore="RtlSymmetry" />
-
-        </com.android.open9527.titlebar.TitleBar>
-
+            android:paddingStart="@dimen/size_10"
+            android:paddingEnd="@dimen/size_10"
+            app:bindTabLayoutDefaultIndex="@{vm.valueDefaultIndex}"
+            app:bindTabLayoutFragmentList="@{vm.valueFragments}"
+            app:bindTabLayoutFragmentManager="@{vm.valueFragmentManager}"
+            app:bindTabLayoutTabBeanData="@{vm.valueTabList}"
+            app:tabContentStart="@dimen/size_10"
+            app:tabGravity="center"
+            app:tabIndicatorGravity="center"
+            app:tabMaxWidth="0dp"
+            app:tabMinWidth="0dp"
+            app:tabMode="scrollable"
+            app:tabRippleColor="@android:color/transparent"
+            tools:ignore="RtlSymmetry" />
 
         <View
             android:layout_width="match_parent"

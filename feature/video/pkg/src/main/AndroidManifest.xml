@@ -24,7 +24,7 @@
             android:name=".live.PortraitActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".other.PipActivity"

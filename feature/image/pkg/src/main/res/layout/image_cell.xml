@@ -16,10 +16,11 @@
         android:transitionName="@{cell.valueImageUrl}"
         app:bindViewClick="@{v->cell.onCellClick(v,cell)}">
 
+
         <com.android.open9527.common.widget.image.LoadImageView
             android:id="@+id/iv_pic"
-            bindIvRoundRadius="@{6}"
             bindCornerType="@{cell.valueCornerType}"
+            bindIvRoundRadius="@{6}"
             bindIvRoundType="@{cell.valueRoundType}"
             android:layout_width="match_parent"
             android:layout_height="0dp"

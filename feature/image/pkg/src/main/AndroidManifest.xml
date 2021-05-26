@@ -3,7 +3,7 @@
 
     <application>
         <activity
-            android:name=".load.ImageActivity"
+            android:name=".load.ImageLoadActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
@@ -25,5 +25,27 @@
             android:label="Preview2Activity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".gif.GifActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="Gif"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".gif.GifListActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="GifList"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".gif.CustomGifActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="CustomGif"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".ImageActivity" />
     </application>
 </manifest>

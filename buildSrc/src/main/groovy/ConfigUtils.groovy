@@ -91,7 +91,6 @@ class ConfigUtils {
             ':lib:glide',
             ':lib:base',
             ':lib:common',
-            ':lib:titlebar',
             ':lib:webview',
             ':lib:router',
             ':lib:umeng',

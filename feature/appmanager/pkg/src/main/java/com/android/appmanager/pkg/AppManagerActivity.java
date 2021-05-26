@@ -37,10 +37,7 @@ public class AppManagerActivity extends BaseCommonActivity {
                 .addBindingParam(BR.adapter, new BaseBindingCellListAdapter<>());
     }
 
-    @Override
-    public void initStatusBar() {
-        super.initStatusBar();
-    }
+
 
     @Override
     public void initRequest() {

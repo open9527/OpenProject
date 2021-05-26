@@ -5,7 +5,6 @@
 
     <data>
 
-        <import type="com.open9527.wanandroid.pkg.R" />
 
         <variable
             name="vm"
@@ -34,23 +33,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.android.open9527.titlebar.TitleBar
-            android:id="@+id/title_bar"
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:bindTitleBarDrawableBg="@{vm.valueTitleBarBg}"
-            app:bindTitleBarTitleText="@{vm.valueTitle}"
-            app:bindTitleBarTitleTextColor="@{R.color.common_text_color}"
-            app:bindTitleBarTitleTextSize="@{16}"
-            tools:layout_height="?android:attr/actionBarSize">
+            android:layout_height="100dp"
+            android:src="@color/pink" />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:src="@color/pink"
-                app:bindViewClick="@{click.shareClick}" />
-
-        </com.android.open9527.titlebar.TitleBar>
 
         <com.scwang.smart.refresh.layout.SmartRefreshLayout
             android:id="@+id/refresh_layout"

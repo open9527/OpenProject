@@ -2,6 +2,7 @@ package com.android.open9527.common.application;
 
 import android.content.ComponentCallbacks2;
 import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -16,6 +17,8 @@ import com.android.open9527.common.net.server.ReleaseServer;
 import com.android.open9527.common.net.server.TestServer;
 import com.android.open9527.crash.Crash;
 import com.android.open9527.crash.ExceptionHandler;
+import com.android.open9527.glide.webp.WebpBytebufferDecoder;
+import com.android.open9527.glide.webp.WebpResourceDecoder;
 import com.android.open9527.okhttp.HttpConfig;
 import com.android.open9527.okhttp.config.IRequestInterceptor;
 import com.android.open9527.okhttp.config.IRequestServer;
@@ -28,6 +31,8 @@ import com.android.open9527.video.common.render.TextureRenderViewFactory;
 import com.android.open9527.video.exo.ExoMediaPlayerFactory;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.LogUtils;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.ResourceDecoder;
 import com.franmontiel.persistentcookiejar.ClearableCookieJar;
 import com.franmontiel.persistentcookiejar.PersistentCookieJar;
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
@@ -37,7 +42,9 @@ import com.scwang.smart.refresh.header.ClassicsHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 import com.tencent.smtt.sdk.QbSdk;
 
+import java.io.InputStream;
 import java.net.Proxy;
+import java.nio.ByteBuffer;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -83,6 +90,16 @@ public class CommonApplication extends BaseApplication {
 
 
     private void registerGlide() {
+        // webp support
+//        ResourceDecoder decoder = new WebpResourceDecoder(this);
+//        ResourceDecoder byteDecoder = new WebpBytebufferDecoder(this);
+//        // use prepend() avoid intercept by default decoder
+//        Glide.get(this).getRegistry()
+//                .prepend(InputStream.class, Drawable.class, decoder)
+//                .prepend(ByteBuffer.class, Drawable.class, byteDecoder);
+
+
+
         //Glide低内存优化操作
         registerComponentCallbacks(new ComponentCallbacks2() {
             @Override
