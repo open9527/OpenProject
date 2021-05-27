@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="com.android.open9527.common.widget.image.RoundImageType" />
         <variable
             name="vm"
             type="com.android.open9527.image.pkg.gif.CustomGifViewModel" />
@@ -37,6 +38,31 @@
                 android:orientation="vertical"
                 tools:ignore="HardcodedText">
 
+                <com.android.open9527.common.widget.image.LoadImageView
+                    android:id="@+id/iv_pic"
+                    bindCornerType="@{RoundImageType.CORNER_TYPE_ALL}"
+                    bindIvRoundRadius="@{6}"
+                    bindIvRoundType="@{RoundImageType.ROUND_TYPE_ROUND}"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_200"
+                    android:layout_margin="@dimen/size_20"
+                    bindIvUrl="@{vm.valueSvgUrl}"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop" />
+
+                <com.android.open9527.common.widget.image.LoadImageView
+                    android:id="@+id/iv_lottie"
+                    app:lottie_repeatCount="-1"
+                    app:lottie_autoPlay="true"
+                    app:lottie_rawRes="@raw/bullseye"
+                    bindCornerType="@{RoundImageType.CORNER_TYPE_ALL}"
+                    bindIvRoundRadius="@{6}"
+                    bindIvRoundType="@{RoundImageType.ROUND_TYPE_ROUND}"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_200"
+                    android:layout_margin="@dimen/size_20"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop" />
 
                 <com.android.open9527.image.pkg.GifImageView
                     android:id="@+id/iv_gif"

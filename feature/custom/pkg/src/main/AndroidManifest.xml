@@ -63,5 +63,12 @@
             android:label="Login"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".lottie.LottieActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="Lottie"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
     </application>
 </manifest>

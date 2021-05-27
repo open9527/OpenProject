@@ -5,7 +5,6 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
-import com.android.open9527.common.widget.image.RoundImageType;
 import com.android.open9527.image.pkg.R;
 import com.android.open9527.image.pkg.load.ImageVo;
 import com.android.open9527.page.BR;

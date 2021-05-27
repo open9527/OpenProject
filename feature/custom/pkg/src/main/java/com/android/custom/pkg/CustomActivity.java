@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 
 import com.android.custom.pkg.bundle.CustomBundle;
 import com.android.custom.pkg.dialog.DialogActivity;
+import com.android.custom.pkg.lottie.LottieActivity;
 import com.android.custom.pkg.recycleview.RecycleViewActivity;
 import com.android.custom.pkg.shadow.ShadowActivity;
 import com.android.custom.pkg.video.VideoDetailsActivity;
@@ -94,6 +95,10 @@ public class CustomActivity extends BaseCommonActivity {
 
         public View.OnClickListener VideoPlayerViewClick = v -> {
             ActivityUtils.startActivity(VideoDetailsActivity.class);
+        };
+
+        public View.OnClickListener lottieViewClick = v -> {
+            ActivityUtils.startActivity(LottieActivity.class);
         };
     }
 

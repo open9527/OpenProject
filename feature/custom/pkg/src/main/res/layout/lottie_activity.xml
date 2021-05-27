@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.android.custom.pkg.lottie.LottieViewModel" />
+
+        <variable
+            name="click"
+            type="com.android.custom.pkg.lottie.LottieActivity.ClickProxy" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:ignore="HardcodedText">
+
+        <include
+            layout="@layout/common_title_bar"
+            app:barBackClick="@{click.backClick}"
+            app:barTitleText="@{vm.valueTitle}" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/size_10">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical"
+                tools:ignore="HardcodedText">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/iv_lottie"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_200"
+                    android:layout_margin="@dimen/size_10"
+                    app:lottie_autoPlay="true"
+                    app:lottie_repeatCount="-1"
+                    app:lottie_rawRes="@raw/lottie" />
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_200"
+                    android:layout_margin="@dimen/size_10"
+                    app:lottie_autoPlay="true"
+                    app:lottie_repeatCount="-1"
+                    app:lottie_rawRes="@raw/lottielogo" />
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_200"
+                    android:layout_margin="@dimen/size_10"
+                    app:lottie_autoPlay="true"
+                    app:lottie_repeatCount="-1"
+                    app:lottie_rawRes="@raw/day_night" />
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_200"
+                    android:layout_margin="@dimen/size_10"
+                    app:lottie_autoPlay="true"
+                    app:lottie_repeatCount="-1"
+                    app:lottie_rawRes="@raw/full_screen" />
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_200"
+                    android:layout_margin="@dimen/size_10"
+                    app:lottie_autoPlay="true"
+                    app:lottie_repeatCount="-1"
+                    app:lottie_rawRes="@raw/hamburger_arrow" />
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_200"
+                    android:layout_margin="@dimen/size_10"
+                    app:lottie_autoPlay="true"
+                    app:lottie_repeatCount="-1"
+                    app:lottie_rawRes="@raw/heart" />
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_200"
+                    android:layout_margin="@dimen/size_10"
+                    app:lottie_autoPlay="true"
+                    app:lottie_repeatCount="-1"
+                    app:lottie_rawRes="@raw/bullseye" />
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_200"
+                    android:layout_margin="@dimen/size_10"
+                    app:lottie_autoPlay="true"
+                    app:lottie_repeatCount="-1"
+                    app:lottie_rawRes="@raw/material_wave_loading" />
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_200"
+                    android:layout_margin="@dimen/size_10"
+                    app:lottie_autoPlay="true"
+                    app:lottie_repeatCount="-1"
+                    app:lottie_rawRes="@raw/name" />
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_200"
+                    android:layout_margin="@dimen/size_10"
+                    app:lottie_autoPlay="true"
+                    app:lottie_repeatCount="-1"
+                    app:lottie_rawRes="@raw/solid" />
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_200"
+                    android:layout_margin="@dimen/size_10"
+                    app:lottie_autoPlay="true"
+                    app:lottie_repeatCount="-1"
+                    app:lottie_rawRes="@raw/walkthrough" />
+
+            </LinearLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+</layout>

@@ -2,12 +2,16 @@ package com.open9527.wanandroid.pkg.cell
 
 import android.text.TextUtils
 import android.view.View
+import android.widget.ImageView
 import androidx.databinding.ObservableField
+import com.airbnb.lottie.LottieAnimationView
+import com.airbnb.lottie.LottieComposition
 import com.android.open9527.image.export.api.ImageApi
 import com.android.open9527.image.export.api.ImageBundle
 import com.android.open9527.recycleview.adapter.BaseBindingCell
 import com.android.open9527.recycleview.adapter.BaseBindingCellViewHolder
 import com.blankj.utilcode.util.ApiUtils
+import com.blankj.utilcode.util.GsonUtils
 import com.blankj.utilcode.util.StringUtils
 import com.open9527.wanandroid.pkg.BR
 import com.open9527.wanandroid.pkg.R
@@ -30,10 +34,12 @@ class ProjectCell(contentVo: ContentVo, iCellClick: ICellClick) :
     @JvmField
     val valueShareUser = ObservableField<String>()
 
+//    val valueLottieJson = ObservableField<String>()
+
     @JvmField
     val valueNiceShareDate = ObservableField<String?>()
     private val valueICellClick = ObservableField<ICellClick?>()
-    private val valueId =  ObservableField<String?>()
+    private val valueId = ObservableField<String?>()
     override fun bind(holder: BaseBindingCellViewHolder<*>, position: Int) {
         holder.addBindingParam(BR.cell, this)
     }
@@ -41,6 +47,10 @@ class ProjectCell(contentVo: ContentVo, iCellClick: ICellClick) :
     override fun onCellClick(view: View, projectCell: ProjectCell) {
         val iCellClick = valueICellClick.get()
         if (view.id == R.id.iv_pic) {
+//            val iv = view.findViewById<LottieAnimationView>(R.id.iv_pic);
+//            iv.setAnimationFromJson( valueLottieJson.get() ,"9527")
+//            iv.repeatCount = -1
+//            iv.playAnimation()
             iCellClick?.onImageClick(view, projectCell.valueImageUrl.get())
 
         } else {
@@ -58,10 +68,11 @@ class ProjectCell(contentVo: ContentVo, iCellClick: ICellClick) :
 
         fun onImageClick(view: View?, url: String?)
 
-        fun onContentClick( title: String?, link: String?)
+        fun onContentClick(title: String?, link: String?)
     }
 
     init {
+//        valueLottieJson.set(contentVo.lottieJson)
         valueId.set(contentVo.id)
         valueTitle.set(contentVo.title)
         valueLink.set(contentVo.link)

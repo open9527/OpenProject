@@ -55,7 +55,7 @@ dependencies {
     api Config.depConfig.persistent_cookie_jar
     api Config.depConfig.banner_viewpager
 
-
+    api "com.airbnb.android:lottie:3.7.0"
 
 
 

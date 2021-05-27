@@ -16,5 +16,7 @@ public class CustomGifViewModel extends ViewModel {
     public final ObservableField<String> valueTitle = new ObservableField<>("CustomGif");
 
     public final MutableLiveData<InputStream> valueInputStream = new MutableLiveData<>();
+
+    public final ObservableField<String> valueSvgUrl = new ObservableField<>("file:///android_asset/duolingo.svg");
 }
 

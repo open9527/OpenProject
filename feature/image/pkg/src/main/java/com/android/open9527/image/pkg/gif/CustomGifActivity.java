@@ -5,6 +5,7 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
+import com.android.open9527.common.net.glide.GlideApp;
 import com.android.open9527.common.page.BaseCommonActivity;
 import com.android.open9527.image.pkg.BR;
 import com.android.open9527.image.pkg.R;
@@ -36,6 +37,7 @@ public class CustomGifActivity extends BaseCommonActivity {
         return new DataBindingConfig(R.layout.custom_gif_activity, BR.vm, mViewModel)
                 .addBindingParam(BR.click, new ClickProxy());
     }
+
     @Override
     public void initView(@Nullable Bundle bundle) {
         super.initView(bundle);
@@ -44,6 +46,14 @@ public class CustomGifActivity extends BaseCommonActivity {
         mBinding.ivGif.play(-1);
 //        mBinding.ivGif1.setGifResource(R.drawable.gif2);
 //        mBinding.ivGif1.play(-1);
+//        mBinding.ivPic
+
+        //SVG
+        GlideApp.with(this).load("file:///android_asset/duolingo.svg").into(mBinding.ivPic);
+
+        //lottie
+
+
 
     }
 
