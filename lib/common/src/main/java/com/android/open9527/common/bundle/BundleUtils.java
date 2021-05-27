@@ -40,11 +40,12 @@ public final class BundleUtils {
 
     public static <T extends BaseBundleData> T getBundleData(@Nullable Bundle bundle, @NonNull final Class<T> type) {
         assert bundle != null;
-        String json = bundle.getString(BaseBundleData.BUNDLE_NAME);
+        String json =  bundle.getString(BaseBundleData.BUNDLE_NAME);
         if (!TextUtils.isEmpty(json)) {
             return GsonUtils.fromJson(json, type);
         }
         return null;
     }
+
 
 }

@@ -1,5 +1,6 @@
 package com.android.custom.pkg;
 
+import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableField;
 import androidx.lifecycle.ViewModel;
 
@@ -19,6 +20,7 @@ public class CustomViewModel extends ViewModel {
     public final ObservableField<String> valueRecycleViewTitle = new ObservableField<>("RecycleView");
     public final ObservableField<String> valueBridgeTitle = new ObservableField<>("Bridge");
     public final ObservableField<String> valueVideoTitle = new ObservableField<>("video");
+    public final ObservableBoolean valueIsLogin = new ObservableBoolean(false);
 
 
 }

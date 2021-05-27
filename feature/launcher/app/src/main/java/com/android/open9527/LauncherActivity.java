@@ -47,7 +47,6 @@ public class LauncherActivity extends BaseCommonActivity {
                             @Override
                             public void onFound(Postcard postcard) {
                                 LogUtils.i(TAG, "NavigationCallback" + "找到跳转页面");
-
                             }
 
                             @Override
@@ -77,12 +76,14 @@ public class LauncherActivity extends BaseCommonActivity {
                         .navigation(LauncherActivity.this);
 
             } else if (view.getId() == R.id.btn_annotation) {
-                Router.getsInstance().build(Path.PATH_LAUNCHER_CONTENTVIEWACTIVITY)
+                Router.getsInstance()
+                        .build(Path.PATH_LAUNCHER_CONTENTVIEWACTIVITY)
                         .navigation(LauncherActivity.this);
 
 
             } else if (view.getId() == R.id.btn_appmanager) {
-                Router.getsInstance().build(Path.PATH_APPMANAGER_APPMANAGERACTIVITY)
+                Router.getsInstance()
+                        .build(Path.PATH_APPMANAGER_APPMANAGERACTIVITY)
                         .navigation(LauncherActivity.this);
 
             } else if (view.getId() == R.id.btn_webview) {
@@ -98,7 +99,6 @@ public class LauncherActivity extends BaseCommonActivity {
                             @Override
                             public void onFound(Postcard postcard) {
                                 LogUtils.i(TAG, "NavigationCallback" + "找到跳转页面");
-
                             }
 
                             @Override
@@ -110,6 +110,7 @@ public class LauncherActivity extends BaseCommonActivity {
                             public void onArrival(Postcard postcard) {
                                 LogUtils.i(TAG, "NavigationCallback" + "成功跳转");
                             }
+
                         });
 
 

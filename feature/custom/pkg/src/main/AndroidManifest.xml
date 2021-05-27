@@ -50,15 +50,17 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
+
         <activity
-            android:name=".video.VideoListActivity"
+            android:name=".video.VideoDetailsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".video.VideoDetailsActivity"
+            android:name=".LoginActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="Login"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
     </application>
