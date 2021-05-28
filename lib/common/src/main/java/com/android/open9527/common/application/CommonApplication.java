@@ -167,11 +167,7 @@ public class CommonApplication extends BaseApplication {
                 new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(this));
 
         OkHttpClient okHttpClient = OkHttpClientUtils.getInstance().newBuilder()
-                .proxy(Proxy.NO_PROXY)
                 .cookieJar(cookieJar)
-                .connectTimeout(30, TimeUnit.SECONDS)
-                .readTimeout(30, TimeUnit.SECONDS)
-                .writeTimeout(30, TimeUnit.SECONDS)
                 .build();
         HttpConfig.with(okHttpClient)
                 // 是否打印日志

@@ -95,7 +95,6 @@ public class GlideModuleConfig extends AppGlideModule {
         //可以配置全局请求头,同时可以和网络请求统一获取OkHttpClient,
         //TODO:这里是自己创建得
         OkHttpClient okHttpClient = OkHttpClientUtils.getInstance().newBuilder()
-                .proxy(Proxy.NO_PROXY)
 //                .addInterceptor(new GlideHeadInterceptor())
                 .connectTimeout(10, TimeUnit.SECONDS)
                 .readTimeout(10, TimeUnit.SECONDS)
