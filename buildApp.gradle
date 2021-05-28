@@ -55,8 +55,8 @@ android {
             minifyEnabled false
 
             proguardFiles 'proguard-rules.pro', 'proguard-lib.pro', 'proguard-sdk.pro'
-//            resValue "string", "app_name", Config.appName + suffix + ".debug"
-            resValue "string", "app_name",  suffix + ".debug"
+            resValue "string", "app_name", Config.appName + suffix + ".debug"
+//            resValue "string", "app_name",  suffix + ".debug"
 
         }
 
