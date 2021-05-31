@@ -19,7 +19,7 @@ class Config {
     //OkHttp3.12.x分支支持Android2.3+(API级别9+)和Java 7+。
     //java.lang.ExceptionInInitializerError
     static okHttp3 = '3.12.12'
-    static glide = '4.11.0'
+    static glide = '4.12.0'
 
     static smartRefresh = '2.0.3'
     static umSdk = '7.1.4'
@@ -27,28 +27,26 @@ class Config {
 
 
     static depConfig = [
+
             plugin_gradle                   : "com.android.tools.build:gradle:$gradlePluginVersion",
+            plugin_api                      : "com.blankj:api-gradle-plugin:1.5",
+            plugin_kotlin                   : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion",
 
-            api_gradle_plugin               : "com.blankj:api-gradle-plugin:1.5",
-
-            kotlin_gradle_plugin            : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion",
-
-            androidx_core_ktx               : "androidx.core:core-ktx:$kotlinKtx",
+            kotlin_core_ktx                 : "androidx.core:core-ktx:$kotlinKtx",
             kotlin_stdlib_jdk7              : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion",
 
-            androidx_appcompat             : "androidx.appcompat:appcompat:1.2.0",
-//            androidx_appcompat              : "androidx.appcompat:appcompat:1.3.0-rc01",
+            androidx_appcompat              : "androidx.appcompat:appcompat:1.2.0",
             androidx_material               : "com.google.android.material:material:1.2.1",
             androidx_constraint             : "androidx.constraintlayout:constraintlayout:2.0.4",
             androidx_recyclerview           : "androidx.recyclerview:recyclerview:1.2.0",
             androidx_viewpager2             : "androidx.viewpager2:viewpager2:$androidxVersion",
             androidx_cardview               : "androidx.cardview:cardview:$androidxVersion",
-            androidx_multidex               : "androidx.multidex:multidex:2.0.0",
+            androidx_multidex               : "androidx.multidex:multidex:2.0.1",
 
             utilcode                        : "com.blankj:utilcodex:1.30.5",
 
             okhttp3                         : "com.squareup.okhttp3:okhttp:$okHttp3",
-            gson                            : 'com.google.code.gson:gson:2.8.6',
+            gson                            : "com.google.code.gson:gson:2.8.6",
 
             glide                           : "com.github.bumptech.glide:glide:$glide",
             glide_compiler                  : "com.github.bumptech.glide:compiler:$glide",
@@ -88,8 +86,7 @@ class Config {
             umsdk_sina                      : "com.sina.weibo.sdk:core:10.10.0:openDefaultRelease@aar",
             umsdk_share_sina                : "com.umeng.umsdk:share-sina:$umSdk",
 
-
-            banner_viewpager                : "com.github.zhpanvip:BannerViewPager:3.4.0",
+            banner_viewpager                : "com.github.zhpanvip:BannerViewPager:3.5.1",
 
             persistent_cookie_jar           : "com.github.franmontiel:PersistentCookieJar:v1.0.1",
 

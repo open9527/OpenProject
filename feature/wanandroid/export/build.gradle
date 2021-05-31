@@ -8,7 +8,7 @@ android {
 
 dependencies {
     api Config.depConfig.kotlin_stdlib_jdk7
-    api Config.depConfig.androidx_core_ktx
+    api Config.depConfig.kotlin_core_ktx
 
 //    api project(gradle.getUnionPath(":lib:common"))
     api project(gradle.getUnionPath(":feature:image:export"))

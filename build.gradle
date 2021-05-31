@@ -6,13 +6,12 @@ buildscript {
         google()
         jcenter()
         //umeng
-        maven { url 'https://dl.bintray.com/umsdk/release' }
+        maven { url "https://dl.bintray.com/umsdk/release" }
     }
     dependencies {
         classpath Config.depConfig.plugin_gradle
-        classpath Config.depConfig.api_gradle_plugin
-        classpath Config.depConfig.kotlin_gradle_plugin
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath Config.depConfig.plugin_api
+        classpath Config.depConfig.plugin_kotlin
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -24,7 +23,7 @@ allprojects {
         jcenter()
         maven { url "https://jitpack.io" }
         //umeng
-        maven { url 'https://dl.bintray.com/umsdk/release' }
+        maven { url "https://dl.bintray.com/umsdk/release" }
     }
     buildDir = new File(rootDir, "gradle-build/${path.replaceAll(':', '/')}")
 }
