@@ -5,8 +5,8 @@ android {
     }
 }
 dependencies {
-    implementation Config.depConfig.androidx_appcompat
-    implementation Config.depConfig.androidx_lifecycle_viewmodel
+    implementation Config.depConfig.androidx_appcompat.dep
+    implementation Config.depConfig.androidx_lifecycle_viewmodel.dep
 }
 
 

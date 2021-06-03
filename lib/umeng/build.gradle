@@ -1,13 +1,13 @@
 dependencies {
-    implementation Config.depConfig.androidx_appcompat
+    implementation Config.depConfig.androidx_appcompat.dep
 
-    implementation Config.depConfig.umsdk_common
-    implementation Config.depConfig.umsdk_asms
-    implementation Config.depConfig.umsdk_share_core
-    implementation Config.depConfig.umsdk_share_qq
-    implementation Config.depConfig.umsdk_qq
-    api Config.depConfig.umsdk_share_wx
-    api Config.depConfig.umsdk_wx
+    implementation Config.depConfig.umsdk_common.dep
+    implementation Config.depConfig.umsdk_asms.dep
+    implementation Config.depConfig.umsdk_share_core.dep
+    implementation Config.depConfig.umsdk_share_qq.dep
+    implementation Config.depConfig.umsdk_qq.dep
+    api Config.depConfig.umsdk_share_wx.dep
+    api Config.depConfig.umsdk_wx.dep
 
 }
 

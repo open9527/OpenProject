@@ -6,6 +6,6 @@ android {
 }
 
 dependencies {
-    api project(gradle.getUnionPath(":feature:video:export"))
-    kapt project(gradle.getUnionPath(":apt:compiler"))
+//    api project(gradle.getUnionPath(":feature:video:export"))
+//    kapt project(gradle.getUnionPath(":apt:compiler"))
 }

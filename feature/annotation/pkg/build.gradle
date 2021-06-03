@@ -6,7 +6,3 @@ android {
     }
 }
 
-dependencies {
-    api project(gradle.getUnionPath(":feature:annotation:export"))
-    kapt project(gradle.getUnionPath(":apt:compiler"))
-}

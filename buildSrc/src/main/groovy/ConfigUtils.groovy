@@ -1,172 +1,105 @@
-import org.gradle.BuildListener
-import org.gradle.BuildResult
 import org.gradle.api.Project
 import org.gradle.api.ProjectEvaluationListener
 import org.gradle.api.ProjectState
-import org.gradle.api.initialization.Settings
 import org.gradle.api.invocation.Gradle
 
 class ConfigUtils {
 
-    static addBuildListener(Gradle g) {
-        g.addBuildListener(new BuildListener() {
-            @Override
-            void buildStarted(Gradle gradle) {
-//                GLog.d("buildStarted")
+    static init(Gradle gradle) {
+        generateDep(gradle)
+        addCommonGradle(gradle)
+        TaskDurationUtils.init(gradle)
+    }
+
+    /**
+     * 根据 depConfig 生成 dep
+     */
+    private static void generateDep(Gradle gradle) {
+        def configs = [:]
+        for (Map.Entry<String, DepConfig> entry : Config.depConfig.entrySet()) {
+            def (name, config) = [entry.key, entry.value]
+            if (config.pluginPath) {
+                config.dep = config.pluginPath
+            } else {
+                if (config.useLocal) {
+//                    GLog.l("projectPath = "+config.projectPath)
+                    config.dep = gradle.rootProject.findProject(config.projectPath)
+                } else {
+                    config.dep = config.remotePath
+                }
             }
+            configs.put(name, config)
+        }
+//        GLog.l("generateDep = ${GLog.object2String(configs)}")
+    }
 
+    private static addCommonGradle(Gradle gradle) {
+        gradle.addProjectEvaluationListener(new ProjectEvaluationListener() {
             @Override
-            void settingsEvaluated(Settings settings) {
-//                GLog.d("settingsEvaluated")
-                includeModule(settings)
-
-            }
-
-            @Override
-            void projectsLoaded(Gradle gradle) {
-//                GLog.d("projectsLoaded")
-                gradle.addProjectEvaluationListener(new ProjectEvaluationListener() {
-                    @Override
-                    void beforeEvaluate(Project project) {
-//                        GLog.d("beforeEvaluate")
-//                        GLog.d("name: " + project.name)
-                        if (project.subprojects.isEmpty()) {
-                            // 定位到具体 project
-                            if (project.name.startsWith("apt_")) {
-                                GLog.l(project.toString() + " apt_")
-                                project.apply {
-                                    from "${project.rootDir.path}/buildJar.gradle"
-                                }
-
-                            } else if (project.name.endsWith("_app")) {
-//                                GLog.l(project.toString() + " applies buildApp.gradle")
-                                project.apply {
-                                    from "${project.rootDir.path}/buildApp.gradle"
-                                }
-                                //test
-//                                project.apply {
-//                                    from "${project.rootDir.path}/buildTestApp.gradle"
-//                                }
-                            } else {
-//                                GLog.l(project.toString() + " applies buildLib.gradle")
-                                project.apply {
-                                    from "${project.rootDir.path}/buildLib.gradle"
-                                }
-                            }
-
+            void beforeEvaluate(Project project) {
+                // 在 project 的 build.gradle 前 do sth.
+                if (project.subprojects.isEmpty()) {
+                    if (project.path.contains(":plugin:")) {
+                        return
+                    }
+//                    GLog.l("ProjectName:  " + project.name )
+                    if (project.name.startsWith("apt_")) {
+//                        GLog.l(project.toString() + " applies buildJar.gradle")
+                        project.apply {
+                            from "${project.rootDir.path}/buildJar.gradle"
                         }
 
-                    }
-
-                    @Override
-                    void afterEvaluate(Project project, ProjectState projectState) {
-//                        GLog.d("afterEvaluate")
+                    } else if (project.name.endsWith("_app")) {
+//                        GLog.l(project.toString() + " applies buildApp.gradle")
+                        project.apply {
+                            from "${project.rootDir.path}/buildApp.gradle"
+                        }
+                    } else {
+//                        GLog.l(project.toString() + " applies buildLib.gradle")
+                        project.apply {
+                            from "${project.rootDir.path}/buildLib.gradle"
+                        }
                     }
                 }
-
-                )
             }
 
             @Override
-            void projectsEvaluated(Gradle gradle) {
-//                GLog.d("projectsEvaluated")
+            void afterEvaluate(Project project, ProjectState state) {
+                // 在 project 的 build.gradle 末 do sth.
             }
+        })
+    }
 
-            @Override
-            void buildFinished(BuildResult buildResult) {
-//                GLog.d("buildFinished")
+    static getApplyPlugins() {
+        def plugins = [:]
+        for (Map.Entry<String, DepConfig> entry : Config.depConfig.entrySet()) {
+            if (entry.value.isApply && entry.key.startsWith("plugin_")) {
+                plugins.put(entry.key, entry.value)
             }
         }
-
-        )
+        GLog.d("getApplyPlugins = ${GLog.object2String(plugins)}")
+        return plugins
     }
 
-    static def modules = [
-            ':lib:page',
-            ':lib:dialog',
-            ':lib:permission',
-            ':lib:crash',
-            ':lib:recycleview',
-            ':lib:okhttp',
-            ':lib:glide',
-            ':lib:base',
-            ':lib:common',
-            ':lib:webview',
-            ':lib:router',
-            ':lib:umeng',
-            ':lib:filter',
-            ':lib:video',
-            //apt 注解器
-            ':apt:annotation',
-            ':apt:compiler',
-            //kt
-            ':lib_kt:page',
-            ':lib_kt:base',
-            ':lib_kt:common',
-            ':lib_kt:permissions',
-
-            ':feature:launcher:app',
-            ':feature:mock',
-
-            //方便copy
-//            ':feature:copy:export',
-//            ':feature:copy:pkg',
-//            ':feature:copy:app',
-
-            ':feature:permission:export',
-            ':feature:permission:pkg',
-            ':feature:permission:app',
-
-            ':feature:okhttp:export',
-            ':feature:okhttp:pkg',
-            ':feature:okhttp:app',
-
-            ':feature:wanandroid:export',
-            ':feature:wanandroid:pkg',
-            ':feature:wanandroid:app',
-
-            ':feature:image:export',
-            ':feature:image:pkg',
-            ':feature:image:app',
-
-            ':feature:annotation:export',
-            ':feature:annotation:pkg',
-            ':feature:annotation:app',
-
-            ':feature:appmanager:export',
-            ':feature:appmanager:pkg',
-            ':feature:appmanager:app',
-
-            ':feature:webview:export',
-            ':feature:webview:pkg',
-            ':feature:webview:app',
-
-            ':feature:video:export',
-            ':feature:video:pkg',
-            ':feature:video:app',
-
-            ':feature:custom:export',
-            ':feature:custom:pkg',
-            ':feature:custom:app',
-
-            ':feature:kotlin:export',
-            ':feature:kotlin:pkg',
-            ':feature:kotlin:app',
-
-
-    ]
-
-    private static includeModule(Settings settings) {
-        modules.each {
-            def unionPath = getUnionPath(it)
-            settings.include unionPath
-            settings.project(unionPath).projectDir = new File(it.substring(1).replace(":", "/"))
+    static getApplyPkgs() {
+        def pkgs = [:]
+        for (Map.Entry<String, DepConfig> entry : Config.depConfig.entrySet()) {
+            if (entry.value.isApply && entry.key.endsWith("_pkg")) {
+                pkgs.put(entry.key, entry.value)
+            }
         }
+        GLog.d("getApplyPkgs = ${GLog.object2String(pkgs)}")
+        return pkgs
     }
 
-
-    private static def getUnionPath(String path) {
-        return ":" + path.substring(1).replace(":", "_")
+    static getApplyExports() {
+        def exports = [:]
+        for (Map.Entry<String, DepConfig> entry : Config.depConfig.entrySet()) {
+            if (entry.value.isApply && entry.key.endsWith("_export")) {
+                exports.put(entry.key, entry.value)
+            }
+        }
+        GLog.d("getApplyExports = ${GLog.object2String(exports)}")
+        return exports
     }
-
 }

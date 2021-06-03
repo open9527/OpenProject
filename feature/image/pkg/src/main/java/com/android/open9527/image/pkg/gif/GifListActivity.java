@@ -17,7 +17,7 @@ import com.android.open9527.common.widget.image.LoadImageView;
 import com.android.open9527.glide.webp.WebpDrawable;
 import com.android.open9527.image.pkg.BR;
 import com.android.open9527.image.pkg.R;
-import com.android.open9527.image.pkg.databinding.ImageLoadActivityBinding;
+import com.android.open9527.image.pkg.databinding.GifListActivityBinding;
 import com.android.open9527.page.DataBindingConfig;
 import com.android.open9527.recycleview.adapter.BaseBindingCellListAdapter;
 import com.android.open9527.recycleview.decoration.GridSpaceItemDecoration;
@@ -51,6 +51,7 @@ public class GifListActivity extends BaseCommonActivity {
                 .addBindingParam(BR.itemDecoration, new GridSpaceItemDecoration(10))
                 .addBindingParam(BR.adapter, new BaseBindingCellListAdapter<>());
     }
+
 
     @Override
     public void initRequest() {
@@ -128,7 +129,7 @@ public class GifListActivity extends BaseCommonActivity {
 
 
     private Drawable getGifDrawableByIndex(int index) {
-        ImageLoadActivityBinding mBinding = (ImageLoadActivityBinding) getBinding();
+        GifListActivityBinding mBinding = (GifListActivityBinding) getBinding();
         View view = mBinding.recyclerView.getLayoutManager().findViewByPosition(index);
         if (view == null) return null;
         LoadImageView loadImageView = view.findViewById(R.id.iv_pic);
@@ -138,8 +139,8 @@ public class GifListActivity extends BaseCommonActivity {
     private void autoGifDrawable(RecyclerView view, boolean loadImage) {
         if (view == null) return;
         //遍历RecyclerView子控件,如果LoadImageView完全可见就播放gif
-        int count = view.getChildCount();
-
+        int count = view.getChildCount();//8
+        LogUtils.i(TAG, "autoGifDrawable: count=" + count);
         for (int i = 0; i < count; i++) {
             View itemView = view.getChildAt(i);
             if (itemView == null) continue;
@@ -147,28 +148,8 @@ public class GifListActivity extends BaseCommonActivity {
             Rect rect = new Rect();
             loadImageView.getLocalVisibleRect(rect);
             int height = loadImageView.getHeight();
-            if (!loadImage) {
-                Drawable drawable = getGifDrawableByIndex(i);
-                if (drawable instanceof Animatable) {
-                    GifDrawable gifDrawable = (GifDrawable) drawable;
-                    gifDrawable.setLoopCount(-1);
-                    gifDrawable.stop();
-                }
-            } else if (rect.top == 0 && rect.bottom == height) {
-                Drawable drawable = getGifDrawableByIndex(i);
-                if (drawable instanceof Animatable) {
-                    GifDrawable gifDrawable = (GifDrawable) drawable;
-                    gifDrawable.setLoopCount(-1);
-                    gifDrawable.start();
-                }
-            } else {
-                Drawable drawable = getGifDrawableByIndex(i);
-                if (drawable instanceof Animatable) {
-                    GifDrawable gifDrawable = (GifDrawable) drawable;
-                    gifDrawable.setLoopCount(-1);
-                    gifDrawable.stop();
-                }
-            }
+
+            onAnimDrawable(getGifDrawableByIndex(i), loadImage && rect.top == 0 && rect.bottom == height);
         }
 
 
@@ -186,7 +167,30 @@ public class GifListActivity extends BaseCommonActivity {
         @Override
         public void onImageLoadChange(@NonNull RecyclerView recyclerView, boolean loadImage) {
             if (mActivity == null || mActivity.isFinishing() || mActivity.isDestroyed()) return;
+//            autoGifDrawable(recyclerView, loadImage);
 
         }
     };
+
+
+    private void onAnimDrawable(Drawable drawable, boolean startAnim) {
+        if (drawable instanceof GifDrawable) {
+            GifDrawable gifDrawable = (GifDrawable) drawable;
+            gifDrawable.setLoopCount(1);
+            if (startAnim) {
+                gifDrawable.start();
+            } else {
+                gifDrawable.stop();
+            }
+
+        } else if (drawable instanceof WebpDrawable) {
+            WebpDrawable webpDrawable = (WebpDrawable) drawable;
+            webpDrawable.setLoopCount(1);
+            if (startAnim) {
+                webpDrawable.start();
+            } else {
+                webpDrawable.stop();
+            }
+        }
+    }
 }

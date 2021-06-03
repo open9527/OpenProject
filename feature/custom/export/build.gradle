@@ -1,6 +1,4 @@
 dependencies {
-    api project(gradle.getUnionPath(":lib:common"))
-    //umeng
-    api project(gradle.getUnionPath(":lib:umeng"))
-
+    api Config.depConfig.lib_umeng.dep
+//    api 'com.github.q876625596:GenjiDialogV2:1.3.9'
 }

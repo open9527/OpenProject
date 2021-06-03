@@ -1,6 +1,6 @@
 dependencies {
-    implementation Config.depConfig.androidx_appcompat
-    api project(gradle.getUnionPath(":lib_kt:page"))
+    implementation Config.depConfig.androidx_appcompat.dep
+    api Config.depConfig.lib_kt_page.dep
 }
 
 

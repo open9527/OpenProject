@@ -13,16 +13,14 @@ import com.open9527.wanandroid.pkg.net.user.CollectApi
  * @author open_9527
  * Create at 2021/1/15
  */
-class ShareDataRepository private constructor() : OnHttpListener<Any?> {
+class ShareDataRepository private constructor() : OnHttpListener<Any> {
     fun share(page: Int, request: GetRequest, dataVoResult: (DataResult<DataVo>) -> Unit) {
         request.api(ShareApi().setPage(page))
 //        request.api(CollectApi().setPage(page))
-            .request(object : HttpCallback<HttpData<DataVo?>?>(this) {
-                override fun onSucceed(result: HttpData<DataVo?>?) {
+            .request(object : HttpCallback<HttpData<DataVo>>(this) {
+                override fun onSucceed(result: HttpData<DataVo>) {
                     super.onSucceed(result)
-                    result?.let {
-                        dataVoResult.invoke(DataResult(result.data, ResponseStatus()))
-                    }
+                    dataVoResult.invoke(DataResult(result.data, ResponseStatus()))
                 }
 
                 override fun onFail(e: Exception) {

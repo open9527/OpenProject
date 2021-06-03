@@ -17,7 +17,7 @@ public class RecycleViewScrollListener extends RecyclerView.OnScrollListener {
         this.mThreshold = distance;
         this.scrollListener = scrollListener;
     }
-    
+
     public RecycleViewScrollListener(IScrollListener scrollListener) {
         this.scrollListener = scrollListener;
     }
@@ -29,18 +29,7 @@ public class RecycleViewScrollListener extends RecyclerView.OnScrollListener {
         mDistance += dy;
         scrollListener.onScrimsStateChange(recyclerView, mDistance >= mThreshold);
 
-//        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-//            @Override
-//            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-//                super.onScrollStateChanged(recyclerView, newState);
-//            }
-//
-//            @Override
-//            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-//                super.onScrolled(recyclerView, dx, dy);
-//            }
-//        });
-
+        scrollListener.onImageLoadChange(recyclerView, dx == 0 && dy == 0);
     }
 
     @Override

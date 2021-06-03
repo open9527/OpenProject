@@ -1,5 +1,6 @@
 package com.open9527.wanandroid.pkg.main.project
 
+import androidx.lifecycle.Observer
 import com.android.open9527.common.net.data.response.DataResult
 import com.android.open9527.common.page.BaseCommonFragment
 import com.android.open9527.okhttp.OkHttpUtils
@@ -31,16 +32,13 @@ class ProjectFragment : BaseCommonFragment() {
 
     override fun initEvent() {
         super.initEvent()
-        mViewModel!!.projectRequest.projectTreeLiveData.observe(
-            viewLifecycleOwner,
-            {
-                    listDataResult: DataResult<List<ProjectTreeVo?>?> ->
-                listDataResult.result?.let {
-                    mViewModel!!.initTab(
-                        childFragmentManager, it
-                    )
-                }
-            })
+
+        mViewModel!!.projectRequest.projectTreeLiveData.observe(viewLifecycleOwner, Observer {
+            mViewModel!!.initTab(
+                childFragmentManager, it.result
+            )
+
+        })
     }
 
     private fun requestProjectTree() {

@@ -74,81 +74,78 @@ public class OkHttpActivity extends BaseCommonActivity implements OnHttpListener
         closeWebSocket();
     }
 
-    public View.OnClickListener onClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            if (view.getId() == R.id.btn_main_get) {
-                onGetRequest();
+    public View.OnClickListener onClickListener = view -> {
+        if (view.getId() == R.id.btn_main_get) {
+            onGetRequest();
 
-            } else if (view.getId() == R.id.btn_main_post) {
-                onPostRequest();
+        } else if (view.getId() == R.id.btn_main_post) {
+            onPostRequest();
 
-            } else if (view.getId() == R.id.btn_main_exec) {
-                onSyncRequest();
+        } else if (view.getId() == R.id.btn_main_exec) {
+            onSyncRequest();
 
-            } else if (view.getId() == R.id.btn_main_update) {
+        } else if (view.getId() == R.id.btn_main_update) {
 
-                PermissionsManage.with(mActivity)
-                        // 不适配 Android 11 可以这样写
-                        //.permission(Permission.Group.STORAGE)
-                        // 适配 Android 11 需要这样写，这里无需再写 Permission.Group.STORAGE
-                        .permission(Permission.MANAGE_EXTERNAL_STORAGE)
-                        .request(new OnPermissionCallback() {
+            PermissionsManage.with(mActivity)
+                    // 不适配 Android 11 可以这样写
+                    //.permission(Permission.Group.STORAGE)
+                    // 适配 Android 11 需要这样写，这里无需再写 Permission.Group.STORAGE
+                    .permission(Permission.MANAGE_EXTERNAL_STORAGE)
+                    .request(new OnPermissionCallback() {
 
-                            @Override
-                            public void onGranted(List<String> permissions, boolean all) {
-                                if (all) {
-                                    ToastUtils.showShort("获取存储权限成功");
-                                    onUpdateRequest();
-                                }
+                        @Override
+                        public void onGranted(List<String> permissions, boolean all) {
+                            if (all) {
+                                ToastUtils.showShort("获取存储权限成功");
+                                onUpdateRequest();
                             }
+                        }
 
-                            @Override
-                            public void onDenied(List<String> permissions, boolean never) {
-                                if (never) {
-                                    ToastUtils.showShort("被永久拒绝授权，请手动授予存储权限");
-                                    // 如果是被永久拒绝就跳转到应用权限系统设置页面
-                                    PermissionsManage.startPermissionActivity(mActivity, permissions);
-                                } else {
-                                    ToastUtils.showShort("获取存储权限失败");
-                                }
+                        @Override
+                        public void onDenied(List<String> permissions, boolean never) {
+                            if (never) {
+                                ToastUtils.showShort("被永久拒绝授权，请手动授予存储权限");
+                                // 如果是被永久拒绝就跳转到应用权限系统设置页面
+                                PermissionsManage.startPermissionActivity(mActivity, permissions);
+                            } else {
+                                ToastUtils.showShort("获取存储权限失败");
                             }
-                        });
+                        }
+                    });
 
 
-            } else if (view.getId() == R.id.btn_main_download) {
-                PermissionsManage.with(mActivity)
-                        // 适配 Android 11
-                        .permission(Permission.MANAGE_EXTERNAL_STORAGE)
-                        .request(new OnPermissionCallback() {
+        } else if (view.getId() == R.id.btn_main_download) {
+            PermissionsManage.with(mActivity)
+                    // 适配 Android 11
+                    .permission(Permission.MANAGE_EXTERNAL_STORAGE)
+                    .request(new OnPermissionCallback() {
 
-                            @Override
-                            public void onGranted(List<String> permissions, boolean all) {
-                                if (all) {
-                                    ToastUtils.showShort("获取存储权限成功");
-                                    onDownloadRequest();
-                                }
+                        @Override
+                        public void onGranted(List<String> permissions, boolean all) {
+                            if (all) {
+                                ToastUtils.showShort("获取存储权限成功");
+                                onDownloadRequest();
                             }
+                        }
 
-                            @Override
-                            public void onDenied(List<String> permissions, boolean never) {
-                                if (never) {
-                                    ToastUtils.showShort("被永久拒绝授权，请手动授予存储权限");
-                                    // 如果是被永久拒绝就跳转到应用权限系统设置页面
-                                    PermissionsManage.startPermissionActivity(mActivity, permissions);
-                                } else {
-                                    ToastUtils.showShort("获取存储权限失败");
-                                }
+                        @Override
+                        public void onDenied(List<String> permissions, boolean never) {
+                            if (never) {
+                                ToastUtils.showShort("被永久拒绝授权，请手动授予存储权限");
+                                // 如果是被永久拒绝就跳转到应用权限系统设置页面
+                                PermissionsManage.startPermissionActivity(mActivity, permissions);
+                            } else {
+                                ToastUtils.showShort("获取存储权限失败");
                             }
-                        });
+                        }
+                    });
 
 
-            } else if (view.getId() == R.id.btn_main_socket) {
-                startWebSocket();
+        } else if (view.getId() == R.id.btn_main_socket) {
+            startWebSocket();
 
-            } else if (view.getId() == R.id.btn_main_msg) {
-                sendWebSocketMsg(String.valueOf(TimeUtils.getNowString()));
-            }
+        } else if (view.getId() == R.id.btn_main_msg) {
+            sendWebSocketMsg(String.valueOf(TimeUtils.getNowString()));
         }
     };
 

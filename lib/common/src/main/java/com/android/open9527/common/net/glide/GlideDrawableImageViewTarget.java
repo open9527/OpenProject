@@ -1,8 +1,7 @@
 package com.android.open9527.common.net.glide;
 
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.util.SparseArray;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -21,7 +20,7 @@ import com.bumptech.glide.request.transition.Transition;
  **/
 public class GlideDrawableImageViewTarget extends DrawableImageViewTarget {
 
-
+    private SparseArray<Drawable> drawableArray = new SparseArray<>();
     private static final String TAG = "GlideDrawableImageViewTarget";
 
     private ImageCallBack callBack;
@@ -36,17 +35,18 @@ public class GlideDrawableImageViewTarget extends DrawableImageViewTarget {
     @Override
     protected void setResource(@Nullable Drawable resource) {
         super.setResource(resource);
-        if (resource instanceof Animatable) {
-            if (resource instanceof GifDrawable) {
-                GifDrawable gifDrawable = (GifDrawable) resource;
-                gifDrawable.setLoopCount(count);
-            }
-            if (resource instanceof WebpDrawable) {
-                WebpDrawable gifDrawable = (WebpDrawable) resource;
-                gifDrawable.setLoopCount(count);
-            }
+        if (resource instanceof GifDrawable) {
+            GifDrawable gifDrawable = (GifDrawable) resource;
+            gifDrawable.setLoopCount(count);
+            gifDrawable.start();
+
+        } else if (resource instanceof WebpDrawable) {
+            WebpDrawable webpDrawable = (WebpDrawable) resource;
+            webpDrawable.setLoopCount(count);
+            webpDrawable.start();
 
         }
+
     }
 
     @Override
@@ -84,22 +84,17 @@ public class GlideDrawableImageViewTarget extends DrawableImageViewTarget {
     @Override
     public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
         LogUtils.i(TAG, "onResourceReady");
-//        setResource(resource);
-        super.onResourceReady(resource, transition);
-        if (callBack != null) {
-            if (resource instanceof Animatable) {
-                if (resource instanceof GifDrawable) {
-                    GifDrawable gifDrawable = (GifDrawable) resource;
-                    callBack.onGifResourceReady(gifDrawable);
-                }
-                if (resource instanceof WebpDrawable) {
-                    WebpDrawable webpDrawable = (WebpDrawable) resource;
-                    callBack.onWebpResourceReady(webpDrawable);
-                }
+        //防止gif 自动播放
+        setResource(resource);
+        //super.onResourceReady(resource, transition);
 
-            } else {
-                callBack.onResourceReady(resource);
-            }
+//        Drawable drawable = drawableArray.get(resource.hashCode());
+//        if (drawable == null) {
+//            drawableArray.put(resource.hashCode(),resource);
+//        }
+
+        if (callBack != null) {
+            callBack.onResourceReady(resource);
         }
 
     }

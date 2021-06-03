@@ -4,11 +4,3 @@ android {
         enabled true
     }
 }
-
-dependencies {
-    api project(gradle.getUnionPath(":feature:custom:export"))
-    kapt project(gradle.getUnionPath(":apt:compiler"))
-//    api 'com.github.q876625596:GenjiDialogV2:1.3.9'
-
-    api "com.airbnb.android:lottie:3.7.0"
-}

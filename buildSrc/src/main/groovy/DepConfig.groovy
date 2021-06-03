@@ -1,4 +1,3 @@
-
 class DepConfig {
     boolean isApply  // 是否应用
     boolean useLocal // 是否使用本地的
@@ -43,11 +42,6 @@ class DepConfig {
         this.remotePath = remotePath
     }
 
-    void setPluginPath(String pluginPath) {
-        this.pluginPath = pluginPath
-        this.remotePath = pluginPath
-    }
-
     String getPath() {
         if (pluginPath != null) return pluginPath
         return useLocal ? localPath : remotePath
@@ -69,7 +63,7 @@ class DepConfig {
     }
 
     String getProjectPath() {
-        return ":" + localPath.substring(1).replace(":", "_")
+        return localPath.substring(0, localPath.lastIndexOf(":")) + ":" + localPath.substring(1).replace(":", "_")
     }
 
     @Override

@@ -1,7 +1,7 @@
 
 
 dependencies {
-    implementation Config.depConfig.androidx_appcompat
+    implementation Config.depConfig.androidx_appcompat.dep
 }
 
 

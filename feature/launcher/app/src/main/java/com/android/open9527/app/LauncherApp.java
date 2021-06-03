@@ -14,7 +14,6 @@ public class LauncherApp extends CommonApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-//        DoraemonKit.install(this);
         Router.init(this);
         UmengClient.init(this);
         AppFilter.with(this);

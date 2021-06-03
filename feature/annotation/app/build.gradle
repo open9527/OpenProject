@@ -1,4 +1,0 @@
-
-dependencies {
-    api  project(gradle.getUnionPath(":feature:annotation:pkg"))
-}

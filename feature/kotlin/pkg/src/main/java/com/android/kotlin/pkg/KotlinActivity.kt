@@ -2,7 +2,6 @@ package com.android.kotlin.pkg
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
 import com.android.open9527.common.page.BaseCommonActivity
 import com.android.open9527.page.DataBindingConfig
 import com.android.open9527.permissions.OnPermissionCallback
@@ -14,7 +13,7 @@ import com.blankj.utilcode.util.LogUtils
  * @author   open_9527
  * Create at 2021/5/18
  */
-class KotlinActivity : BaseCommonActivity() {
+class KotlinActivity() : BaseCommonActivity() {
 
     private var mViewModel: KotlinViewModel? = null
 
@@ -22,9 +21,11 @@ class KotlinActivity : BaseCommonActivity() {
         mViewModel = getActivityScopeViewModel(KotlinViewModel::class.java)
     }
 
-    override val dataBindingConfig: DataBindingConfig
-        get() = DataBindingConfig(R.layout.kotlin_activity, BR.vm, mViewModel!!)
+    override fun getDataBindingConfig(): DataBindingConfig {
+        return DataBindingConfig(R.layout.kotlin_activity, BR.vm, mViewModel!!)
             .addBindingParam(BR.click, ClickProxy())
+    }
+
 
 
     override fun initView(bundle: Bundle?) {

@@ -6,16 +6,15 @@ android {
 }
 
 dependencies {
-    implementation Config.depConfig.androidx_appcompat
+    implementation Config.depConfig.androidx_appcompat.dep
 
     //exoplayer 视频播放组件
-    api Config.depConfig.exoplayer_core
-    api Config.depConfig.exoplayer_dash
-    api Config.depConfig.exoplayer_ui
-    api Config.depConfig.exoplayer_hls
-//    api Config.depConfig.exoplayer_smoothstreaming
-    api Config.depConfig.exoplayer_rtsp
-    api Config.depConfig.exoplayer_rtmp
+    api Config.depConfig.exoplayer_core.dep
+    api Config.depConfig.exoplayer_dash.dep
+    api Config.depConfig.exoplayer_ui.dep
+    api Config.depConfig.exoplayer_hls.dep
+    api Config.depConfig.exoplayer_rtsp.dep
+    api Config.depConfig.exoplayer_rtmp.dep
 
 
 }

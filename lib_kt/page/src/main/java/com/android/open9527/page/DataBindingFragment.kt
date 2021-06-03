@@ -32,14 +32,15 @@ abstract class DataBindingFragment : Fragment() {
         initViewModel()
     }
 
-    protected abstract val dataBindingConfig: DataBindingConfig
+    protected abstract fun getDataBindingConfig(): DataBindingConfig
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val dataBindingConfig = dataBindingConfig
+        val dataBindingConfig = getDataBindingConfig()
         val binding = DataBindingUtil.inflate<ViewDataBinding>(
             inflater,
             dataBindingConfig.layout,

@@ -1,13 +1,6 @@
-
 android {
     //支持dataBinding
     dataBinding {
         enabled true
     }
-}
-
-dependencies {
-    api project(gradle.getUnionPath(":feature:appmanager:export"))
-
-    kapt project(gradle.getUnionPath(":apt:compiler"))
 }

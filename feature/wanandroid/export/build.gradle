@@ -7,30 +7,13 @@ android {
 }
 
 dependencies {
-    api Config.depConfig.kotlin_stdlib_jdk7
-    api Config.depConfig.kotlin_core_ktx
+    api Config.depConfig.kotlin_stdlib_jdk7.dep
+    api Config.depConfig.kotlin_core_ktx.dep
 
 //    api project(gradle.getUnionPath(":lib:common"))
-    api project(gradle.getUnionPath(":feature:image:export"))
-    api project(gradle.getUnionPath(":feature:webview:export"))
+//    api project(gradle.getUnionPath(":feature:image:export"))
+//    api project(gradle.getUnionPath(":feature:webview:export"))
 
 
-
-//    implementation 'androidx.compose.ui:ui:1.0.0-alpha10'
-//    // Tooling support (Previews, etc.)
-//    implementation 'androidx.compose.ui:ui-tooling:1.0.0-alpha10'
-//    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
-//    implementation 'androidx.compose.foundation:foundation:1.0.0-alpha10'
-//    // Material Design
-//    implementation 'androidx.compose.material:material:1.0.0-alpha10'
-//    // Material design icons
-//    implementation 'androidx.compose.material:material-icons-core:1.0.0-alpha10'
-//    implementation 'androidx.compose.material:material-icons-extended:1.0.0-alpha10'
-//    // Integration with observables
-//    implementation 'androidx.compose.runtime:runtime-livedata:1.0.0-alpha10'
-//    implementation 'androidx.compose.runtime:runtime-rxjava2:1.0.0-alpha10'
-//
-//    // UI Tests
-//    androidTestImplementation 'androidx.compose.ui:ui-test-junit4:1.0.0-alpha10'
 
 }

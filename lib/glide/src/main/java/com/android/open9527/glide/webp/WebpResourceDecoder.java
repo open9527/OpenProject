@@ -113,6 +113,7 @@ public class WebpResourceDecoder implements ResourceDecoder<InputStream, WebpDra
     }
 
     public class WebpDrawableResource extends DrawableResource<WebpDrawable> implements Initializable {
+
         public WebpDrawableResource(WebpDrawable drawable) {
             super(drawable);
         }

@@ -2,5 +2,5 @@
 
 
 dependencies {
-    api  project(gradle.getUnionPath(":feature:image:pkg"))
+//    api  project(gradle.getUnionPath(":feature:image:pkg"))
 }

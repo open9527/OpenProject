@@ -1,0 +1,78 @@
+{
+  "appConfigDesc": "appConfig 配置的是可以跑 app 的模块，git 提交务必只包含 launcher",
+  "appConfig": ["launcher","image"],
+  "pkgConfigDesc": "pkgConfig 配置的是要依赖的功能包，为空则依赖全部，git 提交务必为空",
+  "pkgConfig": [],
+  "proConfigDesc": "proConfig 配置的是使用本地还是仓库，优先级低于 appConfig 和 pkgConfig",
+  "proConfig": [
+
+
+    {"isApply": true, "useLocal": true, "localPath": ":feature:launcher:app"},
+
+    {"isApply": true, "useLocal": true, "localPath": ":feature:okhttp:app"},
+    {"isApply": true, "useLocal": true, "localPath": ":feature:okhttp:export"},
+    {"isApply": true, "useLocal": true, "localPath": ":feature:okhttp:pkg"},
+
+    {"isApply": true, "useLocal": true, "localPath": ":feature:permission:app"},
+    {"isApply": true, "useLocal": true, "localPath": ":feature:permission:export"},
+    {"isApply": true, "useLocal": true, "localPath": ":feature:permission:pkg"},
+
+    {"isApply": true, "useLocal": true, "localPath": ":feature:wanandroid:app"},
+    {"isApply": true, "useLocal": true, "localPath": ":feature:wanandroid:export"},
+    {"isApply": true, "useLocal": true, "localPath": ":feature:wanandroid:pkg"},
+
+    {"isApply": true, "useLocal": true, "localPath": ":feature:image:app"},
+    {"isApply": true, "useLocal": true, "localPath": ":feature:image:export"},
+    {"isApply": true, "useLocal": true, "localPath": ":feature:image:pkg"},
+
+    {"isApply": true, "useLocal": true, "localPath": ":feature:annotation:app"},
+    {"isApply": true, "useLocal": true, "localPath": ":feature:annotation:export"},
+    {"isApply": true, "useLocal": true, "localPath": ":feature:annotation:pkg"},
+
+    {"isApply": true, "useLocal": true, "localPath": ":feature:appmanager:app"},
+    {"isApply": true, "useLocal": true, "localPath": ":feature:appmanager:export"},
+    {"isApply": true, "useLocal": true, "localPath": ":feature:appmanager:pkg"},
+
+    {"isApply": true, "useLocal": true, "localPath": ":feature:webview:app"},
+    {"isApply": true, "useLocal": true, "localPath": ":feature:webview:export"},
+    {"isApply": true, "useLocal": true, "localPath": ":feature:webview:pkg"},
+
+    {"isApply": true, "useLocal": true, "localPath": ":feature:custom:app"},
+    {"isApply": true, "useLocal": true, "localPath": ":feature:custom:export"},
+    {"isApply": true, "useLocal": true, "localPath": ":feature:custom:pkg"},
+
+    {"isApply": true, "useLocal": true, "localPath": ":feature:video:app"},
+    {"isApply": true, "useLocal": true, "localPath": ":feature:video:export"},
+    {"isApply": true, "useLocal": true, "localPath": ":feature:video:pkg"},
+
+
+
+    {"isApply": false, "useLocal": true, "localPath": ":feature:kotlin:app"},
+    {"isApply": false, "useLocal": true, "localPath": ":feature:kotlin:export"},
+    {"isApply": false, "useLocal": true, "localPath": ":feature:kotlin:pkg"},
+    {"isApply": false, "useLocal": true, "localPath": ":lib_kt:permissions"},
+    {"isApply": false, "useLocal": true, "localPath": ":lib_kt:common"},
+    {"isApply": false, "useLocal": true, "localPath": ":lib_kt:base"},
+    {"isApply": false, "useLocal": true, "localPath": ":lib_kt:page"},
+
+
+    {"isApply": true, "useLocal": true, "localPath": ":lib:common"},
+
+    {"isApply": true, "useLocal": true, "localPath": ":apt:annotation"},
+    {"isApply": true, "useLocal": true, "localPath": ":apt:compiler"},
+
+    {"isApply": true, "useLocal": true, "localPath": ":lib:video"},
+    {"isApply": true, "useLocal": true, "localPath": ":lib:filter"},
+    {"isApply": true, "useLocal": true, "localPath": ":lib:umeng"},
+    {"isApply": true, "useLocal": true, "localPath": ":lib:router"},
+    {"isApply": true, "useLocal": true, "localPath": ":lib:webview"},
+    {"isApply": true, "useLocal": true, "localPath": ":lib:dialog"},
+    {"isApply": true, "useLocal": true, "localPath": ":lib:permission"},
+    {"isApply": true, "useLocal": true, "localPath": ":lib:crash"},
+    {"isApply": true, "useLocal": true, "localPath": ":lib:recycleview"},
+    {"isApply": true, "useLocal": true, "localPath": ":lib:okhttp"},
+    {"isApply": true, "useLocal": true, "localPath": ":lib:glide"},
+    {"isApply": true, "useLocal": true, "localPath": ":lib:base"},
+    {"isApply": true, "useLocal": true, "localPath": ":lib:page"}
+  ]
+}

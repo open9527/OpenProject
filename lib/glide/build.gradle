@@ -1,7 +1,7 @@
 dependencies {
-    api Config.depConfig.okhttp3
-    api Config.depConfig.glide
-    api Config.depConfig.glide_transformations
+    api Config.depConfig.okhttp3.dep
+    api Config.depConfig.glide.dep
+    api Config.depConfig.glide_transformations.dep
 
     //SVG
     api 'com.caverock:androidsvg-aar:1.3'

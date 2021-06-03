@@ -2,20 +2,12 @@ package com.open9527.wanandroid.pkg.cell
 
 import android.text.TextUtils
 import android.view.View
-import android.widget.ImageView
 import androidx.databinding.ObservableField
-import com.airbnb.lottie.LottieAnimationView
-import com.airbnb.lottie.LottieComposition
-import com.android.open9527.image.export.api.ImageApi
-import com.android.open9527.image.export.api.ImageBundle
 import com.android.open9527.recycleview.adapter.BaseBindingCell
 import com.android.open9527.recycleview.adapter.BaseBindingCellViewHolder
-import com.blankj.utilcode.util.ApiUtils
-import com.blankj.utilcode.util.GsonUtils
 import com.blankj.utilcode.util.StringUtils
 import com.open9527.wanandroid.pkg.BR
 import com.open9527.wanandroid.pkg.R
-import com.open9527.wanandroid.pkg.main.h5.H5Activity.Companion.startH5
 import com.open9527.wanandroid.pkg.net.ContentVo
 
 /**

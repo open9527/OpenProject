@@ -1,5 +1,3 @@
-
-
 android {
     //支持dataBinding
     dataBinding {
@@ -8,56 +6,44 @@ android {
 }
 
 dependencies {
-    implementation Config.depConfig.androidx_appcompat
+    implementation Config.depConfig.androidx_appcompat.dep
 
-    api project(gradle.getUnionPath(":lib:base"))
-    api project(gradle.getUnionPath(":lib:dialog"))
-    api project(gradle.getUnionPath(":lib:crash"))
-    api project(gradle.getUnionPath(":lib:permission"))
-    api project(gradle.getUnionPath(":lib:recycleview"))
-    api project(gradle.getUnionPath(":lib:filter"))
+    api Config.depConfig.lib_base.dep
+    api Config.depConfig.lib_dialog.dep
+    api Config.depConfig.lib_crash.dep
+    api Config.depConfig.lib_permission.dep
+    api Config.depConfig.lib_recycleview.dep
+    api Config.depConfig.lib_filter.dep
 
-    api project(gradle.getUnionPath(":lib:okhttp"))
-    api Config.depConfig.gson
+    api Config.depConfig.lib_okhttp.dep
+    api Config.depConfig.gson.dep
 
-    api project(gradle.getUnionPath(":lib:glide"))
-//    annotationProcessor Config.depConfig.glide_compiler
-    //处理kotlin 冲突导致不生成GlideApp
-    kapt Config.depConfig.glide_compiler
-//    annotationProcessor Config.depConfig.glide_compiler
+    api Config.depConfig.lib_glide.dep
+    kapt Config.depConfig.glide_compiler.dep
 
-    api project(gradle.getUnionPath(":lib:webview"))
+    api Config.depConfig.lib_webview.dep
 
     // route
-    api project(gradle.getUnionPath(":lib:router"))
-    api project(gradle.getUnionPath(":apt:annotation"))
-//    kapt project(gradle.getUnionPath(":apt:compiler"))
-//    annotationProcessor project(gradle.getUnionPath(":apt:compiler"))
+    // kapt Config.depConfig.apt_compiler.dep
+    api Config.depConfig.lib_router.dep
+    api Config.depConfig.apt_annotation.dep
 
-    //umeng
-//    api project(gradle.getUnionPath(":lib:umeng"))
     //video
-    api project(gradle.getUnionPath(":lib:video"))
+    api Config.depConfig.lib_video.dep
 
-    api Config.depConfig.androidx_lifecycle_common_java8
-    api Config.depConfig.androidx_material
-    api Config.depConfig.androidx_constraint
+    api Config.depConfig.androidx_lifecycle_common_java8.dep
+    api Config.depConfig.androidx_material.dep
+    api Config.depConfig.androidx_constraint.dep
 
-    //kotlin
-//    api Config.depConfig.kotlin_stdlib_jdk7
-//    api Config.depConfig.androidx_core_ktx
+    api Config.depConfig.utilcode.dep
+    api Config.depConfig.smart_refresh_kernel.dep
+    api Config.depConfig.smart_refresh_header_classics.dep
+    api Config.depConfig.smart_refresh_footer_classics.dep
 
-    api Config.depConfig.utilcode
-    api Config.depConfig.smart_refresh_kernel
-    api Config.depConfig.smart_refresh_header_classics
-    api Config.depConfig.smart_refresh_footer_classics
-
-    api Config.depConfig.persistent_cookie_jar
-    api Config.depConfig.banner_viewpager
+    api Config.depConfig.persistent_cookie_jar.dep
+    api Config.depConfig.banner_viewpager.dep
 
     api "com.airbnb.android:lottie:3.7.0"
-
-
 
 
 }

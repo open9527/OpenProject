@@ -1,10 +1,8 @@
 
 
 dependencies {
-    api Config.depConfig.okhttp3
-    implementation Config.depConfig.androidx_appcompat
-//    api Config.depConfig.androidx_lifecycle_common
-//    api Config.depConfig.androidx_lifecycle_runtime
+    api Config.depConfig.okhttp3.dep
+    implementation Config.depConfig.androidx_appcompat.dep
 }
 
 

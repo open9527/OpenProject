@@ -1,6 +1,0 @@
-
-
-
-dependencies {
-    api  project(gradle.getUnionPath(":feature:permission:pkg"))
-}

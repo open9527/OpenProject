@@ -19,6 +19,3 @@ android {
         enabled true
     }
 }
-dependencies {
-    api project(gradle.getUnionPath(":feature:custom:pkg"))
-}

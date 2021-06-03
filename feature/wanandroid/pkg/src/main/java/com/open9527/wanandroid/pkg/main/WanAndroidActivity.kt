@@ -16,6 +16,7 @@ import com.open9527.wanandroid.pkg.R
 class WanAndroidActivity : BaseCommonActivity() {
 
     private var mViewModel: WanAndroidViewModel? = null
+    private var isModel: Boolean = false
 
     override fun initViewModel() {
         mViewModel = getActivityScopeViewModel(WanAndroidViewModel::class.java)
@@ -28,15 +29,24 @@ class WanAndroidActivity : BaseCommonActivity() {
     override fun initView(bundle: Bundle?) {
         super.initView(bundle)
         mViewModel!!.initTab(supportFragmentManager)
+
+        if (bundle != null) {
+            isModel = bundle.getBoolean("model", false)
+        }
     }
 
     private var exitTime: Long = 0
     override fun onBackPressed() {
+        if (isModel) {
+            finish()
+            return
+        }
         if (System.currentTimeMillis() - exitTime > 2000) {
             showShortToast("再按一次退出程序")
             exitTime = System.currentTimeMillis()
         } else {
             AppUtils.exitApp()
         }
+
     }
 }

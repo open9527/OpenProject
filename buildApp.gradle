@@ -1,6 +1,6 @@
 apply {
     plugin "com.android.application"
-    plugin "com.blankj.api"
+    plugin Config.depConfig.plugin_api.pluginId
     plugin "kotlin-android"
     plugin 'kotlin-kapt'
     plugin "kotlin-android-extensions"
@@ -55,8 +55,8 @@ android {
             minifyEnabled false
 
             proguardFiles 'proguard-rules.pro', 'proguard-lib.pro', 'proguard-sdk.pro'
-//            resValue "string", "app_name", Config.appName + suffix + ".debug"
-            resValue "string", "app_name",  suffix + ".debug"
+            resValue "string", "app_name", Config.appName + suffix + ".debug"
+//            resValue "string", "app_name", suffix + ".debug"
 
         }
 
@@ -98,18 +98,28 @@ android {
         enabled true
     }
 
+}
+dependencies {
+    // 根据 Config.pkgConfig 来依赖所有 pkg
+    for (def entrySet : ConfigUtils.getApplyPkgs().entrySet()) {
+        GLog.d("dependencies = " + entrySet.value)
+        api entrySet.value.dep
+    }
 
-    //支持viewBinding
-//    viewBinding {
-//        enabled = true
-//    }
-
+    if (Config.depConfig.apt_compiler.isApply) {
+        GLog.d("apt_compiler isApply  " )
+        kapt Config.depConfig.apt_compiler.dep
+    }
+    if (Config.depConfig.apt_annotation.isApply) {
+        GLog.d("apt_annotation isApply  " )
+        api Config.depConfig.apt_annotation.dep
+    }
 }
 
 
 def getSuffix() {
-    if (project.path == ":feature:launcher:feature_launcher_app") return ""
-    return project.path.replace(":", "_").substring(":feature".length(), project.path.length() - ":app".length())
+    if (project.name == "feature_launcher_app") return ""
+    return "." + project.name.substring("feature_".length(), project.name.length() - "_app".length())
 }
 
 

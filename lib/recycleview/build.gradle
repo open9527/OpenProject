@@ -8,7 +8,7 @@ android {
 
 }
 dependencies {
-    api Config.depConfig.androidx_recyclerview
+    api Config.depConfig.androidx_recyclerview.dep
 }
 
 

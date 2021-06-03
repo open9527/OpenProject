@@ -6,6 +6,8 @@
 
         <import type="com.android.open9527.common.widget.image.RoundImageType" />
 
+        <import type="com.bumptech.glide.load.engine.DiskCacheStrategy" />
+
         <variable
             name="cell"
             type="com.android.open9527.image.pkg.gif.GifListCell" />
@@ -28,17 +30,19 @@
             android:textSize="@dimen/font_16"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!--   bindIvDiskCacheStrategy="@{DiskCacheStrategy.RESOURCE}"-->
         <com.android.open9527.common.widget.image.LoadImageView
             android:id="@+id/iv_pic"
             bindCornerType="@{RoundImageType.CORNER_TYPE_ALL}"
+
             bindIvRoundRadius="@{6}"
             bindIvRoundType="@{RoundImageType.ROUND_TYPE_ROUND}"
+            bindIvUrl="@{cell.valueUrl}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/size_10"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            app:bindIvUrl="@{cell.valueUrl}"
             app:layout_constraintDimensionRatio="16:9"
             app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 

@@ -16,17 +16,18 @@ import androidx.databinding.ViewDataBinding
 
     protected abstract fun initViewModel()
 
-    protected abstract val dataBindingConfig: DataBindingConfig
+
+    protected abstract fun getDataBindingConfig(): DataBindingConfig
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initViewModel()
 
-        val dataBindingConfig = dataBindingConfig
+        val dataBindingConfig = getDataBindingConfig()
 
         val binding = DataBindingUtil.setContentView<ViewDataBinding>(
-            this,  dataBindingConfig.layout
+            this, dataBindingConfig.layout
         )
 
         binding?.lifecycleOwner = this

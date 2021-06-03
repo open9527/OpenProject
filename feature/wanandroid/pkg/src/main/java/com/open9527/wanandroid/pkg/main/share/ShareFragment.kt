@@ -1,6 +1,7 @@
 package com.open9527.wanandroid.pkg.main.share
 
 import android.view.View
+import androidx.lifecycle.Observer
 import com.android.open9527.common.binding.refresh.IRefresh
 import com.android.open9527.common.net.data.response.DataResult
 import com.android.open9527.common.page.BaseCommonFragment
@@ -48,10 +49,11 @@ class ShareFragment : BaseCommonFragment(), OnHttpListener<Any?> {
 
     override fun initEvent() {
         super.initEvent()
-        mViewModel!!.shareRequest.getShareLiveData().observe(viewLifecycleOwner,
-            { dataResult: DataResult<DataVo> ->
-                mViewModel!!.onCreateCells(mPage, dataResult.result.dataList)
-            })
+
+        mViewModel!!.shareRequest.getShareLiveData().observe(viewLifecycleOwner, Observer {
+            mViewModel!!.onCreateCells(mPage, it.result.dataList)
+
+        })
     }
 
     inner class ClickProxy {

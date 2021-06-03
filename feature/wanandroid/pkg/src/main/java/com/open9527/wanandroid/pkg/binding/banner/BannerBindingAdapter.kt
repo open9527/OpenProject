@@ -3,9 +3,6 @@ package com.open9527.wanandroid.pkg.binding.banner
 import android.view.View
 import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
-import com.android.feature.webview.export.api.WebApi
-import com.android.feature.webview.export.api.WebBundle
-import com.blankj.utilcode.util.ApiUtils
 import com.blankj.utilcode.util.ColorUtils
 import com.blankj.utilcode.util.SizeUtils
 import com.open9527.wanandroid.pkg.R
@@ -40,17 +37,13 @@ object BannerBindingAdapter {
                     ColorUtils.getColor(R.color.white)
                 )
                 .setIndicatorStyle(IndicatorStyle.ROUND_RECT)
-                .setOnPageClickListener { clickedView: View?, position: Int ->
+                .setOnPageClickListener { _: View?, position: Int ->
                     contentVoList[position].link?.let {
-                        if (ApiUtils.getApi(WebApi::class.java).toString().contains("WebApiMockImpl")) {
                             startH5(
                                 it,
                                 contentVoList[position].title
                             )
-                        } else {
-                            ApiUtils.getApi(WebApi::class.java)
-                                .startWeb(WebBundle(it, contentVoList[position].title))
-                        }
+
                     }
                 }
                 .create()

@@ -1,5 +1,4 @@
 android {
-
     defaultConfig {
         // 清单占位符
         manifestPlaceholders = [
@@ -15,22 +14,5 @@ android {
                 'WX_APPKEY'   : 'xxxxxxxxx'
         ]
     }
-
 }
 
-dependencies {
-
-//    implementation project(gradle.getUnionPath(":lib:common"))
-
-    implementation project(gradle.getUnionPath(":feature:permission:pkg"))
-    implementation project(gradle.getUnionPath(":feature:okhttp:pkg"))
-    implementation project(gradle.getUnionPath(":feature:wanandroid:pkg"))
-    implementation project(gradle.getUnionPath(":feature:image:pkg"))
-    implementation project(gradle.getUnionPath(":feature:annotation:pkg"))
-    implementation project(gradle.getUnionPath(":feature:appmanager:pkg"))
-    implementation project(gradle.getUnionPath(":feature:webview:pkg"))
-    implementation project(gradle.getUnionPath(":feature:custom:pkg"))
-    implementation project(gradle.getUnionPath(":feature:video:pkg"))
-
-    kapt project(gradle.getUnionPath(":apt:compiler"))
-}

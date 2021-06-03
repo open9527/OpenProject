@@ -1,6 +1,6 @@
 
 
 
-dependencies {
-    api  project(gradle.getUnionPath(":feature:appmanager:pkg"))
-}
+//dependencies {
+//    api  project(gradle.getUnionPath(":feature:appmanager:pkg"))
+//}

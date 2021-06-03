@@ -3,6 +3,8 @@ package com.android.open9527;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.annotation.Nullable;
+
 import com.android.feature.webview.pkg.WebViewActivity;
 import com.android.open9527.common.bundle.BundleUtils;
 import com.android.open9527.common.page.BaseCommonActivity;
@@ -43,42 +45,28 @@ public class LauncherActivity extends BaseCommonActivity {
             if (view.getId() == R.id.btn_okhttp) {
                 Router.getsInstance()
                         .build(Path.PATH_OKHTTP_OKHTTPACTIVITY)
-                        .navigation(LauncherActivity.this, new NavigationCallback() {
-                            @Override
-                            public void onFound(Postcard postcard) {
-                                LogUtils.i(TAG, "NavigationCallback" + "找到跳转页面");
-                            }
-
-                            @Override
-                            public void onLost(Postcard postcard) {
-                                LogUtils.i(TAG, "NavigationCallback" + "未找到");
-                            }
-
-                            @Override
-                            public void onArrival(Postcard postcard) {
-                                LogUtils.i(TAG, "NavigationCallback" + "成功跳转");
-                            }
-                        });
+                        .navigation(LauncherActivity.this, navigationCallback);
 
             } else if (view.getId() == R.id.btn_permission) {
                 Router.getsInstance()
                         .build(Path.PATH_PERMISSION_PERMISSIONACTIVITY)
-                        .navigation(LauncherActivity.this);
+                        .navigation(LauncherActivity.this, navigationCallback);
 
             } else if (view.getId() == R.id.btn_wanandroid) {
                 Router.getsInstance()
                         .build(Path.PATH_WANANDROID_WANANDROIDACTIVITY)
-                        .navigation(LauncherActivity.this);
+                        .withBoolean("model", true)
+                        .navigation(LauncherActivity.this, navigationCallback);
 
             } else if (view.getId() == R.id.btn_image) {
                 Router.getsInstance()
                         .build(Path.PATH_IMAGE_IMAGEACTIVITY)
-                        .navigation(LauncherActivity.this);
+                        .navigation(LauncherActivity.this, navigationCallback);
 
             } else if (view.getId() == R.id.btn_annotation) {
                 Router.getsInstance()
                         .build(Path.PATH_LAUNCHER_CONTENTVIEWACTIVITY)
-                        .navigation(LauncherActivity.this);
+                        .navigation(LauncherActivity.this, navigationCallback);
 
 
             } else if (view.getId() == R.id.btn_appmanager) {
@@ -90,55 +78,40 @@ public class LauncherActivity extends BaseCommonActivity {
                 Bundle bundle = BundleUtils.createBundleJson(new WebViewActivity.BundleData("https://www.wanandroid.com/index", "wanandroid"));
                 Router.getsInstance().build(Path.PATH_WEBVIEW_WEBVIEWACTIVITY)
                         .withBundle(bundle)
-                        .navigation(LauncherActivity.this);
+                        .navigation(LauncherActivity.this, navigationCallback);
 
             } else if (view.getId() == R.id.btn_custom) {
                 Router.getsInstance()
                         .build(Path.PATH_CUSTOM_CUSTOMACTIVITY)
-                        .navigation(LauncherActivity.this, new NavigationCallback() {
-                            @Override
-                            public void onFound(Postcard postcard) {
-                                LogUtils.i(TAG, "NavigationCallback" + "找到跳转页面");
-                            }
-
-                            @Override
-                            public void onLost(Postcard postcard) {
-                                LogUtils.i(TAG, "NavigationCallback" + "未找到");
-                            }
-
-                            @Override
-                            public void onArrival(Postcard postcard) {
-                                LogUtils.i(TAG, "NavigationCallback" + "成功跳转");
-                            }
-
-                        });
+                        .navigation(LauncherActivity.this, navigationCallback);
 
 
-            }else if (view.getId() == R.id.btn_video) {
+            } else if (view.getId() == R.id.btn_video) {
                 Router.getsInstance()
                         .build(Path.PATH_VIDEO_VIDEOACTIVITY)
-                        .navigation(LauncherActivity.this, new NavigationCallback() {
-                            @Override
-                            public void onFound(Postcard postcard) {
-                                LogUtils.i(TAG, "NavigationCallback" + "找到跳转页面");
-
-                            }
-
-                            @Override
-                            public void onLost(Postcard postcard) {
-                                LogUtils.i(TAG, "NavigationCallback" + "未找到");
-                            }
-
-                            @Override
-                            public void onArrival(Postcard postcard) {
-                                LogUtils.i(TAG, "NavigationCallback" + "成功跳转");
-                            }
-                        });
+                        .navigation(LauncherActivity.this, navigationCallback);
 
 
             }
         };
     }
+
+    private NavigationCallback navigationCallback = new NavigationCallback() {
+        @Override
+        public void onFound(Postcard postcard) {
+            LogUtils.i(TAG, "NavigationCallback" + "找到跳转页面 Path= " + postcard.getPath());
+        }
+
+        @Override
+        public void onLost(Postcard postcard) {
+            LogUtils.i(TAG, "NavigationCallback" + "未找到 Path= " + postcard.getPath());
+        }
+
+        @Override
+        public void onArrival(Postcard postcard) {
+            LogUtils.i(TAG, "NavigationCallback" + "成功跳转 Path= " + postcard.getPath());
+        }
+    };
 
 
     private long exitTime;

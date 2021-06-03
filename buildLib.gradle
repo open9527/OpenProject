@@ -54,3 +54,24 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
     }
 }
+dependencies {
+    GLog.l("dependenciesProjectName = " + project.name)
+    if (project.name.endsWith("_pkg")) {
+        for (def entrySet : ConfigUtils.getApplyExports().entrySet()) {
+            api entrySet.value.dep
+        }
+
+        //APT
+        kapt Config.depConfig.apt_compiler.dep
+        api Config.depConfig.apt_annotation.dep
+
+    } else if (project.name.endsWith("_export")) {
+        if (project.name.contains("_kotlin_")) {
+            // kotlin test
+            api Config.depConfig.lib_kt_common.dep
+        } else {
+            api Config.depConfig.lib_common.dep
+        }
+
+    }
+}
