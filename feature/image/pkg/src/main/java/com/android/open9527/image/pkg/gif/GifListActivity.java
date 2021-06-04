@@ -54,7 +54,7 @@ public class GifListActivity extends BaseCommonActivity {
         return new DataBindingConfig(R.layout.gif_list_activity, BR.vm, mViewModel)
                 .addBindingParam(BR.click, new ClickProxy())
                 .addBindingParam(BR.scrollListener, new RecycleViewScrollListener(iScrollListener))
-                .addBindingParam(BR.layoutManager, new WrapContentLinearLayoutManager(this))
+                .addBindingParam(BR.layoutManager, new WrapContentGridLayoutManager(this,1))
 //                .addBindingParam(BR.itemDecoration, new GridSpaceItemDecoration(10))
                 .addBindingParam(BR.adapter, new BaseBindingCellListAdapter<>());
     }

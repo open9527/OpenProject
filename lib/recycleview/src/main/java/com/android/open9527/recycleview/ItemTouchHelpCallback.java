@@ -104,6 +104,12 @@ public class ItemTouchHelpCallback extends ItemTouchHelper.Callback {
             int dragFlag = ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT
                     | ItemTouchHelper.UP | ItemTouchHelper.DOWN;
             int swipeFlag = 0;
+            //处理spanCount=1时, GridLayoutManager  支持侧滑删除
+            GridLayoutManager gridLayoutManager = (GridLayoutManager) layoutManager;
+            int spanCount = gridLayoutManager.getSpanCount();
+            if (spanCount == 1) {
+                swipeFlag = ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT;
+            }
             // create make
             return makeMovementFlags(dragFlag, swipeFlag);
         } else if (layoutManager instanceof LinearLayoutManager) {
