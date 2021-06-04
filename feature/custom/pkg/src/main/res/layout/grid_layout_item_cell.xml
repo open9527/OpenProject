@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.android.open9527.common.widget.image.RoundImageType" />
+
+        <import type="com.bumptech.glide.load.engine.DiskCacheStrategy" />
+
+        <variable
+            name="cell"
+            type="com.android.custom.pkg.layout.grid.GridLayoutItemCell" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        bindClickViewScale="@{true}"
+        bindViewClick="@{v->cell.onCellClick(v,cell)}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.android.open9527.common.widget.image.LoadImageView
+            android:id="@+id/iv_pic"
+            bindCornerType="@{RoundImageType.CORNER_TYPE_ALL}"
+            bindIvRoundRadius="@{6}"
+            bindIvRoundType="@{RoundImageType.ROUND_TYPE_ROUND}"
+            bindIvUrl="@{cell.valueUrl}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -43,9 +43,9 @@ class Config {
 //            feature_wanandroid_export       : new DepConfig(true, true, ":feature:wanandroid:export"),
 //            feature_wanandroid_pkg          : new DepConfig(true, true, ":feature:wanandroid:pkg"),
 
-            feature_image_app               : new DepConfig(true, true, ":feature:image:app"),
-            feature_image_export            : new DepConfig(true, true, ":feature:image:export"),
-            feature_image_pkg               : new DepConfig(true, true, ":feature:image:pkg"),
+//            feature_image_app               : new DepConfig(true, true, ":feature:image:app"),
+//            feature_image_export            : new DepConfig(true, true, ":feature:image:export"),
+//            feature_image_pkg               : new DepConfig(true, true, ":feature:image:pkg"),
 
 //            feature_annotation_app          : new DepConfig(true, true, ":feature:annotation:app"),
 //            feature_annotation_export       : new DepConfig(true, true, ":feature:annotation:export"),
@@ -59,9 +59,9 @@ class Config {
 //            feature_webview_export          : new DepConfig(true, true, ":feature:webview:export"),
 //            feature_webview_pkg             : new DepConfig(true, true, ":feature:webview:pkg"),
 //
-//            feature_custom_app              : new DepConfig(true, true, ":feature:custom:app"),
-//            feature_custom_export           : new DepConfig(true, true, ":feature:custom:export"),
-//            feature_custom_pkg              : new DepConfig(true, true, ":feature:custom:pkg"),
+            feature_custom_app              : new DepConfig(true, true, ":feature:custom:app"),
+            feature_custom_export           : new DepConfig(true, true, ":feature:custom:export"),
+            feature_custom_pkg              : new DepConfig(true, true, ":feature:custom:pkg"),
 //
 //            feature_video_app               : new DepConfig(true, true, ":feature:video:app"),
 //            feature_video_export            : new DepConfig(true, true, ":feature:video:export"),

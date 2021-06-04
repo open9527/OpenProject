@@ -1,16 +1,12 @@
 package com.android.custom.pkg.adapter;
 
-import android.content.Context;
-
 import androidx.annotation.NonNull;
 import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.open9527.recycleview.adapter.BaseBindingCellListAdapter;
 import com.android.open9527.recycleview.scroll.BottomSmoothScroller;
-import com.android.open9527.recycleview.scroll.TopSmoothScroller;
 import com.blankj.utilcode.util.LogUtils;
 
 import java.util.List;

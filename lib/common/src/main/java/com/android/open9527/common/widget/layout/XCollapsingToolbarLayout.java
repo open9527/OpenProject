@@ -1,4 +1,4 @@
-package com.android.open9527.common.widget;
+package com.android.open9527.common.widget.layout;
 
 import android.content.Context;
 import android.util.AttributeSet;

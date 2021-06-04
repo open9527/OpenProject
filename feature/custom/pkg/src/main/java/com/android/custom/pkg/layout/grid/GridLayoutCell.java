@@ -1,22 +1,21 @@
 package com.android.custom.pkg.layout.grid;
 
-import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ObservableField;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.android.custom.pkg.BR;
 import com.android.custom.pkg.R;
 import com.android.custom.pkg.databinding.GridLayoutCellBinding;
-import com.android.custom.pkg.databinding.GridLayoutItemBinding;
+import com.android.open9527.common.widget.layout.NineGridLayout;
 import com.android.open9527.recycleview.adapter.BaseBindingCell;
+import com.android.open9527.recycleview.adapter.BaseBindingCellListAdapter;
 import com.android.open9527.recycleview.adapter.BaseBindingCellViewHolder;
-import com.blankj.utilcode.util.SizeUtils;
+import com.android.open9527.recycleview.decoration.GridSpaceItemDecoration;
+import com.android.open9527.recycleview.layout_manager.WrapContentGridLayoutManager;
+import com.blankj.utilcode.util.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,69 +42,39 @@ public class GridLayoutCell extends BaseBindingCell<GridLayoutCell> {
     public void bind(@NonNull BaseBindingCellViewHolder holder, int position) {
         holder.addBindingParam(BR.cell, this);
         GridLayoutCellBinding mBinding = (GridLayoutCellBinding) holder.getBinding();
-        List<String> mData = new ArrayList<>();
-        for (int i = 0; i < (position + 1); i++) {
-            mData.add("test" + i);
+        List<BaseBindingCell> mData = new ArrayList<>();
+        for (int i = 0; i < position; i++) {
+            mData.add(new GridLayoutItemCell(valueUrl.get()));
         }
+        setGridLayout(mBinding.gridLayout, mData);
 
-//        setGridLayout(mBinding.gridLayout,mData);
-        setNineGridLayout(mBinding.gridLayout, mData);
     }
 
+    private void setGridLayout(NineGridLayout nineGridLayout, List<BaseBindingCell> list) {
+        WrapContentGridLayoutManager gridLayoutManager = new WrapContentGridLayoutManager(nineGridLayout.getContext(), 6);
+        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                if (list.size() == 1) {
+                    return 6;
+                } else if (list.size() == 2 || list.size() == 4) {
+                    return 3;
+                }
+                return 2;
+            }
+        });
+        NineGridLayout.newInstance(nineGridLayout.getContext())
+//                .setRecyclerView(new RecyclerView(nineGridLayout.getContext()))
+                .setLayoutManager(gridLayoutManager)
+                .setItemDecoration(new GridSpaceItemDecoration(5))
+                .setAdapter(new BaseBindingCellListAdapter())
+                .setList(list)
+                .into(nineGridLayout);
+    }
 
     @Override
     public void onCellClick(@NonNull View view, @NonNull GridLayoutCell gridLayoutCell) {
-
-    }
-
-
-    private void setNineGridLayout(NineGridLayout gridLayout, List<String> list) {
-        BaseNineGridAdapter<View, String> mAdapter;
-//        gridLayout.setMaxChildCount(9);
-        gridLayout.setColumnCount(getSpan(list.size()));
-        gridLayout.setRowCount(getSpan(list.size()));
-        gridLayout.setMode(NineGridLayout.MODE_GRID);
-        gridLayout.setGridSpace(3);
-
-        gridLayout.setAdapter(mAdapter = new BaseNineGridAdapter<View, String>() {
-            @Override
-            public View onCreateChildView(Context context, NineGridLayout parent, int position) {
-                return LayoutInflater.from(context).inflate(R.layout.grid_layout_item, parent, false);
-            }
-
-            @Override
-            public void onBindData(Context context, View childView, String data, int position) {
-                GridLayoutItemBinding mBinding = DataBindingUtil.bind(childView);
-                mBinding.setValueUrl(valueUrl.get());
-            }
-        });
-        mAdapter.setDataList(list);
-
-    }
-
-    private void setGridLayout(XGridLayout gridLayout, List<String> list) {
-        gridLayout.setGridSpan(getSpan(list.size()));
-//        gridLayout.setMaxItem((9));
-//        gridLayout.setIsSquare(false);
-//        gridLayout.setHorizontalSpace(3);
-//        gridLayout.setVerticalSpace(3);
-
-        gridLayout.setAdapter(new GridLayoutAdapter<String>(gridLayout.getContext(), list, R.layout.grid_layout_item) {
-            @Override
-            public void convert(BaseBindingCellViewHolder holder, String item, int position) {
-                GridLayoutItemBinding mBinding = (GridLayoutItemBinding) holder.getBinding();
-                mBinding.setValueUrl(valueUrl.get());
-            }
-        });
-    }
-
-    private int getSpan(int size) {
-        if (size == 1) {
-            return 1;
-        } else if (size == 2 || size == 4) {
-            return 2;
-        }
-        return 3;
+        LogUtils.i(TAG, "onCellClick");
     }
 
 

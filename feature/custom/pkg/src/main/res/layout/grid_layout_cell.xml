@@ -33,11 +33,7 @@
             android:textSize="@dimen/font_16"
             app:layout_constraintTop_toTopOf="parent" />
 
-
-
-
-<!--        <com.android.custom.pkg.layout.grid.XGridLayout-->
-        <com.android.custom.pkg.layout.grid.NineGridLayout
+        <com.android.open9527.common.widget.layout.NineGridLayout
             android:id="@+id/grid_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,7 +42,6 @@
             android:background="@color/common_line_color"
             app:layout_constraintTop_toBottomOf="@+id/tv_title"
             tools:minHeight="@dimen/size_200" />
-
 
         <com.android.open9527.common.widget.textview.StateSwitchTextView
             android:id="@+id/tv_desc"
