@@ -126,6 +126,14 @@
                 android:text="@{vm.valueLayoutTitle}"
                 android:textColor="@color/common_text_color"
                 android:textSize="@dimen/font_16" />
+
+            <com.android.open9527.common.widget.DrawTextPathView
+                android:id="@+id/DrawTextPathView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_100"
+                android:layout_margin="@dimen/size_10" />
+
+
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

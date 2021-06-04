@@ -8,6 +8,7 @@ import android.view.View;
 import androidx.annotation.Nullable;
 
 import com.android.custom.pkg.bundle.CustomBundle;
+import com.android.custom.pkg.databinding.CustomActivityBinding;
 import com.android.custom.pkg.dialog.DialogActivity;
 import com.android.custom.pkg.layout.grid.GridLayoutActivity;
 import com.android.custom.pkg.lottie.LottieActivity;
@@ -22,6 +23,7 @@ import com.android.open9527.filter.FilterColor;
 import com.android.open9527.filter.color.NightColor;
 import com.android.open9527.page.DataBindingConfig;
 import com.blankj.utilcode.util.ActivityUtils;
+import com.blankj.utilcode.util.ColorUtils;
 import com.open9527.annotation.router.Router;
 
 /**
@@ -50,6 +52,15 @@ public class CustomActivity extends BaseCommonActivity {
     public void initView(@Nullable Bundle bundle) {
         super.initView(bundle);
         mViewModel.valueIsLogin.set(false);
+
+        CustomActivityBinding mBinding = (CustomActivityBinding) getBinding();
+        mBinding.DrawTextPathView.setText("这是一段文字,用动画来播放");
+        mBinding.DrawTextPathView.setAutoStart(true);
+        mBinding.DrawTextPathView.setCycle(true);
+        mBinding.DrawTextPathView.setDuration(10000);
+        mBinding.DrawTextPathView.setTextColor(ColorUtils.getColor(R.color.common_text_color));
+        mBinding.DrawTextPathView.setTextSize(30);
+
     }
 
     @Override
