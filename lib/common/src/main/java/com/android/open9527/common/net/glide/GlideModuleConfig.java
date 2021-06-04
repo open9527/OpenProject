@@ -84,7 +84,7 @@ public class GlideModuleConfig extends AppGlideModule {
 
         // 设置默认的加载占位图和加载出错图
         builder.setDefaultRequestOptions(new RequestOptions()
-//                .fallback()
+////                .fallback()
                 .placeholder(R.drawable.common_image_placeholder)
                 .error(R.drawable.common_image_load_err));
     }

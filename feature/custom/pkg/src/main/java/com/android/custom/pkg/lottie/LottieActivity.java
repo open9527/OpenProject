@@ -1,6 +1,5 @@
 package com.android.custom.pkg.lottie;
 
-import android.animation.Animator;
 import android.os.Bundle;
 import android.view.View;
 

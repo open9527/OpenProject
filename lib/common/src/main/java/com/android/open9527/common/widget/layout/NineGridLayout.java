@@ -85,20 +85,20 @@ public class NineGridLayout extends FrameLayout {
         }
 
         @SuppressWarnings("unchecked")
-        public Builder into(@NonNull NineGridLayout gridLayout) {
+        public Builder into(@NonNull NineGridLayout nineGridLayout) {
 
             if (mRecyclerView != null) {
-                gridLayout.removeView(gridLayout.getRecyclerView());
-                gridLayout.mRecyclerView = mRecyclerView;
-                gridLayout.addView(mRecyclerView);
+                nineGridLayout.removeView(nineGridLayout.getRecyclerView());
+                nineGridLayout.mRecyclerView = mRecyclerView;
+                nineGridLayout.addView(mRecyclerView);
             } else {
-                mRecyclerView = gridLayout.getRecyclerView();
+                mRecyclerView = nineGridLayout.getRecyclerView();
             }
             mRecyclerView.setLayoutManager(mLayoutManager);
             if (mRecyclerView.getItemDecorationCount() == 0) {
                 mRecyclerView.addItemDecoration(mItemDecoration);
             }
-            gridLayout.mRecyclerView.setAdapter(mAdapter);
+            nineGridLayout.mRecyclerView.setAdapter(mAdapter);
             mAdapter.submitList(mList);
             return this;
         }

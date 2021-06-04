@@ -28,8 +28,7 @@ import com.airbnb.lottie.LottieAnimationView;
  * @author open_9527
  * Create at 2021/4/22
  **/
-//public class RoundImageView extends AppCompatImageView {
-public class RoundImageView extends LottieAnimationView {
+public class RoundImageView extends AppCompatImageView {
 
     private static final String TAG = "RoundImageView";
 
