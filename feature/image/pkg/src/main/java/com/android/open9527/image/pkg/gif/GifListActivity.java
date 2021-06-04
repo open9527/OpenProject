@@ -3,11 +3,14 @@ package com.android.open9527.image.pkg.gif;
 import android.graphics.Rect;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.os.Looper;
 import android.os.Message;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.vectordrawable.graphics.drawable.Animatable2Compat;
 
@@ -19,12 +22,16 @@ import com.android.open9527.image.pkg.BR;
 import com.android.open9527.image.pkg.R;
 import com.android.open9527.image.pkg.databinding.GifListActivityBinding;
 import com.android.open9527.page.DataBindingConfig;
+import com.android.open9527.recycleview.ItemTouchHelpCallback;
 import com.android.open9527.recycleview.adapter.BaseBindingCellListAdapter;
 import com.android.open9527.recycleview.decoration.GridSpaceItemDecoration;
 import com.android.open9527.recycleview.layout_manager.WrapContentGridLayoutManager;
+import com.android.open9527.recycleview.layout_manager.WrapContentLinearLayoutManager;
 import com.android.open9527.recycleview.scroll.RecycleViewScrollListener;
 import com.blankj.utilcode.util.LogUtils;
 import com.bumptech.glide.load.resource.gif.GifDrawable;
+
+import java.util.Collections;
 
 /**
  * @author open_9527
@@ -47,11 +54,47 @@ public class GifListActivity extends BaseCommonActivity {
         return new DataBindingConfig(R.layout.gif_list_activity, BR.vm, mViewModel)
                 .addBindingParam(BR.click, new ClickProxy())
                 .addBindingParam(BR.scrollListener, new RecycleViewScrollListener(iScrollListener))
-                .addBindingParam(BR.layoutManager, new WrapContentGridLayoutManager(this, 1))
-                .addBindingParam(BR.itemDecoration, new GridSpaceItemDecoration(10))
+                .addBindingParam(BR.layoutManager, new WrapContentLinearLayoutManager(this))
+//                .addBindingParam(BR.itemDecoration, new GridSpaceItemDecoration(10))
                 .addBindingParam(BR.adapter, new BaseBindingCellListAdapter<>());
     }
 
+    @Override
+    public void initView(@Nullable Bundle bundle) {
+        super.initView(bundle);
+        RecyclerView recyclerView = ((GifListActivityBinding) getBinding()).recyclerView;
+        ItemTouchHelpCallback callback = new ItemTouchHelpCallback(new ItemTouchHelpCallback.OnItemTouchCallbackListener() {
+            @Override
+            public void onSwiped(int adapterPosition) {
+                LogUtils.i(TAG, "onSwiped: adapterPosition=" + adapterPosition);
+
+                mViewModel.valueCells.remove(adapterPosition);
+                recyclerView.getAdapter().notifyItemRemoved(adapterPosition);
+
+            }
+
+            @Override
+            public boolean onMove(int srcPosition, int targetPosition) {
+                LogUtils.i(TAG, "onMove: srcPosition=" + srcPosition + "  targetPosition=" + targetPosition);
+
+                // 更换数据源中的数据Item的位置。更改list中开始和结尾position的位置
+                Collections.swap(mViewModel.valueCells, srcPosition, targetPosition);
+                // 更新UI中的Item的位置，主要是给用户看到交互效果
+                recyclerView.getAdapter().notifyItemMoved(srcPosition, targetPosition);
+
+                return true;
+            }
+        });
+
+        callback.setDragEnable(true);
+        callback.setSwipeEnable(true);
+//        callback.setColor(this.getResources().getColor(R.color.base_background_block));
+        //创建helper对象，callback监听recyclerView item 的各种状态
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(callback);
+        //关联recyclerView，一个helper对象只能对应一个recyclerView
+        itemTouchHelper.attachToRecyclerView(recyclerView);
+
+    }
 
     @Override
     public void initRequest() {

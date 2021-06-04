@@ -70,5 +70,12 @@
             android:label="Lottie"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".layout.grid.GridLayoutActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="GridLayout"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
     </application>
 </manifest>

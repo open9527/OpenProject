@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.android.open9527.common.widget.image.RoundImageType" />
+
+        <import type="com.bumptech.glide.load.engine.DiskCacheStrategy" />
+
+        <variable
+            name="cell"
+            type="com.android.custom.pkg.layout.grid.GridLayoutCell" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bindViewClick="@{v->cell.onCellClick(v,cell)}">
+
+
+        <com.android.open9527.common.widget.textview.StateSwitchTextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_10"
+            android:layout_marginTop="@dimen/size_20"
+            android:layout_marginEnd="@dimen/size_10"
+            android:minHeight="@dimen/size_30"
+            android:text="@{cell.valueTitle}"
+            android:textColor="@color/common_text_color"
+            android:textSize="@dimen/font_16"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+<!--        <com.android.custom.pkg.layout.grid.XGridLayout-->
+        <com.android.custom.pkg.layout.grid.NineGridLayout
+            android:id="@+id/grid_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_10"
+            android:layout_marginEnd="@dimen/size_10"
+            android:background="@color/common_line_color"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            tools:minHeight="@dimen/size_200" />
+
+
+        <com.android.open9527.common.widget.textview.StateSwitchTextView
+            android:id="@+id/tv_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_10"
+            android:layout_marginTop="@dimen/size_10"
+            android:layout_marginEnd="@dimen/size_10"
+            android:minHeight="@dimen/size_30"
+            android:text="@{cell.valueDesc}"
+            android:textColor="@color/common_text_sub_color"
+            android:textSize="@dimen/font_16"
+            app:layout_constraintTop_toBottomOf="@+id/grid_layout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

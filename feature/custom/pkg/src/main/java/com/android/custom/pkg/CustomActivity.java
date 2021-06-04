@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 
 import com.android.custom.pkg.bundle.CustomBundle;
 import com.android.custom.pkg.dialog.DialogActivity;
+import com.android.custom.pkg.layout.grid.GridLayoutActivity;
 import com.android.custom.pkg.lottie.LottieActivity;
 import com.android.custom.pkg.recycleview.RecycleViewActivity;
 import com.android.custom.pkg.shadow.ShadowActivity;
@@ -100,12 +101,17 @@ public class CustomActivity extends BaseCommonActivity {
         public View.OnClickListener lottieViewClick = v -> {
             ActivityUtils.startActivity(LottieActivity.class);
         };
+
+        public View.OnClickListener gridLayoutViewClick = v -> {
+            ActivityUtils.startActivity(GridLayoutActivity.class);
+        };
+
     }
 
     private void startActivityByCheckLogin(Intent intent, boolean checkLogin) {
         if (checkLogin && (!mViewModel.valueIsLogin.get())) {
             intent.putExtra("class", DialogActivity.class);
-            intent.putExtras(BundleUtils.createBundleJson(new CustomBundle( "这是一段描述")));
+            intent.putExtras(BundleUtils.createBundleJson(new CustomBundle("这是一段描述")));
             intent.setComponent(new ComponentName(mActivity, LoginActivity.class));
         }
         super.startActivity(intent);

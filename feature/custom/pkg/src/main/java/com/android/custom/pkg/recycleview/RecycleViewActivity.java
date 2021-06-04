@@ -70,7 +70,6 @@ public class RecycleViewActivity extends BaseCommonActivity {
         adapter.addAdapter(new FooterAdapter());
         RecyclerView recyclerView = ((RecycleviewActivityBinding) getBinding()).recyclerView;
         recyclerView.setAdapter(adapter);
-
     }
 
     private class HeaderAdapter extends RecyclerView.Adapter<BaseCellViewHolder> {

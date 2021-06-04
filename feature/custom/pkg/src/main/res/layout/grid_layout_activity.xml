@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.android.custom.pkg.layout.grid.GridLayoutViewModel" />
+
+        <variable
+            name="click"
+            type="com.android.custom.pkg.layout.grid.GridLayoutActivity.ClickProxy" />
+
+        <variable
+            name="adapter"
+            type="androidx.recyclerview.widget.RecyclerView.Adapter" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+    <include
+        layout="@layout/custom_title_bar"
+        app:barBackClick="@{click.backClick}"
+        app:barTitleText="@{vm.valueTitle}" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        bindRvAdapter="@{adapter}"
+        bindRvAnim="@{false}"
+        bindRvList="@{vm.valueCellList}"
+        app:layoutManager="com.android.open9527.recycleview.layout_manager.WrapContentLinearLayoutManager" />
+    </LinearLayout>
+</layout>
