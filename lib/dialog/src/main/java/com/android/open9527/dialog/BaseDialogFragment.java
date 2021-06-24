@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.SparseArray;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,11 +25,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.viewbinding.ViewBinding;
 
 
-public abstract class BaseDialogFragment extends DialogFragment implements IDialogView {
+public abstract class BaseDialogFragment extends DialogFragment implements IDialogView, DialogInterface.OnKeyListener {
 
     protected final String TAG = getClass().getSimpleName();
 
     protected FragmentActivity mActivity;
+    protected View mContentView;
 
     public BaseDialogFragment(@NonNull Context context) {
         this.mActivity = getFragmentActivity(context);
@@ -46,6 +48,15 @@ public abstract class BaseDialogFragment extends DialogFragment implements IDial
             //  window.getAttributes().windowAnimations;
 
         }
+    }
+
+    @Override
+    public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            dismiss();
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -89,11 +100,15 @@ public abstract class BaseDialogFragment extends DialogFragment implements IDial
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         initView(this, view);
+        mContentView = view;
+        Dialog mDialog = getDialog();
+        if (mDialog != null) {
+            mDialog.setOnKeyListener(this);
+        }
     }
 
     @Override
     public void initView(@NonNull BaseDialogFragment dialog, @NonNull View contentView) {
-
         if (getDataBindingConfig() != null && getDataBindingConfig().getBindingParams().size() > 0) {
             bindingVariable(DataBindingUtil.getBinding(contentView), getDataBindingConfig().getBindingParams());
         }

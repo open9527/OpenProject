@@ -44,7 +44,7 @@ public class GridLayoutCell extends BaseBindingCell<GridLayoutCell> {
         GridLayoutCellBinding mBinding = (GridLayoutCellBinding) holder.getBinding();
         List<BaseBindingCell> mData = new ArrayList<>();
         for (int i = 0; i < position; i++) {
-            mData.add(new GridLayoutItemCell(valueUrl.get()));
+            mData.add(new GridLayoutItemCell(valueUrl.get(),i));
         }
         setGridLayout(mBinding.gridLayout, mData);
 

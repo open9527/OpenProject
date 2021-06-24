@@ -107,7 +107,7 @@ public class RecyclerViewBindingAdapter {
     }
 
     @BindingAdapter(value = {"bindRvScrollListener"}, requireAll = false)
-    public static void setBindingRecycleViewData(RecyclerView recyclerView, RecycleViewScrollListener scrollListener) {
+    public static void setBindingRecycleViewScrollListener(RecyclerView recyclerView, RecycleViewScrollListener scrollListener) {
         if (recyclerView == null || scrollListener == null) return;
         recyclerView.addOnScrollListener(scrollListener);
     }

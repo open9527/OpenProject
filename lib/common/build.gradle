@@ -44,6 +44,6 @@ dependencies {
     api Config.depConfig.banner_viewpager.dep
 
     api "com.airbnb.android:lottie:3.7.0"
-
+    api Config.depConfig.photo_view.dep
 
 }

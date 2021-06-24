@@ -34,6 +34,7 @@
                 android:layout_margin="@dimen/size_10"
                 android:background="@color/white"
                 android:gravity="center"
+                android:fontFamily="null"
                 android:text="@{vm.valueFilterTitle}"
                 android:textColor="@color/common_text_color"
                 android:textSize="@dimen/font_16" />
@@ -47,6 +48,7 @@
                 android:layout_margin="@dimen/size_10"
                 android:background="@color/white"
                 android:gravity="center"
+                android:fontFamily="null"
                 android:text="@{vm.valueShadowTitle}"
                 android:textColor="@color/common_text_color"
                 android:textSize="@dimen/font_16" />

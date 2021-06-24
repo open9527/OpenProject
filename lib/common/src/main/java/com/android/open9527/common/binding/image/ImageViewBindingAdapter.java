@@ -3,6 +3,7 @@ package com.android.open9527.common.binding.image;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.view.View;
 import android.widget.ImageView;
 
 import androidx.annotation.ColorInt;
@@ -11,6 +12,7 @@ import androidx.databinding.BindingAdapter;
 import com.android.open9527.common.net.glide.ImageCallBack;
 import com.android.open9527.common.net.glide.ImageLoadConfig;
 import com.android.open9527.common.widget.image.LoadImageView;
+import com.android.open9527.common.widget.image.LoadPhotoView;
 import com.android.open9527.common.widget.image.RoundImageType;
 import com.android.open9527.common.widget.image.RoundImageView;
 import com.android.open9527.common.widget.image.StateSwitchImageConfig;
@@ -105,6 +107,36 @@ public class ImageViewBindingAdapter {
     public static void setBindingImageView(ImageView imageView, Bitmap bitmap) {
         if (imageView == null || bitmap == null) return;
         imageView.setImageBitmap(bitmap);
+    }
+
+
+
+    @BindingAdapter(value = {"bindIvUrl", "bindIvRadius", "bindIvCornerType", "bindIvWidth",
+            "bindIvHeight", "bindIvFallbackDrawable", "bindIvPlaceholderResourceId",
+            "bindIvErrorResourceId", "bindIvOnlyRetrieveFromCache", "bindIvSkipMemoryCache",
+            "bindIvDiskCacheStrategy", "bindIvImageCallBack", "bindPhotoViewClick", "bindPhotoViewLongClick"}, requireAll = false)
+    public static void setBindingLoadImageViewAdapter(LoadPhotoView loadImageView,
+                                                      String url, int radius, RoundedCornersTransformation.CornerType cornerType,
+                                                      int width, int height, Drawable fallbackDrawable, int placeholderResourceId,
+                                                      int errorResourceId, boolean onlyRetrieveFromCache, boolean skipMemoryCache,
+                                                      DiskCacheStrategy strategy, ImageCallBack imageCallBack, View.OnClickListener clickListener
+            , View.OnLongClickListener longClickListener
+    ) {
+        if (loadImageView == null) return;
+        loadImageView.setImageLoadConfig(ImageLoadConfig.with(loadImageView)
+                .setUrl(url)
+                .setRadius(radius)
+                .setCornerType(cornerType)
+                .setWidth(width)
+                .setHeight(height)
+                .setFallbackDrawable(fallbackDrawable)
+                .setPlaceholderResourceId(placeholderResourceId)
+                .setErrorResourceId(errorResourceId)
+                .setOnlyRetrieveFromCache(onlyRetrieveFromCache)
+                .setSkipMemoryCache(skipMemoryCache)
+                .setStrategy(strategy)
+                .setCallBack(imageCallBack));
+        loadImageView.init(clickListener, longClickListener);
     }
 
 }

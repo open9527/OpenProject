@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="dialog"
+            type="com.android.custom.pkg.dialog.PreviewImageDialog" />
+
+        <variable
+            name="vpChangeListener"
+            type="androidx.viewpager.widget.ViewPager.OnPageChangeListener" />
+    </data>
+
+    <com.android.open9527.common.widget.PhotoViewContainer
+        android:id="@+id/fl_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.android.open9527.common.widget.image.PhotoViewPager
+            android:id="@+id/photo_view_pager"
+            bindVpAdapter="@{dialog.valuePageAdapter}"
+            bindVpChangeChangeListener="@{vpChangeListener}"
+            bindVpIndex="@{dialog.valuePageIndex}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.android.open9527.common.widget.PhotoViewContainer>
+</layout>

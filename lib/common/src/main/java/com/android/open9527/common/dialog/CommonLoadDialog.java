@@ -1,13 +1,14 @@
 package com.android.open9527.common.dialog;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 
 import com.android.open9527.common.R;
 import com.android.open9527.dialog.BaseDialogFragment;
@@ -54,7 +55,7 @@ public class CommonLoadDialog extends BaseDialogFragment {
         layoutParams.flags |= WindowManager.LayoutParams.FLAG_DIM_BEHIND;
         window.setAttributes(layoutParams);
         //设置背景为透明
-        window.setBackgroundDrawable(ContextCompat.getDrawable(mActivity, android.R.color.transparent));
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 
 }

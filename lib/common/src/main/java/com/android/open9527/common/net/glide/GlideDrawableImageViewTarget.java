@@ -83,7 +83,7 @@ public class GlideDrawableImageViewTarget extends DrawableImageViewTarget {
 
     @Override
     public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
-        LogUtils.i(TAG, "onResourceReady");
+//        LogUtils.i(TAG, "onResourceReady");
         //防止gif 自动播放
         setResource(resource);
         //super.onResourceReady(resource, transition);

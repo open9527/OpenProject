@@ -13,6 +13,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class ImageViewBindingAdapter {
+
     @BindingAdapter(value = {"bindIvUrl", "bindIvRadius", "bindIvCornerType", "bindIvWidth",
             "bindIvHeight", "bindIvFallbackDrawable", "bindIvPlaceholderResourceId",
             "bindIvErrorResourceId", "bindIvOnlyRetrieveFromCache", "bindIvSkipMemoryCache",

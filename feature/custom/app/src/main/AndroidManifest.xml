@@ -14,7 +14,6 @@
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
 
 
-
     <uses-permission
         android:name="android.permission.WRITE_SETTINGS"
         tools:ignore="ProtectedPermissions" />
@@ -33,8 +32,6 @@
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
 
-
-
     <application
         android:name=".CustomApp"
         android:allowBackup="false"
@@ -46,7 +43,8 @@
         android:theme="@style/AppTheme"
         tools:ignore="UnusedAttribute">
 
-        <activity android:name="com.android.custom.pkg.CustomActivity">
+        <activity
+            android:name="com.android.custom.pkg.CustomActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
