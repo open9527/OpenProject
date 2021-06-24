@@ -22,6 +22,7 @@ public class CustomViewModel extends ViewModel {
     public final ObservableField<String> valueVideoTitle = new ObservableField<>("video");
     public final ObservableField<String> valueLottieTitle = new ObservableField<>("Lottie");
     public final ObservableField<String> valueLayoutTitle = new ObservableField<>("layout");
+    public final ObservableField<String> valueDownLoad = new ObservableField<>("downLoad");
     public final ObservableBoolean valueIsLogin = new ObservableBoolean(false);
 
 
