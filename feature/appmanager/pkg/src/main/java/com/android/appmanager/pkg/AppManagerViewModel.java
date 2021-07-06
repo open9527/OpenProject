@@ -22,17 +22,23 @@ import java.util.List;
 public class AppManagerViewModel extends ViewModel {
 
     public final ObservableField<String> valueTitle = new ObservableField<>("AppManager");
+    public final ObservableField<String> valueMenu = new ObservableField<>("本地应用");
     public final ObservableField<Drawable> valueTitleBarBg = new ObservableField<>(new ColorDrawable(Color.WHITE));
 
 
     public final ObservableBoolean valueNoMoreData = new ObservableBoolean(true);
     public final ObservableArrayList<BaseBindingCell> valueCells = new ObservableArrayList<>();
 
-    void initData(List<AppUtils.AppInfo> appInfoList) {
-         valueCells.clear();
+    void initData(List<AppUtils.AppInfo> appInfoList, boolean isSystem) {
+        valueCells.clear();
         if (CollectionUtils.isNotEmpty(appInfoList)) {
             for (AppUtils.AppInfo appInfo : appInfoList) {
-                valueCells.add(new AppManagerCell(appInfo));
+                if (isSystem) {
+                    valueCells.add(new AppManagerCell(appInfo));
+                } else if (!appInfo.isSystem()) {
+                    valueCells.add(new AppManagerCell(appInfo));
+                }
+
             }
         }
     }

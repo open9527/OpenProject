@@ -1,5 +1,7 @@
 package com.android.appmanager.pkg;
 
+import android.view.View;
+
 import com.android.open9527.common.binding.refresh.IRefresh;
 import com.android.open9527.common.dialog.CommonLoadDialog;
 import com.android.open9527.common.page.BaseCommonActivity;
@@ -38,14 +40,13 @@ public class AppManagerActivity extends BaseCommonActivity {
     }
 
 
-
     @Override
     public void initRequest() {
         createLoadDialog().show();
-        requestAppsInfo();
+        requestAppsInfo(true);
     }
 
-    private void requestAppsInfo() {
+    private void requestAppsInfo(boolean isSystem) {
         ThreadUtils.executeByIo(new ThreadUtils.SimpleTask<List<AppUtils.AppInfo>>() {
             @Override
             public List<AppUtils.AppInfo> doInBackground() throws Throwable {
@@ -54,7 +55,7 @@ public class AppManagerActivity extends BaseCommonActivity {
 
             @Override
             public void onSuccess(List<AppUtils.AppInfo> result) {
-                mViewModel.initData(result);
+                mViewModel.initData(result, isSystem);
                 mCommonLoadDialog.dismiss();
             }
 
@@ -68,11 +69,15 @@ public class AppManagerActivity extends BaseCommonActivity {
 
 
     public class ClickProxy {
+        public View.OnClickListener menuClick = v -> {
+            requestAppsInfo(false);
+        };
+
         public IRefresh<Boolean> onRefreshListeners = new IRefresh<Boolean>() {
             @Override
             public void onRefresh(RefreshLayout refreshLayout, Boolean isRefresh) {
                 if (isRefresh) {
-                    requestAppsInfo();
+                    requestAppsInfo(true);
                 }
 
             }

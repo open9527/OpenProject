@@ -83,6 +83,7 @@ public class CommonApplication extends BaseApplication {
                 .setScreenScaleType(VideoView.SCREEN_SCALE_DEFAULT)
 //                .setAdaptCutout(false)
                 .setPlayOnMobileNetwork(true)
+                .setSkipSSLChain(true)
 //                .setProgressManager(new ProgressManagerImpl())
                 .build());
 
@@ -97,7 +98,6 @@ public class CommonApplication extends BaseApplication {
 //        Glide.get(this).getRegistry()
 //                .prepend(InputStream.class, Drawable.class, decoder)
 //                .prepend(ByteBuffer.class, Drawable.class, byteDecoder);
-
 
 
         //Glide低内存优化操作

@@ -34,6 +34,8 @@ public class VideoViewConfig {
 
     public final boolean mAdaptCutout;
 
+    public final boolean mSkipSSLChain ;
+
     private VideoViewConfig(Builder builder) {
         mIsEnableLog = builder.mIsEnableLog;
         mEnableOrientation = builder.mEnableOrientation;
@@ -54,6 +56,7 @@ public class VideoViewConfig {
             mRenderViewFactory = builder.mRenderViewFactory;
         }
         mAdaptCutout = builder.mAdaptCutout;
+        mSkipSSLChain=builder.mSkipSSLChain;
     }
 
 
@@ -68,6 +71,7 @@ public class VideoViewConfig {
         private int mScreenScaleType;
         private RenderViewFactory mRenderViewFactory;
         private boolean mAdaptCutout = true;
+        private boolean mSkipSSLChain = false;
 
         /**
          * 是否监听设备方向来切换全屏/半屏， 默认不开启
@@ -140,6 +144,12 @@ public class VideoViewConfig {
             mAdaptCutout = adaptCutout;
             return this;
         }
+
+        public Builder setSkipSSLChain(boolean skipSSLChain) {
+            mSkipSSLChain = skipSSLChain;
+            return this;
+        }
+
 
         public VideoViewConfig build() {
             return new VideoViewConfig(this);

@@ -36,6 +36,9 @@
         <include
             layout="@layout/common_title_bar"
             app:barTitleText="@{vm.valueTitle}"
+            app:barMenuText="@{vm.valueMenu}"
+            app:showMenuString="@{true}"
+            app:barMenuClick="@{click.menuClick}"
             app:showBarBack="@{View.GONE}" />
 
 

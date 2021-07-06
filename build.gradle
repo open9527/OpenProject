@@ -4,9 +4,10 @@ buildscript {
         google()
         jcenter()
         //umeng
-        maven { url "https://dl.bintray.com/umsdk/release" }
+        maven { url 'https://repo1.maven.org/maven2/' }
     }
     dependencies {
+        classpath 'com.android.tools.build:gradle:3.6.4'
         for (def entrySet : ConfigUtils.getApplyPlugins().entrySet()) {
             classpath entrySet.value.dep
         }
@@ -19,7 +20,7 @@ allprojects {
         jcenter()
         maven { url "https://jitpack.io" }
         //umeng
-        maven { url "https://dl.bintray.com/umsdk/release" }
+        maven { url 'https://repo1.maven.org/maven2/' }
     }
     buildDir = new File(rootDir, "gradle-build/${path.replaceAll(':', '/')}")
 }

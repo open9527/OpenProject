@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.text.TextUtils;
 
+import com.android.open9527.video.common.player.VideoViewManager;
 import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.MediaItem;
 import com.google.android.exoplayer2.database.ExoDatabaseProvider;
@@ -96,7 +97,7 @@ public final class ExoMediaSourceHelper {
             return C.TYPE_DASH;
         } else if (fileName.contains(".m3u8")) {
             return C.TYPE_HLS;
-        }else {
+        } else {
             return C.TYPE_OTHER;
         }
     }
@@ -134,9 +135,13 @@ public final class ExoMediaSourceHelper {
      */
     private DataSource.Factory getHttpDataSourceFactory() {
         if (mHttpDataSourceFactory == null) {
-            mHttpDataSourceFactory = new DefaultHttpDataSource.Factory()
-                    .setUserAgent(mUserAgent)
-                    .setAllowCrossProtocolRedirects(true);
+            if (VideoViewManager.getConfig().mSkipSSLChain) {
+                mHttpDataSourceFactory = new ExoHttpDataSourceFactory(mUserAgent, null, ExoDefaultHttpDataSource.DEFAULT_READ_TIMEOUT_MILLIS, ExoDefaultHttpDataSource.DEFAULT_READ_TIMEOUT_MILLIS, true);
+            } else {
+                mHttpDataSourceFactory = new DefaultHttpDataSource.Factory()
+                        .setUserAgent(mUserAgent)
+                        .setAllowCrossProtocolRedirects(true);
+            }
         }
         return mHttpDataSourceFactory;
     }

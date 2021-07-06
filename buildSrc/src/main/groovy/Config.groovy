@@ -10,10 +10,11 @@ class Config {
     static versionCode = 1_000_000
     static versionName = '1.0.0'// E.g. 1.9.72 => 1,009,072
 
-    static kotlinVersion = '1.3.50'
-    static kotlinKtx = '1.3.2'
+    static kotlinVersion = '1.5.0'
+    static kotlinKtx = '1.5.0'
 
     static gradlePluginVersion = '3.6.4'
+//    static gradlePluginVersion = '4.2.2'
     static androidxVersion = '1.0.0'
     static androidxLifecycle = '2.2.0'
     //OkHttp3.12.x分支支持Android2.3+(API级别9+)和Java 7+。
@@ -50,7 +51,7 @@ class Config {
 //            feature_annotation_app          : new DepConfig(true, true, ":feature:annotation:app"),
 //            feature_annotation_export       : new DepConfig(true, true, ":feature:annotation:export"),
 //            feature_annotation_pkg          : new DepConfig(true, true, ":feature:annotation:pkg"),
-//
+
 //            feature_appmanager_app          : new DepConfig(true, true, ":feature:appmanager:app"),
 //            feature_appmanager_export       : new DepConfig(true, true, ":feature:appmanager:export"),
 //            feature_appmanager_pkg          : new DepConfig(true, true, ":feature:appmanager:pkg"),
@@ -59,13 +60,13 @@ class Config {
 //            feature_webview_export          : new DepConfig(true, true, ":feature:webview:export"),
 //            feature_webview_pkg             : new DepConfig(true, true, ":feature:webview:pkg"),
 //
-            feature_custom_app              : new DepConfig(true, true, ":feature:custom:app"),
-            feature_custom_export           : new DepConfig(true, true, ":feature:custom:export"),
-            feature_custom_pkg              : new DepConfig(true, true, ":feature:custom:pkg"),
+//            feature_custom_app              : new DepConfig(true, true, ":feature:custom:app"),
+//            feature_custom_export           : new DepConfig(true, true, ":feature:custom:export"),
+//            feature_custom_pkg              : new DepConfig(true, true, ":feature:custom:pkg"),
 
-//            feature_video_app               : new DepConfig(true, true, ":feature:video:app"),
-//            feature_video_export            : new DepConfig(true, true, ":feature:video:export"),
-//            feature_video_pkg               : new DepConfig(true, true, ":feature:video:pkg"),
+            feature_video_app               : new DepConfig(true, true, ":feature:video:app"),
+            feature_video_export            : new DepConfig(true, true, ":feature:video:export"),
+            feature_video_pkg               : new DepConfig(true, true, ":feature:video:pkg"),
 //
 //            feature_kotlin_app              : new DepConfig(false, true, ":feature:kotlin:app"),
 //            feature_kotlin_export           : new DepConfig(false, true, ":feature:kotlin:export"),
