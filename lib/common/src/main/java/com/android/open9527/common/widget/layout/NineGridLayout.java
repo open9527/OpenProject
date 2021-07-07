@@ -2,11 +2,14 @@ package com.android.open9527.common.widget.layout;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.android.open9527.recycleview.RecycleViewUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +39,14 @@ public class NineGridLayout extends FrameLayout {
         if (isInEditMode()) {
             return;
         }
-        addView(mRecyclerView = new RecyclerView(context));
+        mRecyclerView = new RecyclerView(context);
+        mRecyclerView.setOverScrollMode(View.OVER_SCROLL_NEVER);
+        mRecyclerView.setVerticalScrollBarEnabled(false);
+        mRecyclerView.setHorizontalScrollBarEnabled(false);
+        RecycleViewUtils.closeDefaultAnimator(mRecyclerView);
+        mRecyclerView.setItemAnimator(null);
+        addView(mRecyclerView);
+
     }
 
 
