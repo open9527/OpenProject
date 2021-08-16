@@ -16,16 +16,20 @@ import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleEventObserver;
 import androidx.lifecycle.LifecycleOwner;
 
+import com.blankj.utilcode.util.GsonUtils;
+import com.blankj.utilcode.util.LogUtils;
 import com.open9527.webview.bridge.BridgeUtil;
 
 /**
@@ -97,9 +101,10 @@ public final class BrowserView extends WebView implements LifecycleEventObserver
 
     }
 
-    public void setUserAgentString(String suffix){
+    public void setUserAgentString(String suffix) {
         getSettings().setUserAgentString(BridgeUtil.USER_AGENT + suffix);
     }
+
     /**
      * 修复原生 WebView 和 AndroidX 在 Android 5.x 上面崩溃的问题
      * <p>
@@ -265,6 +270,13 @@ public final class BrowserView extends WebView implements LifecycleEventObserver
             }
             // 已经处理该链接请求
             return true;
+        }
+
+        @Nullable
+        @Override
+        public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
+            LogUtils.i(TAG, "shouldInterceptRequest ->->  request:" + GsonUtils.toJson(request));
+            return super.shouldInterceptRequest(view, request);
         }
 
         /**

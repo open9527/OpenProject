@@ -77,7 +77,7 @@ public class LauncherActivity extends BaseCommonActivity {
             } else if (view.getId() == R.id.btn_webview) {
                 Bundle bundle = BundleUtils.createBundleJson(new WebViewActivity.BundleData("https://www.wanandroid.com/index", "wanandroid"));
                 Router.getsInstance().build(Path.PATH_WEBVIEW_WEBVIEWACTIVITY)
-                        .withBundle(bundle)
+//                        .withBundle(bundle)
                         .navigation(LauncherActivity.this, navigationCallback);
 
             } else if (view.getId() == R.id.btn_custom) {

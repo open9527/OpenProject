@@ -29,7 +29,7 @@
         <!--android 10暗黑模式-->
         <item name="android:forceDarkAllowed" tools:ignore="NewApi">true</item>
         <!--配置默认字体-->
-        <item name="android:fontFamily">@font/gist_light</item>
+<!--        <item name="android:fontFamily">@font/gist_light</item>-->
     </style>
 
     <style name="FullScreenTheme" parent="CommonAppTheme">

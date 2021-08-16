@@ -1,4 +1,4 @@
-package com.android.feature.permission.app;
+package com.android.feature.webview.app;
 
 import com.android.open9527.common.application.CommonApplication;
 

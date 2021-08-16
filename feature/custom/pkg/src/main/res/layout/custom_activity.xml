@@ -26,15 +26,22 @@
             android:background="@color/common_default_background_color"
             android:orientation="vertical">
 
+            <com.android.open9527.common.widget.DrawTextPathView
+                android:id="@+id/DrawTextPathView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_100"
+                android:layout_margin="@dimen/size_10" />
+
             <com.android.open9527.common.widget.textview.StateSwitchTextView
                 bindClickViewScale="@{true}"
                 bindViewClick="@{click.nightClick}"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_45"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/size_45"
                 android:layout_margin="@dimen/size_10"
                 android:background="@color/white"
-                android:gravity="center"
                 android:fontFamily="null"
+                android:gravity="center"
                 android:text="@{vm.valueFilterTitle}"
                 android:textColor="@color/common_text_color"
                 android:textSize="@dimen/font_16" />
@@ -44,11 +51,12 @@
                 bindClickViewScale="@{true}"
                 bindViewClick="@{click.shadowClick}"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_45"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/size_45"
                 android:layout_margin="@dimen/size_10"
                 android:background="@color/white"
-                android:gravity="center"
                 android:fontFamily="null"
+                android:gravity="center"
                 android:text="@{vm.valueShadowTitle}"
                 android:textColor="@color/common_text_color"
                 android:textSize="@dimen/font_16" />
@@ -57,7 +65,8 @@
                 bindClickViewScale="@{true}"
                 bindViewClick="@{click.dialogClick}"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_45"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/size_45"
                 android:layout_margin="@dimen/size_10"
                 android:background="@color/white"
                 android:gravity="center"
@@ -70,7 +79,8 @@
                 bindClickViewScale="@{true}"
                 bindViewClick="@{click.recycleViewClick}"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_45"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/size_45"
                 android:layout_margin="@dimen/size_10"
                 android:background="@color/white"
                 android:gravity="center"
@@ -83,7 +93,8 @@
                 bindClickViewScale="@{true}"
                 bindViewClick="@{click.BridgeWebViewClick}"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_45"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/size_45"
                 android:layout_margin="@dimen/size_10"
                 android:background="@color/white"
                 android:gravity="center"
@@ -96,7 +107,8 @@
                 bindClickViewScale="@{true}"
                 bindViewClick="@{click.VideoPlayerViewClick}"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_45"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/size_45"
                 android:layout_margin="@dimen/size_10"
                 android:background="@color/white"
                 android:gravity="center"
@@ -109,7 +121,8 @@
                 bindClickViewScale="@{true}"
                 bindViewClick="@{click.lottieViewClick}"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_45"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/size_45"
                 android:layout_margin="@dimen/size_10"
                 android:background="@color/white"
                 android:gravity="center"
@@ -121,7 +134,8 @@
                 bindClickViewScale="@{true}"
                 bindViewClick="@{click.gridLayoutViewClick}"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_45"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/size_45"
                 android:layout_margin="@dimen/size_10"
                 android:background="@color/white"
                 android:gravity="center"
@@ -134,7 +148,8 @@
                 bindClickViewScale="@{true}"
                 bindViewClick="@{click.downLoadViewClick}"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_45"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/size_45"
                 android:layout_margin="@dimen/size_10"
                 android:background="@color/white"
                 android:gravity="center"
@@ -142,13 +157,32 @@
                 android:textColor="@color/common_text_color"
                 android:textSize="@dimen/font_16" />
 
-            <com.android.open9527.common.widget.DrawTextPathView
-                android:id="@+id/DrawTextPathView"
+            <com.android.open9527.common.widget.textview.StateSwitchTextView
+                bindClickViewScale="@{true}"
+                bindViewClick="@{click.valueMediaViewClick}"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_100"
-                android:layout_margin="@dimen/size_10" />
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/size_45"
+                android:layout_margin="@dimen/size_10"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="@{vm.valueMedia}"
+                android:textColor="@color/common_text_color"
+                android:textSize="@dimen/font_16" />
 
 
+            <com.android.open9527.common.widget.textview.StateSwitchTextView
+                bindClickViewScale="@{true}"
+                bindViewClick="@{click.valueActivityResultClick}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/size_45"
+                android:layout_margin="@dimen/size_10"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="@{vm.valueActivityResult}"
+                android:textColor="@color/common_text_color"
+                android:textSize="@dimen/font_16" />
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

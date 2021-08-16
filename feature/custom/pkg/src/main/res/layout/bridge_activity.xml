@@ -33,6 +33,21 @@
 
         <com.android.open9527.common.widget.textview.StateSwitchTextView
             bindClickViewScale="@{true}"
+            bindViewClick="@{click.webViewClick}"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_45"
+            android:layout_margin="@dimen/size_10"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="WebView"
+            android:textColor="@color/common_text_color"
+            android:textSize="@dimen/font_16"
+            tools:ignore="HardcodedText" />
+
+
+        <com.android.open9527.common.widget.textview.StateSwitchTextView
+            android:id="@+id/tv_viewPager2"
+            bindClickViewScale="@{true}"
             bindViewClick="@{click.ViewPager2Click}"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_45"

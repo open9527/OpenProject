@@ -31,38 +31,38 @@ class Config {
     static depConfig = [
 
             feature_launcher_app            : new DepConfig(true, true, ":feature:launcher:app"),
-//
-//            feature_okhttp_app              : new DepConfig(true, true, ":feature:okhttp:app"),
-//            feature_okhttp_export           : new DepConfig(true, true, ":feature:okhttp:export"),
-//            feature_okhttp_pkg              : new DepConfig(true, true, ":feature:okhttp:pkg"),
-//
-//            feature_permission_app          : new DepConfig(true, true, ":feature:permission:app"),
-//            feature_permission_export       : new DepConfig(true, true, ":feature:permission:export"),
-//            feature_permission_pkg          : new DepConfig(true, true, ":feature:permission:pkg"),
-//
-//            feature_wanandroid_app          : new DepConfig(true, true, ":feature:wanandroid:app"),
-//            feature_wanandroid_export       : new DepConfig(true, true, ":feature:wanandroid:export"),
-//            feature_wanandroid_pkg          : new DepConfig(true, true, ":feature:wanandroid:pkg"),
-//
-//            feature_image_app               : new DepConfig(true, true, ":feature:image:app"),
-//            feature_image_export            : new DepConfig(true, true, ":feature:image:export"),
-//            feature_image_pkg               : new DepConfig(true, true, ":feature:image:pkg"),
-//
-//            feature_annotation_app          : new DepConfig(true, true, ":feature:annotation:app"),
-//            feature_annotation_export       : new DepConfig(true, true, ":feature:annotation:export"),
-//            feature_annotation_pkg          : new DepConfig(true, true, ":feature:annotation:pkg"),
 
-//            feature_appmanager_app          : new DepConfig(true, true, ":feature:appmanager:app"),
-//            feature_appmanager_export       : new DepConfig(true, true, ":feature:appmanager:export"),
-//            feature_appmanager_pkg          : new DepConfig(true, true, ":feature:appmanager:pkg"),
-//
-//            feature_webview_app             : new DepConfig(true, true, ":feature:webview:app"),
-//            feature_webview_export          : new DepConfig(true, true, ":feature:webview:export"),
-//            feature_webview_pkg             : new DepConfig(true, true, ":feature:webview:pkg"),
-//
-//            feature_custom_app              : new DepConfig(true, true, ":feature:custom:app"),
-//            feature_custom_export           : new DepConfig(true, true, ":feature:custom:export"),
-//            feature_custom_pkg              : new DepConfig(true, true, ":feature:custom:pkg"),
+            feature_okhttp_app              : new DepConfig(true, true, ":feature:okhttp:app"),
+            feature_okhttp_export           : new DepConfig(true, true, ":feature:okhttp:export"),
+            feature_okhttp_pkg              : new DepConfig(true, true, ":feature:okhttp:pkg"),
+
+            feature_permission_app          : new DepConfig(true, true, ":feature:permission:app"),
+            feature_permission_export       : new DepConfig(true, true, ":feature:permission:export"),
+            feature_permission_pkg          : new DepConfig(true, true, ":feature:permission:pkg"),
+
+            feature_wanandroid_app          : new DepConfig(true, true, ":feature:wanandroid:app"),
+            feature_wanandroid_export       : new DepConfig(true, true, ":feature:wanandroid:export"),
+            feature_wanandroid_pkg          : new DepConfig(true, true, ":feature:wanandroid:pkg"),
+
+            feature_image_app               : new DepConfig(true, true, ":feature:image:app"),
+            feature_image_export            : new DepConfig(true, true, ":feature:image:export"),
+            feature_image_pkg               : new DepConfig(true, true, ":feature:image:pkg"),
+
+            feature_annotation_app          : new DepConfig(true, true, ":feature:annotation:app"),
+            feature_annotation_export       : new DepConfig(true, true, ":feature:annotation:export"),
+            feature_annotation_pkg          : new DepConfig(true, true, ":feature:annotation:pkg"),
+
+            feature_appmanager_app          : new DepConfig(true, true, ":feature:appmanager:app"),
+            feature_appmanager_export       : new DepConfig(true, true, ":feature:appmanager:export"),
+            feature_appmanager_pkg          : new DepConfig(true, true, ":feature:appmanager:pkg"),
+
+            feature_webview_app             : new DepConfig(true, true, ":feature:webview:app"),
+            feature_webview_export          : new DepConfig(true, true, ":feature:webview:export"),
+            feature_webview_pkg             : new DepConfig(true, true, ":feature:webview:pkg"),
+
+            feature_custom_app              : new DepConfig(true, true, ":feature:custom:app"),
+            feature_custom_export           : new DepConfig(true, true, ":feature:custom:export"),
+            feature_custom_pkg              : new DepConfig(true, true, ":feature:custom:pkg"),
 
             feature_video_app               : new DepConfig(true, true, ":feature:video:app"),
             feature_video_export            : new DepConfig(true, true, ":feature:video:export"),

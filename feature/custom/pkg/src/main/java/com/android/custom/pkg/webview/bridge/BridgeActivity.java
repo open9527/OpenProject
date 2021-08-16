@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 
 import com.android.custom.pkg.BR;
 import com.android.custom.pkg.R;
+import com.android.custom.pkg.webview.bridge.custom.CustomWebViewActivity;
 import com.android.open9527.common.bundle.BundleUtils;
 import com.android.open9527.common.page.BaseCommonActivity;
 import com.android.open9527.page.DataBindingConfig;
@@ -38,6 +39,8 @@ public class BridgeActivity extends BaseCommonActivity {
         BridgeBundleData bundleData = BundleUtils.getBundleData(bundle);
         super.initView(bundle);
         mViewModel.valueBridgeBundleData.set(bundleData);
+//       TextView textView= findViewById(R.id.tv_viewPager2);
+//        textView.setTextSize(SizeUtils.dp2px(16));
     }
 
     public class ClickProxy {
@@ -52,6 +55,10 @@ public class BridgeActivity extends BaseCommonActivity {
         };
         public View.OnClickListener recycleViewViewClick = v -> {
             ActivityUtils.startActivity(RecycleViewWebActivity.class);
+        };
+
+        public View.OnClickListener webViewClick = v -> {
+            ActivityUtils.startActivity(CustomWebViewActivity.class);
         };
     }
 }

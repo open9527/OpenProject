@@ -128,6 +128,13 @@ public abstract class BaseDialogFragment extends DialogFragment implements IDial
     }
 
     @Override
+    public void onDetach() {
+        super.onDetach();
+        closeSoftInput(getDialog());
+    }
+
+
+    @Override
     public void dismiss() {
         closeSoftInput(getDialog());
         Utils.runOnUiThread(() -> {

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.android.custom.pkg.webview.bridge.custom.WebViewViewModel" />
+
+        <variable
+            name="click"
+            type="com.android.custom.pkg.webview.bridge.custom.CustomWebViewActivity.ClickProxy" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:ignore="HardcodedText">
+
+        <include
+            layout="@layout/custom_title_bar"
+            app:barBackClick="@{click.backClick}"
+            app:barTitleText="@{vm.valueTitle}" />
+
+        <com.android.custom.pkg.webview.bridge.custom.CustomWebView
+            android:id="@+id/custom_web_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+    </LinearLayout>
+</layout>

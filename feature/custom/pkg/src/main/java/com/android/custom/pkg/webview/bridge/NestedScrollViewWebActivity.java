@@ -59,7 +59,11 @@ public class NestedScrollViewWebActivity extends BaseCommonActivity implements H
 
     private void initNestedScrollView() {
         BrowserView mBrowserView = findViewById(R.id.browser_view);
-        mBrowserView.loadUrl(mViewModel.valueWebUrl.get());
+
+        mBrowserView.setBrowserChromeClient(new BrowserView.BrowserChromeClient(mBrowserView));
+        mBrowserView.setBrowserViewClient(new BrowserView.BrowserViewClient());
+
+        mBrowserView.loadUrl("http://jyh.beta.easttone.com:8010/api/app/doc/release/rm_js_sdk_testcase.html");
 
         x5BridgeWebView = findViewById(R.id.bridge_web_view);
 

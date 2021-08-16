@@ -1,18 +1,17 @@
-package com.android.feature.webview.pkg.gson;
+package com.android.custom.pkg.webview.bridge.custom.vo;
 
-import java.io.Serializable;
 
 /**
  * @author open_9527
  * Create at 2021/2/23
  **/
-public class MessageVo implements Serializable {
-    public static final String UPDATE_WEB_VIEW_HEIGHT = "updateWebViewHeight";
+public class WebMessageVo extends WebBaseVo {
 
     private String callbackId;
     private String responseId;
     private String responseData;
     private String handlerName;
+    private Object data;
 
     public String getCallbackId() {
         return callbackId;
@@ -46,13 +45,22 @@ public class MessageVo implements Serializable {
         this.handlerName = handlerName;
     }
 
+    public Object getData() {
+        return data;
+    }
+
+    public void setData(Object data) {
+        this.data = data;
+    }
+
     @Override
     public String toString() {
-        return "Message{" +
+        return "WebMessageVo{" +
                 "callbackId='" + callbackId + '\'' +
                 ", responseId='" + responseId + '\'' +
                 ", responseData='" + responseData + '\'' +
                 ", handlerName='" + handlerName + '\'' +
+                ", data=" + data +
                 '}';
     }
 }

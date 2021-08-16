@@ -1,10 +1,10 @@
-package com.open9527.webview.bridge.impl.vo;
+package com.android.custom.pkg.webview.bridge.custom.vo;
 
 /**
  * @author open_9527
  * Create at 2021/2/23
  **/
-public class WebHeightVo extends WebBaseVo {
+public class WebHeightVo extends WebMessageVo {
 
     private int height = 0;
 

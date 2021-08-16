@@ -2,6 +2,21 @@
     package="com.android.custom.pkg">
 
     <application>
+
+        <meta-data
+            android:name="xposedmodule"
+            android:value="true" />
+
+        <!--模块说明，一般为模块的功能描述-->
+        <meta-data
+            android:name="xposeddescription"
+            android:value="这个模块用来检测用户隐私合规的，在用户未授权同意前调用接口获取信息属于违规。" />
+
+        <!--模块兼容版本-->
+        <meta-data
+            android:name="xposedminversion"
+            android:value="54" />
+
         <activity
             android:name=".CustomActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -50,6 +65,11 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".webview.bridge.custom.CustomWebViewActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".video.VideoDetailsActivity"
@@ -77,5 +97,21 @@
             android:label="GridLayout"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".media.MediaActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="Media"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".result.ResultApiActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="ResultApi"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+
     </application>
 </manifest>

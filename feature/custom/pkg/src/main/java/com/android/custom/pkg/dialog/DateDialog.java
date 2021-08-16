@@ -21,6 +21,7 @@ import com.android.open9527.recycleview.adapter.BaseBindingCell;
 import com.android.open9527.recycleview.adapter.BaseBindingCellListAdapter;
 import com.android.open9527.recycleview.adapter.BaseBindingCellViewHolder;
 import com.android.open9527.recycleview.layout_manager.WrapContentPickerLayoutManager;
+import com.blankj.utilcode.util.LogUtils;
 
 import java.util.Calendar;
 import java.util.Locale;
@@ -119,6 +120,8 @@ public class DateDialog extends BaseDialogFragment {
         setPickIndex(mMonthView, valueMIndex.get());
         setPickIndex(mDayView, valueDIndex.get());
     }
+
+
 
     private void initData() {
         // 年份

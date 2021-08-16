@@ -204,11 +204,13 @@ public class MediaUtils {
         File folderFile = imageFile.getParentFile();
         for (LocalMediaFolder folder : imageFolders) {
             // 同一个文件夹下，返回自己，否则创建新文件夹
+            assert folderFile != null;
             if (folder.getName().equals(folderFile.getName())) {
                 return folder;
             }
         }
         LocalMediaFolder newFolder = new LocalMediaFolder();
+        assert folderFile != null;
         newFolder.setName(folderFile.getName());
         newFolder.setPath(folderFile.getAbsolutePath());
         newFolder.setFirstImagePath(path);

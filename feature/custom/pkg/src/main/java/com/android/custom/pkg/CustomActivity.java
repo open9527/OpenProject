@@ -7,23 +7,24 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.media.MediaScannerConnection;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
-import androidx.core.content.ContextCompat;
 
 import com.android.custom.pkg.bundle.CustomBundle;
 import com.android.custom.pkg.databinding.CustomActivityBinding;
 import com.android.custom.pkg.dialog.DialogActivity;
 import com.android.custom.pkg.layout.grid.GridLayoutActivity;
 import com.android.custom.pkg.lottie.LottieActivity;
+import com.android.custom.pkg.media.MediaActivity;
 import com.android.custom.pkg.recycleview.RecycleViewActivity;
+import com.android.custom.pkg.result.ResultApiActivity;
 import com.android.custom.pkg.shadow.ShadowActivity;
 import com.android.custom.pkg.video.VideoDetailsActivity;
 import com.android.custom.pkg.webview.bridge.BridgeActivity;
@@ -42,7 +43,7 @@ import com.android.open9527.permission.PermissionsManage;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.ColorUtils;
-import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.SizeUtils;
 import com.blankj.utilcode.util.TimeUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.open9527.annotation.router.Router;
@@ -61,11 +62,13 @@ public class CustomActivity extends BaseCommonActivity {
     private CustomAppViewModel mAppViewModel;
 
     private final int notifyId = 0x100001;
+    private CustomActivityBinding mBinding;
 
     @Override
     protected void initViewModel() {
         mViewModel = getActivityScopeViewModel(CustomViewModel.class);
         mAppViewModel = getApplicationScopeViewModel(CustomAppViewModel.class);
+
     }
 
     @Override
@@ -79,7 +82,7 @@ public class CustomActivity extends BaseCommonActivity {
         super.initView(bundle);
         mViewModel.valueIsLogin.set(false);
 
-        CustomActivityBinding mBinding = (CustomActivityBinding) getBinding();
+        mBinding = (CustomActivityBinding) getBinding();
         mBinding.DrawTextPathView.setText("这是一段文字,用动画来播放");
         mBinding.DrawTextPathView.setAutoStart(true);
         mBinding.DrawTextPathView.setCycle(true);
@@ -103,6 +106,10 @@ public class CustomActivity extends BaseCommonActivity {
         };
 
         public View.OnClickListener nightClick = v -> {
+//            setDensity(1.3f);
+//            mBinding.DrawTextPathView.setTextSize(SizeUtils.dp2px(30));
+
+
             FilterColor filterColor = AppFilter.getColor();
             if (filterColor instanceof NightColor) {
                 AppFilter.tint(null);
@@ -117,6 +124,9 @@ public class CustomActivity extends BaseCommonActivity {
             Intent intent = new Intent();
             intent.setComponent(new ComponentName(mActivity, DialogActivity.class));
             startActivityByCheckLogin(intent, true);
+
+//            setDensity(1.0f);
+//            mBinding.DrawTextPathView.setTextSize(SizeUtils.dp2px(30));
 
         };
 
@@ -141,6 +151,7 @@ public class CustomActivity extends BaseCommonActivity {
 
         public View.OnClickListener gridLayoutViewClick = v -> {
             ActivityUtils.startActivity(GridLayoutActivity.class);
+
         };
 
         public View.OnClickListener downLoadViewClick = v -> {
@@ -169,10 +180,17 @@ public class CustomActivity extends BaseCommonActivity {
                     });
         };
 
+        public View.OnClickListener valueMediaViewClick = v -> {
+            ActivityUtils.startActivity(MediaActivity.class);
+        };
 
+        public View.OnClickListener valueActivityResultClick = v -> {
+            ActivityUtils.startActivity(ResultApiActivity.class);
+        };
     }
 
     private NotificationManager notificationManager;
+
     //
     private void onDownloadRequest(String fileName) {
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -266,4 +284,24 @@ public class CustomActivity extends BaseCommonActivity {
         }
         super.startActivity(intent);
     }
+
+
+    public void setDensity(float scale) {
+        //0.85 小, 1 标准大小, 1.15 大，1.3 超大 ，1.45 特大
+        DisplayMetrics systemMetrics = getSystemMetrics();
+        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+        displayMetrics.density = systemMetrics.density * scale;
+        displayMetrics.scaledDensity = systemMetrics.density * scale;
+        displayMetrics.densityDpi = (int) (systemMetrics.densityDpi * scale);
+    }
+
+
+    private DisplayMetrics getSystemMetrics() {
+        return getApplicationContext().getResources().getDisplayMetrics();
+    }
+    //    open fun dip2px(context: Context, dpValue: Float): Int {
+    //        val scale = context.applicationContext.resources.displayMetrics.density
+    //        return (dpValue * scale + 0.5f).toInt()
+    //    }
+
 }

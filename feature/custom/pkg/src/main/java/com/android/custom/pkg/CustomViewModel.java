@@ -13,6 +13,7 @@ import com.android.open9527.common.binding.drawables.DrawablesBindingAdapter;
 public class CustomViewModel extends ViewModel {
 
     public final ObservableField<String> valueTitle = new ObservableField<>("Custom");
+    public final ObservableBoolean valueIsLogin = new ObservableBoolean(false);
 
     public final ObservableField<String> valueFilterTitle = new ObservableField<>("filter");
     public final ObservableField<String> valueShadowTitle = new ObservableField<>("Shadow");
@@ -23,7 +24,9 @@ public class CustomViewModel extends ViewModel {
     public final ObservableField<String> valueLottieTitle = new ObservableField<>("Lottie");
     public final ObservableField<String> valueLayoutTitle = new ObservableField<>("layout");
     public final ObservableField<String> valueDownLoad = new ObservableField<>("downLoad");
-    public final ObservableBoolean valueIsLogin = new ObservableBoolean(false);
+    public final ObservableField<String> valueMedia = new ObservableField<>("media");
+    public final ObservableField<String> valueActivityResult = new ObservableField<>("Activity Result");
+
 
 
 }

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="cell"
+            type="com.android.custom.pkg.media.cell.MediaCell" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.android.open9527.common.widget.image.LoadImageView
+            android:id="@+id/iv_pic"
+            bindCornerType="@{cell.valueCornerType}"
+            bindIvRoundRadius="@{6}"
+            bindIvRoundType="@{cell.valueRoundType}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            app:bindIvSkipMemoryCache="@{true}"
+            app:bindIvUri="@{cell.valueImageUri}"
+            app:bindIvUrl="@{cell.valueImageUrl}"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.android.open9527.common.widget.textview.StateSwitchTextView
+            android:id="@+id/tv_share_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_15"
+            app:bindTextDefaultText="@{cell.valueDesc}"
+            app:bindTextDefaultTextColor="@{@color/common_text_sub_color}"
+            app:bindTextDefaultTextSize="@{14}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_pic"
+            tools:text="这是一段描述"
+            tools:textColor="@color/common_text_sub_color"
+            tools:textSize="@dimen/font_14" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

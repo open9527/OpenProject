@@ -27,9 +27,9 @@ public class WebMsgJsonDeserializer implements JsonDeserializer<MessageVo> {
         Gson gson = ApiUtils.buildGsonExpectAdapter(MessageVo.class);
 
         String contentType = contentTypeElement.getAsString();
-        if (StringUtils.equals(contentType, WebHeightVo.UPDATE_WEB_VIEW_HEIGHT)) {
+//        if (StringUtils.equals(contentType, MessageVo.HANDLER_NAME_GET_BUSINESS)) {
 //            return gson.fromJson(json, WebHeightVo.class);
-        }
+//        }
         return gson.fromJson(json, MessageVo.class);
     }
 

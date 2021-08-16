@@ -1,7 +1,5 @@
 package com.android.custom.pkg.adapter;
 
-import android.annotation.SuppressLint;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 

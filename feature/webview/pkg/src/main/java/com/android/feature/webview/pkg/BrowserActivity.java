@@ -45,9 +45,7 @@ public class BrowserActivity extends BaseCommonActivity {
         return new DataBindingConfig(R.layout.browser_activity, BR.vm, mViewModel)
                 .addBindingParam(BR.click, new ClickProxy())
                 .addBindingParam(BR.layoutManager, new WrapContentLinearLayoutManager(this))
-                .addBindingParam
-                        (
-                                BR.itemDecoration,
+                .addBindingParam(BR.itemDecoration,
                                 new SpacesItemDecoration(this).setParam(R.color.common_line_color, 10)
                         )
                 .addBindingParam(BR.adapter, new BaseBindingCellListAdapter<>());
@@ -66,8 +64,8 @@ public class BrowserActivity extends BaseCommonActivity {
         browserView.setBrowserViewClient(new MyBrowserViewClient(browserView));
         browserView.setBrowserChromeClient(new MyBrowserChromeClient(browserView));
 
-        //        browserView.loadUrl(mViewModel.valueUrl.get());
-        browserView.loadUrl("https://www.wanandroid.com/index");
+                browserView.loadUrl(mViewModel.valueUrl.get());
+//        browserView.loadUrl("https://www.wanandroid.com/index");
     }
 
     @Override
@@ -102,8 +100,6 @@ public class BrowserActivity extends BaseCommonActivity {
             }
         };
     }
-
-
 
 
     private class MyBrowserViewClient extends BridgeWebViewClient {
