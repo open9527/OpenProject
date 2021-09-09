@@ -67,10 +67,7 @@ class Config {
             feature_video_app               : new DepConfig(true, true, ":feature:video:app"),
             feature_video_export            : new DepConfig(true, true, ":feature:video:export"),
             feature_video_pkg               : new DepConfig(true, true, ":feature:video:pkg"),
-//
-//            feature_kotlin_app              : new DepConfig(false, true, ":feature:kotlin:app"),
-//            feature_kotlin_export           : new DepConfig(false, true, ":feature:kotlin:export"),
-//            feature_kotlin_pkg              : new DepConfig(false, true, ":feature:kotlin:pkg"),
+
 
 
             plugin_gradle                   : new DepConfig(pluginPath: "com.android.tools.build:gradle:$gradlePluginVersion"),
@@ -95,10 +92,14 @@ class Config {
             apt_annotation                  : new DepConfig(true, true, ":apt:annotation"),
             apt_compiler                    : new DepConfig(true, true, ":apt:compiler"),
 
-            lib_kt_page                     : new DepConfig(false, true, ":lib_kt:page"),
-            lib_kt_base                     : new DepConfig(false, true, ":lib_kt:base"),
-            lib_kt_common                   : new DepConfig(false, true, ":lib_kt:common"),
-            lib_kt_permission               : new DepConfig(false, true, ":lib_kt:permissions"),
+//            lib_kt_page                     : new DepConfig(true, true, ":lib_kt:page"),
+//            lib_kt_base                     : new DepConfig(true, true, ":lib_kt:base"),
+//            lib_kt_common                   : new DepConfig(true, true, ":lib_kt:common"),
+//            lib_kt_permission               : new DepConfig(true, true, ":lib_kt:permissions"),
+//
+//            feature_kotlin_app              : new DepConfig(true, true, ":feature:kotlin:app"),
+//            feature_kotlin_export           : new DepConfig(true, true, ":feature:kotlin:export"),
+//            feature_kotlin_pkg              : new DepConfig(true, true, ":feature:kotlin:pkg"),
 
 
             kotlin_core_ktx                 : new DepConfig("androidx.core:core-ktx:$kotlinKtx"),

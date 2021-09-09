@@ -17,6 +17,8 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
+import com.android.custom.pkg.aop.CheckNet;
+import com.android.custom.pkg.aop.Permissions;
 import com.android.custom.pkg.bundle.CustomBundle;
 import com.android.custom.pkg.databinding.CustomActivityBinding;
 import com.android.custom.pkg.dialog.DialogActivity;
@@ -101,15 +103,12 @@ public class CustomActivity extends BaseCommonActivity {
 
     public class ClickProxy {
 
+
         public View.OnClickListener backClick = v -> {
             finish();
         };
 
         public View.OnClickListener nightClick = v -> {
-//            setDensity(1.3f);
-//            mBinding.DrawTextPathView.setTextSize(SizeUtils.dp2px(30));
-
-
             FilterColor filterColor = AppFilter.getColor();
             if (filterColor instanceof NightColor) {
                 AppFilter.tint(null);
@@ -125,8 +124,6 @@ public class CustomActivity extends BaseCommonActivity {
             intent.setComponent(new ComponentName(mActivity, DialogActivity.class));
             startActivityByCheckLogin(intent, true);
 
-//            setDensity(1.0f);
-//            mBinding.DrawTextPathView.setTextSize(SizeUtils.dp2px(30));
 
         };
 
@@ -154,30 +151,32 @@ public class CustomActivity extends BaseCommonActivity {
 
         };
 
+
         public View.OnClickListener downLoadViewClick = v -> {
-            PermissionsManage.with(mActivity)
-                    .permission(Permission.MANAGE_EXTERNAL_STORAGE)
-                    .request(new OnPermissionCallback() {
-
-                        @Override
-                        public void onGranted(List<String> permissions, boolean all) {
-                            if (all) {
-                                ToastUtils.showShort("获取存储权限成功");
-                                onDownloadRequest("");
-                            }
-                        }
-
-                        @Override
-                        public void onDenied(List<String> permissions, boolean never) {
-                            if (never) {
-                                ToastUtils.showShort("被永久拒绝授权，请手动授予存储权限");
-                                // 如果是被永久拒绝就跳转到应用权限系统设置页面
-                                PermissionsManage.startPermissionActivity(mActivity, permissions);
-                            } else {
-                                ToastUtils.showShort("获取存储权限失败");
-                            }
-                        }
-                    });
+            onDownloadRequest("");
+//            PermissionsManage.with(mActivity)
+//                    .permission(Permission.MANAGE_EXTERNAL_STORAGE)
+//                    .request(new OnPermissionCallback() {
+//
+//                        @Override
+//                        public void onGranted(List<String> permissions, boolean all) {
+//                            if (all) {
+//                                ToastUtils.showShort("获取存储权限成功");
+//                                onDownloadRequest("");
+//                            }
+//                        }
+//
+//                        @Override
+//                        public void onDenied(List<String> permissions, boolean never) {
+//                            if (never) {
+//                                ToastUtils.showShort("被永久拒绝授权，请手动授予存储权限");
+//                                // 如果是被永久拒绝就跳转到应用权限系统设置页面
+//                                PermissionsManage.startPermissionActivity(mActivity, permissions);
+//                            } else {
+//                                ToastUtils.showShort("获取存储权限失败");
+//                            }
+//                        }
+//                    });
         };
 
         public View.OnClickListener valueMediaViewClick = v -> {
@@ -191,7 +190,8 @@ public class CustomActivity extends BaseCommonActivity {
 
     private NotificationManager notificationManager;
 
-    //
+    @Permissions({Permission.MANAGE_EXTERNAL_STORAGE})
+    @CheckNet
     private void onDownloadRequest(String fileName) {
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         String url = "https://dldir1.qq.com/weixin/android/weixin806android1900.apk";
@@ -286,22 +286,35 @@ public class CustomActivity extends BaseCommonActivity {
     }
 
 
-    public void setDensity(float scale) {
-        //0.85 小, 1 标准大小, 1.15 大，1.3 超大 ，1.45 特大
-        DisplayMetrics systemMetrics = getSystemMetrics();
-        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
-        displayMetrics.density = systemMetrics.density * scale;
-        displayMetrics.scaledDensity = systemMetrics.density * scale;
-        displayMetrics.densityDpi = (int) (systemMetrics.densityDpi * scale);
-    }
-
-
-    private DisplayMetrics getSystemMetrics() {
-        return getApplicationContext().getResources().getDisplayMetrics();
-    }
-    //    open fun dip2px(context: Context, dpValue: Float): Int {
-    //        val scale = context.applicationContext.resources.displayMetrics.density
-    //        return (dpValue * scale + 0.5f).toInt()
-    //    }
+//    public void setDensity(float scale) {
+//        //0.85 小, 1 标准大小, 1.15 大，1.3 超大 ，1.45 特大
+//        DisplayMetrics systemMetrics = getSystemMetrics();
+//        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+//        displayMetrics.density = systemMetrics.density * scale;
+//        displayMetrics.scaledDensity = systemMetrics.density * scale;
+//        displayMetrics.densityDpi = (int) (systemMetrics.densityDpi * scale);
+//    }
+//
+//
+//    private DisplayMetrics getSystemMetrics() {
+//        return getApplicationContext().getResources().getDisplayMetrics();
+//    }
+    //只能修改字体是sp为单位的 需要重启Activity才有效，重启方法是recreate()
+//    @Override
+//    public Resources getResources() {
+//        //0.85 小, 1 标准大小, 1.15 大，1.3 超大 ，1.45 特大
+//        Resources res = super.getResources();
+//        Configuration config = res.getConfiguration();
+//        //设置正常字体大小的倍数
+//        if (FontUtils.isBig()) {
+//            config.fontScale = FontUtils.BIG_FONT_SCALE;
+//        } else if (FontUtils.isLarge()) {
+//            config.fontScale = FontUtils.LARGE_FONT_SCALE;
+//        } else {
+//            config.fontScale = FontUtils.NORMAL_FONT_SCALE;
+//        }
+//        res.updateConfiguration(config, res.getDisplayMetrics());
+//        return res;
+//    }
 
 }

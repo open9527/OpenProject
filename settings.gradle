@@ -2,7 +2,11 @@ import groovy.json.JsonSlurper
 
 /**
  * 在 config.json 中 根据 appConfig 和 pkgConfig 来 include 本地模块
+ *
+ * def config = new JsonSlurper().parse(file("./config.json"))
+ * def config = new JsonSlurper().parse(file("./config_kt.json"))
  */
+
 def config = new JsonSlurper().parse(file("./config.json"))
 
 for (def pro in config.proConfig) {

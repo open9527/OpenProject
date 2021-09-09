@@ -4,6 +4,7 @@ apply {
     plugin "kotlin-android"
     plugin 'kotlin-kapt'
     plugin "kotlin-android-extensions"
+    plugin 'android-aspectjx'
 }
 
 configSigning()
@@ -107,11 +108,11 @@ dependencies {
     }
 
     if (Config.depConfig.apt_compiler.isApply) {
-        GLog.d("apt_compiler isApply  " )
+        GLog.d("apt_compiler isApply  ")
         kapt Config.depConfig.apt_compiler.dep
     }
     if (Config.depConfig.apt_annotation.isApply) {
-        GLog.d("apt_annotation isApply  " )
+        GLog.d("apt_annotation isApply  ")
         api Config.depConfig.apt_annotation.dep
     }
 }

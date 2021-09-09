@@ -18,7 +18,6 @@ import com.blankj.utilcode.util.GsonUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.google.gson.reflect.TypeToken;
 
-import org.apache.commons.lang3.StringEscapeUtils;
 
 import java.lang.reflect.Type;
 import java.net.URLEncoder;
